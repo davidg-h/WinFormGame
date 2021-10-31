@@ -1,0 +1,10 @@
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\mainproject\WindowsForms\WindowsForms\bin\Debug\WindowsForms.exe.config
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\mainproject\WindowsForms\WindowsForms\bin\Debug\WindowsForms.exe
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\mainproject\WindowsForms\WindowsForms\bin\Debug\WindowsForms.pdb
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.csproj.AssemblyReference.cache
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Form1.resources
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Properties.Resources.resources
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.csproj.GenerateResource.cache
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.csproj.CoreCompileInputs.cache
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.exe
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.pdb
