@@ -9,7 +9,7 @@ using System.Drawing;
 namespace WindowsForms.Gamecode
 
 {
-    class Player : Entity
+    internal class Player : Entity
     {
         internal int score = 0;
         internal int coins = 0;
@@ -18,8 +18,9 @@ namespace WindowsForms.Gamecode
 
         internal override int Hp { get => hp; set => hp = value; }
 
-        internal override int Dmg => dmg;
+        internal override int Dmg { get => dmg; set => dmg = value; }
 
+        // move pattern for WASD - controls
         public override void move(Form f)
         {
             if (goLeft && box.Left > 30)

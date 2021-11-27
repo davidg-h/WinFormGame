@@ -15,7 +15,7 @@ namespace WindowsForms.Gamecode
 
         internal override int Hp { get => hp; set => hp = value; }
 
-        internal override int Dmg => dmg;
+        internal override int Dmg { get => dmg; set => dmg = value; }
 
         public override void move(Form f)
         {

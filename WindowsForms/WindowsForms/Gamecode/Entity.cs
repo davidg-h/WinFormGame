@@ -8,11 +8,11 @@ using System.Windows.Forms;
 namespace WindowsForms.Gamecode
 {
     /// <summary>
-    /// super class for all objecs/characters in the game
+    /// super class for all objecs/characters in the game with default values
     /// </summary>
     internal abstract class Entity
     {
-        protected PictureBox box; // connects to the GUI
+        protected PictureBox box; // connection to the GUI
         protected int characterSpeed = 10;
         protected int jumpSpeed = 16;
         protected int force = 8;
@@ -21,7 +21,7 @@ namespace WindowsForms.Gamecode
         internal bool goRight, goLeft, goDown, jumping;
 
         internal abstract int Hp { get; set; }
-        internal abstract int Dmg { get; }
+        internal abstract int Dmg { get; set; }
 
         protected Entity(PictureBox box, int hp, int dmg)
         {
@@ -30,8 +30,9 @@ namespace WindowsForms.Gamecode
             this.box = box;
         }
 
+        // move pattern 
         public abstract void move(Form f);
-
+        // attack pattern
         public abstract void attack();
     }
 }

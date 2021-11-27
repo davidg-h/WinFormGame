@@ -1,6 +1,6 @@
 ﻿namespace WindowsForms.Gamecode
 {
-    partial class StoryMode
+    partial class StoryMode1
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -37,11 +37,11 @@
             this.obstacleTree = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.escMenu = new System.Windows.Forms.MenuStrip();
+            this.escMenuM = new System.Windows.Forms.ToolStripMenuItem();
             this.resumeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.escMenuM = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.destinyBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obstacleTree)).BeginInit();
@@ -144,6 +144,16 @@
             this.escMenu.Text = "Menu";
             this.escMenu.Visible = false;
             // 
+            // escMenuM
+            // 
+            this.escMenuM.BackColor = System.Drawing.SystemColors.Window;
+            this.escMenuM.Font = new System.Drawing.Font("Unispace", 39.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.escMenuM.Margin = new System.Windows.Forms.Padding(0, 20, 0, 60);
+            this.escMenuM.Name = "escMenuM";
+            this.escMenuM.Size = new System.Drawing.Size(1043, 68);
+            this.escMenuM.Text = "Menu";
+            this.escMenuM.Click += new System.EventHandler(this.menuEastereggClick);
+            // 
             // resumeToolStripMenuItem
             // 
             this.resumeToolStripMenuItem.Font = new System.Drawing.Font("Unispace", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -169,6 +179,7 @@
             this.saveGameToolStripMenuItem.Name = "saveGameToolStripMenuItem";
             this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(1043, 37);
             this.saveGameToolStripMenuItem.Text = "Save Game";
+            this.saveGameToolStripMenuItem.Click += new System.EventHandler(this.saveGameClick);
             // 
             // loadGameToolStripMenuItem
             // 
@@ -177,18 +188,9 @@
             this.loadGameToolStripMenuItem.Name = "loadGameToolStripMenuItem";
             this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(1043, 37);
             this.loadGameToolStripMenuItem.Text = "Load Game";
+            this.loadGameToolStripMenuItem.Click += new System.EventHandler(this.loadGameClick);
             // 
-            // escMenuM
-            // 
-            this.escMenuM.BackColor = System.Drawing.SystemColors.Window;
-            this.escMenuM.Font = new System.Drawing.Font("Unispace", 39.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.escMenuM.Margin = new System.Windows.Forms.Padding(0, 20, 0, 60);
-            this.escMenuM.Name = "escMenuM";
-            this.escMenuM.Size = new System.Drawing.Size(1043, 68);
-            this.escMenuM.Text = "Menu";
-            this.escMenuM.Click += new System.EventHandler(this.menuEastereggClick);
-            // 
-            // StoryMode
+            // StoryMode1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -202,7 +204,7 @@
             this.Controls.Add(this.playerBox);
             this.MainMenuStrip = this.escMenu;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "StoryMode";
+            this.Name = "StoryMode1";
             this.Text = "Story-Mode";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyIsDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyIsUp);
@@ -218,20 +220,19 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox obstacleTree;
-        private System.Windows.Forms.PictureBox playerBox;
         private System.Windows.Forms.Timer MainGameTick;
         private System.Windows.Forms.Label healthLabel;
         private System.Windows.Forms.ProgressBar healthBar;
-        private System.Windows.Forms.PictureBox destinyBox;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.MenuStrip escMenu;
         private System.Windows.Forms.ToolStripMenuItem resumeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startScreenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveGameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadGameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem escMenuM;
+        internal System.Windows.Forms.PictureBox obstacleTree;
+        internal System.Windows.Forms.PictureBox playerBox;
+        internal System.Windows.Forms.PictureBox destinyBox;
+        internal System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
