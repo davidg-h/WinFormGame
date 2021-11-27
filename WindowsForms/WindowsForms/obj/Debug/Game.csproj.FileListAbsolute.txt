@@ -8,3 +8,13 @@ C:\Users\lizab\source\repos\project\WindowsForms\WindowsForms\obj\Debug\Game.csp
 C:\Users\lizab\source\repos\project\WindowsForms\WindowsForms\obj\Debug\Game.csproj.CoreCompileInputs.cache
 C:\Users\lizab\source\repos\project\WindowsForms\WindowsForms\obj\Debug\WindowsForms.exe
 C:\Users\lizab\source\repos\project\WindowsForms\WindowsForms\obj\Debug\WindowsForms.pdb
+C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\bin\Debug\WindowsForms.exe.config
+C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\bin\Debug\WindowsForms.exe
+C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\bin\Debug\WindowsForms.pdb
+C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\Game.csprojAssemblyReference.cache
+C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Form1.resources
+C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Properties.Resources.resources
+C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\Game.csproj.GenerateResource.cache
+C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\Game.csproj.CoreCompileInputs.cache
+C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\WindowsForms.exe
+C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\WindowsForms.pdb
