@@ -63,9 +63,9 @@ namespace WindowsForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Enemy_Klein {
+        internal static System.Drawing.Bitmap Bullet {
             get {
-                object obj = ResourceManager.GetObject("Enemy_Klein", resourceCulture);
+                object obj = ResourceManager.GetObject("Bullet", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,19 @@ namespace WindowsForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Player {
+        internal static System.Drawing.Bitmap Enemy_Klein1 {
             get {
-                object obj = ResourceManager.GetObject("Player", resourceCulture);
+                object obj = ResourceManager.GetObject("Enemy_Klein1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Player1 {
+            get {
+                object obj = ResourceManager.GetObject("Player1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
