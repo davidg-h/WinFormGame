@@ -10,12 +10,13 @@ using System.Windows.Forms;
 
 namespace WindowsForms.Gamecode
 {
-    public partial class StoryMode : Form
+    public partial class StoryMode1 : Form
     {
-        Player player;
+        public GameLvl lvl = GameLvl.storyLvl_1;
+        internal Player player;
         bool gameOver;
 
-        public StoryMode()
+        public StoryMode1()
         {
             InitializeComponent();
 
@@ -24,9 +25,86 @@ namespace WindowsForms.Gamecode
             this.KeyDown += formKeyDown;
         }
 
+        #region Esc Menu
+        /// <summary>
+        /// escMenu shall be visible when esc is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void formKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                escMenu.BringToFront();
+                escMenu.Visible = true;
+            }
+        }
+
+        private void menuEastereggClick(object sender, EventArgs e)
+        {
+            //TODO add a textBox for commands for easteregg
+        }
+
+        private void resumeClick(object sender, EventArgs e)
+        {
+            escMenu.Visible = false;
+        }
+
+        /// <summary>
+        /// link to Start Screen with consent of player 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void startScreenClick(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Gameplay will not be saved. Would you like to continue?", "", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                StartScreen start = new StartScreen();
+                start.Show();
+                this.Visible = false;
+            }
+        }
+
+        private void saveGameClick(object sender, EventArgs e)
+        {
+            SystemSave.saveGame(lvl, this);
+        }
+
+        private void loadGameClick(object sender, EventArgs e)
+        {
+            PlayerData gameData = SystemSave.loadGame();
+
+            // passing the data back to the window and ts elements
+            switch (gameData.lvl)
+            {
+                case GameLvl.storyLvl_1:
+                    playerBox.Location = gameData.location;
+                    player.score = gameData.score;
+                    player.coins = gameData.coins;
+                    player.Hp = gameData.hp;
+                    player.Dmg = gameData.dmg;
+                    escMenu.Visible = false;
+                    break;
+                case GameLvl.storyLvl_2:
+                    //TODO
+                    //zb: 
+                    // StoryMode2 mode2 = new StoryMode2();
+                    // mode2.playerBox.Location = gameData.playerLocation;
+                    // ...
+                    // mode2.Show();
+                    // this.Visible = false;
+                    break;
+                case GameLvl.storyLvl_3:
+                    //TODO same as above
+                    break;
+            }
+        }
+        #endregion
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void MainGameTick_Tick(object sender, EventArgs e)
@@ -79,7 +157,6 @@ namespace WindowsForms.Gamecode
                 MainGameTick.Stop();
                 MessageBox.Show("Congratulations, You won!!" + Environment.NewLine + "Press OK to play again");
                 Restart();
-
             }
         }
 
@@ -108,7 +185,7 @@ namespace WindowsForms.Gamecode
         private void Restart()
         {
             gameOver = false;
-            StoryMode newWindow = new StoryMode();
+            StoryMode1 newWindow = new StoryMode1();
             newWindow.Show();
             this.Hide();
 
@@ -146,46 +223,6 @@ namespace WindowsForms.Gamecode
         private void OpenInstructions(object sender, EventArgs e)
         {
 
-        }
-
-        /// <summary>
-        /// escMenu shall be visible when esc is pressed
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void formKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                escMenu.BringToFront();
-                escMenu.Visible = true;
-            }
-        }
-
-        private void menuEastereggClick(object sender, EventArgs e)
-        {
-            //TODO
-        }
-
-        private void resumeClick(object sender, EventArgs e)
-        {
-            escMenu.Visible = false;
-        }
-
-        /// <summary>
-        /// link to Start Screen with consent of player 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void startScreenClick(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Gameplay will not be saved. Would you like to continue?", "", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                StartScreen start = new StartScreen();
-                start.Show();
-                this.Visible = false;
-            }
         }
     }
 }

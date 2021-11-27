@@ -17,9 +17,13 @@ namespace WindowsForms.Gamecode
             InitializeComponent();
         }
 
+        /// <summary>
+        /// terminates the app if player quits game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         internal static void closeGame(object sender, EventArgs e)
         {
-            // terminates the app if player quits game
             Application.Exit();
         }
 
@@ -33,7 +37,7 @@ namespace WindowsForms.Gamecode
 
         private void openStory(object sender, EventArgs e)
         {
-            StoryMode story = new StoryMode();
+            StoryMode1 story = new StoryMode1();
             story.Show();
             this.Visible = false;
         }

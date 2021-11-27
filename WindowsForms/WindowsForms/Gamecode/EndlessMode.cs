@@ -12,6 +12,9 @@ namespace WindowsForms.Gamecode
 {
     public partial class EndlessMode : Form
     {
+        internal Player player;
+        bool gameOver;
+
         public EndlessMode()
         {
             InitializeComponent();

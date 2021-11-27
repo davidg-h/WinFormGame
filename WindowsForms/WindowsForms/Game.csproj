@@ -54,13 +54,15 @@
     </Compile>
     <Compile Include="Gamecode\Enemy.cs" />
     <Compile Include="Gamecode\Entity.cs" />
+    <Compile Include="Gamecode\EnumGameLvl.cs" />
     <Compile Include="Gamecode\Player.cs" />
     <Compile Include="Gamecode\EnemySmall.cs" />
-    <Compile Include="Gamecode\StoryMode.cs">
+    <Compile Include="Gamecode\PlayerData.cs" />
+    <Compile Include="Gamecode\StoryMode1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Gamecode\StoryMode.Designer.cs">
-      <DependentUpon>StoryMode.cs</DependentUpon>
+    <Compile Include="Gamecode\StoryMode1.Designer.cs">
+      <DependentUpon>StoryMode1.cs</DependentUpon>
     </Compile>
     <Compile Include="Gamecode\Program.cs" />
     <Compile Include="Gamecode\StartScreen.cs">
@@ -69,12 +71,13 @@
     <Compile Include="Gamecode\StartScreen.Designer.cs">
       <DependentUpon>StartScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gamecode\SystemSave.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Gamecode\EndlessMode.resx">
       <DependentUpon>EndlessMode.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gamecode\StoryMode.resx">
-      <DependentUpon>StoryMode.cs</DependentUpon>
+    <EmbeddedResource Include="Gamecode\StoryMode1.resx">
+      <DependentUpon>StoryMode1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gamecode\StartScreen.resx">
       <DependentUpon>StartScreen.cs</DependentUpon>
