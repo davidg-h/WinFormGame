@@ -36,10 +36,17 @@
             this.playerBox = new System.Windows.Forms.PictureBox();
             this.obstacleTree = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.escMenu = new System.Windows.Forms.MenuStrip();
+            this.resumeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.escMenuM = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.destinyBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obstacleTree)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.escMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainGameTick
@@ -114,17 +121,86 @@
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
+            // escMenu
+            // 
+            this.escMenu.BackColor = System.Drawing.Color.Transparent;
+            this.escMenu.BackgroundImage = global::WindowsForms.Properties.Resources.TitleScreen1;
+            this.escMenu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.escMenu.Font = new System.Drawing.Font("Unispace", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.escMenu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
+            this.escMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.escMenuM,
+            this.resumeToolStripMenuItem,
+            this.startScreenToolStripMenuItem,
+            this.saveGameToolStripMenuItem,
+            this.loadGameToolStripMenuItem});
+            this.escMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
+            this.escMenu.Location = new System.Drawing.Point(0, 0);
+            this.escMenu.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
+            this.escMenu.Name = "escMenu";
+            this.escMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.escMenu.Size = new System.Drawing.Size(1047, 448);
+            this.escMenu.TabIndex = 8;
+            this.escMenu.Text = "Menu";
+            this.escMenu.Visible = false;
+            // 
+            // resumeToolStripMenuItem
+            // 
+            this.resumeToolStripMenuItem.Font = new System.Drawing.Font("Unispace", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resumeToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
+            this.resumeToolStripMenuItem.Name = "resumeToolStripMenuItem";
+            this.resumeToolStripMenuItem.Size = new System.Drawing.Size(1043, 37);
+            this.resumeToolStripMenuItem.Text = "Resume";
+            this.resumeToolStripMenuItem.Click += new System.EventHandler(this.resumeClick);
+            // 
+            // startScreenToolStripMenuItem
+            // 
+            this.startScreenToolStripMenuItem.Font = new System.Drawing.Font("Unispace", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startScreenToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
+            this.startScreenToolStripMenuItem.Name = "startScreenToolStripMenuItem";
+            this.startScreenToolStripMenuItem.Size = new System.Drawing.Size(1043, 37);
+            this.startScreenToolStripMenuItem.Text = "Start-Screen";
+            this.startScreenToolStripMenuItem.Click += new System.EventHandler(this.startScreenClick);
+            // 
+            // saveGameToolStripMenuItem
+            // 
+            this.saveGameToolStripMenuItem.Font = new System.Drawing.Font("Unispace", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveGameToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
+            this.saveGameToolStripMenuItem.Name = "saveGameToolStripMenuItem";
+            this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(1043, 37);
+            this.saveGameToolStripMenuItem.Text = "Save Game";
+            // 
+            // loadGameToolStripMenuItem
+            // 
+            this.loadGameToolStripMenuItem.Font = new System.Drawing.Font("Unispace", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadGameToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
+            this.loadGameToolStripMenuItem.Name = "loadGameToolStripMenuItem";
+            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(1043, 37);
+            this.loadGameToolStripMenuItem.Text = "Load Game";
+            // 
+            // escMenuM
+            // 
+            this.escMenuM.BackColor = System.Drawing.SystemColors.Window;
+            this.escMenuM.Font = new System.Drawing.Font("Unispace", 39.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.escMenuM.Margin = new System.Windows.Forms.Padding(0, 20, 0, 60);
+            this.escMenuM.Name = "escMenuM";
+            this.escMenuM.Size = new System.Drawing.Size(1043, 68);
+            this.escMenuM.Text = "Menu";
+            this.escMenuM.Click += new System.EventHandler(this.menuEastereggClick);
+            // 
             // StoryMode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1047, 448);
+            this.Controls.Add(this.escMenu);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.obstacleTree);
             this.Controls.Add(this.destinyBox);
             this.Controls.Add(this.healthLabel);
             this.Controls.Add(this.healthBar);
             this.Controls.Add(this.playerBox);
+            this.MainMenuStrip = this.escMenu;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "StoryMode";
             this.Text = "Story-Mode";
@@ -134,6 +210,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.playerBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.obstacleTree)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.escMenu.ResumeLayout(false);
+            this.escMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,6 +226,12 @@
         private System.Windows.Forms.ProgressBar healthBar;
         private System.Windows.Forms.PictureBox destinyBox;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.MenuStrip escMenu;
+        private System.Windows.Forms.ToolStripMenuItem resumeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem startScreenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveGameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadGameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem escMenuM;
     }
 }
 

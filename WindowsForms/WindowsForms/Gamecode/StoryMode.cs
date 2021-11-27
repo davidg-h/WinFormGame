@@ -21,6 +21,7 @@ namespace WindowsForms.Gamecode
 
             player = new Player(playerBox, 100);
             this.FormClosed += StartScreen.closeGame;
+            this.KeyDown += formKeyDown;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -99,7 +100,7 @@ namespace WindowsForms.Gamecode
                 case Keys.D:
                     player.goRight = true;
                     break;
-                case Keys R:
+                case Keys.R:
                     Restart();
                     break;
             }
@@ -145,6 +146,46 @@ namespace WindowsForms.Gamecode
         private void OpenInstructions(object sender, EventArgs e)
         {
 
+        }
+
+        /// <summary>
+        /// escMenu shall be visible when esc is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void formKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                escMenu.BringToFront();
+                escMenu.Visible = true;
+            }
+        }
+
+        private void menuEastereggClick(object sender, EventArgs e)
+        {
+            //TODO
+        }
+
+        private void resumeClick(object sender, EventArgs e)
+        {
+            escMenu.Visible = false;
+        }
+
+        /// <summary>
+        /// link to Start Screen with consent of player 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void startScreenClick(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Gameplay will not be saved. Would you like to continue?", "", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                StartScreen start = new StartScreen();
+                start.Show();
+                this.Visible = false;
+            }
         }
     }
 }
