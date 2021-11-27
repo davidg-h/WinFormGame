@@ -6,40 +6,43 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace WindowsForms
+namespace WindowsForms.Gamecode
 
 {
-    class Player
+    class Player : Entity
     {
-        PictureBox playerBox;
-        public bool goRight, goLeft, goDown, jumping;
-        int playerspeed = 10;
-        int jumpspeed = 16;
-        public int health = 100;
-        int force = 8;
-        public Player(PictureBox playerBox)
+        internal int score = 0;
+        internal int coins = 0;
+
+        public Player(PictureBox playerBox, int hp, int dmg = 1) : base(playerBox, hp, dmg) { }
+
+        internal override int Hp { get => hp; set => hp = value; }
+
+        internal override int Dmg => dmg;
+
+        public override void move(Form f)
         {
-            this.playerBox = playerBox;
+            if (goLeft && box.Left > 30)
+            {
+                box.Left -= characterSpeed;
+            }
+            if (goRight && box.Left + (box.Width + 30) < f.ClientSize.Width)
+            {
+                box.Left += characterSpeed;
+            }
+            if (jumping && box.Top > 30)
+            {
+                box.Top -= jumpSpeed;
+            }
+            if (goDown && box.Top + (box.Width + 30) < f.ClientSize.Height)
+            {
+                box.Top += characterSpeed;
+            }
         }
 
-        public void move(Form form1)
+        public override void attack()
         {
-            if (goLeft && playerBox.Left > 30)
-            {
-                playerBox.Left -= playerspeed;
-            }
-            if (goRight && playerBox.Left + (playerBox.Width + 30) < form1.ClientSize.Width)
-            {
-                playerBox.Left += playerspeed;
-            }
-            if (jumping && playerBox.Top > 30)
-            {
-                playerBox.Top -= jumpspeed;
-            }
-            if (goDown && playerBox.Top + (playerBox.Width + 30) < form1.ClientSize.Height)
-            {
-                playerBox.Top += playerspeed;
-            }
+            //TODO player attack
         }
     }
 }

@@ -52,6 +52,8 @@
     <Compile Include="Gamecode\EndlessMode.Designer.cs">
       <DependentUpon>EndlessMode.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gamecode\Enemy.cs" />
+    <Compile Include="Gamecode\Entity.cs" />
     <Compile Include="Gamecode\Player.cs" />
     <Compile Include="Gamecode\EnemySmall.cs" />
     <Compile Include="Gamecode\StoryMode.cs">
