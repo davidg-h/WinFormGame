@@ -35,9 +35,11 @@
             this.destinyBox = new System.Windows.Forms.PictureBox();
             this.playerBox = new System.Windows.Forms.PictureBox();
             this.obstacleTree = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.destinyBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obstacleTree)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // MainGameTick
@@ -70,7 +72,7 @@
             // destinyBox
             // 
             this.destinyBox.Image = global::WindowsForms.Properties.Resources.images;
-            this.destinyBox.Location = new System.Drawing.Point(519, 206);
+            this.destinyBox.Location = new System.Drawing.Point(993, 323);
             this.destinyBox.Margin = new System.Windows.Forms.Padding(2);
             this.destinyBox.Name = "destinyBox";
             this.destinyBox.Size = new System.Drawing.Size(54, 72);
@@ -81,7 +83,7 @@
             // playerBox
             // 
             this.playerBox.Image = global::WindowsForms.Properties.Resources.Player;
-            this.playerBox.Location = new System.Drawing.Point(154, 230);
+            this.playerBox.Location = new System.Drawing.Point(143, 365);
             this.playerBox.Margin = new System.Windows.Forms.Padding(2);
             this.playerBox.Name = "playerBox";
             this.playerBox.Size = new System.Drawing.Size(20, 30);
@@ -91,26 +93,38 @@
             // 
             // obstacleTree
             // 
+            this.obstacleTree.BackColor = System.Drawing.Color.Transparent;
             this.obstacleTree.Image = global::WindowsForms.Properties.Resources.Enemy_Klein;
-            this.obstacleTree.Location = new System.Drawing.Point(348, 219);
+            this.obstacleTree.Location = new System.Drawing.Point(664, 326);
             this.obstacleTree.Margin = new System.Windows.Forms.Padding(2);
             this.obstacleTree.Name = "obstacleTree";
-            this.obstacleTree.Size = new System.Drawing.Size(56, 59);
+            this.obstacleTree.Size = new System.Drawing.Size(64, 64);
+            this.obstacleTree.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.obstacleTree.TabIndex = 0;
             this.obstacleTree.TabStop = false;
             this.obstacleTree.Tag = "obstacleTree";
             this.obstacleTree.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Black;
+            this.pictureBox1.Location = new System.Drawing.Point(-16, 394);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1079, 86);
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
             // StoryMode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(703, 388);
+            this.ClientSize = new System.Drawing.Size(1047, 448);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.obstacleTree);
             this.Controls.Add(this.destinyBox);
             this.Controls.Add(this.healthLabel);
             this.Controls.Add(this.healthBar);
             this.Controls.Add(this.playerBox);
-            this.Controls.Add(this.obstacleTree);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "StoryMode";
             this.Text = "Story-Mode";
@@ -119,6 +133,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.destinyBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.obstacleTree)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -132,6 +147,7 @@
         private System.Windows.Forms.Label healthLabel;
         private System.Windows.Forms.ProgressBar healthBar;
         private System.Windows.Forms.PictureBox destinyBox;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
