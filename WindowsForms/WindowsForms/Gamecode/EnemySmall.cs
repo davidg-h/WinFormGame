@@ -3,18 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace WindowsForms
+namespace WindowsForms.Gamecode
 {
-    class EnemySmall
+    class EnemySmall : Enemy
     {
-        String name = "Blutsauger";
-        int health = 10;
-        int damage = 1;
+        //String name = "Blutsauger";
 
-        public EnemySmall()
+        public EnemySmall(PictureBox eBox, int hp = 10, int dmg = 1) : base(eBox, hp, dmg) { }
+
+        internal override int Hp { get => hp; set => hp = value; }
+
+        internal override int Dmg => dmg;
+
+        public override void move(Form f)
         {
+            //TODO move pattern of enemy
+        }
 
+        public override void attack()
+        {
+            //TODO attack pattern enemy small
         }
     }
 }

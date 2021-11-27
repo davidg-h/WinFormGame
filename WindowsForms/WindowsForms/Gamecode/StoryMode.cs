@@ -19,7 +19,7 @@ namespace WindowsForms.Gamecode
         {
             InitializeComponent();
 
-            player = new Player(playerBox);
+            player = new Player(playerBox, 100);
             this.FormClosed += StartScreen.closeGame;
         }
 
@@ -32,9 +32,9 @@ namespace WindowsForms.Gamecode
         {
             player.move(this);
 
-            if (player.health > 1)
+            if (player.Hp > 1)
             {
-                healthBar.Value = Convert.ToInt32(player.health);
+                healthBar.Value = Convert.ToInt32(player.Hp);
             }
             else
             {
@@ -59,17 +59,17 @@ namespace WindowsForms.Gamecode
 
             foreach (Control x in this.Controls)
             {
+                //TODO spawn of enemys (use the enemy classes)
                 if (x is PictureBox && x.Tag == "obstacleTree")
                 {
-
-
                     if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
                     {
-                        player.health -= 1;
+                        EnemySmall small = new EnemySmall((PictureBox)x);
+                        player.Hp -= small.Dmg;
                     }
                 }
             }
-            if (player.health < 20)
+            if (player.Hp < 20)
             {
                 healthBar.ForeColor = System.Drawing.Color.Red;
             }
