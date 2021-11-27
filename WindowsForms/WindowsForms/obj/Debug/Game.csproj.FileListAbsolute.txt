@@ -8,6 +8,7 @@ C:\Users\lizab\source\repos\project\WindowsForms\WindowsForms\obj\Debug\Game.csp
 C:\Users\lizab\source\repos\project\WindowsForms\WindowsForms\obj\Debug\Game.csproj.CoreCompileInputs.cache
 C:\Users\lizab\source\repos\project\WindowsForms\WindowsForms\obj\Debug\WindowsForms.exe
 C:\Users\lizab\source\repos\project\WindowsForms\WindowsForms\obj\Debug\WindowsForms.pdb
+<<<<<<< HEAD
 C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\bin\Debug\WindowsForms.exe.config
 C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\bin\Debug\WindowsForms.exe
 C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\bin\Debug\WindowsForms.pdb
@@ -18,3 +19,29 @@ C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\Ga
 C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\Game.csproj.CoreCompileInputs.cache
 C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\WindowsForms.exe
 C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\WindowsForms.pdb
+=======
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\bin\Debug\WindowsForms.exe.config
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\bin\Debug\WindowsForms.exe
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\bin\Debug\WindowsForms.pdb
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\obj\Debug\Game.csproj.AssemblyReference.cache
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Properties.Resources.resources
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\obj\Debug\Game.csproj.GenerateResource.cache
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\obj\Debug\Game.csproj.CoreCompileInputs.cache
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.exe
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.pdb
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.StartScreen.resources
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.StoryMode.resources
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.EndlessMode.resources
+C:\Users\David\Desktop\Schule TH\Min Semester 3\Grahic-Knight\WindowsForms\WindowsForms\bin\Debug\WindowsForms.exe.config
+C:\Users\David\Desktop\Schule TH\Min Semester 3\Grahic-Knight\WindowsForms\WindowsForms\bin\Debug\WindowsForms.exe
+C:\Users\David\Desktop\Schule TH\Min Semester 3\Grahic-Knight\WindowsForms\WindowsForms\bin\Debug\WindowsForms.pdb
+C:\Users\David\Desktop\Schule TH\Min Semester 3\Grahic-Knight\WindowsForms\WindowsForms\obj\Debug\Game.csproj.AssemblyReference.cache
+C:\Users\David\Desktop\Schule TH\Min Semester 3\Grahic-Knight\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.EndlessMode.resources
+C:\Users\David\Desktop\Schule TH\Min Semester 3\Grahic-Knight\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.StartScreen.resources
+C:\Users\David\Desktop\Schule TH\Min Semester 3\Grahic-Knight\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Properties.Resources.resources
+C:\Users\David\Desktop\Schule TH\Min Semester 3\Grahic-Knight\WindowsForms\WindowsForms\obj\Debug\Game.csproj.GenerateResource.cache
+C:\Users\David\Desktop\Schule TH\Min Semester 3\Grahic-Knight\WindowsForms\WindowsForms\obj\Debug\Game.csproj.CoreCompileInputs.cache
+C:\Users\David\Desktop\Schule TH\Min Semester 3\Grahic-Knight\WindowsForms\WindowsForms\obj\Debug\WindowsForms.exe
+C:\Users\David\Desktop\Schule TH\Min Semester 3\Grahic-Knight\WindowsForms\WindowsForms\obj\Debug\WindowsForms.pdb
+C:\Users\David\Desktop\Schule TH\Min Semester 3\Grahic-Knight\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.StoryMode1.resources
+>>>>>>> b29211a97ef52f9ccb3e650fb6f64a4594e6f81c

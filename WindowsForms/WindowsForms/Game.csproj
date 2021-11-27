@@ -46,18 +46,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Gamecode\Player.cs" />
-    <Compile Include="Gamecode\EnemySmall.cs" />
-    <Compile Include="Gamecode\Form1.cs">
+    <Compile Include="Gamecode\EndlessMode.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Gamecode\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Gamecode\EndlessMode.Designer.cs">
+      <DependentUpon>EndlessMode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gamecode\Enemy.cs" />
+    <Compile Include="Gamecode\Entity.cs" />
+    <Compile Include="Gamecode\EnumGameLvl.cs" />
+    <Compile Include="Gamecode\Player.cs" />
+    <Compile Include="Gamecode\EnemySmall.cs" />
+    <Compile Include="Gamecode\PlayerData.cs" />
+    <Compile Include="Gamecode\StoryMode1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gamecode\StoryMode1.Designer.cs">
+      <DependentUpon>StoryMode1.cs</DependentUpon>
     </Compile>
     <Compile Include="Gamecode\Program.cs" />
+    <Compile Include="Gamecode\StartScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gamecode\StartScreen.Designer.cs">
+      <DependentUpon>StartScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gamecode\SystemSave.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Gamecode\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Gamecode\EndlessMode.resx">
+      <DependentUpon>EndlessMode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gamecode\StoryMode1.resx">
+      <DependentUpon>StoryMode1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gamecode\StartScreen.resx">
+      <DependentUpon>StartScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -85,6 +108,8 @@
   <ItemGroup>
     <Content Include="Properties\Enemy_Klein.png" />
     <Content Include="Properties\Player.png" />
+    <None Include="Resources\TitleScreen1.png" />
+    <None Include="Resources\TitleScreen.png" />
     <None Include="Resources\images.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
