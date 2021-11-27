@@ -8,3 +8,15 @@ C:\Users\lizab\source\repos\project\WindowsForms\WindowsForms\obj\Debug\Game.csp
 C:\Users\lizab\source\repos\project\WindowsForms\WindowsForms\obj\Debug\Game.csproj.CoreCompileInputs.cache
 C:\Users\lizab\source\repos\project\WindowsForms\WindowsForms\obj\Debug\WindowsForms.exe
 C:\Users\lizab\source\repos\project\WindowsForms\WindowsForms\obj\Debug\WindowsForms.pdb
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\bin\Debug\WindowsForms.exe.config
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\bin\Debug\WindowsForms.exe
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\bin\Debug\WindowsForms.pdb
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\obj\Debug\Game.csproj.AssemblyReference.cache
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Properties.Resources.resources
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\obj\Debug\Game.csproj.GenerateResource.cache
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\obj\Debug\Game.csproj.CoreCompileInputs.cache
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.exe
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.pdb
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.StartScreen.resources
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.StoryMode.resources
+C:\Users\David\Desktop\Schule TH\Min Semester 3\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.EndlessMode.resources

@@ -8,19 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsForms
+namespace WindowsForms.Gamecode
 {
-    public partial class Form1 : Form
+    public partial class StoryMode : Form
     {
         Player player;
         bool gameOver;
 
-        public Form1()
+        public StoryMode()
         {
             InitializeComponent();
 
             player = new Player(playerBox);
-            
+            this.FormClosed += StartScreen.closeGame;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -107,7 +107,7 @@ namespace WindowsForms
         private void Restart()
         {
             gameOver = false;
-            Form1 newWindow = new Form1();
+            StoryMode newWindow = new StoryMode();
             newWindow.Show();
             this.Hide();
 
