@@ -84,18 +84,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -108,6 +108,19 @@
   <ItemGroup>
     <Content Include="Properties\Enemy_Klein.png" />
     <Content Include="Properties\Player.png" />
+    <None Include="Resources\Mountain1.png" />
+    <None Include="Resources\Clouds1.png" />
+    <None Include="Resources\Wolken.png" />
+    <None Include="Resources\Berge.png" />
+    <None Include="Resources\.png" />
+    <None Include="Resources\Front.png" />
+    <None Include="Resources\blackhole.gif" />
+    <None Include="Resources\Mountain.png" />
+    <None Include="Resources\Back.png" />
+    <None Include="Resources\shroomIdle.gif" />
+    <None Include="Resources\walkingLeft.gif" />
+    <None Include="Resources\walking.gif" />
+    <None Include="Resources\idle.gif" />
     <None Include="Resources\TitleScreen1.png" />
     <None Include="Resources\TitleScreen.png" />
     <None Include="Resources\images.png" />
