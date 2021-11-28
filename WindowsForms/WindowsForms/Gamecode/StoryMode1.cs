@@ -159,23 +159,47 @@ namespace WindowsForms.Gamecode
                 Restart();
             }
         }
+        bool holdDirection = true;
 
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
-                case Keys.W:
+
+                //TODO jumpinglimit 
+                case Keys.Space:
                     if (!player.jumping)
                         player.jumping = true;
+                    //different sprites for holding a 'move' button
+                    if (holdDirection)
+                    {
+                        holdDirection = false;
+                        playerBox.Image = Properties.Resources.walking;
+                    }
                     break;
                 case Keys.A:
                     player.goLeft = true;
+                    if (holdDirection)
+                    {
+                        holdDirection = false;
+                        playerBox.Image = Properties.Resources.walkingLeft;
+                    }
                     break;
                 case Keys.S:
                     player.goDown = true;
+                    if (holdDirection)
+                    {
+                        holdDirection = false;
+                        playerBox.Image = Properties.Resources.walking;
+                    }
                     break;
                 case Keys.D:
                     player.goRight = true;
+                    if (holdDirection)
+                    {
+                        holdDirection = false;
+                        playerBox.Image = Properties.Resources.walking;
+                    }
                     break;
                 case Keys.R:
                     Restart();
@@ -192,6 +216,7 @@ namespace WindowsForms.Gamecode
         }
         private void KeyIsUp(object sender, KeyEventArgs e)
         {
+
             switch (e.KeyCode)
             {
                 case Keys.R:
@@ -200,12 +225,29 @@ namespace WindowsForms.Gamecode
                     break;
                 case Keys.D:
                     player.goRight = false;
+
+                    //also switch to another sprite when a key is let go of
+                    if(!holdDirection)
+                    {
+                        holdDirection = true;
+                        playerBox.Image = Properties.Resources.idle;
+                    }    
                     break;
                 case Keys.A:
                     player.goLeft = false;
+                    if (!holdDirection)
+                    {
+                        holdDirection = true;
+                        playerBox.Image = Properties.Resources.idle;
+                    }
                     break;
                 case Keys.S:
                     player.goDown = false;
+                    if (!holdDirection)
+                    {
+                        holdDirection = true;
+                        playerBox.Image = Properties.Resources.idle;
+                    }
                     break;
             }
 
@@ -213,6 +255,7 @@ namespace WindowsForms.Gamecode
             {
                 player.jumping = false;
             }
+               
         }
         private void StartGame(object sender, EventArgs e)
         {
@@ -223,6 +266,21 @@ namespace WindowsForms.Gamecode
         private void OpenInstructions(object sender, EventArgs e)
         {
 
+        }
+        // initialize the background Images
+        Image layer_1 = Properties.Resources.Back;
+        Image layer_2 = Properties.Resources.Clouds;
+        Image layer_3 = Properties.Resources.Mountain;
+        Image layer_4 = Properties.Resources.Front;
+
+        //draw the background Images on specific coordinates
+        //TODO parallax background scrolling
+        private void StoryMode1_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawImage(layer_1, 0, 0);
+            e.Graphics.DrawImage(layer_2, 0, 0);
+            e.Graphics.DrawImage(layer_3, 0, 0);
+            e.Graphics.DrawImage(layer_4, 0, 0);
         }
     }
 }
