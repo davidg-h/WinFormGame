@@ -133,13 +133,12 @@ namespace WindowsForms.Gamecode
                 {
                     Application.Exit();
                 }
-
             }
 
             foreach (Control x in this.Controls)
             {
                 //TODO spawn of enemys (use the enemy classes)
-                if (x is PictureBox && x.Tag == "obstacleTree")
+                if (x is PictureBox && (string)x.Tag == "obstacleTree")
                 {
                     if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
                     {
@@ -159,15 +158,15 @@ namespace WindowsForms.Gamecode
                 Restart();
             }
         }
-        bool holdDirection = true;
 
+        bool holdDirection = true;
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
 
                 //TODO jumpinglimit 
-                case Keys.Space:
+                case Keys.W:
                     if (!player.jumping)
                         player.jumping = true;
                     //different sprites for holding a 'move' button
@@ -201,22 +200,19 @@ namespace WindowsForms.Gamecode
                         playerBox.Image = Properties.Resources.walking;
                     }
                     break;
-                case Keys.R:
-                    Restart();
-                    break;
             }
         }
-        private void Restart()
+
+        internal void Restart()
         {
             gameOver = false;
             StoryMode1 newWindow = new StoryMode1();
             newWindow.Show();
             this.Hide();
-
         }
-        private void KeyIsUp(object sender, KeyEventArgs e)
-        {
 
+        internal void KeyIsUp(object sender, KeyEventArgs e)
+        {
             switch (e.KeyCode)
             {
                 case Keys.R:
@@ -257,10 +253,10 @@ namespace WindowsForms.Gamecode
             }
                
         }
+
         private void StartGame(object sender, EventArgs e)
         {
             Application.Exit();
-
         }
 
         private void OpenInstructions(object sender, EventArgs e)
@@ -275,7 +271,7 @@ namespace WindowsForms.Gamecode
 
         //draw the background Images on specific coordinates
         //TODO parallax background scrolling
-        private void StoryMode1_Paint(object sender, PaintEventArgs e)
+        internal void StoryMode1_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawImage(layer_1, 0, 0);
             e.Graphics.DrawImage(layer_2, 0, 0);
