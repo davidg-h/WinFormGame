@@ -12,12 +12,13 @@ namespace WindowsForms.Gamecode
     /// </summary>
     internal abstract class Entity
     {
-        protected PictureBox box; // connection to the GUI
-        protected int characterSpeed = 10;
-        protected int jumpSpeed = 16;
-        protected int force = 8;
         protected int hp;
         protected int dmg;
+        // connection to the GUI
+        internal PictureBox box;
+        internal int characterSpeed = 10;
+        internal int jumpSpeed = 12;
+        internal int force = 12;
         internal bool goRight, goLeft, goDown, jumping;
 
         internal abstract int Hp { get; set; }

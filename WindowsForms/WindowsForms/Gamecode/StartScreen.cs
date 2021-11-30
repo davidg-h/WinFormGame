@@ -15,6 +15,7 @@ namespace WindowsForms.Gamecode
         public StartScreen()
         {
             InitializeComponent();
+            this.FormClosed += closeGame;
         }
 
         /// <summary>
