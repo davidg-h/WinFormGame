@@ -1,3 +1,0 @@
-pull 2 (this is a test)
-push (also a test)
-Its a test from Vincent

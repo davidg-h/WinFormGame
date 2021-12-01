@@ -6,20 +6,67 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace WindowsForms
+namespace WindowsForms.Gamecode
 
 {
-    class Player
+    internal class Player : Entity
     {
-        PictureBox playerBox;
-        public Player(PictureBox playerBox)
+        internal Point defaultLocation;
+        internal int score = 0;
+        internal int coins = 0;
+
+        public Player(PictureBox playerBox, int hp, int dmg = 1) : base(playerBox, hp, dmg) { defaultLocation = new Point(34,331); }
+
+        internal override int Hp { get => hp; set => hp = value; }
+
+        internal override int Dmg { get => dmg; set => dmg = value; }
+
+        // move pattern for WASD - controls
+        public override void move(Form f)
         {
-            this.playerBox = playerBox;
+            if (goLeft && box.Left > 30)
+            {
+                box.Left -= characterSpeed;
+            }
+            if (goRight && box.Left + (box.Width + 30) < f.ClientSize.Width)
+            {
+                box.Left += characterSpeed;
+            }
+            if (goDown && box.Top + (box.Width + 30) < f.ClientSize.Height)
+            {
+                box.Top += characterSpeed;
+            }
+
+            #region jumping mechanics
+            // moves the box up or down depending on the threshold 'force'
+            box.Top += jumpSpeed;
+            if (jumping && force < 0)
+            {
+                jumping = false;
+            }
+
+            if (jumping == true)
+            {
+                jumpSpeed = -12;
+                force -= 1;
+            }
+            else
+            {
+                jumpSpeed = 12;
+            }
+
+            if (box.Top > defaultLocation.Y - 1 && jumping == false)
+            {
+                force = 12;
+                box.Top = defaultLocation.Y;
+                jumpSpeed = 0;
+            }
+            #endregion
         }
 
-        public void move(Point moveVector)
+        public override void attack()
         {
-            playerBox.Location = new Point(playerBox.Location.X + moveVector.X, playerBox.Location.Y + moveVector.Y);
+            //TODO player attack
         }
     }
 }
