@@ -12,7 +12,7 @@ namespace WindowsForms.Gamecode
     /// <summary>
     /// stores the data for saving and loading gameplay
     /// </summary>
-    public class PlayerData
+    internal class PlayerData
     {
         internal GameLvl lvl;
         internal int score;

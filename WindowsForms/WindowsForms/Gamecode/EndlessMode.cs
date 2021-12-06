@@ -91,7 +91,19 @@ namespace WindowsForms.Gamecode
                 }
                 else if (dialogresult == DialogResult.No)
                 {
-                    Application.Exit();
+                    // player shall enter his name for highscore entry
+                    NameInput nameInput = new NameInput();
+                    dialogresult = nameInput.ShowDialog();
+
+                    if (dialogresult == DialogResult.OK) 
+                    { 
+                        string name = nameInput.playerName.Text;
+                        // processes the name and score and displays them
+                        HighscoreList highscoreList = new HighscoreList(name, scoreLabel.Text);
+                        highscoreList.Show();
+                        Visible = false;
+                    }
+                    else { Application.Exit(); }
                 }
             }
 
@@ -126,10 +138,9 @@ namespace WindowsForms.Gamecode
                 healthBar.ForeColor = System.Drawing.Color.Red;
             }
 
-            if (player.score > 5)
-            {
-                obstacleSpeed = 15;
-            }
+            if (player.score > 5) obstacleSpeed = 20;
+            if (player.score > 15) obstacleSpeed = 30;
+            if (player.score > 30) obstacleSpeed = 50;
         }
 
         private void GameReset()

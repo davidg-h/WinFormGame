@@ -55,6 +55,19 @@
     <Compile Include="Gamecode\Enemy.cs" />
     <Compile Include="Gamecode\Entity.cs" />
     <Compile Include="Gamecode\EnumGameLvl.cs" />
+    <Compile Include="Gamecode\HighscoreList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gamecode\HighscoreList.Designer.cs">
+      <DependentUpon>HighscoreList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gamecode\HighscoresData.cs" />
+    <Compile Include="Gamecode\NameInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gamecode\NameInput.Designer.cs">
+      <DependentUpon>NameInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gamecode\Player.cs" />
     <Compile Include="Gamecode\EnemySmall.cs" />
     <Compile Include="Gamecode\PlayerData.cs" />
@@ -75,6 +88,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Gamecode\EndlessMode.resx">
       <DependentUpon>EndlessMode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gamecode\HighscoreList.resx">
+      <DependentUpon>HighscoreList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gamecode\NameInput.resx">
+      <DependentUpon>NameInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gamecode\StoryMode1.resx">
       <DependentUpon>StoryMode1.cs</DependentUpon>
