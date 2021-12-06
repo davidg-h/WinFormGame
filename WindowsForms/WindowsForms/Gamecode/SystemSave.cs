@@ -15,6 +15,7 @@ namespace WindowsForms.Gamecode
     /// </summary>
     public static class SystemSave
     {
+        #region save/load game StoryMode
         internal static void saveGame(GameLvl lvl, Form window)
         {
             PlayerData data = null;
@@ -46,7 +47,7 @@ namespace WindowsForms.Gamecode
             MessageBox.Show("Your game has been saved!", "Game saved", MessageBoxButtons.OK);
         }
 
-        public static PlayerData loadGame()
+        internal static PlayerData loadGame()
         {
             string path = Application.StartupPath + "\\game.save";
             if (File.Exists(path))
@@ -75,5 +76,47 @@ namespace WindowsForms.Gamecode
                 return null;
             }
         }
+        #endregion
+
+        #region save/load HighscoreList
+        internal static void saveHighscoreList(HighscoresData highscores)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            string path = Application.StartupPath + "\\highscoreList.save";
+
+            FileStream fStream = new FileStream(path, FileMode.Create, FileAccess.Write);
+
+            formatter.Serialize(fStream, highscores);
+            fStream.Close();
+        }
+
+        internal static HighscoresData loadHighscoreList()
+        {
+            string path = Application.StartupPath + "\\highscoreList.save";
+            if (File.Exists(path))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                FileStream stream = new FileStream(path, FileMode.Open);
+
+                HighscoresData highscoreData = formatter.Deserialize(stream) as HighscoresData;
+                stream.Close();
+
+                if (highscoreData != null)
+                {
+                    return highscoreData;
+                }
+                else
+                {
+                    Debug.Fail("file has no data. please check the file or make a new one" + path);
+                    return null;
+                }
+            }
+            else
+            {
+                Debug.Fail("file not found in " + path);
+                return null;
+            }
+        }
+        #endregion
     }
 }

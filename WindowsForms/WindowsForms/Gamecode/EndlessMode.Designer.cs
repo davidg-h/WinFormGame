@@ -32,21 +32,21 @@ namespace WindowsForms.Gamecode
             this.components = new System.ComponentModel.Container();
             this.healthLabel = new System.Windows.Forms.Label();
             this.healthBar = new System.Windows.Forms.ProgressBar();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.playerBox = new System.Windows.Forms.PictureBox();
-            this.obstacleTree = new System.Windows.Forms.PictureBox();
             this.MainGameTick = new System.Windows.Forms.Timer(this.components);
+            this.scoreLabel = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.escMenu = new System.Windows.Forms.MenuStrip();
             this.escMenuM = new System.Windows.Forms.ToolStripMenuItem();
             this.resumeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.scoreLabel = new System.Windows.Forms.Label();
+            this.obstacleTree = new System.Windows.Forms.PictureBox();
+            this.playerBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.playerBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.obstacleTree)).BeginInit();
             this.escMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.obstacleTree)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playerBox)).BeginInit();
             this.SuspendLayout();
             // 
             // healthLabel
@@ -71,6 +71,23 @@ namespace WindowsForms.Gamecode
             this.healthBar.TabIndex = 7;
             this.healthBar.Value = 100;
             // 
+            // MainGameTick
+            // 
+            this.MainGameTick.Enabled = true;
+            this.MainGameTick.Interval = 20;
+            this.MainGameTick.Tick += new System.EventHandler(this.endlessTickTimer);
+            // 
+            // scoreLabel
+            // 
+            this.scoreLabel.AutoSize = true;
+            this.scoreLabel.BackColor = System.Drawing.Color.Transparent;
+            this.scoreLabel.Font = new System.Drawing.Font("Unispace", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.scoreLabel.Location = new System.Drawing.Point(907, 9);
+            this.scoreLabel.Name = "scoreLabel";
+            this.scoreLabel.Size = new System.Drawing.Size(116, 25);
+            this.scoreLabel.TabIndex = 12;
+            this.scoreLabel.Text = "Score: 0\r\n";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Black;
@@ -79,37 +96,6 @@ namespace WindowsForms.Gamecode
             this.pictureBox1.Size = new System.Drawing.Size(1079, 86);
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
-            // 
-            // playerBox
-            // 
-            this.playerBox.BackColor = System.Drawing.Color.Transparent;
-            this.playerBox.Image = global::WindowsForms.Properties.Resources.idle;
-            this.playerBox.Location = new System.Drawing.Point(34, 331);
-            this.playerBox.Margin = new System.Windows.Forms.Padding(2);
-            this.playerBox.Name = "playerBox";
-            this.playerBox.Size = new System.Drawing.Size(68, 64);
-            this.playerBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.playerBox.TabIndex = 9;
-            this.playerBox.TabStop = false;
-            // 
-            // obstacleTree
-            // 
-            this.obstacleTree.BackColor = System.Drawing.Color.Transparent;
-            this.obstacleTree.Image = global::WindowsForms.Properties.Resources.shroomIdle;
-            this.obstacleTree.Location = new System.Drawing.Point(578, 367);
-            this.obstacleTree.Margin = new System.Windows.Forms.Padding(2);
-            this.obstacleTree.Name = "obstacleTree";
-            this.obstacleTree.Size = new System.Drawing.Size(32, 28);
-            this.obstacleTree.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.obstacleTree.TabIndex = 10;
-            this.obstacleTree.TabStop = false;
-            this.obstacleTree.Tag = "obstacleTree";
-            // 
-            // MainGameTick
-            // 
-            this.MainGameTick.Enabled = true;
-            this.MainGameTick.Interval = 20;
-            this.MainGameTick.Tick += new System.EventHandler(this.endlessTickTimer);
             // 
             // escMenu
             // 
@@ -177,16 +163,30 @@ namespace WindowsForms.Gamecode
             this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(1048, 35);
             this.loadGameToolStripMenuItem.Text = "Load Game";
             // 
-            // scoreLabel
+            // obstacleTree
             // 
-            this.scoreLabel.AutoSize = true;
-            this.scoreLabel.BackColor = System.Drawing.Color.Transparent;
-            this.scoreLabel.Font = new System.Drawing.Font("Unispace", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.scoreLabel.Location = new System.Drawing.Point(907, 9);
-            this.scoreLabel.Name = "scoreLabel";
-            this.scoreLabel.Size = new System.Drawing.Size(116, 25);
-            this.scoreLabel.TabIndex = 12;
-            this.scoreLabel.Text = "Score: 0\r\n";
+            this.obstacleTree.BackColor = System.Drawing.Color.Transparent;
+            this.obstacleTree.Image = global::WindowsForms.Properties.Resources.shroomIdle;
+            this.obstacleTree.Location = new System.Drawing.Point(578, 367);
+            this.obstacleTree.Margin = new System.Windows.Forms.Padding(2);
+            this.obstacleTree.Name = "obstacleTree";
+            this.obstacleTree.Size = new System.Drawing.Size(32, 28);
+            this.obstacleTree.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.obstacleTree.TabIndex = 10;
+            this.obstacleTree.TabStop = false;
+            this.obstacleTree.Tag = "obstacleTree";
+            // 
+            // playerBox
+            // 
+            this.playerBox.BackColor = System.Drawing.Color.Transparent;
+            this.playerBox.Image = global::WindowsForms.Properties.Resources.idle;
+            this.playerBox.Location = new System.Drawing.Point(34, 331);
+            this.playerBox.Margin = new System.Windows.Forms.Padding(2);
+            this.playerBox.Name = "playerBox";
+            this.playerBox.Size = new System.Drawing.Size(68, 64);
+            this.playerBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.playerBox.TabIndex = 9;
+            this.playerBox.TabStop = false;
             // 
             // EndlessMode
             // 
@@ -206,10 +206,10 @@ namespace WindowsForms.Gamecode
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keyIsDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.keyIsUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.playerBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.obstacleTree)).EndInit();
             this.escMenu.ResumeLayout(false);
             this.escMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.obstacleTree)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playerBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
