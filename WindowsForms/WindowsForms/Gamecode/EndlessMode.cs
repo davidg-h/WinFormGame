@@ -70,6 +70,7 @@ namespace WindowsForms.Gamecode
         {
             scoreLabel.Text = "Score: " + player.score;
             player.move(this);
+            player.isOnGround = false;
 
             if (player.Hp > 1)
             {
@@ -107,28 +108,40 @@ namespace WindowsForms.Gamecode
                 }
             }
 
+
             foreach (Control x in this.Controls)
             {
-                if (x is PictureBox && (string)x.Tag == "obstacleTree")
+                if (x is PictureBox)
                 {
-                    EnemySmall small = new EnemySmall((PictureBox)x);
-
-                    if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
+                    if ((string)x.Tag == "obstacleTree")
                     {
-                        //player.Hp -= small.Dmg;
-                        player.Hp = 0; // only for testing
+                        EnemySmall small = new EnemySmall((PictureBox)x);
+
+                        if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
+                        {
+                            //player.Hp -= small.Dmg;
+                            player.Hp = 0; // only for testing
+                        }
+
+                        //TODO spawn other types of enemys (use the enemy classes)
+                        small.characterSpeed = obstacleSpeed;
+                        // moves the enemy to the player
+                        small.box.Left -= small.characterSpeed;
+
+                        if (small.box.Left < -50)
+                        {
+                            small.box.Left = this.ClientSize.Width + rand.Next(100, 300) + (x.Width * 15);
+                            // increment score for longer survival time
+                            player.score++;
+                        }
                     }
-
-                    //TODO spawn other types of enemys (use the enemy classes)
-                    small.characterSpeed = obstacleSpeed;
-                    // moves the enemy to the player
-                    small.box.Left -= small.characterSpeed;
-
-                    if (small.box.Left < -50)
+                    if ((string)x.Tag == "plattform")
                     {
-                        small.box.Left = this.ClientSize.Width + rand.Next(100, 300) + (x.Width * 15);
-                        // increment score for longer survival time
-                        player.score++;
+                        if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
+                        {
+                            player.IsOnGround = true;
+                            player.MoveToTopOfPlatform(x.Top);
+                        }
                     }
                 }
             }
@@ -159,9 +172,13 @@ namespace WindowsForms.Gamecode
             foreach (Control x in this.Controls)
             {
                 // takes all pictureBoxes with the tag == "obstacleTree" and places them further to the right (outside the viewing screen)
-                if (x is PictureBox && (string)x.Tag == "obstacleTree")
+                if (x is PictureBox )
                 {
-                    x.Left = this.ClientSize.Width + rand.Next(450, 800) + (x.Width * 10);
+                    if((string)x.Tag == "obstacleTree")
+                    {
+                        x.Left = this.ClientSize.Width + rand.Next(450, 800) + (x.Width * 10);
+                    }
+                    
                 }
             }
 

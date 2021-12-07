@@ -112,6 +112,9 @@ namespace WindowsForms.Gamecode
 
 
             player.move(this);
+            player.IsOnGround = false; //gets updated to correct value below
+
+          
 
             if (player.Hp > 1)
             {
@@ -140,15 +143,27 @@ namespace WindowsForms.Gamecode
             foreach (Control x in this.Controls)
             {
                 //TODO spawn of enemys (use the enemy classes)
-                if (x is PictureBox && (string)x.Tag == "obstacleTree")
+                if (x is PictureBox)
                 {
-                    if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
+                    if((string)x.Tag == "obstacleTree")
                     {
-                        EnemySmall small = new EnemySmall((PictureBox)x);
-                        player.Hp -= small.Dmg;
+                        if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
+                        {
+                            EnemySmall small = new EnemySmall((PictureBox)x);
+                            player.Hp -= small.Dmg;
+                        }
+                    }
+                    if((string)x.Tag == "plattform")
+                    {
+                        if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
+                        {
+                            player.IsOnGround = true;
+                            player.MoveToTopOfPlatform(x.Top);
+                        }
                     }
                 }
             }
+
             if (player.Hp < 20)
             {
                 healthBar.ForeColor = System.Drawing.Color.Red;
@@ -208,7 +223,6 @@ namespace WindowsForms.Gamecode
                     break;
             }
         }
-
 
         internal void KeyIsUp(object sender, KeyEventArgs e)
         {

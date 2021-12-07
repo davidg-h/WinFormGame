@@ -17,10 +17,10 @@ namespace WindowsForms.Gamecode
         internal int score = 0;
         internal int coins = 0;
         internal System.Windows.Vector moveVector;
-        internal bool isOnGround;
         public Player(PictureBox playerBox, int hp, int dmg = 1) : base(playerBox, hp, dmg) { 
             defaultLocation = new Point(34,331);
             moveVector = new System.Windows.Vector(0, 0);
+            isOnGround = false;
         }
 
         internal override int Hp { get => hp; set => hp = value; }
@@ -29,10 +29,12 @@ namespace WindowsForms.Gamecode
 
         // move pattern for WASD - controls
 
-        public void Left(bool go) { this.goLeft = go; }
-        public void Right(bool go) { goRight = go; }
-        public void jump() { jumps = true; }
-        public void Down() { goDown = true; }
+        internal void Left(bool go) { goLeft = go; }
+        internal void Right(bool go) { goRight = go; }
+        internal void jump() { jumps = true; }
+        internal void Down() { goDown = true; }
+        internal bool IsOnGround { get => isOnGround; set => isOnGround = value; }
+        
         public override void move(Form f)
         {
 
@@ -50,32 +52,32 @@ namespace WindowsForms.Gamecode
             }
 
             #region jumping mechanics
-            // moves the box up or down depending on the threshold 'force'
-            if (box.Top > defaultLocation.Y - 1 && jumps == false)
-            {
-                isOnGround = true;
-            }
+            //isonGround is handled in StoryMode1
 
-            if (jumps && isOnGround)
+            // moves the box up or down depending on the threshold 'force'
+            //if (box.Top > defaultLocation.Y - 1 && jumps == false)
+            //{
+            //    isOnGround = true;
+            //}
+
+            if (jumps && IsOnGround)
             {
                 jumps = false;
                 isOnGround = false;
-                moveVector.Y = -jumpSpeed*5;
+                moveVector.Y = -jumpSpeed*5; //add initial jumpforce
             }
-            if (!isOnGround)
+            if (!IsOnGround)
             {
-                if (box.Top + moveVector.Y > defaultLocation.Y)
-                    moveVector.Y = defaultLocation.Y - 1 - box.Top;
-                else
-                    moveVector.Y += force;
+                //if inAir then add downforce
+                moveVector.Y += force;
             }
             else
-            {
+            {   //if isOnGround then stay on Ground
                 moveVector.Y = 0;
             }
 
             
-            //TODO: type konversion from Point3d to Point
+            //finaly the position gets Updated with the created moveVector
             box.Location = new Point( box.Location.X + (int)moveVector.X, box.Location.Y + (int)moveVector.Y);
             #endregion
         }
@@ -83,6 +85,11 @@ namespace WindowsForms.Gamecode
         public override void attack()
         {
             //TODO player attack
+        }
+
+        internal void MoveToTopOfPlatform(int topOfPlatform)
+        {
+            box.Location = new Point(box.Location.X, topOfPlatform - box.Height + 1);
         }
     }
 }
