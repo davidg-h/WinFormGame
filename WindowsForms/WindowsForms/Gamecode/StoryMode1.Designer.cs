@@ -34,6 +34,11 @@
             this.healthBar = new System.Windows.Forms.ProgressBar();
             this.CountdownTimer = new System.Windows.Forms.Timer(this.components);
             this.countdownLabel = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.playerBox = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.escMenu = new System.Windows.Forms.MenuStrip();
             this.escMenuM = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,13 +49,17 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.obstacleTree = new System.Windows.Forms.PictureBox();
             this.destinyBox = new System.Windows.Forms.PictureBox();
-            this.playerBox = new System.Windows.Forms.PictureBox();
+            this.coinCounter = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playerBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.escMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obstacleTree)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.destinyBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.playerBox)).BeginInit();
             this.SuspendLayout();
             // 
             // MainGameTick
@@ -63,18 +72,18 @@
             // 
             this.healthLabel.AutoSize = true;
             this.healthLabel.BackColor = System.Drawing.Color.Transparent;
-            this.healthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.healthLabel.Location = new System.Drawing.Point(11, 12);
+            this.healthLabel.Font = new System.Drawing.Font("Unispace", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.healthLabel.Location = new System.Drawing.Point(11, 6);
             this.healthLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.healthLabel.Name = "healthLabel";
-            this.healthLabel.Size = new System.Drawing.Size(65, 17);
+            this.healthLabel.Size = new System.Drawing.Size(133, 29);
             this.healthLabel.TabIndex = 5;
             this.healthLabel.Text = "Health: ";
             // 
             // healthBar
             // 
             this.healthBar.BackColor = System.Drawing.SystemColors.GrayText;
-            this.healthBar.Location = new System.Drawing.Point(80, 10);
+            this.healthBar.Location = new System.Drawing.Point(131, 8);
             this.healthBar.Margin = new System.Windows.Forms.Padding(2);
             this.healthBar.Name = "healthBar";
             this.healthBar.Size = new System.Drawing.Size(83, 23);
@@ -88,23 +97,83 @@
             // 
             // countdownLabel
             // 
-            this.countdownLabel.BackColor = System.Drawing.Color.Transparent;
+            this.countdownLabel.AutoSize = true;
+            this.countdownLabel.BackColor = System.Drawing.Color.White;
             this.countdownLabel.Font = new System.Drawing.Font("Unispace", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.countdownLabel.Location = new System.Drawing.Point(241, 5);
+            this.countdownLabel.Location = new System.Drawing.Point(45, 410);
             this.countdownLabel.Name = "countdownLabel";
-            this.countdownLabel.Size = new System.Drawing.Size(130, 30);
+            this.countdownLabel.Size = new System.Drawing.Size(73, 29);
             this.countdownLabel.TabIndex = 12;
             this.countdownLabel.Text = "N.I.";
             this.countdownLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox6.Image = global::WindowsForms.Properties.Resources.coin_Counter;
+            this.pictureBox6.Location = new System.Drawing.Point(292, 2);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(35, 35);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 16;
+            this.pictureBox6.TabStop = false;
+            // 
+            // playerBox
+            // 
+            this.playerBox.BackColor = System.Drawing.Color.Transparent;
+            this.playerBox.Image = global::WindowsForms.Properties.Resources.idle;
+            this.playerBox.Location = new System.Drawing.Point(34, 331);
+            this.playerBox.Margin = new System.Windows.Forms.Padding(2);
+            this.playerBox.Name = "playerBox";
+            this.playerBox.Size = new System.Drawing.Size(68, 64);
+            this.playerBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.playerBox.TabIndex = 1;
+            this.playerBox.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox5.Image = global::WindowsForms.Properties.Resources.coin;
+            this.pictureBox5.Location = new System.Drawing.Point(841, 354);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 15;
+            this.pictureBox5.TabStop = false;
+            this.pictureBox5.Tag = "coins";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.Image = global::WindowsForms.Properties.Resources.coin;
+            this.pictureBox4.Location = new System.Drawing.Point(578, 270);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 14;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Tag = "coins";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.Image = global::WindowsForms.Properties.Resources.coin;
+            this.pictureBox3.Location = new System.Drawing.Point(399, 355);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 13;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Tag = "coins";
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = global::WindowsForms.Properties.Resources.timer;
-            this.pictureBox2.Location = new System.Drawing.Point(213, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(4, 407);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(39, 36);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.Size = new System.Drawing.Size(35, 35);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
             // 
@@ -212,23 +281,28 @@
             this.destinyBox.TabIndex = 6;
             this.destinyBox.TabStop = false;
             // 
-            // playerBox
+            // coinCounter
             // 
-            this.playerBox.BackColor = System.Drawing.Color.Transparent;
-            this.playerBox.Image = global::WindowsForms.Properties.Resources.idle;
-            this.playerBox.Location = new System.Drawing.Point(34, 331);
-            this.playerBox.Margin = new System.Windows.Forms.Padding(2);
-            this.playerBox.Name = "playerBox";
-            this.playerBox.Size = new System.Drawing.Size(68, 64);
-            this.playerBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.playerBox.TabIndex = 1;
-            this.playerBox.TabStop = false;
+            this.coinCounter.AutoSize = true;
+            this.coinCounter.BackColor = System.Drawing.Color.Transparent;
+            this.coinCounter.Font = new System.Drawing.Font("Unispace", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.coinCounter.Location = new System.Drawing.Point(343, 5);
+            this.coinCounter.Name = "coinCounter";
+            this.coinCounter.Size = new System.Drawing.Size(28, 29);
+            this.coinCounter.TabIndex = 17;
+            this.coinCounter.Text = "0";
             // 
             // StoryMode1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1499, 448);
+            this.Controls.Add(this.coinCounter);
+            this.Controls.Add(this.pictureBox6);
+            this.Controls.Add(this.playerBox);
+            this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.countdownLabel);
             this.Controls.Add(this.escMenu);
@@ -237,7 +311,6 @@
             this.Controls.Add(this.destinyBox);
             this.Controls.Add(this.healthLabel);
             this.Controls.Add(this.healthBar);
-            this.Controls.Add(this.playerBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.escMenu;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -246,13 +319,17 @@
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.StoryMode1_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyIsDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyIsUp);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playerBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.escMenu.ResumeLayout(false);
             this.escMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.obstacleTree)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.destinyBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.playerBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,6 +352,11 @@
         private System.Windows.Forms.Timer CountdownTimer;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label countdownLabel;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Label coinCounter;
     }
 }
 
