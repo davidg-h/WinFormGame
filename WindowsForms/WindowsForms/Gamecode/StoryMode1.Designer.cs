@@ -32,6 +32,7 @@
             this.MainGameTick = new System.Windows.Forms.Timer(this.components);
             this.healthLabel = new System.Windows.Forms.Label();
             this.healthBar = new System.Windows.Forms.ProgressBar();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.escMenu = new System.Windows.Forms.MenuStrip();
             this.escMenuM = new System.Windows.Forms.ToolStripMenuItem();
             this.resumeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,6 +43,9 @@
             this.obstacleTree = new System.Windows.Forms.PictureBox();
             this.destinyBox = new System.Windows.Forms.PictureBox();
             this.playerBox = new System.Windows.Forms.PictureBox();
+            this.countdownLabel = new System.Windows.Forms.Label();
+            this.CountdownTimer = new System.Windows.Forms.Timer(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.escMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obstacleTree)).BeginInit();
@@ -58,6 +62,7 @@
             // healthLabel
             // 
             this.healthLabel.AutoSize = true;
+            this.healthLabel.BackColor = System.Drawing.Color.Transparent;
             this.healthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.healthLabel.Location = new System.Drawing.Point(11, 16);
             this.healthLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -75,6 +80,17 @@
             this.healthBar.Size = new System.Drawing.Size(83, 23);
             this.healthBar.TabIndex = 4;
             this.healthBar.Value = 100;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::WindowsForms.Properties.Resources.timer;
+            this.pictureBox2.Location = new System.Drawing.Point(269, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(39, 36);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
             // 
             // escMenu
             // 
@@ -166,7 +182,6 @@
             this.obstacleTree.TabIndex = 0;
             this.obstacleTree.TabStop = false;
             this.obstacleTree.Tag = "obstacleTree";
-            this.obstacleTree.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // destinyBox
             // 
@@ -191,11 +206,31 @@
             this.playerBox.TabIndex = 1;
             this.playerBox.TabStop = false;
             // 
+            // countdownLabel
+            // 
+            this.countdownLabel.BackColor = System.Drawing.Color.Transparent;
+            this.countdownLabel.Font = new System.Drawing.Font("Unispace", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.countdownLabel.Location = new System.Drawing.Point(297, 6);
+            this.countdownLabel.Name = "countdownLabel";
+            this.countdownLabel.Size = new System.Drawing.Size(130, 30);
+            this.countdownLabel.TabIndex = 10;
+            this.countdownLabel.Text = "N.I.";
+            this.countdownLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // CountdownTimer
+            // 
+            this.CountdownTimer.Interval = 1000;
+            this.CountdownTimer.Tick += new System.EventHandler(this.timerTick);
+            // 
             // StoryMode1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1047, 448);
+            this.AutoScroll = true;
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(3844, 448);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.countdownLabel);
             this.Controls.Add(this.escMenu);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.obstacleTree);
@@ -203,6 +238,7 @@
             this.Controls.Add(this.healthLabel);
             this.Controls.Add(this.healthBar);
             this.Controls.Add(this.playerBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.escMenu;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "StoryMode1";
@@ -210,6 +246,7 @@
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.StoryMode1_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyIsDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyIsUp);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.escMenu.ResumeLayout(false);
             this.escMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -235,6 +272,9 @@
         internal System.Windows.Forms.PictureBox playerBox;
         internal System.Windows.Forms.PictureBox destinyBox;
         internal System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label countdownLabel;
+        private System.Windows.Forms.Timer CountdownTimer;
     }
 }
 

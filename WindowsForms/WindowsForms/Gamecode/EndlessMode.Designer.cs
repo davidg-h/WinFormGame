@@ -82,7 +82,7 @@ namespace WindowsForms.Gamecode
             this.scoreLabel.AutoSize = true;
             this.scoreLabel.BackColor = System.Drawing.Color.Transparent;
             this.scoreLabel.Font = new System.Drawing.Font("Unispace", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.scoreLabel.Location = new System.Drawing.Point(907, 9);
+            this.scoreLabel.Location = new System.Drawing.Point(1362, 9);
             this.scoreLabel.Name = "scoreLabel";
             this.scoreLabel.Size = new System.Drawing.Size(116, 25);
             this.scoreLabel.TabIndex = 12;
@@ -93,7 +93,7 @@ namespace WindowsForms.Gamecode
             this.pictureBox1.BackColor = System.Drawing.Color.Black;
             this.pictureBox1.Location = new System.Drawing.Point(-16, 394);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1079, 86);
+            this.pictureBox1.Size = new System.Drawing.Size(1525, 86);
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
@@ -193,7 +193,7 @@ namespace WindowsForms.Gamecode
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1047, 448);
+            this.ClientSize = new System.Drawing.Size(1490, 448);
             this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.escMenu);
@@ -201,6 +201,7 @@ namespace WindowsForms.Gamecode
             this.Controls.Add(this.playerBox);
             this.Controls.Add(this.healthBar);
             this.Controls.Add(this.healthLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "EndlessMode";
             this.Text = "Endless-Mode";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keyIsDown);
