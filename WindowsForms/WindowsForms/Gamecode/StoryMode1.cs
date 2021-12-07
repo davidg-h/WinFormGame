@@ -12,6 +12,8 @@ namespace WindowsForms.Gamecode
 {
     public partial class StoryMode1 : Form
     {
+        private int min = 5;
+        private int sec;
         public GameLvl lvl = GameLvl.storyLvl_1;
         internal Player player;
         bool gameOver;
@@ -23,6 +25,7 @@ namespace WindowsForms.Gamecode
             player = new Player(playerBox, 100);
             this.FormClosed += StartScreen.closeGame;
             this.KeyDown += formKeyDown;
+            this.Load += startTimer;
         }
 
         #region Esc Menu
@@ -102,18 +105,40 @@ namespace WindowsForms.Gamecode
         }
         #endregion
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        #region Timer
+        private void startTimer(object sender, EventArgs e)
         {
-            
+            countdownLabel.Text = $"{min}:00";
+            CountdownTimer.Start();
         }
+
+        private void timerTick(object sender, EventArgs e)
+        {
+            if (min == 5)
+            {
+                min -= 1;
+                sec = 59;
+            }
+            else
+            {
+                sec -= 1;
+                if (sec == 0 && !gameOver)
+                {
+                    if (min == 0) { gameOver = true; CountdownTimer.Stop(); }
+                    else { min -= 1; sec = 59; }
+                }
+            }
+
+            if (sec < 10) countdownLabel.Text = $"{min}:0{sec}";
+            else countdownLabel.Text = $"{min}:{sec}";
+        }
+        #endregion
 
         private void MainGameTick_Tick(object sender, EventArgs e)
         {
-
-
             player.move(this);
 
-            if (player.Hp > 1)
+            if (player.Hp > 1 && !gameOver)
             {
                 healthBar.Value = Convert.ToInt32(player.Hp);
             }
@@ -162,6 +187,7 @@ namespace WindowsForms.Gamecode
 
 
         }
+
         internal void Restart()
         {
             gameOver = false;
@@ -258,10 +284,6 @@ namespace WindowsForms.Gamecode
             Application.Exit();
         }
 
-        private void OpenInstructions(object sender, EventArgs e)
-        {
-
-        }
         // initialize the background Images
         Image layer_1 = Properties.Resources.Back;
         Image layer_2 = Properties.Resources.Clouds;
