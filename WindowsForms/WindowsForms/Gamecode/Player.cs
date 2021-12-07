@@ -9,7 +9,6 @@ using System.Windows.Media.Media3D;
 //using System.Windows;
 
 namespace WindowsForms.Gamecode
-
 {
     internal class Player : Entity
     {

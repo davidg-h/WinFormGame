@@ -12,11 +12,13 @@ namespace WindowsForms.Gamecode
 {
     public partial class StoryMode1 : Form
     {
+        #region Game variables
         private int min = 5;
         private int sec;
         public GameLvl lvl = GameLvl.storyLvl_1;
         internal Player player;
         bool gameOver;
+        #endregion
 
         public StoryMode1()
         {
@@ -28,7 +30,7 @@ namespace WindowsForms.Gamecode
             this.Load += startTimer;
         }
 
-        #region Esc Menu
+        #region Esc Menu (with safe/load)
         /// <summary>
         /// escMenu shall be visible when esc is pressed
         /// </summary>
@@ -83,7 +85,7 @@ namespace WindowsForms.Gamecode
             {
                 case GameLvl.storyLvl_1:
                     playerBox.Location = gameData.location;
-                    player.score = gameData.score;
+                    // player.score = gameData.score; for endless mode
                     player.coins = gameData.coins;
                     player.Hp = gameData.hp;
                     player.Dmg = gameData.dmg;
@@ -105,7 +107,7 @@ namespace WindowsForms.Gamecode
         }
         #endregion
 
-        #region Timer
+        #region Countdown Timer
         private void startTimer(object sender, EventArgs e)
         {
             countdownLabel.Text = $"{min}:00";
@@ -134,8 +136,11 @@ namespace WindowsForms.Gamecode
         }
         #endregion
 
+        #region GameLoop StoryMode
         private void MainGameTick_Tick(object sender, EventArgs e)
         {
+            coinCounter.Text = $": {player.coins}";
+
             player.move(this);
 
             if (player.Hp > 1 && !gameOver)
@@ -173,19 +178,28 @@ namespace WindowsForms.Gamecode
                         player.Hp -= small.Dmg;
                     }
                 }
+
+                if (x is PictureBox && (string)x.Tag == "coins")
+                {
+                    if (playerBox.Bounds.IntersectsWith(x.Bounds) && x.Visible == true)
+                    {
+                        x.Visible = false;
+                        player.coins += 1;
+                    }
+                }
             }
+
             if (player.Hp < 20)
             {
                 healthBar.ForeColor = System.Drawing.Color.Red;
             }
+
             if (playerBox.Bounds.IntersectsWith(destinyBox.Bounds))
             {
                 MainGameTick.Stop();
                 MessageBox.Show("Congratulations, You won!!" + Environment.NewLine + "Press OK to play again");
                 Restart();
             }
-
-
         }
 
         internal void Restart()
@@ -196,13 +210,19 @@ namespace WindowsForms.Gamecode
             this.Hide();
         }
 
+
+        private void StartGame(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        #endregion
+
+        #region Key Inputs
         bool holdDirection = true;
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
-
-                //TODO jumpinglimit 
                 case Keys.W:
                     player.jump();
                     //different sprites for holding a 'move' button
@@ -234,7 +254,6 @@ namespace WindowsForms.Gamecode
                     break;
             }
         }
-
 
         internal void KeyIsUp(object sender, KeyEventArgs e)
         {
@@ -276,14 +295,10 @@ namespace WindowsForms.Gamecode
             {
                 player.jumps = false;
             }
-               
         }
+        #endregion
 
-        private void StartGame(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
+        #region background
         // initialize the background Images
         Image layer_1 = Properties.Resources.Back;
         Image layer_2 = Properties.Resources.Clouds;
@@ -299,5 +314,6 @@ namespace WindowsForms.Gamecode
             e.Graphics.DrawImage(layer_3, 0, 0);
             e.Graphics.DrawImage(layer_4, 0, 0);
         }
+        #endregion
     }
 }
