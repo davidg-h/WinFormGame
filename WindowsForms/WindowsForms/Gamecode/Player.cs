@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Media.Media3D;
+//using System.Windows;
 
 namespace WindowsForms.Gamecode
 
@@ -14,8 +16,12 @@ namespace WindowsForms.Gamecode
         internal Point defaultLocation;
         internal int score = 0;
         internal int coins = 0;
-
-        public Player(PictureBox playerBox, int hp, int dmg = 1) : base(playerBox, hp, dmg) { defaultLocation = new Point(34,331); }
+        internal System.Windows.Vector moveVector;
+        internal bool isOnGround;
+        public Player(PictureBox playerBox, int hp, int dmg = 1) : base(playerBox, hp, dmg) { 
+            defaultLocation = new Point(34,331);
+            moveVector = new System.Windows.Vector(0, 0);
+        }
 
         internal override int Hp { get => hp; set => hp = value; }
 
@@ -24,43 +30,48 @@ namespace WindowsForms.Gamecode
         // move pattern for WASD - controls
         public override void move(Form f)
         {
+
             if (goLeft && box.Left > 30)
             {
-                box.Left -= characterSpeed;
+                moveVector.X = -characterSpeed;
             }
-            if (goRight && box.Left + (box.Width + 30) < f.ClientSize.Width)
+            else if (goRight && box.Left + (box.Width + 30) < f.ClientSize.Width)
             {
-                box.Left += characterSpeed;
+                moveVector.X = characterSpeed;
             }
-            if (goDown && box.Top + (box.Width + 30) < f.ClientSize.Height)
+            else
             {
-                box.Top += characterSpeed;
+                moveVector.X = 0;
             }
 
             #region jumping mechanics
             // moves the box up or down depending on the threshold 'force'
-            box.Top += jumpSpeed;
-            if (jumping && force < 0)
+            if (box.Top > defaultLocation.Y - 1 && jumps == false)
             {
-                jumping = false;
+                isOnGround = true;
             }
 
-            if (jumping == true)
+            if (jumps && isOnGround)
             {
-                jumpSpeed = -12;
-                force -= 1;
+                jumps = false;
+                isOnGround = false;
+                moveVector.Y = -jumpSpeed*5;
+            }
+            if (!isOnGround)
+            {
+                if (box.Top + moveVector.Y > defaultLocation.Y)
+                    moveVector.Y = defaultLocation.Y - 1 - box.Top;
+                else
+                    moveVector.Y += force;
             }
             else
             {
-                jumpSpeed = 12;
+                moveVector.Y = 0;
             }
 
-            if (box.Top > defaultLocation.Y - 1 && jumping == false)
-            {
-                force = 12;
-                box.Top = defaultLocation.Y;
-                jumpSpeed = 0;
-            }
+            
+            //TODO: type konversion from Point3d to Point
+            box.Location = new Point( box.Location.X + (int)moveVector.X, box.Location.Y + (int)moveVector.Y);
             #endregion
         }
 

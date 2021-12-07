@@ -148,7 +148,7 @@ namespace WindowsForms.Gamecode
             player.Hp = 100;
             player.force = 12;
             player.jumpSpeed = 0;
-            player.jumping = false;
+            player.jumps = false;
             player.score = 0;
             obstacleSpeed = 10;
             scoreLabel.Text = "Score: " + player.score;
@@ -176,8 +176,8 @@ namespace WindowsForms.Gamecode
 
                 //TODO jumpinglimit 
                 case Keys.W:
-                    if (!player.jumping)
-                        player.jumping = true;
+                    if (!player.jumps)
+                        player.jumps = true;
                     //different sprites for holding a 'move' button
                     if (holdDirection)
                     {
@@ -248,9 +248,9 @@ namespace WindowsForms.Gamecode
                     break;
             }
 
-            if (player.jumping == true)
+            if (player.jumps == true)
             {
-                player.jumping = false;
+                player.jumps = false;
             }
         }
     }

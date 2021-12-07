@@ -109,6 +109,8 @@ namespace WindowsForms.Gamecode
 
         private void MainGameTick_Tick(object sender, EventArgs e)
         {
+
+
             player.move(this);
 
             if (player.Hp > 1)
@@ -157,6 +159,15 @@ namespace WindowsForms.Gamecode
                 MessageBox.Show("Congratulations, You won!!" + Environment.NewLine + "Press OK to play again");
                 Restart();
             }
+
+
+        }
+        internal void Restart()
+        {
+            gameOver = false;
+            StoryMode1 newWindow = new StoryMode1();
+            newWindow.Show();
+            this.Hide();
         }
 
         bool holdDirection = true;
@@ -167,20 +178,19 @@ namespace WindowsForms.Gamecode
 
                 //TODO jumpinglimit 
                 case Keys.W:
-                    if (!player.jumping)
-                        player.jumping = true;
+                    if (!player.jumps)
+                        player.jumps = true;
                     //different sprites for holding a 'move' button
                     if (holdDirection)
                     {
-                        holdDirection = false;
                         playerBox.Image = Properties.Resources.walking;
                     }
                     break;
                 case Keys.A:
                     player.goLeft = true;
+                    player.goRight = false;
                     if (holdDirection)
                     {
-                        holdDirection = false;
                         playerBox.Image = Properties.Resources.walkingLeft;
                     }
                     break;
@@ -188,28 +198,20 @@ namespace WindowsForms.Gamecode
                     player.goDown = true;
                     if (holdDirection)
                     {
-                        holdDirection = false;
                         playerBox.Image = Properties.Resources.walking;
                     }
                     break;
                 case Keys.D:
                     player.goRight = true;
+                    player.goLeft = false;
                     if (holdDirection)
                     {
-                        holdDirection = false;
                         playerBox.Image = Properties.Resources.walking;
                     }
                     break;
             }
         }
 
-        internal void Restart()
-        {
-            gameOver = false;
-            StoryMode1 newWindow = new StoryMode1();
-            newWindow.Show();
-            this.Hide();
-        }
 
         internal void KeyIsUp(object sender, KeyEventArgs e)
         {
@@ -247,9 +249,9 @@ namespace WindowsForms.Gamecode
                     break;
             }
 
-            if (player.jumping == true)
+            if (player.jumps == true)
             {
-                player.jumping = false;
+                player.jumps = false;
             }
                
         }
