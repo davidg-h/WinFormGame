@@ -28,6 +28,11 @@ namespace WindowsForms.Gamecode
         internal override int Dmg { get => dmg; set => dmg = value; }
 
         // move pattern for WASD - controls
+
+        public void Left(bool go) { this.goLeft = go; }
+        public void Right(bool go) { goRight = go; }
+        public void jump() { jumps = true; }
+        public void Down() { goDown = true; }
         public override void move(Form f)
         {
 

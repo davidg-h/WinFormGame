@@ -178,8 +178,7 @@ namespace WindowsForms.Gamecode
 
                 //TODO jumpinglimit 
                 case Keys.W:
-                    if (!player.jumps)
-                        player.jumps = true;
+                    player.jump();
                     //different sprites for holding a 'move' button
                     if (holdDirection)
                     {
@@ -187,23 +186,21 @@ namespace WindowsForms.Gamecode
                     }
                     break;
                 case Keys.A:
-                    player.goLeft = true;
-                    player.goRight = false;
+                    player.Left(true);
                     if (holdDirection)
                     {
                         playerBox.Image = Properties.Resources.walkingLeft;
                     }
                     break;
                 case Keys.S:
-                    player.goDown = true;
+                    player.Down();
                     if (holdDirection)
                     {
                         playerBox.Image = Properties.Resources.walking;
                     }
                     break;
                 case Keys.D:
-                    player.goRight = true;
-                    player.goLeft = false;
+                    player.Right(true);
                     if (holdDirection)
                     {
                         playerBox.Image = Properties.Resources.walking;
@@ -222,7 +219,7 @@ namespace WindowsForms.Gamecode
                         Restart();
                     break;
                 case Keys.D:
-                    player.goRight = false;
+                    player.Right(false);
 
                     //also switch to another sprite when a key is let go of
                     if(!holdDirection)
@@ -232,7 +229,7 @@ namespace WindowsForms.Gamecode
                     }    
                     break;
                 case Keys.A:
-                    player.goLeft = false;
+                    player.Left(false);
                     if (!holdDirection)
                     {
                         holdDirection = true;

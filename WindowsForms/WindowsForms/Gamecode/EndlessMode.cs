@@ -147,7 +147,7 @@ namespace WindowsForms.Gamecode
         {
             player.Hp = 100;
             player.force = 12;
-            player.jumpSpeed = 0;
+            player.jumpSpeed = 12;
             player.jumps = false;
             player.score = 0;
             obstacleSpeed = 10;
@@ -176,8 +176,7 @@ namespace WindowsForms.Gamecode
 
                 //TODO jumpinglimit 
                 case Keys.W:
-                    if (!player.jumps)
-                        player.jumps = true;
+                    player.jump();
                     //different sprites for holding a 'move' button
                     if (holdDirection)
                     {
@@ -186,7 +185,7 @@ namespace WindowsForms.Gamecode
                     }
                     break;
                 case Keys.A:
-                    player.goLeft = true;
+                    player.Left(true);
                     if (holdDirection)
                     {
                         holdDirection = false;
@@ -194,7 +193,7 @@ namespace WindowsForms.Gamecode
                     }
                     break;
                 case Keys.S:
-                    player.goDown = true;
+                    player.Down();
                     if (holdDirection)
                     {
                         holdDirection = false;
@@ -202,7 +201,7 @@ namespace WindowsForms.Gamecode
                     }
                     break;
                 case Keys.D:
-                    player.goRight = true;
+                    player.Right(true);
                     if (holdDirection)
                     {
                         holdDirection = false;
@@ -221,7 +220,7 @@ namespace WindowsForms.Gamecode
                         GameReset();
                     break;
                 case Keys.D:
-                    player.goRight = false;
+                    player.Right(false);
 
                     //also switch to another sprite when a key is let go of
                     if (!holdDirection)
@@ -231,7 +230,7 @@ namespace WindowsForms.Gamecode
                     }
                     break;
                 case Keys.A:
-                    player.goLeft = false;
+                    player.Left(false);
                     if (!holdDirection)
                     {
                         holdDirection = true;
@@ -239,7 +238,7 @@ namespace WindowsForms.Gamecode
                     }
                     break;
                 case Keys.S:
-                    player.goDown = false;
+                    
                     if (!holdDirection)
                     {
                         holdDirection = true;
