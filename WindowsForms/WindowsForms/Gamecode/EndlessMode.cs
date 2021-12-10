@@ -13,11 +13,14 @@ namespace WindowsForms.Gamecode
 {
     public partial class EndlessMode : Form
     {
+        #region Game(EndlessMode) variables
         Random rand = new Random();
         StoryMode1 mode1Window = new StoryMode1();
         bool gameOver = false;
         int obstacleSpeed = 10;
+        int inventoryChestCoins;
         internal Player player;
+        #endregion
 
         public EndlessMode()
         {
@@ -26,11 +29,12 @@ namespace WindowsForms.Gamecode
             this.FormClosed += StartScreen.closeGame;
             this.Paint += mode1Window.StoryMode1_Paint;
             this.KeyDown += formKeyDown;
-
+            this.Load += loadInventory;
+            this.FormClosing += saveInventory;
             GameReset();
         }
 
-        #region Esc Menu
+        #region Esc Menu (with safe/load)
         /// <summary>
         /// funcionality explained in StoryMode1
         /// </summary>
@@ -62,13 +66,25 @@ namespace WindowsForms.Gamecode
             }
         }
 
-        //TODO Save function for saving coins and power ups
-        //TODO load function loading coins and power ups
+        //TODO Save add for power ups
+        private void saveInventory(object sender, EventArgs e)
+        {
+            SystemSave.saveCoins(player.coins + inventoryChestCoins);
+        }
+        //TODO load add for power ups
+        private void loadInventory(object sender, EventArgs e)
+        {
+            inventoryChestCoins = SystemSave.loadCoins();
+        }
         #endregion
 
+        #region EndlessMode Gameloop
         private void endlessTickTimer(object sender, EventArgs e)
         {
             scoreLabel.Text = "Score: " + player.score;
+            coinCounter.Text = $": {player.coins}";
+            inventoryCoins.Text = $"Tresure Chest: {inventoryChestCoins}";
+
             player.move(this);
             player.isOnGround = false;
 
@@ -144,6 +160,15 @@ namespace WindowsForms.Gamecode
                         }
                     }
                 }
+
+                if (x is PictureBox && (string)x.Tag == "coins")
+                {
+                    if (playerBox.Bounds.IntersectsWith(x.Bounds) && x.Visible == true)
+                    {
+                        x.Visible = false;
+                        player.coins += 1;
+                    }
+                }
             }
 
             if (player.Hp < 20)
@@ -184,7 +209,9 @@ namespace WindowsForms.Gamecode
 
             MainGameTick.Start();
         }
+        #endregion
 
+        #region Key Inputs
         bool holdDirection = true;
         private void keyIsDown(object sender, KeyEventArgs e)
         {
@@ -269,5 +296,6 @@ namespace WindowsForms.Gamecode
                 player.jumps = false;
             }
         }
+        #endregion
     }
 }

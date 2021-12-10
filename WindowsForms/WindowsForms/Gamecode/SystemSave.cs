@@ -15,6 +15,8 @@ namespace WindowsForms.Gamecode
     /// </summary>
     public static class SystemSave
     {
+        //TODO zusammenfassen der safe/load funktionalität
+
         #region save/load game StoryMode
         internal static void saveGame(GameLvl lvl, Form window)
         {
@@ -115,6 +117,47 @@ namespace WindowsForms.Gamecode
             {
                 Debug.Fail("file not found in " + path);
                 return null;
+            }
+        }
+        #endregion
+
+        #region save/load coins
+        internal static void saveCoins(int coins)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            string path = Application.StartupPath + "\\coinsCount.save";
+
+            FileStream fStream = new FileStream(path, FileMode.Create, FileAccess.Write);
+
+            formatter.Serialize(fStream, coins);
+            fStream.Close();
+        }
+
+        internal static int loadCoins()
+        {
+            string path = Application.StartupPath + "\\coinsCount.save";
+            if (File.Exists(path))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                FileStream stream = new FileStream(path, FileMode.Open);
+
+                object coins = formatter.Deserialize(stream);
+                stream.Close();
+
+                if (coins != null)
+                {
+                    return (int)coins;
+                }
+                else
+                {
+                    Debug.Fail("file has no data. please check the file or make a new one" + path);
+                    return 0;
+                }
+            }
+            else
+            {
+                Debug.Fail("file not found in " + path);
+                return 0;
             }
         }
         #endregion

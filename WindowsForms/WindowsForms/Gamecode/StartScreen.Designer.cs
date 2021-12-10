@@ -91,6 +91,7 @@ namespace WindowsForms.Gamecode
             this.Controls.Add(this.endlessModeButton);
             this.Controls.Add(this.storyModeButton);
             this.Controls.Add(this.gameTitel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "StartScreen";
             this.Text = "StartScreen";
             this.ResumeLayout(false);
