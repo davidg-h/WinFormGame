@@ -142,6 +142,9 @@ namespace WindowsForms.Gamecode
             coinCounter.Text = $": {player.coins}";
 
             player.move(this);
+            player.IsOnGround = false; //gets updated to correct value below
+
+          
 
             if (player.Hp > 1 && !gameOver)
             {
@@ -170,23 +173,35 @@ namespace WindowsForms.Gamecode
             foreach (Control x in this.Controls)
             {
                 //TODO spawn of enemys (use the enemy classes)
-                if (x is PictureBox && (string)x.Tag == "obstacleTree")
+                if (x is PictureBox)
                 {
-                    if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
+                    if((string)x.Tag == "obstacleTree")
                     {
-                        EnemySmall small = new EnemySmall((PictureBox)x);
-                        player.Hp -= small.Dmg;
+                        if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
+                        {
+                            EnemySmall small = new EnemySmall((PictureBox)x);
+                            player.Hp -= small.Dmg;
+                        }
+                    }
+                    if((string)x.Tag == "platform")
+                    {
+                        if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
+                        {
+                            player.IsOnGround = true;
+                            player.MoveToTopOfPlatform(x.Top);
+                        }
+                    }
+                    if ((string)x.Tag == "coins")
+                    {
+                        if (playerBox.Bounds.IntersectsWith(x.Bounds) && x.Visible == true)
+                        {
+                            x.Visible = false;
+                            player.coins += 1;
+                        }
                     }
                 }
 
-                if (x is PictureBox && (string)x.Tag == "coins")
-                {
-                    if (playerBox.Bounds.IntersectsWith(x.Bounds) && x.Visible == true)
-                    {
-                        x.Visible = false;
-                        player.coins += 1;
-                    }
-                }
+               
             }
 
             if (player.Hp < 20)

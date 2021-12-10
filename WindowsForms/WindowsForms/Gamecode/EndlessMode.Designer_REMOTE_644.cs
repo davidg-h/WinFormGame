@@ -77,21 +77,21 @@ namespace WindowsForms.Gamecode
             // 
             this.healthLabel.AutoSize = true;
             this.healthLabel.BackColor = System.Drawing.Color.Transparent;
-            this.healthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.healthLabel.Location = new System.Drawing.Point(22, 17);
-            this.healthLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.healthLabel.Font = new System.Drawing.Font("Unispace", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.healthLabel.Location = new System.Drawing.Point(11, 9);
+            this.healthLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.healthLabel.Name = "healthLabel";
-            this.healthLabel.Size = new System.Drawing.Size(159, 44);
+            this.healthLabel.Size = new System.Drawing.Size(106, 23);
             this.healthLabel.TabIndex = 6;
             this.healthLabel.Text = "Health: ";
             // 
             // healthBar
             // 
             this.healthBar.BackColor = System.Drawing.SystemColors.GrayText;
-            this.healthBar.Location = new System.Drawing.Point(204, 17);
-            this.healthBar.Margin = new System.Windows.Forms.Padding(4);
+            this.healthBar.Location = new System.Drawing.Point(102, 9);
+            this.healthBar.Margin = new System.Windows.Forms.Padding(2);
             this.healthBar.Name = "healthBar";
-            this.healthBar.Size = new System.Drawing.Size(166, 44);
+            this.healthBar.Size = new System.Drawing.Size(83, 23);
             this.healthBar.TabIndex = 7;
             this.healthBar.Value = 100;
             // 
@@ -108,20 +108,18 @@ namespace WindowsForms.Gamecode
             this.scoreLabel.Font = new System.Drawing.Font("Unispace", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scoreLabel.Location = new System.Drawing.Point(10, 414);
             this.scoreLabel.Name = "scoreLabel";
-            this.scoreLabel.Size = new System.Drawing.Size(183, 48);
+            this.scoreLabel.Size = new System.Drawing.Size(116, 25);
             this.scoreLabel.TabIndex = 12;
             this.scoreLabel.Text = "Score: 0\r\n";
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Black;
-            this.pictureBox1.Location = new System.Drawing.Point(-32, 758);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox1.Location = new System.Drawing.Point(-16, 394);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(2158, 165);
+            this.pictureBox1.Size = new System.Drawing.Size(1079, 86);
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Tag = "plattform";
             // 
             // escMenu
             // 
@@ -129,9 +127,7 @@ namespace WindowsForms.Gamecode
             this.escMenu.BackgroundImage = global::WindowsForms.Properties.Resources.TitleScreen1;
             this.escMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.escMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.escMenu.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.escMenu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
-            this.escMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.escMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.escMenuM,
             this.resumeToolStripMenuItem,
@@ -140,10 +136,10 @@ namespace WindowsForms.Gamecode
             this.loadGameToolStripMenuItem});
             this.escMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.escMenu.Location = new System.Drawing.Point(0, 0);
-            this.escMenu.Margin = new System.Windows.Forms.Padding(0, 0, 0, 67);
+            this.escMenu.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.escMenu.Name = "escMenu";
             this.escMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.escMenu.Size = new System.Drawing.Size(2104, 960);
+            this.escMenu.Size = new System.Drawing.Size(1052, 499);
             this.escMenu.TabIndex = 11;
             this.escMenu.Text = "Menu";
             this.escMenu.Visible = false;
@@ -154,7 +150,7 @@ namespace WindowsForms.Gamecode
             this.escMenuM.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.escMenuM.Margin = new System.Windows.Forms.Padding(0, 20, 0, 60);
             this.escMenuM.Name = "escMenuM";
-            this.escMenuM.Size = new System.Drawing.Size(2100, 124);
+            this.escMenuM.Size = new System.Drawing.Size(1048, 65);
             this.escMenuM.Text = "Menu";
             // 
             // resumeToolStripMenuItem
@@ -162,7 +158,7 @@ namespace WindowsForms.Gamecode
             this.resumeToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resumeToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.resumeToolStripMenuItem.Name = "resumeToolStripMenuItem";
-            this.resumeToolStripMenuItem.Size = new System.Drawing.Size(2100, 67);
+            this.resumeToolStripMenuItem.Size = new System.Drawing.Size(1048, 35);
             this.resumeToolStripMenuItem.Text = "Resume";
             this.resumeToolStripMenuItem.Click += new System.EventHandler(this.resumeClick);
             // 
@@ -171,7 +167,7 @@ namespace WindowsForms.Gamecode
             this.startScreenToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startScreenToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.startScreenToolStripMenuItem.Name = "startScreenToolStripMenuItem";
-            this.startScreenToolStripMenuItem.Size = new System.Drawing.Size(2100, 67);
+            this.startScreenToolStripMenuItem.Size = new System.Drawing.Size(1048, 35);
             this.startScreenToolStripMenuItem.Text = "Start-Screen";
             this.startScreenToolStripMenuItem.Click += new System.EventHandler(this.startScreenClick);
             // 
@@ -180,7 +176,7 @@ namespace WindowsForms.Gamecode
             this.saveGameToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveGameToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.saveGameToolStripMenuItem.Name = "saveGameToolStripMenuItem";
-            this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(2100, 67);
+            this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(1048, 35);
             this.saveGameToolStripMenuItem.Text = "Save Game";
             // 
             // loadGameToolStripMenuItem
@@ -188,15 +184,15 @@ namespace WindowsForms.Gamecode
             this.loadGameToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loadGameToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.loadGameToolStripMenuItem.Name = "loadGameToolStripMenuItem";
-            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(2100, 67);
+            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(1048, 35);
             this.loadGameToolStripMenuItem.Text = "Load Game";
             // 
             // obstacleTree
             // 
             this.obstacleTree.BackColor = System.Drawing.Color.Transparent;
             this.obstacleTree.Image = global::WindowsForms.Properties.Resources.shroomIdle;
-            this.obstacleTree.Location = new System.Drawing.Point(1156, 706);
-            this.obstacleTree.Margin = new System.Windows.Forms.Padding(4);
+            this.obstacleTree.Location = new System.Drawing.Point(578, 367);
+            this.obstacleTree.Margin = new System.Windows.Forms.Padding(2);
             this.obstacleTree.Name = "obstacleTree";
             this.obstacleTree.Size = new System.Drawing.Size(32, 28);
             this.obstacleTree.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -208,8 +204,8 @@ namespace WindowsForms.Gamecode
             // 
             this.playerBox.BackColor = System.Drawing.Color.Transparent;
             this.playerBox.Image = global::WindowsForms.Properties.Resources.idle;
-            this.playerBox.Location = new System.Drawing.Point(68, 637);
-            this.playerBox.Margin = new System.Windows.Forms.Padding(4);
+            this.playerBox.Location = new System.Drawing.Point(34, 331);
+            this.playerBox.Margin = new System.Windows.Forms.Padding(2);
             this.playerBox.Name = "playerBox";
             this.playerBox.Size = new System.Drawing.Size(68, 64);
             this.playerBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -371,7 +367,7 @@ namespace WindowsForms.Gamecode
             // 
             // EndlessMode
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1047, 448);

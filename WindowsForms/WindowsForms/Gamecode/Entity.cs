@@ -20,6 +20,7 @@ namespace WindowsForms.Gamecode
         internal int jumpSpeed = 12;
         internal int force = 12;
         internal bool goRight, goLeft, goDown, jumps;
+        internal bool isOnGround;
 
         internal abstract int Hp { get; set; }
         internal abstract int Dmg { get; set; }

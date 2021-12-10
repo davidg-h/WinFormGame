@@ -34,32 +34,28 @@
             this.healthBar = new System.Windows.Forms.ProgressBar();
             this.CountdownTimer = new System.Windows.Forms.Timer(this.components);
             this.countdownLabel = new System.Windows.Forms.Label();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.playerBox = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.escMenu = new System.Windows.Forms.MenuStrip();
             this.escMenuM = new System.Windows.Forms.ToolStripMenuItem();
             this.resumeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.platformBox1 = new System.Windows.Forms.PictureBox();
             this.obstacleTree = new System.Windows.Forms.PictureBox();
             this.destinyBox = new System.Windows.Forms.PictureBox();
             this.coinCounter = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.coinBox1 = new System.Windows.Forms.PictureBox();
+            this.platformBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.playerBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.escMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platformBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obstacleTree)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.destinyBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coinBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platformBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // MainGameTick
@@ -72,21 +68,21 @@
             // 
             this.healthLabel.AutoSize = true;
             this.healthLabel.BackColor = System.Drawing.Color.Transparent;
-            this.healthLabel.Font = new System.Drawing.Font("Unispace", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.healthLabel.Location = new System.Drawing.Point(11, 6);
-            this.healthLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.healthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.healthLabel.Location = new System.Drawing.Point(22, 12);
+            this.healthLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.healthLabel.Name = "healthLabel";
-            this.healthLabel.Size = new System.Drawing.Size(133, 29);
+            this.healthLabel.Size = new System.Drawing.Size(197, 55);
             this.healthLabel.TabIndex = 5;
             this.healthLabel.Text = "Health: ";
             // 
             // healthBar
             // 
             this.healthBar.BackColor = System.Drawing.SystemColors.GrayText;
-            this.healthBar.Location = new System.Drawing.Point(131, 8);
-            this.healthBar.Margin = new System.Windows.Forms.Padding(2);
+            this.healthBar.Location = new System.Drawing.Point(262, 15);
+            this.healthBar.Margin = new System.Windows.Forms.Padding(4);
             this.healthBar.Name = "healthBar";
-            this.healthBar.Size = new System.Drawing.Size(83, 23);
+            this.healthBar.Size = new System.Drawing.Size(166, 44);
             this.healthBar.TabIndex = 4;
             this.healthBar.Value = 100;
             // 
@@ -99,83 +95,26 @@
             // 
             this.countdownLabel.AutoSize = true;
             this.countdownLabel.BackColor = System.Drawing.Color.White;
-            this.countdownLabel.Font = new System.Drawing.Font("Unispace", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.countdownLabel.Location = new System.Drawing.Point(45, 410);
+            this.countdownLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.countdownLabel.Location = new System.Drawing.Point(90, 788);
+            this.countdownLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.countdownLabel.Name = "countdownLabel";
-            this.countdownLabel.Size = new System.Drawing.Size(73, 29);
+            this.countdownLabel.Size = new System.Drawing.Size(102, 55);
             this.countdownLabel.TabIndex = 12;
             this.countdownLabel.Text = "N.I.";
             this.countdownLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox6.Image = global::WindowsForms.Properties.Resources.coin_Counter;
-            this.pictureBox6.Location = new System.Drawing.Point(292, 2);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(35, 35);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 16;
-            this.pictureBox6.TabStop = false;
             // 
             // playerBox
             // 
             this.playerBox.BackColor = System.Drawing.Color.Transparent;
             this.playerBox.Image = global::WindowsForms.Properties.Resources.idle;
-            this.playerBox.Location = new System.Drawing.Point(34, 331);
-            this.playerBox.Margin = new System.Windows.Forms.Padding(2);
+            this.playerBox.Location = new System.Drawing.Point(68, 637);
+            this.playerBox.Margin = new System.Windows.Forms.Padding(4);
             this.playerBox.Name = "playerBox";
             this.playerBox.Size = new System.Drawing.Size(68, 64);
             this.playerBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.playerBox.TabIndex = 1;
             this.playerBox.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox5.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox5.Location = new System.Drawing.Point(841, 354);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 15;
-            this.pictureBox5.TabStop = false;
-            this.pictureBox5.Tag = "coins";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox4.Location = new System.Drawing.Point(578, 270);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 14;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Tag = "coins";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox3.Location = new System.Drawing.Point(399, 355);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 13;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Tag = "coins";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::WindowsForms.Properties.Resources.timer;
-            this.pictureBox2.Location = new System.Drawing.Point(4, 407);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(35, 35);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 11;
-            this.pictureBox2.TabStop = false;
             // 
             // escMenu
             // 
@@ -183,6 +122,7 @@
             this.escMenu.BackgroundImage = global::WindowsForms.Properties.Resources.TitleScreen1;
             this.escMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.escMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.escMenu.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.escMenu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.escMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.escMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -193,11 +133,11 @@
             this.loadGameToolStripMenuItem});
             this.escMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.escMenu.Location = new System.Drawing.Point(0, 0);
-            this.escMenu.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
+            this.escMenu.Margin = new System.Windows.Forms.Padding(0, 0, 0, 67);
             this.escMenu.Name = "escMenu";
-            this.escMenu.Padding = new System.Windows.Forms.Padding(2, 1, 0, 1);
+            this.escMenu.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
             this.escMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.escMenu.Size = new System.Drawing.Size(1499, 448);
+            this.escMenu.Size = new System.Drawing.Size(2998, 862);
             this.escMenu.TabIndex = 8;
             this.escMenu.Text = "Menu";
             this.escMenu.Visible = false;
@@ -208,7 +148,7 @@
             this.escMenuM.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.escMenuM.Margin = new System.Windows.Forms.Padding(0, 20, 0, 60);
             this.escMenuM.Name = "escMenuM";
-            this.escMenuM.Size = new System.Drawing.Size(1496, 65);
+            this.escMenuM.Size = new System.Drawing.Size(2993, 124);
             this.escMenuM.Text = "Menu";
             this.escMenuM.Click += new System.EventHandler(this.menuEastereggClick);
             // 
@@ -217,7 +157,7 @@
             this.resumeToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resumeToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.resumeToolStripMenuItem.Name = "resumeToolStripMenuItem";
-            this.resumeToolStripMenuItem.Size = new System.Drawing.Size(1496, 35);
+            this.resumeToolStripMenuItem.Size = new System.Drawing.Size(2993, 67);
             this.resumeToolStripMenuItem.Text = "Resume";
             this.resumeToolStripMenuItem.Click += new System.EventHandler(this.resumeClick);
             // 
@@ -226,7 +166,7 @@
             this.startScreenToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startScreenToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.startScreenToolStripMenuItem.Name = "startScreenToolStripMenuItem";
-            this.startScreenToolStripMenuItem.Size = new System.Drawing.Size(1496, 35);
+            this.startScreenToolStripMenuItem.Size = new System.Drawing.Size(2993, 67);
             this.startScreenToolStripMenuItem.Text = "Start-Screen";
             this.startScreenToolStripMenuItem.Click += new System.EventHandler(this.startScreenClick);
             // 
@@ -235,7 +175,7 @@
             this.saveGameToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveGameToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.saveGameToolStripMenuItem.Name = "saveGameToolStripMenuItem";
-            this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(1496, 35);
+            this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(2993, 67);
             this.saveGameToolStripMenuItem.Text = "Save Game";
             this.saveGameToolStripMenuItem.Click += new System.EventHandler(this.saveGameClick);
             // 
@@ -244,25 +184,27 @@
             this.loadGameToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loadGameToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.loadGameToolStripMenuItem.Name = "loadGameToolStripMenuItem";
-            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(1496, 35);
+            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(2993, 67);
             this.loadGameToolStripMenuItem.Text = "Load Game";
             this.loadGameToolStripMenuItem.Click += new System.EventHandler(this.loadGameClick);
             // 
-            // pictureBox1
+            // platformBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Black;
-            this.pictureBox1.Location = new System.Drawing.Point(-16, 394);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1079, 86);
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
+            this.platformBox1.BackColor = System.Drawing.Color.Black;
+            this.platformBox1.Location = new System.Drawing.Point(-32, 758);
+            this.platformBox1.Margin = new System.Windows.Forms.Padding(6);
+            this.platformBox1.Name = "platformBox1";
+            this.platformBox1.Size = new System.Drawing.Size(2158, 165);
+            this.platformBox1.TabIndex = 7;
+            this.platformBox1.TabStop = false;
+            this.platformBox1.Tag = "platform";
             // 
             // obstacleTree
             // 
             this.obstacleTree.BackColor = System.Drawing.Color.Transparent;
             this.obstacleTree.Image = global::WindowsForms.Properties.Resources.shroomIdle;
-            this.obstacleTree.Location = new System.Drawing.Point(578, 367);
-            this.obstacleTree.Margin = new System.Windows.Forms.Padding(2);
+            this.obstacleTree.Location = new System.Drawing.Point(1156, 706);
+            this.obstacleTree.Margin = new System.Windows.Forms.Padding(4);
             this.obstacleTree.Name = "obstacleTree";
             this.obstacleTree.Size = new System.Drawing.Size(32, 28);
             this.obstacleTree.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -273,10 +215,10 @@
             // destinyBox
             // 
             this.destinyBox.Image = global::WindowsForms.Properties.Resources.images;
-            this.destinyBox.Location = new System.Drawing.Point(993, 323);
-            this.destinyBox.Margin = new System.Windows.Forms.Padding(2);
+            this.destinyBox.Location = new System.Drawing.Point(1986, 621);
+            this.destinyBox.Margin = new System.Windows.Forms.Padding(4);
             this.destinyBox.Name = "destinyBox";
-            this.destinyBox.Size = new System.Drawing.Size(54, 72);
+            this.destinyBox.Size = new System.Drawing.Size(108, 138);
             this.destinyBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.destinyBox.TabIndex = 6;
             this.destinyBox.TabStop = false;
@@ -285,51 +227,79 @@
             // 
             this.coinCounter.AutoSize = true;
             this.coinCounter.BackColor = System.Drawing.Color.Transparent;
-            this.coinCounter.Font = new System.Drawing.Font("Unispace", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.coinCounter.Location = new System.Drawing.Point(343, 5);
+            this.coinCounter.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.coinCounter.Location = new System.Drawing.Point(686, 10);
+            this.coinCounter.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.coinCounter.Name = "coinCounter";
-            this.coinCounter.Size = new System.Drawing.Size(28, 29);
+            this.coinCounter.Size = new System.Drawing.Size(52, 55);
             this.coinCounter.TabIndex = 17;
             this.coinCounter.Text = "0";
             // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox7.TabIndex = 18;
+            this.pictureBox7.TabStop = false;
+            // 
+            // coinBox1
+            // 
+            this.coinBox1.BackColor = System.Drawing.Color.Transparent;
+            this.coinBox1.Image = global::WindowsForms.Properties.Resources.coin;
+            this.coinBox1.Location = new System.Drawing.Point(740, 669);
+            this.coinBox1.Name = "coinBox1";
+            this.coinBox1.Size = new System.Drawing.Size(91, 90);
+            this.coinBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.coinBox1.TabIndex = 19;
+            this.coinBox1.TabStop = false;
+            this.coinBox1.Tag = "coins";
+            // 
+            // platformBox2
+            // 
+            this.platformBox2.BackColor = System.Drawing.Color.Black;
+            this.platformBox2.Location = new System.Drawing.Point(809, 601);
+            this.platformBox2.Margin = new System.Windows.Forms.Padding(6);
+            this.platformBox2.Name = "platformBox2";
+            this.platformBox2.Size = new System.Drawing.Size(223, 39);
+            this.platformBox2.TabIndex = 20;
+            this.platformBox2.TabStop = false;
+            this.platformBox2.Tag = "platform";
+            // 
             // StoryMode1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1499, 448);
+            this.ClientSize = new System.Drawing.Size(2884, 1658);
+            this.Controls.Add(this.platformBox2);
+            this.Controls.Add(this.coinBox1);
+            this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.coinCounter);
-            this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.playerBox);
-            this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.countdownLabel);
             this.Controls.Add(this.escMenu);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.platformBox1);
             this.Controls.Add(this.obstacleTree);
             this.Controls.Add(this.destinyBox);
             this.Controls.Add(this.healthLabel);
             this.Controls.Add(this.healthBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.escMenu;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "StoryMode1";
             this.Text = "Story-Mode";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.StoryMode1_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyIsDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyIsUp);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.escMenu.ResumeLayout(false);
             this.escMenu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platformBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.obstacleTree)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.destinyBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coinBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platformBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -348,7 +318,7 @@
         internal System.Windows.Forms.PictureBox obstacleTree;
         internal System.Windows.Forms.PictureBox playerBox;
         internal System.Windows.Forms.PictureBox destinyBox;
-        internal System.Windows.Forms.PictureBox pictureBox1;
+        internal System.Windows.Forms.PictureBox platformBox1;
         private System.Windows.Forms.Timer CountdownTimer;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label countdownLabel;
@@ -357,6 +327,9 @@
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label coinCounter;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox coinBox1;
+        internal System.Windows.Forms.PictureBox platformBox2;
     }
 }
 

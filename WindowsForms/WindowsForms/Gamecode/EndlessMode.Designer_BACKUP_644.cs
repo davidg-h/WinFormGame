@@ -104,9 +104,16 @@ namespace WindowsForms.Gamecode
             // scoreLabel
             // 
             this.scoreLabel.AutoSize = true;
+<<<<<<< HEAD
+            this.scoreLabel.BackColor = System.Drawing.Color.Transparent;
+            this.scoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.scoreLabel.Location = new System.Drawing.Point(1814, 17);
+            this.scoreLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+=======
             this.scoreLabel.BackColor = System.Drawing.Color.White;
             this.scoreLabel.Font = new System.Drawing.Font("Unispace", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scoreLabel.Location = new System.Drawing.Point(10, 414);
+>>>>>>> 2ea80c65dd28a2b3fb986da11588bbfffa4c7d2e
             this.scoreLabel.Name = "scoreLabel";
             this.scoreLabel.Size = new System.Drawing.Size(183, 48);
             this.scoreLabel.TabIndex = 12;
@@ -374,6 +381,9 @@ namespace WindowsForms.Gamecode
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+<<<<<<< HEAD
+            this.ClientSize = new System.Drawing.Size(2094, 862);
+=======
             this.ClientSize = new System.Drawing.Size(1047, 448);
             this.Controls.Add(this.inventoryCoins);
             this.Controls.Add(this.coinCounter);
@@ -388,6 +398,7 @@ namespace WindowsForms.Gamecode
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox3);
+>>>>>>> 2ea80c65dd28a2b3fb986da11588bbfffa4c7d2e
             this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.escMenu);
@@ -395,7 +406,11 @@ namespace WindowsForms.Gamecode
             this.Controls.Add(this.playerBox);
             this.Controls.Add(this.healthBar);
             this.Controls.Add(this.healthLabel);
+<<<<<<< HEAD
+            this.Margin = new System.Windows.Forms.Padding(6);
+=======
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+>>>>>>> 2ea80c65dd28a2b3fb986da11588bbfffa4c7d2e
             this.Name = "EndlessMode";
             this.Text = "Endless-Mode";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keyIsDown);
