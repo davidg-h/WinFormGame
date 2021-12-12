@@ -129,17 +129,14 @@
   <ItemGroup>
     <Content Include="Properties\Enemy_Klein.png" />
     <Content Include="Properties\Player.png" />
+    <None Include="Resources\Background.png" />
+    <None Include="Resources\Back1.png" />
     <None Include="Resources\coin Counter.png" />
     <None Include="Resources\coin.gif" />
     <None Include="Resources\timer.jpg" />
-    <None Include="Resources\Mountain1.png" />
-    <None Include="Resources\Clouds1.png" />
-    <None Include="Resources\Wolken.png" />
     <None Include="Resources\Berge.png" />
     <None Include="Resources\.png" />
-    <None Include="Resources\Front.png" />
     <None Include="Resources\blackhole.gif" />
-    <None Include="Resources\Mountain.png" />
     <None Include="Resources\Back.png" />
     <None Include="Resources\shroomIdle.gif" />
     <None Include="Resources\walkingLeft.gif" />

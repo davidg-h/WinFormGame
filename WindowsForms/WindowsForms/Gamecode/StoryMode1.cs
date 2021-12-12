@@ -139,12 +139,13 @@ namespace WindowsForms.Gamecode
         #region GameLoop StoryMode
         private void MainGameTick_Tick(object sender, EventArgs e)
         {
+
             coinCounter.Text = $": {player.coins}";
 
             player.move(this);
             player.IsOnGround = false; //gets updated to correct value below
 
-          
+
 
             if (player.Hp > 1 && !gameOver)
             {
@@ -175,7 +176,7 @@ namespace WindowsForms.Gamecode
                 //TODO spawn of enemys (use the enemy classes)
                 if (x is PictureBox)
                 {
-                    if((string)x.Tag == "obstacleTree")
+                    if ((string)x.Tag == "obstacleTree")
                     {
                         if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
                         {
@@ -183,7 +184,7 @@ namespace WindowsForms.Gamecode
                             player.Hp -= small.Dmg;
                         }
                     }
-                    if((string)x.Tag == "platform")
+                    if ((string)x.Tag == "platform")
                     {
                         if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
                         {
@@ -200,8 +201,6 @@ namespace WindowsForms.Gamecode
                         }
                     }
                 }
-
-               
             }
 
             if (player.Hp < 20)
@@ -214,6 +213,18 @@ namespace WindowsForms.Gamecode
                 MainGameTick.Stop();
                 MessageBox.Show("Congratulations, You won!!" + Environment.NewLine + "Press OK to play again");
                 Restart();
+            }
+
+            background_move();
+
+            //Move all GameElements
+            if (player.goRight == true)
+            {
+                MoveGameElements("back");
+            }
+            if (player.goLeft == true && backgroundCoordX < 0)
+            {
+                MoveGameElements("forward");
             }
         }
 
@@ -244,6 +255,7 @@ namespace WindowsForms.Gamecode
                     if (holdDirection)
                     {
                         playerBox.Image = Properties.Resources.walking;
+
                     }
                     break;
                 case Keys.A:
@@ -251,6 +263,8 @@ namespace WindowsForms.Gamecode
                     if (holdDirection)
                     {
                         playerBox.Image = Properties.Resources.walkingLeft;
+                        holdDirection = false;
+
                     }
                     break;
                 case Keys.S:
@@ -258,6 +272,8 @@ namespace WindowsForms.Gamecode
                     if (holdDirection)
                     {
                         playerBox.Image = Properties.Resources.walking;
+                        holdDirection = false;
+
                     }
                     break;
                 case Keys.D:
@@ -265,6 +281,8 @@ namespace WindowsForms.Gamecode
                     if (holdDirection)
                     {
                         playerBox.Image = Properties.Resources.walking;
+                        holdDirection = false;
+
                     }
                     break;
             }
@@ -282,11 +300,11 @@ namespace WindowsForms.Gamecode
                     player.Right(false);
 
                     //also switch to another sprite when a key is let go of
-                    if(!holdDirection)
+                    if (!holdDirection)
                     {
                         holdDirection = true;
                         playerBox.Image = Properties.Resources.idle;
-                    }    
+                    }
                     break;
                 case Keys.A:
                     player.Left(false);
@@ -313,22 +331,64 @@ namespace WindowsForms.Gamecode
         }
         #endregion
 
-        #region background
-        // initialize the background Images
-        Image layer_1 = Properties.Resources.Back;
-        Image layer_2 = Properties.Resources.Clouds;
-        Image layer_3 = Properties.Resources.Mountain;
-        Image layer_4 = Properties.Resources.Front;
+        #region Background
 
-        //draw the background Images on specific coordinates
-        //TODO parallax background scrolling
-        internal void StoryMode1_Paint(object sender, PaintEventArgs e)
+        Image backgroundlayer = Properties.Resources.Background;
+        int backgroundCoordX = 0, backgroundCoordX2 = 1600;
+        private void StoryMode1_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawImage(layer_1, 0, 0);
-            e.Graphics.DrawImage(layer_2, 0, 0);
-            e.Graphics.DrawImage(layer_3, 0, 0);
-            e.Graphics.DrawImage(layer_4, 0, 0);
+            e.Graphics.DrawImage(backgroundlayer, backgroundCoordX, 0);
+            e.Graphics.DrawImage(backgroundlayer, backgroundCoordX2, 0);
+
+        }
+
+
+        void background_move()
+        {
+            if (backgroundCoordX <= -1600)
+                backgroundCoordX = 1600;
+
+            if (backgroundCoordX2 <= -1600)
+                backgroundCoordX2 = 1600;
+
+
+            if (player.goRight)
+            {
+                backgroundCoordX -= 2;
+                backgroundCoordX2 -= 2;
+            }
+            if (player.goLeft && backgroundCoordX < 0)
+            {
+                backgroundCoordX += 2;
+                backgroundCoordX2 += 2;
+            }
+
+            Invalidate();
         }
         #endregion
+
+        #region Moving GameElements
+        private void MoveGameElements(string direction)
+        {
+            foreach (Control x in this.Controls)
+            {
+                //moving the elements with the wanted Tags with the movement of the player
+                //new object that need to be moved: enter "Tag" in this if statement
+                if (x is PictureBox && (string)x.Tag == "platform" || x is PictureBox && (string)x.Tag == "obstacleTree" || x is PictureBox && (string)x.Tag == "coins" || x is PictureBox && (string)x.Tag == "finish" || x is PictureBox && (string)x.Tag == "......")
+                {
+                    if (direction == "back")
+                    {
+                        x.Left -= player.characterSpeed;
+                    }
+                    if (direction == "forward")
+                    {
+                        x.Left += player.characterSpeed;
+                    }
+                }
+            }
+        }
+
+        #endregion
+
     }
 }
