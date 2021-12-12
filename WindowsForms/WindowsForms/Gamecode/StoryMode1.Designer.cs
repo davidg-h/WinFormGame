@@ -67,20 +67,19 @@
             this.healthLabel.AutoSize = true;
             this.healthLabel.BackColor = System.Drawing.Color.Transparent;
             this.healthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.healthLabel.Location = new System.Drawing.Point(11, 6);
-            this.healthLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.healthLabel.Location = new System.Drawing.Point(15, 7);
             this.healthLabel.Name = "healthLabel";
-            this.healthLabel.Size = new System.Drawing.Size(102, 29);
+            this.healthLabel.Size = new System.Drawing.Size(124, 36);
             this.healthLabel.TabIndex = 5;
             this.healthLabel.Text = "Health: ";
             // 
             // healthBar
             // 
             this.healthBar.BackColor = System.Drawing.SystemColors.GrayText;
-            this.healthBar.Location = new System.Drawing.Point(131, 8);
-            this.healthBar.Margin = new System.Windows.Forms.Padding(2);
+            this.healthBar.Location = new System.Drawing.Point(175, 10);
+            this.healthBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.healthBar.Name = "healthBar";
-            this.healthBar.Size = new System.Drawing.Size(83, 23);
+            this.healthBar.Size = new System.Drawing.Size(111, 28);
             this.healthBar.TabIndex = 4;
             this.healthBar.Value = 100;
             // 
@@ -94,9 +93,10 @@
             this.countdownLabel.AutoSize = true;
             this.countdownLabel.BackColor = System.Drawing.Color.White;
             this.countdownLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.countdownLabel.Location = new System.Drawing.Point(45, 410);
+            this.countdownLabel.Location = new System.Drawing.Point(60, 505);
+            this.countdownLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.countdownLabel.Name = "countdownLabel";
-            this.countdownLabel.Size = new System.Drawing.Size(53, 29);
+            this.countdownLabel.Size = new System.Drawing.Size(65, 36);
             this.countdownLabel.TabIndex = 12;
             this.countdownLabel.Text = "N.I.";
             this.countdownLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -106,18 +106,20 @@
             this.coinCounter.AutoSize = true;
             this.coinCounter.BackColor = System.Drawing.Color.Transparent;
             this.coinCounter.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.coinCounter.Location = new System.Drawing.Point(343, 5);
+            this.coinCounter.Location = new System.Drawing.Point(457, 6);
+            this.coinCounter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.coinCounter.Name = "coinCounter";
-            this.coinCounter.Size = new System.Drawing.Size(27, 29);
+            this.coinCounter.Size = new System.Drawing.Size(33, 36);
             this.coinCounter.TabIndex = 17;
             this.coinCounter.Text = "0";
             // 
             // platformBox2
             // 
             this.platformBox2.BackColor = System.Drawing.Color.Black;
-            this.platformBox2.Location = new System.Drawing.Point(404, 313);
+            this.platformBox2.Location = new System.Drawing.Point(539, 385);
+            this.platformBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.platformBox2.Name = "platformBox2";
-            this.platformBox2.Size = new System.Drawing.Size(112, 20);
+            this.platformBox2.Size = new System.Drawing.Size(149, 25);
             this.platformBox2.TabIndex = 20;
             this.platformBox2.TabStop = false;
             this.platformBox2.Tag = "platform";
@@ -126,10 +128,10 @@
             // 
             this.coinBox1.BackColor = System.Drawing.Color.Transparent;
             this.coinBox1.Image = global::WindowsForms.Properties.Resources.coin;
-            this.coinBox1.Location = new System.Drawing.Point(370, 348);
-            this.coinBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.coinBox1.Location = new System.Drawing.Point(493, 428);
+            this.coinBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.coinBox1.Name = "coinBox1";
-            this.coinBox1.Size = new System.Drawing.Size(46, 47);
+            this.coinBox1.Size = new System.Drawing.Size(61, 58);
             this.coinBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.coinBox1.TabIndex = 19;
             this.coinBox1.TabStop = false;
@@ -139,8 +141,8 @@
             // 
             this.playerBox.BackColor = System.Drawing.Color.Transparent;
             this.playerBox.Image = global::WindowsForms.Properties.Resources.idle;
-            this.playerBox.Location = new System.Drawing.Point(34, 331);
-            this.playerBox.Margin = new System.Windows.Forms.Padding(2);
+            this.playerBox.Location = new System.Drawing.Point(45, 407);
+            this.playerBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.playerBox.Name = "playerBox";
             this.playerBox.Size = new System.Drawing.Size(68, 64);
             this.playerBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -163,11 +165,11 @@
             this.loadGameToolStripMenuItem});
             this.escMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.escMenu.Location = new System.Drawing.Point(0, 0);
-            this.escMenu.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
+            this.escMenu.Margin = new System.Windows.Forms.Padding(0, 0, 0, 43);
             this.escMenu.Name = "escMenu";
-            this.escMenu.Padding = new System.Windows.Forms.Padding(2, 1, 0, 1);
+            this.escMenu.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
             this.escMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.escMenu.Size = new System.Drawing.Size(1499, 448);
+            this.escMenu.Size = new System.Drawing.Size(1999, 551);
             this.escMenu.TabIndex = 8;
             this.escMenu.Text = "Menu";
             this.escMenu.Visible = false;
@@ -178,7 +180,7 @@
             this.escMenuM.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.escMenuM.Margin = new System.Windows.Forms.Padding(0, 20, 0, 60);
             this.escMenuM.Name = "escMenuM";
-            this.escMenuM.Size = new System.Drawing.Size(1496, 65);
+            this.escMenuM.Size = new System.Drawing.Size(1995, 80);
             this.escMenuM.Text = "Menu";
             this.escMenuM.Click += new System.EventHandler(this.menuEastereggClick);
             // 
@@ -187,7 +189,7 @@
             this.resumeToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resumeToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.resumeToolStripMenuItem.Name = "resumeToolStripMenuItem";
-            this.resumeToolStripMenuItem.Size = new System.Drawing.Size(1496, 35);
+            this.resumeToolStripMenuItem.Size = new System.Drawing.Size(1995, 43);
             this.resumeToolStripMenuItem.Text = "Resume";
             this.resumeToolStripMenuItem.Click += new System.EventHandler(this.resumeClick);
             // 
@@ -196,7 +198,7 @@
             this.startScreenToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startScreenToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.startScreenToolStripMenuItem.Name = "startScreenToolStripMenuItem";
-            this.startScreenToolStripMenuItem.Size = new System.Drawing.Size(1496, 35);
+            this.startScreenToolStripMenuItem.Size = new System.Drawing.Size(1995, 43);
             this.startScreenToolStripMenuItem.Text = "Start-Screen";
             this.startScreenToolStripMenuItem.Click += new System.EventHandler(this.startScreenClick);
             // 
@@ -205,7 +207,7 @@
             this.saveGameToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveGameToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.saveGameToolStripMenuItem.Name = "saveGameToolStripMenuItem";
-            this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(1496, 35);
+            this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(1995, 43);
             this.saveGameToolStripMenuItem.Text = "Save Game";
             this.saveGameToolStripMenuItem.Click += new System.EventHandler(this.saveGameClick);
             // 
@@ -214,16 +216,17 @@
             this.loadGameToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loadGameToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.loadGameToolStripMenuItem.Name = "loadGameToolStripMenuItem";
-            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(1496, 35);
+            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(1995, 43);
             this.loadGameToolStripMenuItem.Text = "Load Game";
             this.loadGameToolStripMenuItem.Click += new System.EventHandler(this.loadGameClick);
             // 
             // platformBox1
             // 
             this.platformBox1.BackColor = System.Drawing.Color.Black;
-            this.platformBox1.Location = new System.Drawing.Point(-16, 394);
+            this.platformBox1.Location = new System.Drawing.Point(-21, 485);
+            this.platformBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.platformBox1.Name = "platformBox1";
-            this.platformBox1.Size = new System.Drawing.Size(1079, 86);
+            this.platformBox1.Size = new System.Drawing.Size(1439, 106);
             this.platformBox1.TabIndex = 7;
             this.platformBox1.TabStop = false;
             this.platformBox1.Tag = "platform";
@@ -232,8 +235,8 @@
             // 
             this.obstacleTree.BackColor = System.Drawing.Color.Transparent;
             this.obstacleTree.Image = global::WindowsForms.Properties.Resources.shroomIdle;
-            this.obstacleTree.Location = new System.Drawing.Point(578, 367);
-            this.obstacleTree.Margin = new System.Windows.Forms.Padding(2);
+            this.obstacleTree.Location = new System.Drawing.Point(771, 452);
+            this.obstacleTree.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.obstacleTree.Name = "obstacleTree";
             this.obstacleTree.Size = new System.Drawing.Size(32, 28);
             this.obstacleTree.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -244,10 +247,10 @@
             // destinyBox
             // 
             this.destinyBox.Image = global::WindowsForms.Properties.Resources.images;
-            this.destinyBox.Location = new System.Drawing.Point(995, 323);
-            this.destinyBox.Margin = new System.Windows.Forms.Padding(2);
+            this.destinyBox.Location = new System.Drawing.Point(1327, 398);
+            this.destinyBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.destinyBox.Name = "destinyBox";
-            this.destinyBox.Size = new System.Drawing.Size(54, 72);
+            this.destinyBox.Size = new System.Drawing.Size(72, 89);
             this.destinyBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.destinyBox.TabIndex = 6;
             this.destinyBox.TabStop = false;
@@ -255,13 +258,13 @@
             // 
             // StoryMode1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1061, 478);
+            this.ClientSize = new System.Drawing.Size(1415, 588);
+            this.Controls.Add(this.playerBox);
             this.Controls.Add(this.platformBox2);
             this.Controls.Add(this.coinBox1);
             this.Controls.Add(this.coinCounter);
-            this.Controls.Add(this.playerBox);
             this.Controls.Add(this.countdownLabel);
             this.Controls.Add(this.escMenu);
             this.Controls.Add(this.platformBox1);
@@ -271,7 +274,7 @@
             this.Controls.Add(this.healthBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.escMenu;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "StoryMode1";
             this.Text = "Story-Mode";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.StoryMode1_Paint);

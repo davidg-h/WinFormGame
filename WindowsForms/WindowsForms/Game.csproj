@@ -57,6 +57,12 @@
     <Compile Include="Gamecode\Enemy.cs" />
     <Compile Include="Gamecode\Entity.cs" />
     <Compile Include="Gamecode\EnumGameLvl.cs" />
+    <Compile Include="Gamecode\GameOverScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gamecode\GameOverScreen.Designer.cs">
+      <DependentUpon>GameOverScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gamecode\HighscoreList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,9 +93,18 @@
       <DependentUpon>StartScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Gamecode\SystemSave.cs" />
+    <Compile Include="Gamecode\WinnerScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gamecode\WinnerScreen.Designer.cs">
+      <DependentUpon>WinnerScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Gamecode\EndlessMode.resx">
       <DependentUpon>EndlessMode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gamecode\GameOverScreen.resx">
+      <DependentUpon>GameOverScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gamecode\HighscoreList.resx">
       <DependentUpon>HighscoreList.cs</DependentUpon>
@@ -102,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gamecode\StartScreen.resx">
       <DependentUpon>StartScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gamecode\WinnerScreen.resx">
+      <DependentUpon>WinnerScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -129,6 +147,8 @@
   <ItemGroup>
     <Content Include="Properties\Enemy_Klein.png" />
     <Content Include="Properties\Player.png" />
+    <None Include="Resources\WinnerScreen.png" />
+    <None Include="Resources\GameOver2.png" />
     <None Include="Resources\Background.png" />
     <None Include="Resources\Back1.png" />
     <None Include="Resources\coin Counter.png" />

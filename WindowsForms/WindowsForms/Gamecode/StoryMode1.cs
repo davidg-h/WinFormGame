@@ -155,22 +155,32 @@ namespace WindowsForms.Gamecode
             {
                 MainGameTick.Stop();
                 gameOver = true;
-                //MessageBox.Show("You Died!!!"+Environment.NewLine+ "Press OK to play again");
-
-                //Restart();
-
-                DialogResult dialogresult = MessageBox.Show("You Died!!!" + Environment.NewLine + "Press Yes to play again", "", MessageBoxButtons.YesNo);
-
-                if (dialogresult == DialogResult.Yes)
-                {
-                    Restart();
-                }
-                else if (dialogresult == DialogResult.No)
-                {
-                    Application.Exit();
-                }
+                GameOver();
             }
 
+            ContactWithAnyObject();
+
+            if (player.Hp < 20)
+            {
+                healthBar.ForeColor = System.Drawing.Color.Red;
+            }
+
+           
+
+            background_move();
+
+            //Move all GameElements
+            if (player.goRight == true)
+            {
+                MoveGameElements("back");
+            }
+            if (player.goLeft == true && backgroundCoordX < 0)
+            {
+                MoveGameElements("forward");
+            }
+        }
+        public void ContactWithAnyObject()
+        {
             foreach (Control x in this.Controls)
             {
                 //TODO spawn of enemys (use the enemy classes)
@@ -180,6 +190,14 @@ namespace WindowsForms.Gamecode
                     {
                         if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
                         {
+                            if ((((PictureBox)x).Location.X - playerBox.Location.X) > 0)
+                            {
+                                player.obstacleRight = true;
+                            }
+                            else
+                            {
+                                player.obstacleLeft = true;
+                            }
                             EnemySmall small = new EnemySmall((PictureBox)x);
                             player.Hp -= small.Dmg;
                         }
@@ -201,33 +219,14 @@ namespace WindowsForms.Gamecode
                         }
                     }
                 }
+             
             }
-
-            if (player.Hp < 20)
-            {
-                healthBar.ForeColor = System.Drawing.Color.Red;
-            }
-
             if (playerBox.Bounds.IntersectsWith(destinyBox.Bounds))
             {
                 MainGameTick.Stop();
-                MessageBox.Show("Congratulations, You won!!" + Environment.NewLine + "Press OK to play again");
-                Restart();
-            }
-
-            background_move();
-
-            //Move all GameElements
-            if (player.goRight == true)
-            {
-                MoveGameElements("back");
-            }
-            if (player.goLeft == true && backgroundCoordX < 0)
-            {
-                MoveGameElements("forward");
+                YouWon();
             }
         }
-
         internal void Restart()
         {
             gameOver = false;
@@ -235,6 +234,22 @@ namespace WindowsForms.Gamecode
             newWindow.Show();
             this.Hide();
         }
+
+        internal void GameOver()
+        {
+            gameOver = false;
+            GameOverScreen gameOverScreen = new GameOverScreen();
+            gameOverScreen.Show();
+            this.Hide();
+        }
+        internal void YouWon()
+        {
+            gameOver = true;
+            WinnerScreen winnerScreen = new WinnerScreen();
+            winnerScreen.Show();
+            this.Hide();
+        }
+
 
 
         private void StartGame(object sender, EventArgs e)
