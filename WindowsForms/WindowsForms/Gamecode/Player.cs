@@ -17,6 +17,8 @@ namespace WindowsForms.Gamecode
         internal int score = 0;
         internal int coins = 0;
         internal System.Windows.Vector moveVector;
+
+        //Factory myfactory = new Factory();
         public Player(PictureBox playerBox, int hp, int dmg = 1) : base(playerBox, hp, dmg) { 
             defaultLocation = new Point(34,331);
             moveVector = new System.Windows.Vector(0, 0);
@@ -37,7 +39,7 @@ namespace WindowsForms.Gamecode
         
         public override void move(Form f)
         {
-
+            
             if (goLeft && box.Left > 30)
             {
                 moveVector.X = -characterSpeed;
@@ -49,6 +51,7 @@ namespace WindowsForms.Gamecode
             else
             {
                 moveVector.X = 0;
+
             }
 
             #region jumping mechanics

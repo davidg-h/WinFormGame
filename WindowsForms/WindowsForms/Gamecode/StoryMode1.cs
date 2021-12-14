@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,14 @@ namespace WindowsForms.Gamecode
 {
     public partial class StoryMode1 : Form
     {
+        #region game variables
         public GameLvl lvl = GameLvl.storyLvl_1;
         internal Player player;
         bool gameOver;
+        DateTime lastFrameTime = DateTime.Now; // for fps calculation
+        Graphics g;
+        bool isNewFrame = true;
+        #endregion
 
         public StoryMode1()
         {
@@ -23,9 +29,31 @@ namespace WindowsForms.Gamecode
             player = new Player(playerBox, 100);
             this.FormClosed += StartScreen.closeGame;
             this.KeyDown += formKeyDown;
+            //this.Load += startTimer;
+            //g = CreateGraphics();
         }
 
-        #region Esc Menu
+        #region performance boost / fps
+        //Doublebuffer the Grafics = remove flickering
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleParam = base.CreateParams;
+                handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
+                return handleParam;
+            }
+        }
+
+        private string getFramesPerSecond()
+        {
+            string fps = Convert.ToInt32(1000.0 / (DateTime.Now - lastFrameTime).TotalMilliseconds).ToString();
+            lastFrameTime = DateTime.Now;
+            return fps;
+        }
+        #endregion
+
+        #region Esc Menu (with safe/load)
         /// <summary>
         /// escMenu shall be visible when esc is pressed
         /// </summary>
@@ -113,10 +141,9 @@ namespace WindowsForms.Gamecode
 
             player.move(this);
             player.IsOnGround = false; //gets updated to correct value below
+            fpsLabel.Text = "fps: " + getFramesPerSecond();
 
-          
-
-            if (player.Hp > 1)
+            if (player.Hp > 1 && !gameOver)
             {
                 healthBar.Value = Convert.ToInt32(player.Hp);
             }
@@ -145,7 +172,7 @@ namespace WindowsForms.Gamecode
                 //TODO spawn of enemys (use the enemy classes)
                 if (x is PictureBox)
                 {
-                    if((string)x.Tag == "obstacleTree")
+                    if ((string)x.Tag == "obstacleTree")
                     {
                         if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
                         {
@@ -153,7 +180,7 @@ namespace WindowsForms.Gamecode
                             player.Hp -= small.Dmg;
                         }
                     }
-                    if((string)x.Tag == "plattform")
+                    if ((string)x.Tag == "platform")
                     {
                         if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
                         {
@@ -163,7 +190,6 @@ namespace WindowsForms.Gamecode
                     }
                 }
             }
-
             if (player.Hp < 20)
             {
                 healthBar.ForeColor = System.Drawing.Color.Red;
@@ -174,9 +200,8 @@ namespace WindowsForms.Gamecode
                 MessageBox.Show("Congratulations, You won!!" + Environment.NewLine + "Press OK to play again");
                 Restart();
             }
-
-
         }
+
         internal void Restart()
         {
             gameOver = false;
@@ -238,7 +263,7 @@ namespace WindowsForms.Gamecode
                     //also switch to another sprite when a key is let go of
                     if(!holdDirection)
                     {
-                        holdDirection = true;
+                        holdDirection = false;
                         playerBox.Image = Properties.Resources.idle;
                     }    
                     break;
@@ -246,7 +271,7 @@ namespace WindowsForms.Gamecode
                     player.Left(false);
                     if (!holdDirection)
                     {
-                        holdDirection = true;
+                        holdDirection = false;
                         playerBox.Image = Properties.Resources.idle;
                     }
                     break;
@@ -254,7 +279,7 @@ namespace WindowsForms.Gamecode
                     player.goDown = false;
                     if (!holdDirection)
                     {
-                        holdDirection = true;
+                        holdDirection = false;
                         playerBox.Image = Properties.Resources.idle;
                     }
                     break;
@@ -281,15 +306,21 @@ namespace WindowsForms.Gamecode
         Image layer_2 = Properties.Resources.Clouds;
         Image layer_3 = Properties.Resources.Mountain;
         Image layer_4 = Properties.Resources.Front;
+        
 
         //draw the background Images on specific coordinates
         //TODO parallax background scrolling
+  
         internal void StoryMode1_Paint(object sender, PaintEventArgs e)
         {
+            //if (isNewFrame)
+            //{
             e.Graphics.DrawImage(layer_1, 0, 0);
             e.Graphics.DrawImage(layer_2, 0, 0);
             e.Graphics.DrawImage(layer_3, 0, 0);
             e.Graphics.DrawImage(layer_4, 0, 0);
+            //    isNewFrame = false;
+            //}
         }
     }
 }

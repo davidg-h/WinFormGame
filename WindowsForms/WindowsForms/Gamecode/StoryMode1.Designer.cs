@@ -47,6 +47,8 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.fpsLabel = new System.Windows.Forms.Label();
             this.escMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obstacleTree)).BeginInit();
@@ -117,7 +119,7 @@
             this.escMenuM.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.escMenuM.Margin = new System.Windows.Forms.Padding(0, 20, 0, 60);
             this.escMenuM.Name = "escMenuM";
-            this.escMenuM.Size = new System.Drawing.Size(2090, 124);
+            this.escMenuM.Size = new System.Drawing.Size(2087, 124);
             this.escMenuM.Text = "Menu";
             this.escMenuM.Click += new System.EventHandler(this.menuEastereggClick);
             // 
@@ -126,7 +128,7 @@
             this.resumeToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resumeToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.resumeToolStripMenuItem.Name = "resumeToolStripMenuItem";
-            this.resumeToolStripMenuItem.Size = new System.Drawing.Size(2090, 67);
+            this.resumeToolStripMenuItem.Size = new System.Drawing.Size(2087, 67);
             this.resumeToolStripMenuItem.Text = "Resume";
             this.resumeToolStripMenuItem.Click += new System.EventHandler(this.resumeClick);
             // 
@@ -135,7 +137,7 @@
             this.startScreenToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startScreenToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.startScreenToolStripMenuItem.Name = "startScreenToolStripMenuItem";
-            this.startScreenToolStripMenuItem.Size = new System.Drawing.Size(2090, 67);
+            this.startScreenToolStripMenuItem.Size = new System.Drawing.Size(2087, 67);
             this.startScreenToolStripMenuItem.Text = "Start-Screen";
             this.startScreenToolStripMenuItem.Click += new System.EventHandler(this.startScreenClick);
             // 
@@ -144,7 +146,7 @@
             this.saveGameToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveGameToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.saveGameToolStripMenuItem.Name = "saveGameToolStripMenuItem";
-            this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(2090, 67);
+            this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(2087, 67);
             this.saveGameToolStripMenuItem.Text = "Save Game";
             this.saveGameToolStripMenuItem.Click += new System.EventHandler(this.saveGameClick);
             // 
@@ -153,7 +155,7 @@
             this.loadGameToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loadGameToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.loadGameToolStripMenuItem.Name = "loadGameToolStripMenuItem";
-            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(2090, 67);
+            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(2087, 67);
             this.loadGameToolStripMenuItem.Text = "Load Game";
             this.loadGameToolStripMenuItem.Click += new System.EventHandler(this.loadGameClick);
             // 
@@ -166,7 +168,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(1317, 165);
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Tag = "plattform";
+            this.pictureBox1.Tag = "platform";
             // 
             // obstacleTree
             // 
@@ -197,7 +199,7 @@
             // 
             this.playerBox.BackColor = System.Drawing.Color.Transparent;
             this.playerBox.Image = global::WindowsForms.Properties.Resources.idle;
-            this.playerBox.Location = new System.Drawing.Point(68, 637);
+            this.playerBox.Location = new System.Drawing.Point(87, 230);
             this.playerBox.Margin = new System.Windows.Forms.Padding(4);
             this.playerBox.Name = "playerBox";
             this.playerBox.Size = new System.Drawing.Size(68, 64);
@@ -214,7 +216,7 @@
             this.pictureBox2.Size = new System.Drawing.Size(33, 34);
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Tag = "plattform";
+            this.pictureBox2.Tag = "platform";
             // 
             // pictureBox3
             // 
@@ -225,7 +227,7 @@
             this.pictureBox3.Size = new System.Drawing.Size(33, 34);
             this.pictureBox3.TabIndex = 10;
             this.pictureBox3.TabStop = false;
-            this.pictureBox3.Tag = "plattform";
+            this.pictureBox3.Tag = "platform";
             // 
             // pictureBox4
             // 
@@ -236,7 +238,7 @@
             this.pictureBox4.Size = new System.Drawing.Size(33, 34);
             this.pictureBox4.TabIndex = 11;
             this.pictureBox4.TabStop = false;
-            this.pictureBox4.Tag = "plattform";
+            this.pictureBox4.Tag = "platform";
             // 
             // pictureBox5
             // 
@@ -247,7 +249,7 @@
             this.pictureBox5.Size = new System.Drawing.Size(33, 34);
             this.pictureBox5.TabIndex = 12;
             this.pictureBox5.TabStop = false;
-            this.pictureBox5.Tag = "plattform";
+            this.pictureBox5.Tag = "platform";
             // 
             // pictureBox6
             // 
@@ -258,13 +260,34 @@
             this.pictureBox6.Size = new System.Drawing.Size(759, 165);
             this.pictureBox6.TabIndex = 13;
             this.pictureBox6.TabStop = false;
-            this.pictureBox6.Tag = "plattform";
+            this.pictureBox6.Tag = "platform";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1479, 766);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 25);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "label1";
+            // 
+            // fpsLabel
+            // 
+            this.fpsLabel.AutoSize = true;
+            this.fpsLabel.BackColor = System.Drawing.Color.Transparent;
+            this.fpsLabel.Location = new System.Drawing.Point(28, 90);
+            this.fpsLabel.Name = "fpsLabel";
+            this.fpsLabel.Size = new System.Drawing.Size(59, 25);
+            this.fpsLabel.TabIndex = 15;
+            this.fpsLabel.Text = "0 fps";
             // 
             // StoryMode1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2094, 862);
+            this.Controls.Add(this.fpsLabel);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
@@ -313,12 +336,21 @@
         internal System.Windows.Forms.PictureBox obstacleTree;
         internal System.Windows.Forms.PictureBox playerBox;
         internal System.Windows.Forms.PictureBox destinyBox;
+        internal System.Windows.Forms.PictureBox platformBox1;
+        private System.Windows.Forms.Timer CountdownTimer;
+        private System.Windows.Forms.Label countdownLabel;
+        private System.Windows.Forms.Label coinCounter;
+        private System.Windows.Forms.PictureBox coinBox1;
+        internal System.Windows.Forms.PictureBox platformBox2;
+        private System.Windows.Forms.Label fps;
         internal System.Windows.Forms.PictureBox pictureBox1;
         internal System.Windows.Forms.PictureBox pictureBox2;
         internal System.Windows.Forms.PictureBox pictureBox3;
         internal System.Windows.Forms.PictureBox pictureBox4;
         internal System.Windows.Forms.PictureBox pictureBox5;
         internal System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label fpsLabel;
     }
 }
 
