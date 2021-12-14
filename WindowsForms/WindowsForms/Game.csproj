@@ -147,6 +147,12 @@
   <ItemGroup>
     <Content Include="Properties\Enemy_Klein.png" />
     <Content Include="Properties\Player.png" />
+    <None Include="Resources\platform.png" />
+    <None Include="Resources\platform2.png" />
+    <None Include="Resources\wallTop2.png" />
+    <None Include="Resources\wallLeft2.png" />
+    <None Include="Resources\platform16.png" />
+    <None Include="Resources\wallTop4.png" />
     <None Include="Resources\WinnerScreen.png" />
     <None Include="Resources\GameOver2.png" />
     <None Include="Resources\Background.png" />
