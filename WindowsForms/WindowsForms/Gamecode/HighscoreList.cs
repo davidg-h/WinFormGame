@@ -44,7 +44,6 @@ namespace WindowsForms.Gamecode
                 if (!listIsFull) fillList(entry.score, entry.name);
                 else highscoreEntries = insert(entry.score, entry.name);
             }
-
             displayList();
         }
 

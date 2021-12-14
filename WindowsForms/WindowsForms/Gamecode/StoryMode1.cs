@@ -13,7 +13,9 @@ namespace WindowsForms.Gamecode
 {
     public partial class StoryMode1 : Form
     {
-        #region game variables
+        #region Game variables
+        private int min = 5;
+        private int sec;
         public GameLvl lvl = GameLvl.storyLvl_1;
         internal Player player;
         bool gameOver;
@@ -108,7 +110,7 @@ namespace WindowsForms.Gamecode
             {
                 case GameLvl.storyLvl_1:
                     playerBox.Location = gameData.location;
-                    player.score = gameData.score;
+                    // player.score = gameData.score; for endless mode
                     player.coins = gameData.coins;
                     player.Hp = gameData.hp;
                     player.Dmg = gameData.dmg;
@@ -130,14 +132,40 @@ namespace WindowsForms.Gamecode
         }
         #endregion
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        #region Countdown Timer
+        private void startTimer(object sender, EventArgs e)
         {
-            
+            countdownLabel.Text = $"{min}:00";
+            CountdownTimer.Start();
         }
 
+        private void timerTick(object sender, EventArgs e)
+        {
+            if (min == 5)
+            {
+                min -= 1;
+                sec = 59;
+            }
+            else
+            {
+                sec -= 1;
+                if (sec == 0 && !gameOver)
+                {
+                    if (min == 0) { gameOver = true; CountdownTimer.Stop(); }
+                    else { min -= 1; sec = 59; }
+                }
+            }
+
+            if (sec < 10) countdownLabel.Text = $"{min}:0{sec}";
+            else countdownLabel.Text = $"{min}:{sec}";
+        }
+        #endregion
+
+        #region GameLoop StoryMode
         private void MainGameTick_Tick(object sender, EventArgs e)
         {
 
+            coinCounter.Text = $": {player.coins}";
 
             player.move(this);
             player.IsOnGround = false; //gets updated to correct value below
@@ -151,22 +179,32 @@ namespace WindowsForms.Gamecode
             {
                 MainGameTick.Stop();
                 gameOver = true;
-                //MessageBox.Show("You Died!!!"+Environment.NewLine+ "Press OK to play again");
-
-                //Restart();
-
-                DialogResult dialogresult = MessageBox.Show("You Died!!!" + Environment.NewLine + "Press Yes to play again", "", MessageBoxButtons.YesNo);
-
-                if (dialogresult == DialogResult.Yes)
-                {
-                    Restart();
-                }
-                else if (dialogresult == DialogResult.No)
-                {
-                    Application.Exit();
-                }
+                GameOver();
             }
 
+            ContactWithAnyObject();
+
+            if (player.Hp < 20)
+            {
+                healthBar.ForeColor = System.Drawing.Color.Red;
+            }
+
+           
+
+            background_move();
+
+            //Move all GameElements
+            if (player.goRight == true)
+            {
+                MoveGameElements("back");
+            }
+            if (player.goLeft == true && backgroundCoordX < 0)
+            {
+                MoveGameElements("forward");
+            }
+        }
+        public void ContactWithAnyObject()
+        {
             foreach (Control x in this.Controls)
             {
                 //TODO spawn of enemys (use the enemy classes)
@@ -176,6 +214,14 @@ namespace WindowsForms.Gamecode
                     {
                         if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
                         {
+                            if ((((PictureBox)x).Location.X - playerBox.Location.X) > 0)
+                            {
+                                player.obstacleRight = true;
+                            }
+                            else
+                            {
+                                player.obstacleLeft = true;
+                            }
                             EnemySmall small = new EnemySmall((PictureBox)x);
                             player.Hp -= small.Dmg;
                         }
@@ -188,20 +234,23 @@ namespace WindowsForms.Gamecode
                             player.MoveToTopOfPlatform(x.Top);
                         }
                     }
+                    if ((string)x.Tag == "coins")
+                    {
+                        if (playerBox.Bounds.IntersectsWith(x.Bounds) && x.Visible == true)
+                        {
+                            x.Visible = false;
+                            player.coins += 1;
+                        }
+                    }
                 }
-            }
-            if (player.Hp < 20)
-            {
-                healthBar.ForeColor = System.Drawing.Color.Red;
+             
             }
             if (playerBox.Bounds.IntersectsWith(destinyBox.Bounds))
             {
                 MainGameTick.Stop();
-                MessageBox.Show("Congratulations, You won!!" + Environment.NewLine + "Press OK to play again");
-                Restart();
+                YouWon();
             }
         }
-
         internal void Restart()
         {
             gameOver = false;
@@ -210,19 +259,42 @@ namespace WindowsForms.Gamecode
             this.Hide();
         }
 
+        internal void GameOver()
+        {
+            gameOver = false;
+            GameOverScreen gameOverScreen = new GameOverScreen();
+            gameOverScreen.Show();
+            this.Hide();
+        }
+        internal void YouWon()
+        {
+            gameOver = true;
+            WinnerScreen winnerScreen = new WinnerScreen();
+            winnerScreen.Show();
+            this.Hide();
+        }
+
+
+
+        private void StartGame(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        #endregion
+
+        #region Key Inputs
         bool holdDirection = true;
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
-
-                //TODO jumpinglimit 
                 case Keys.W:
                     player.jump();
                     //different sprites for holding a 'move' button
                     if (holdDirection)
                     {
                         playerBox.Image = Properties.Resources.walking;
+
                     }
                     break;
                 case Keys.A:
@@ -230,6 +302,8 @@ namespace WindowsForms.Gamecode
                     if (holdDirection)
                     {
                         playerBox.Image = Properties.Resources.walkingLeft;
+                        holdDirection = false;
+
                     }
                     break;
                 case Keys.S:
@@ -237,6 +311,8 @@ namespace WindowsForms.Gamecode
                     if (holdDirection)
                     {
                         playerBox.Image = Properties.Resources.walking;
+                        holdDirection = false;
+
                     }
                     break;
                 case Keys.D:
@@ -244,6 +320,8 @@ namespace WindowsForms.Gamecode
                     if (holdDirection)
                     {
                         playerBox.Image = Properties.Resources.walking;
+                        holdDirection = false;
+
                     }
                     break;
             }
@@ -261,11 +339,11 @@ namespace WindowsForms.Gamecode
                     player.Right(false);
 
                     //also switch to another sprite when a key is let go of
-                    if(!holdDirection)
+                    if (!holdDirection)
                     {
                         holdDirection = false;
                         playerBox.Image = Properties.Resources.idle;
-                    }    
+                    }
                     break;
                 case Keys.A:
                     player.Left(false);
@@ -289,38 +367,68 @@ namespace WindowsForms.Gamecode
             {
                 player.jumps = false;
             }
-               
         }
+        #endregion
 
-        private void StartGame(object sender, EventArgs e)
+        #region Background
+
+        Image backgroundlayer = Properties.Resources.Background;
+        int backgroundCoordX = 0, backgroundCoordX2 = 1600;
+        private void StoryMode1_Paint(object sender, PaintEventArgs e)
         {
-            Application.Exit();
+            e.Graphics.DrawImage(backgroundlayer, backgroundCoordX, 0);
+            e.Graphics.DrawImage(backgroundlayer, backgroundCoordX2, 0);
+
         }
 
-        private void OpenInstructions(object sender, EventArgs e)
+
+        void background_move()
         {
+            if (backgroundCoordX <= -1600)
+                backgroundCoordX = 1600;
 
+            if (backgroundCoordX2 <= -1600)
+                backgroundCoordX2 = 1600;
+
+
+            if (player.goRight)
+            {
+                backgroundCoordX -= 2;
+                backgroundCoordX2 -= 2;
+            }
+            if (player.goLeft && backgroundCoordX < 0)
+            {
+                backgroundCoordX += 2;
+                backgroundCoordX2 += 2;
+            }
+
+            Invalidate();
         }
-        // initialize the background Images
-        Image layer_1 = Properties.Resources.Back;
-        Image layer_2 = Properties.Resources.Clouds;
-        Image layer_3 = Properties.Resources.Mountain;
-        Image layer_4 = Properties.Resources.Front;
-        
 
-        //draw the background Images on specific coordinates
-        //TODO parallax background scrolling
-  
-        internal void StoryMode1_Paint(object sender, PaintEventArgs e)
+        #endregion
+
+        #region Moving GameElements
+        private void MoveGameElements(string direction)
         {
-            //if (isNewFrame)
-            //{
-            e.Graphics.DrawImage(layer_1, 0, 0);
-            e.Graphics.DrawImage(layer_2, 0, 0);
-            e.Graphics.DrawImage(layer_3, 0, 0);
-            e.Graphics.DrawImage(layer_4, 0, 0);
-            //    isNewFrame = false;
-            //}
+            foreach (Control x in this.Controls)
+            {
+                //moving the elements with the wanted Tags with the movement of the player
+                //new object that need to be moved: enter "Tag" in this if statement
+                if (x is PictureBox && (string)x.Tag == "platform" || x is PictureBox && (string)x.Tag == "obstacleTree" || x is PictureBox && (string)x.Tag == "coins" || x is PictureBox && (string)x.Tag == "finish" || x is PictureBox && (string)x.Tag == "......")
+                {
+                    if (direction == "back")
+                    {
+                        x.Left -= player.characterSpeed;
+                    }
+                    if (direction == "forward")
+                    {
+                        x.Left += player.characterSpeed;
+                    }
+                }
+            }
         }
+
+        #endregion
+
     }
 }

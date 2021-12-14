@@ -13,24 +13,27 @@ namespace WindowsForms.Gamecode
 {
     public partial class EndlessMode : Form
     {
+        #region Game(EndlessMode) variables
         Random rand = new Random();
         StoryMode1 mode1Window = new StoryMode1();
         bool gameOver = false;
         int obstacleSpeed = 10;
+        int inventoryChestCoins;
         internal Player player;
+        #endregion
 
         public EndlessMode()
         {
             InitializeComponent();
             player = new Player(playerBox, 100);
             this.FormClosed += StartScreen.closeGame;
-            this.Paint += mode1Window.StoryMode1_Paint;
             this.KeyDown += formKeyDown;
-
+            this.Load += loadInventory;
+            this.FormClosing += saveInventory;
             GameReset();
         }
 
-        #region Esc Menu
+        #region Esc Menu (with safe/load)
         /// <summary>
         /// funcionality explained in StoryMode1
         /// </summary>
@@ -62,13 +65,26 @@ namespace WindowsForms.Gamecode
             }
         }
 
-        //TODO Save function for saving coins and power ups
-        //TODO load function loading coins and power ups
+        //TODO Save add for power ups
+        private void saveInventory(object sender, EventArgs e)
+        {
+            SystemSave.saveCoins(player.coins + inventoryChestCoins);
+        }
+        //TODO load add for power ups
+        private void loadInventory(object sender, EventArgs e)
+        {
+            inventoryChestCoins = SystemSave.loadCoins();
+        }
         #endregion
 
+        #region EndlessMode Gameloop
         private void endlessTickTimer(object sender, EventArgs e)
         {
+            backgroundScroll();
             scoreLabel.Text = "Score: " + player.score;
+            coinCounter.Text = $": {player.coins}";
+            inventoryCoins.Text = $"Tresure Chest: {inventoryChestCoins}";
+
             player.move(this);
             player.isOnGround = false;
 
@@ -96,8 +112,8 @@ namespace WindowsForms.Gamecode
                     NameInput nameInput = new NameInput();
                     dialogresult = nameInput.ShowDialog();
 
-                    if (dialogresult == DialogResult.OK) 
-                    { 
+                    if (dialogresult == DialogResult.OK)
+                    {
                         string name = nameInput.playerName.Text;
                         // processes the name and score and displays them
                         HighscoreList highscoreList = new HighscoreList(name, scoreLabel.Text);
@@ -144,6 +160,15 @@ namespace WindowsForms.Gamecode
                         }
                     }
                 }
+
+                if (x is PictureBox && (string)x.Tag == "coins")
+                {
+                    if (playerBox.Bounds.IntersectsWith(x.Bounds) && x.Visible == true)
+                    {
+                        x.Visible = false;
+                        player.coins += 1;
+                    }
+                }
             }
 
             if (player.Hp < 20)
@@ -172,19 +197,21 @@ namespace WindowsForms.Gamecode
             foreach (Control x in this.Controls)
             {
                 // takes all pictureBoxes with the tag == "obstacleTree" and places them further to the right (outside the viewing screen)
-                if (x is PictureBox )
+                if (x is PictureBox)
                 {
-                    if((string)x.Tag == "obstacleTree")
+                    if ((string)x.Tag == "obstacleTree")
                     {
                         x.Left = this.ClientSize.Width + rand.Next(450, 800) + (x.Width * 10);
                     }
-                    
+
                 }
             }
 
             MainGameTick.Start();
         }
+        #endregion
 
+        #region Key Inputs
         bool holdDirection = true;
         private void keyIsDown(object sender, KeyEventArgs e)
         {
@@ -255,7 +282,7 @@ namespace WindowsForms.Gamecode
                     }
                     break;
                 case Keys.S:
-                    
+
                     if (!holdDirection)
                     {
                         holdDirection = true;
@@ -269,5 +296,29 @@ namespace WindowsForms.Gamecode
                 player.jumps = false;
             }
         }
+        #endregion
+
+        #region endless backgroundScrolling
+        Image background = Properties.Resources.Background;
+        int backgroundCoordX1 = 0, backgroundCoordX2 = 1600;
+        private void EndlessMode_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawImage(background, backgroundCoordX1, 0);
+            e.Graphics.DrawImage(background, backgroundCoordX2, 0);
+        }
+
+        void backgroundScroll()
+        {
+            if (backgroundCoordX1 <= -1600)
+                backgroundCoordX1 = 1600;
+
+            if (backgroundCoordX2 <= -1600)
+                backgroundCoordX2 = 1600;
+
+            backgroundCoordX1 -= 5;
+            backgroundCoordX2 -= 5;
+            Invalidate();
+        }
+        #endregion
     }
 }

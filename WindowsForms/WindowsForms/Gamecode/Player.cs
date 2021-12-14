@@ -9,7 +9,6 @@ using System.Windows.Media.Media3D;
 //using System.Windows;
 
 namespace WindowsForms.Gamecode
-
 {
     internal class Player : Entity
     {
@@ -36,22 +35,23 @@ namespace WindowsForms.Gamecode
         internal void jump() { jumps = true; }
         internal void Down() { goDown = true; }
         internal bool IsOnGround { get => isOnGround; set => isOnGround = value; }
-        
+        public bool obstacleRight = false;
+        public bool obstacleLeft = false;
+
         public override void move(Form f)
         {
-            
-            if (goLeft && box.Left > 30)
+
+            if (goLeft && box.Left > 30 && !obstacleLeft)
             {
                 moveVector.X = -characterSpeed;
             }
-            else if (goRight && box.Left + (box.Width + 30) < f.ClientSize.Width)
+            else if (goRight && box.Left + (box.Width + 30) < f.ClientSize.Width && !obstacleRight)
             {
                 moveVector.X = characterSpeed;
             }
             else
             {
                 moveVector.X = 0;
-
             }
 
             #region jumping mechanics

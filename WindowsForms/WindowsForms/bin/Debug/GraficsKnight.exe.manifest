@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GraficsKnight.exe" size="279536">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GraficsKnight.exe" size="658928">
       <assemblyIdentity name="GraficsKnight" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>mOYLMFa/DLx3nxq4gQ3tkbu4B0CMmtN4OKJ4HeHxz8c=</dsig:DigestValue>
+        <dsig:DigestValue>ZHP17a7AYEF9Ag0zFg2ztL6/9zzhnRkZLFWAxwFRVfc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
