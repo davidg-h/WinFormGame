@@ -380,6 +380,7 @@ namespace WindowsForms.Gamecode
 
             Invalidate();
         }
+
         #endregion
 
         #region Moving GameElements
