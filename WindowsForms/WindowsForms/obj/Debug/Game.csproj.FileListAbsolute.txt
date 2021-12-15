@@ -11,7 +11,6 @@ C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\Wi
 C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\Game.csproj.CoreCompileInputs.cache
 C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.exe
 C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.pdb
-C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\Game.csproj.AssemblyReference.cache
 C:\Users\David\Desktop\Schule TH\Min Semester 3\Graphic-Knight\WindowsForms\WindowsForms\bin\Debug\WindowsForms.exe.config
 C:\Users\David\Desktop\Schule TH\Min Semester 3\Graphic-Knight\WindowsForms\WindowsForms\bin\Debug\WindowsForms.exe
 C:\Users\David\Desktop\Schule TH\Min Semester 3\Graphic-Knight\WindowsForms\WindowsForms\bin\Debug\WindowsForms.pdb
@@ -74,5 +73,3 @@ C:\Users\David\Desktop\Schule TH\Min Semester 3\Graphic Knight\WindowsForms\Wind
 C:\Users\David\Desktop\Schule TH\Min Semester 3\Graphic Knight\WindowsForms\WindowsForms\obj\Debug\WindowsForms.pdb
 C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.GameOverScreen.resources
 C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.WinnerScreen.resources
-C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\GraficsKnight.exe
-C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\GraficsKnight.pdb

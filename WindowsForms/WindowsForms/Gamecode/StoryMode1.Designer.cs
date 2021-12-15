@@ -213,7 +213,7 @@
             // platformBox2
             // 
             this.platformBox2.BackColor = System.Drawing.Color.Black;
-            this.platformBox2.Image = global::WindowsForms.Properties.Resources.wallTop4;
+            //this.platformBox2.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox2.Location = new System.Drawing.Point(402, 313);
             this.platformBox2.Name = "platformBox2";
             this.platformBox2.Size = new System.Drawing.Size(147, 30);
@@ -309,7 +309,7 @@
             // platformBox1
             // 
             this.platformBox1.BackColor = System.Drawing.Color.Black;
-            this.platformBox1.Image = global::WindowsForms.Properties.Resources.platform16;
+            //this.platformBox1.Image = global::WindowsForms.Properties.Resources.platform16;
             this.platformBox1.Location = new System.Drawing.Point(-11, 421);
             this.platformBox1.Name = "platformBox1";
             this.platformBox1.Size = new System.Drawing.Size(637, 72);
@@ -359,7 +359,7 @@
             // platformBox3
             // 
             this.platformBox3.BackColor = System.Drawing.Color.Black;
-            this.platformBox3.Image = global::WindowsForms.Properties.Resources.platform16;
+            //this.platformBox3.Image = global::WindowsForms.Properties.Resources.platform16;
             this.platformBox3.Location = new System.Drawing.Point(619, 421);
             this.platformBox3.Name = "platformBox3";
             this.platformBox3.Size = new System.Drawing.Size(637, 72);
@@ -384,7 +384,7 @@
             // platformBox4
             // 
             this.platformBox4.BackColor = System.Drawing.Color.Black;
-            this.platformBox4.Image = global::WindowsForms.Properties.Resources.wallLeft2;
+            //this.platformBox4.Image = global::WindowsForms.Properties.Resources.wallLeft2;
             this.platformBox4.Location = new System.Drawing.Point(1320, 313);
             this.platformBox4.Name = "platformBox4";
             this.platformBox4.Size = new System.Drawing.Size(52, 180);
@@ -396,7 +396,7 @@
             // platformBox5
             // 
             this.platformBox5.BackColor = System.Drawing.Color.Black;
-            this.platformBox5.Image = global::WindowsForms.Properties.Resources.wallTop4;
+            //this.platformBox5.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox5.Location = new System.Drawing.Point(1465, 284);
             this.platformBox5.Name = "platformBox5";
             this.platformBox5.Size = new System.Drawing.Size(147, 30);
@@ -408,7 +408,7 @@
             // platformBox6
             // 
             this.platformBox6.BackColor = System.Drawing.Color.Black;
-            this.platformBox6.Image = global::WindowsForms.Properties.Resources.platform2;
+            //this.platformBox6.Image = global::WindowsForms.Properties.Resources.platform2;
             this.platformBox6.Location = new System.Drawing.Point(1717, 421);
             this.platformBox6.Name = "platformBox6";
             this.platformBox6.Size = new System.Drawing.Size(105, 72);
@@ -420,7 +420,7 @@
             // platformBox7
             // 
             this.platformBox7.BackColor = System.Drawing.Color.Black;
-            this.platformBox7.Image = global::WindowsForms.Properties.Resources.wallTop4;
+            //this.platformBox7.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox7.Location = new System.Drawing.Point(1848, 365);
             this.platformBox7.Name = "platformBox7";
             this.platformBox7.Size = new System.Drawing.Size(147, 30);
@@ -432,7 +432,7 @@
             // platformBox8
             // 
             this.platformBox8.BackColor = System.Drawing.Color.Black;
-            this.platformBox8.Image = global::WindowsForms.Properties.Resources.wallTop4;
+            //this.platformBox8.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox8.Location = new System.Drawing.Point(2048, 294);
             this.platformBox8.Name = "platformBox8";
             this.platformBox8.Size = new System.Drawing.Size(147, 30);
@@ -444,7 +444,7 @@
             // platformBox10
             // 
             this.platformBox10.BackColor = System.Drawing.Color.Black;
-            this.platformBox10.Image = global::WindowsForms.Properties.Resources.wallTop4;
+            //this.platformBox10.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox10.Location = new System.Drawing.Point(2063, 131);
             this.platformBox10.Name = "platformBox10";
             this.platformBox10.Size = new System.Drawing.Size(93, 30);
@@ -456,7 +456,7 @@
             // platformBox17
             // 
             this.platformBox17.BackColor = System.Drawing.Color.Black;
-            this.platformBox17.Image = global::WindowsForms.Properties.Resources.wallTop4;
+            //this.platformBox17.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox17.Location = new System.Drawing.Point(2671, 331);
             this.platformBox17.Name = "platformBox17";
             this.platformBox17.Size = new System.Drawing.Size(147, 30);
@@ -468,7 +468,7 @@
             // platformBox15
             // 
             this.platformBox15.BackColor = System.Drawing.Color.Black;
-            this.platformBox15.Image = global::WindowsForms.Properties.Resources.wallLeft2;
+            //this.platformBox15.Image = global::WindowsForms.Properties.Resources.wallLeft2;
             this.platformBox15.Location = new System.Drawing.Point(2417, 313);
             this.platformBox15.Name = "platformBox15";
             this.platformBox15.Size = new System.Drawing.Size(52, 180);
@@ -480,7 +480,7 @@
             // platformBox14
             // 
             this.platformBox14.BackColor = System.Drawing.Color.Black;
-            this.platformBox14.Image = global::WindowsForms.Properties.Resources.wallLeft2;
+            //this.platformBox14.Image = global::WindowsForms.Properties.Resources.wallLeft2;
             this.platformBox14.Location = new System.Drawing.Point(2417, 144);
             this.platformBox14.Name = "platformBox14";
             this.platformBox14.Size = new System.Drawing.Size(52, 180);
@@ -492,7 +492,7 @@
             // platformBox13
             // 
             this.platformBox13.BackColor = System.Drawing.Color.Black;
-            this.platformBox13.Image = global::WindowsForms.Properties.Resources.platform;
+            //this.platformBox13.Image = global::WindowsForms.Properties.Resources.platform;
             this.platformBox13.Location = new System.Drawing.Point(2417, 117);
             this.platformBox13.Name = "platformBox13";
             this.platformBox13.Size = new System.Drawing.Size(52, 32);
@@ -504,7 +504,7 @@
             // platformBox9
             // 
             this.platformBox9.BackColor = System.Drawing.Color.Black;
-            this.platformBox9.Image = global::WindowsForms.Properties.Resources.wallTop4;
+            //this.platformBox9.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox9.Location = new System.Drawing.Point(2233, 214);
             this.platformBox9.Name = "platformBox9";
             this.platformBox9.Size = new System.Drawing.Size(147, 30);
@@ -516,7 +516,7 @@
             // platformBox11
             // 
             this.platformBox11.BackColor = System.Drawing.Color.Black;
-            this.platformBox11.Image = global::WindowsForms.Properties.Resources.wallTop4;
+            //this.platformBox11.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox11.Location = new System.Drawing.Point(2233, 62);
             this.platformBox11.Name = "platformBox11";
             this.platformBox11.Size = new System.Drawing.Size(39, 30);
@@ -528,7 +528,7 @@
             // platformBox12
             // 
             this.platformBox12.BackColor = System.Drawing.Color.Black;
-            this.platformBox12.Image = global::WindowsForms.Properties.Resources.wallTop4;
+            //this.platformBox12.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox12.Location = new System.Drawing.Point(2374, 27);
             this.platformBox12.Name = "platformBox12";
             this.platformBox12.Size = new System.Drawing.Size(47, 30);
@@ -540,7 +540,7 @@
             // platformBox18
             // 
             this.platformBox18.BackColor = System.Drawing.Color.Black;
-            this.platformBox18.Image = global::WindowsForms.Properties.Resources.platform16;
+            //this.platformBox18.Image = global::WindowsForms.Properties.Resources.platform16;
             this.platformBox18.Location = new System.Drawing.Point(2832, 421);
             this.platformBox18.Name = "platformBox18";
             this.platformBox18.Size = new System.Drawing.Size(637, 72);
@@ -552,7 +552,7 @@
             // platformBox16
             // 
             this.platformBox16.BackColor = System.Drawing.Color.Black;
-            this.platformBox16.Image = global::WindowsForms.Properties.Resources.wallLeft2;
+            //this.platformBox16.Image = global::WindowsForms.Properties.Resources.wallLeft2;
             this.platformBox16.Location = new System.Drawing.Point(2551, 388);
             this.platformBox16.Name = "platformBox16";
             this.platformBox16.Size = new System.Drawing.Size(52, 180);
@@ -564,7 +564,7 @@
             // platformBox19
             // 
             this.platformBox19.BackColor = System.Drawing.Color.Black;
-            this.platformBox19.Image = global::WindowsForms.Properties.Resources.wallTop4;
+            //this.platformBox19.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox19.Location = new System.Drawing.Point(3427, 331);
             this.platformBox19.Name = "platformBox19";
             this.platformBox19.Size = new System.Drawing.Size(147, 30);
@@ -576,7 +576,7 @@
             // platformBox20
             // 
             this.platformBox20.BackColor = System.Drawing.Color.Black;
-            this.platformBox20.Image = global::WindowsForms.Properties.Resources.wallTop4;
+            //this.platformBox20.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox20.Location = new System.Drawing.Point(3623, 249);
             this.platformBox20.Name = "platformBox20";
             this.platformBox20.Size = new System.Drawing.Size(147, 30);
