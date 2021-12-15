@@ -56,6 +56,8 @@ namespace WindowsForms.Gamecode
             this.coinCounter = new System.Windows.Forms.Label();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.inventoryCoins = new System.Windows.Forms.Label();
+            this.background1 = new System.Windows.Forms.PictureBox();
+            this.background2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.escMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.obstacleTree)).BeginInit();
@@ -71,6 +73,8 @@ namespace WindowsForms.Gamecode
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.background1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.background2)).BeginInit();
             this.SuspendLayout();
             // 
             // healthLabel
@@ -382,12 +386,34 @@ namespace WindowsForms.Gamecode
             this.inventoryCoins.TabIndex = 20;
             this.inventoryCoins.Text = "Treasure Chest: ";
             // 
+            // background1
+            // 
+            this.background1.Image = global::WindowsForms.Properties.Resources.Background;
+            this.background1.Location = new System.Drawing.Point(0, 0);
+            this.background1.Name = "background1";
+            this.background1.Size = new System.Drawing.Size(1200, 512);
+            this.background1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.background1.TabIndex = 21;
+            this.background1.TabStop = false;
+            this.background1.Tag = "background";
+            // 
+            // background2
+            // 
+            this.background2.Image = global::WindowsForms.Properties.Resources.Background;
+            this.background2.Location = new System.Drawing.Point(1198, 0);
+            this.background2.Name = "background2";
+            this.background2.Size = new System.Drawing.Size(1200, 512);
+            this.background2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.background2.TabIndex = 22;
+            this.background2.TabStop = false;
+            this.background2.Tag = "background";
+            // 
             // EndlessMode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1042, 470);
+            this.ClientSize = new System.Drawing.Size(1061, 470);
             this.Controls.Add(this.inventoryCoins);
             this.Controls.Add(this.coinCounter);
             this.Controls.Add(this.pictureBox12);
@@ -403,16 +429,17 @@ namespace WindowsForms.Gamecode
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.escMenu);
             this.Controls.Add(this.obstacleTree);
             this.Controls.Add(this.playerBox);
             this.Controls.Add(this.healthBar);
             this.Controls.Add(this.healthLabel);
+            this.Controls.Add(this.background2);
+            this.Controls.Add(this.background1);
+            this.Controls.Add(this.escMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EndlessMode";
             this.Text = "Endless-Mode";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.EndlessMode_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keyIsDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.keyIsUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -431,6 +458,8 @@ namespace WindowsForms.Gamecode
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.background1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.background2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -464,5 +493,7 @@ namespace WindowsForms.Gamecode
         private System.Windows.Forms.Label coinCounter;
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.Label inventoryCoins;
+        private System.Windows.Forms.PictureBox background1;
+        private System.Windows.Forms.PictureBox background2;
     }
 }
