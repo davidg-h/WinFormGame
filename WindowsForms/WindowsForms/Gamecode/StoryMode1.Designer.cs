@@ -90,6 +90,8 @@
             this.coinBox21 = new System.Windows.Forms.PictureBox();
             this.coinBox22 = new System.Windows.Forms.PictureBox();
             this.coinBox23 = new System.Windows.Forms.PictureBox();
+            this.background1 = new System.Windows.Forms.PictureBox();
+            this.background2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.playerBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.platformBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coinBox1)).BeginInit();
@@ -140,6 +142,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.coinBox21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coinBox22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coinBox23)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.background1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.background2)).BeginInit();
             this.SuspendLayout();
             // 
             // MainGameTick
@@ -201,7 +205,7 @@
             // playerBox
             // 
             this.playerBox.BackColor = System.Drawing.Color.Transparent;
-            this.playerBox.Image = global::WindowsForms.Properties.Resources.idle;
+            this.playerBox.Image = global::WindowsForms.Properties.Resources.Held;
             this.playerBox.Location = new System.Drawing.Point(34, 331);
             this.playerBox.Margin = new System.Windows.Forms.Padding(2);
             this.playerBox.Name = "playerBox";
@@ -884,12 +888,33 @@
             this.coinBox23.TabStop = false;
             this.coinBox23.Tag = "coins";
             // 
+            // background1
+            // 
+            this.background1.Image = global::WindowsForms.Properties.Resources.Background;
+            this.background1.Location = new System.Drawing.Point(0, 0);
+            this.background1.Name = "background1";
+            this.background1.Size = new System.Drawing.Size(1200, 512);
+            this.background1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.background1.TabIndex = 21;
+            this.background1.TabStop = false;
+            this.background1.Tag = "background";
+            // 
+            // background2
+            // 
+            this.background2.Image = global::WindowsForms.Properties.Resources.Background;
+            this.background2.Location = new System.Drawing.Point(1198, 0);
+            this.background2.Name = "background2";
+            this.background2.Size = new System.Drawing.Size(1200, 512);
+            this.background2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.background2.TabIndex = 22;
+            this.background2.TabStop = false;
+            this.background2.Tag = "background";
+            // 
             // StoryMode1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::WindowsForms.Properties.Resources.Background;
-            this.ClientSize = new System.Drawing.Size(1271, 478);
+            this.ClientSize = new System.Drawing.Size(785, 478);
             this.Controls.Add(this.obstacleTree2);
             this.Controls.Add(this.playerBox);
             this.Controls.Add(this.platformBox14);
@@ -943,13 +968,14 @@
             this.Controls.Add(this.destinyBox);
             this.Controls.Add(this.healthLabel);
             this.Controls.Add(this.healthBar);
+            this.Controls.Add(this.background1);
+            this.Controls.Add(this.background2);
             this.Controls.Add(this.escMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.escMenu;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "StoryMode1";
             this.Text = "Story-Mode";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.StoryMode1_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyIsDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyIsUp);
             ((System.ComponentModel.ISupportInitialize)(this.playerBox)).EndInit();
@@ -1003,6 +1029,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.coinBox21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coinBox22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coinBox23)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.background1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.background2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1070,6 +1098,8 @@
         private System.Windows.Forms.PictureBox coinBox21;
         private System.Windows.Forms.PictureBox coinBox22;
         private System.Windows.Forms.PictureBox coinBox23;
+        private System.Windows.Forms.PictureBox background1;
+        private System.Windows.Forms.PictureBox background2;
     }
 }
 

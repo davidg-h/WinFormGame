@@ -80,7 +80,7 @@ namespace WindowsForms.Gamecode
         #region EndlessMode Gameloop
         private void endlessTickTimer(object sender, EventArgs e)
         {
-            backgroundScroll();
+            background_move();
             scoreLabel.Text = "Score: " + player.score;
             coinCounter.Text = $": {player.coins}";
             inventoryCoins.Text = $"Tresure Chest: {inventoryChestCoins}";
@@ -299,24 +299,19 @@ namespace WindowsForms.Gamecode
         #endregion
 
         #region endless backgroundScrolling
-        Image background = Properties.Resources.Background;
-        int backgroundCoordX1 = 0, backgroundCoordX2 = 1600;
-        private void EndlessMode_Paint(object sender, PaintEventArgs e)
+
+        void background_move()
         {
-            e.Graphics.DrawImage(background, backgroundCoordX1, 0);
-            e.Graphics.DrawImage(background, backgroundCoordX2, 0);
-        }
 
-        void backgroundScroll()
-        {
-            if (backgroundCoordX1 <= -1600)
-                backgroundCoordX1 = 1600;
+            if (background1.Left <= -1200)
+                background1.Left = 1198;
 
-            if (backgroundCoordX2 <= -1600)
-                backgroundCoordX2 = 1600;
+            if (background2.Left <= -1200)
+                background2.Left = 1198;
 
-            backgroundCoordX1 -= 5;
-            backgroundCoordX2 -= 5;
+                background1.Left -= 2;
+                background2.Left -= 2;
+
             Invalidate();
         }
         #endregion

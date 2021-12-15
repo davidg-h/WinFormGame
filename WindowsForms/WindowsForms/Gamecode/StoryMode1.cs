@@ -174,7 +174,7 @@ namespace WindowsForms.Gamecode
             {
                 MoveGameElements("back");
             }
-            if (player.goLeft == true && backgroundCoordX < 0)
+            if (player.goLeft == true && background1.Left < 0)
             {
                 MoveGameElements("forward");
             }
@@ -277,27 +277,21 @@ namespace WindowsForms.Gamecode
                     player.Left(true);
                     if (holdDirection)
                     {
-                        playerBox.Image = Properties.Resources.walkingLeft;
                         holdDirection = false;
-
                     }
                     break;
                 case Keys.S:
                     player.Down();
                     if (holdDirection)
                     {
-                        playerBox.Image = Properties.Resources.walking;
                         holdDirection = false;
-
                     }
                     break;
                 case Keys.D:
                     player.Right(true);
                     if (holdDirection)
                     {
-                        playerBox.Image = Properties.Resources.walking;
                         holdDirection = false;
-
                     }
                     break;
             }
@@ -318,7 +312,6 @@ namespace WindowsForms.Gamecode
                     if (!holdDirection)
                     {
                         holdDirection = true;
-                        playerBox.Image = Properties.Resources.idle;
                     }
                     break;
                 case Keys.A:
@@ -326,7 +319,6 @@ namespace WindowsForms.Gamecode
                     if (!holdDirection)
                     {
                         holdDirection = true;
-                        playerBox.Image = Properties.Resources.idle;
                     }
                     break;
                 case Keys.S:
@@ -334,7 +326,6 @@ namespace WindowsForms.Gamecode
                     if (!holdDirection)
                     {
                         holdDirection = true;
-                        playerBox.Image = Properties.Resources.idle;
                     }
                     break;
             }
@@ -348,36 +339,27 @@ namespace WindowsForms.Gamecode
 
         #region Background
 
-        Image backgroundlayer = Properties.Resources.Background;
-        int backgroundCoordX = 0, backgroundCoordX2 = 1600;
-        private void StoryMode1_Paint(object sender, PaintEventArgs e)
-        {
-            e.Graphics.DrawImage(backgroundlayer, backgroundCoordX, 0);
-            e.Graphics.DrawImage(backgroundlayer, backgroundCoordX2, 0);
-
-        }
-
 
         void background_move()
         {
-            if (backgroundCoordX <= -1600)
-                backgroundCoordX = 1600;
 
-            if (backgroundCoordX2 <= -1600)
-                backgroundCoordX2 = 1600;
+            if (background1.Left <= -1200)
+                background1.Left = 1198;
+
+            if (background2.Left <= -1200)
+                background2.Left = 1198;
 
 
             if (player.goRight)
             {
-                backgroundCoordX -= 2;
-                backgroundCoordX2 -= 2;
+                background1.Left -= 2;
+                background2.Left -= 2;
             }
-            if (player.goLeft && backgroundCoordX < 0)
+            if (player.goLeft)
             {
-                backgroundCoordX += 2;
-                backgroundCoordX2 += 2;
+                background1.Left += 2;
+                background2.Left += 2;
             }
-
             Invalidate();
         }
 
