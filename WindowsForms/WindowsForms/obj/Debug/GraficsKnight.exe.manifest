@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GraficsKnight.exe" size="658928">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GraficsKnight.exe" size="688624">
       <assemblyIdentity name="GraficsKnight" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ZHP17a7AYEF9Ag0zFg2ztL6/9zzhnRkZLFWAxwFRVfc=</dsig:DigestValue>
+        <dsig:DigestValue>+vZ4DK4Gt0/GhOhf340T8MSOE0WgUBwWRrSHE+9Id8Q=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -60,15 +60,6 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>R+Wg8QGvQVHX8T0ta/qbhH1bXkqY0fRnS3wBV3J0bN8=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Properties\Enemy_Klein.png" size="773">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>79rnzLDCRc/g1jKQRozQH8q8HO8Tpju7dRAxTFFksI0=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Properties\Player.png" size="460">

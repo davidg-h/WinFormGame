@@ -31,7 +31,7 @@ namespace WindowsForms.Gamecode
             player = new Player(playerBox, 100);
             this.FormClosed += StartScreen.closeGame;
             this.KeyDown += formKeyDown;
-            //this.Load += startTimer;
+            this.Load += startTimer;
             //g = CreateGraphics();
         }
 
@@ -166,10 +166,12 @@ namespace WindowsForms.Gamecode
         {
 
             coinCounter.Text = $": {player.coins}";
+            fpsLabel.Text = "fps: " + getFramesPerSecond();
 
             player.move(this);
             player.IsOnGround = false; //gets updated to correct value below
-            fpsLabel.Text = "fps: " + getFramesPerSecond();
+
+            ContactWithAnyObject();
 
             if (player.Hp > 1 && !gameOver)
             {
@@ -181,9 +183,6 @@ namespace WindowsForms.Gamecode
                 gameOver = true;
                 GameOver();
             }
-
-            ContactWithAnyObject();
-
             if (player.Hp < 20)
             {
                 healthBar.ForeColor = System.Drawing.Color.Red;
@@ -191,9 +190,7 @@ namespace WindowsForms.Gamecode
 
            
 
-            background_move();
 
-            //Move all GameElements
             if (player.goRight == true)
             {
                 MoveGameElements("back");
@@ -202,6 +199,8 @@ namespace WindowsForms.Gamecode
             {
                 MoveGameElements("forward");
             }
+            //Move all GameElements
+            background_move();
         }
         public void ContactWithAnyObject()
         {
@@ -384,23 +383,23 @@ namespace WindowsForms.Gamecode
 
         void background_move()
         {
-            if (backgroundCoordX <= -1600)
-                backgroundCoordX = 1600;
+            //if (backgroundCoordX <= -1600)
+            //    backgroundCoordX = 1600;
 
-            if (backgroundCoordX2 <= -1600)
-                backgroundCoordX2 = 1600;
+            //if (backgroundCoordX2 <= -1600)
+            //    backgroundCoordX2 = 1600;
 
 
-            if (player.goRight)
-            {
-                backgroundCoordX -= 2;
-                backgroundCoordX2 -= 2;
-            }
-            if (player.goLeft && backgroundCoordX < 0)
-            {
-                backgroundCoordX += 2;
-                backgroundCoordX2 += 2;
-            }
+            //if (player.goRight)
+            //{
+            //    backgroundCoordX -= 2;
+            //    backgroundCoordX2 -= 2;
+            //}
+            //if (player.goLeft && backgroundCoordX < 0)
+            //{
+            //    backgroundCoordX += 2;
+            //    backgroundCoordX2 += 2;
+            //}
 
             Invalidate();
         }
