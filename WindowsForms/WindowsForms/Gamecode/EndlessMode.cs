@@ -15,7 +15,6 @@ namespace WindowsForms.Gamecode
     {
         #region Game(EndlessMode) variables
         Random rand = new Random();
-        StoryMode1 mode1Window = new StoryMode1();
         bool gameOver = false;
         int obstacleSpeed = 10;
         int inventoryChestCoins;
@@ -57,6 +56,7 @@ namespace WindowsForms.Gamecode
         private void startScreenClick(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Gameplay will not be saved. Would you like to continue?", "", MessageBoxButtons.YesNo);
+            saveInventory(this, new EventArgs());
             if (result == DialogResult.Yes)
             {
                 StartScreen start = new StartScreen();
@@ -65,15 +65,72 @@ namespace WindowsForms.Gamecode
             }
         }
 
-        //TODO Save add for power ups
+        // Opens Coin Shop
+        private void shopClick(object sender, EventArgs e)
+        {
+            shopMenu.BringToFront();
+            shopMenu.Visible = true;
+        }
+
         private void saveInventory(object sender, EventArgs e)
         {
             SystemSave.saveCoins(player.coins + inventoryChestCoins);
         }
-        //TODO load add for power ups
         private void loadInventory(object sender, EventArgs e)
         {
             inventoryChestCoins = SystemSave.loadCoins();
+        }
+        #endregion
+
+        #region Shop Menu
+        private void superJumpBuy(object sender, EventArgs e)
+        {
+            const int cost = 100;
+            if (buySomethingValid(cost))
+            {
+                player.jumpSpeed = player.jumpSpeed * 2;
+            }
+        }
+
+        private void healthBuy(object sender, EventArgs e)
+        {
+            const int cost = 150;
+            if (buySomethingValid(cost))
+            {
+                player.Hp = player.Hp * 2;
+                healthBar.Maximum = player.Hp;
+            }
+        }
+
+        private void dmgBuy(object sender, EventArgs e)
+        {
+            const int cost = 50;
+            if (buySomethingValid(cost))
+            {
+                player.Dmg += 10;
+            }
+        }
+
+        private void doneClick(object sender, EventArgs e)
+        {
+            MessageBox.Show("Power-Ups only active on current live! Your Death resets your Abilities!!!!");
+            shopMenu.SendToBack();
+            shopMenu.Visible = false;
+        }
+
+        private bool buySomethingValid(int cost)
+        {
+            if (inventoryChestCoins - cost >= 0)
+            {
+                inventoryChestCoins -= cost;
+                MessageBox.Show("Thanks for the purchase!", "MONEY!!!!!", MessageBoxButtons.OK);
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("You dont have enough MONEY! Get more Money!", "MONEY!!!!!", MessageBoxButtons.OK);
+                return false;
+            }
         }
         #endregion
 
@@ -104,6 +161,7 @@ namespace WindowsForms.Gamecode
 
                 if (dialogresult == DialogResult.Yes)
                 {
+                    inventoryChestCoins += player.coins;
                     GameReset();
                 }
                 else if (dialogresult == DialogResult.No)
@@ -123,7 +181,6 @@ namespace WindowsForms.Gamecode
                     else { Application.Exit(); }
                 }
             }
-
 
             foreach (Control x in this.Controls)
             {
@@ -188,6 +245,7 @@ namespace WindowsForms.Gamecode
             player.jumpSpeed = 12;
             player.jumps = false;
             player.score = 0;
+            player.coins = 0;
             obstacleSpeed = 10;
             scoreLabel.Text = "Score: " + player.score;
             playerBox.Image = Properties.Resources.idle;
@@ -206,7 +264,6 @@ namespace WindowsForms.Gamecode
 
                 }
             }
-
             MainGameTick.Start();
         }
         #endregion
@@ -309,11 +366,12 @@ namespace WindowsForms.Gamecode
             if (background2.Left <= -1200)
                 background2.Left = 1198;
 
-                background1.Left -= 2;
-                background2.Left -= 2;
+            background1.Left -= 2;
+            background2.Left -= 2;
 
             Invalidate();
         }
         #endregion
+
     }
 }
