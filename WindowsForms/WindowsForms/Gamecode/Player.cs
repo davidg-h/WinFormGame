@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Windows.Media.Media3D;
+using System.Drawing.Imaging;
 //using System.Windows;
 
 namespace WindowsForms.Gamecode
@@ -16,12 +17,18 @@ namespace WindowsForms.Gamecode
         internal int score = 0;
         internal int coins = 0;
         internal System.Windows.Vector moveVector;
+        internal Point location;
+        internal Image[] images;
+        internal int currentImage = 0;
+        int animationUpdate = 0;
 
-        //Factory myfactory = new Factory();
         public Player(PictureBox playerBox, int hp, int dmg = 1) : base(playerBox, hp, dmg) { 
-            defaultLocation = new Point(34,331);
+            defaultLocation = new Point(34,31);
+            location = defaultLocation;
             moveVector = new System.Windows.Vector(0, 0);
             isOnGround = false;
+            images = getFrames(playerBox.Image);
+
         }
 
         internal override int Hp { get => hp; set => hp = value; }
@@ -58,10 +65,7 @@ namespace WindowsForms.Gamecode
             //isonGround is handled in StoryMode1
 
             // moves the box up or down depending on the threshold 'force'
-            //if (box.Top > defaultLocation.Y - 1 && jumps == false)
-            //{
-            //    isOnGround = true;
-            //}
+
 
             if (jumps && IsOnGround)
             {
@@ -78,11 +82,13 @@ namespace WindowsForms.Gamecode
             {   //if isOnGround then stay on Ground
                 moveVector.Y = 0;
             }
-
-            
-            //finaly the position gets Updated with the created moveVector
-            box.Location = new Point( box.Location.X + (int)moveVector.X, box.Location.Y + (int)moveVector.Y);
             #endregion
+            //finaly the position gets Updated with the created moveVector
+            //location = new Point( location.X + (int)moveVector.X, location.Y + (int)moveVector.Y);
+            box.Location = new Point(box.Location.X + (int)moveVector.X, box.Location.Y + (int)moveVector.Y);
+            if (animationUpdate % 5 == 0)
+                currentImage = (currentImage + 1) % images.Length;
+            animationUpdate++;
         }
 
         public override void attack()
@@ -93,6 +99,20 @@ namespace WindowsForms.Gamecode
         internal void MoveToTopOfPlatform(int topOfPlatform)
         {
             box.Location = new Point(box.Location.X, topOfPlatform - box.Height + 1);
+        }
+
+        Image[] getFrames(Image originalImg)
+        {
+            int numberOfFrames = originalImg.GetFrameCount(FrameDimension.Time);
+            Image[] frames = new Image[numberOfFrames];
+
+            for (int i = 0; i < numberOfFrames; i++)
+            {
+                originalImg.SelectActiveFrame(FrameDimension.Time, i);
+                frames[i] = ((Image)originalImg.Clone());
+            }
+
+            return frames;
         }
     }
 }

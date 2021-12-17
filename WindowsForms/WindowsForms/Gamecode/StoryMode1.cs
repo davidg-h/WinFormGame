@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace WindowsForms.Gamecode
 {
@@ -32,20 +33,33 @@ namespace WindowsForms.Gamecode
             this.FormClosed += StartScreen.closeGame;
             this.KeyDown += formKeyDown;
             this.Load += startTimer;
-            //g = CreateGraphics();
+
+
+            g = CreateGraphics();
+            pf.Location = new Point(0, 0);
+            pf.Size = this.Size;
+            pf.SendToBack();
+            this.BackgroundImage = null;
+            foreach (Control x in this.Controls)
+            {
+                if (x is PictureBox)
+                {
+                    x.Visible = false;
+                }
+            }
         }
 
         #region performance boost / fps
         //Doublebuffer the Grafics = remove flickering
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams handleParam = base.CreateParams;
-                handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
-                return handleParam;
-            }
-        }
+        //protected override CreateParams CreateParams
+        //{
+        //    get
+        //    {
+        //        CreateParams handleParam = base.CreateParams;
+        //        handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
+        //        return handleParam;
+        //    }
+        //}
 
         private string getFramesPerSecond()
         {
@@ -164,6 +178,7 @@ namespace WindowsForms.Gamecode
         #region GameLoop StoryMode
         private void MainGameTick_Tick(object sender, EventArgs e)
         {
+            Draw();
 
             coinCounter.Text = $": {player.coins}";
             fpsLabel.Text = "fps: " + getFramesPerSecond();
@@ -188,7 +203,7 @@ namespace WindowsForms.Gamecode
                 healthBar.ForeColor = System.Drawing.Color.Red;
             }
 
-           
+
 
 
             if (player.goRight == true)
@@ -373,11 +388,27 @@ namespace WindowsForms.Gamecode
 
         Image backgroundlayer = Properties.Resources.Background;
         int backgroundCoordX = 0, backgroundCoordX2 = 1600;
-        private void StoryMode1_Paint(object sender, PaintEventArgs e)
-        {
-            e.Graphics.DrawImage(backgroundlayer, backgroundCoordX, 0);
-            e.Graphics.DrawImage(backgroundlayer, backgroundCoordX2, 0);
 
+        void Draw()
+        {
+
+            Bitmap bufl = new Bitmap(pf.Width, pf.Height);
+            using (Graphics g = Graphics.FromImage(bufl))
+            {
+                g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
+                g.DrawImage(backgroundlayer, new Point(backgroundCoordX, 0));
+                g.DrawImage(player.images[player.currentImage] , playerBox.Location);
+                foreach (Control x in this.Controls)
+                {
+                    if (x is PictureBox)
+                    {
+                        g.DrawImage(((PictureBox)x).Image, x.Location);
+
+                    }
+                }
+                pf.CreateGraphics().DrawImageUnscaled(bufl, 0, 0);
+            }
+            //Thread.Sleep(30);
         }
 
 
@@ -390,19 +421,19 @@ namespace WindowsForms.Gamecode
             //    backgroundCoordX2 = 1600;
 
 
-            //if (player.goRight)
-            //{
-            //    backgroundCoordX -= 2;
-            //    backgroundCoordX2 -= 2;
-            //}
-            //if (player.goLeft && backgroundCoordX < 0)
-            //{
-            //    backgroundCoordX += 2;
-            //    backgroundCoordX2 += 2;
-            //}
+            if (player.goRight)
+            {
+                backgroundCoordX -= 2;
+            }
+            if (player.goLeft)
+            {
+                backgroundCoordX += 2;
+            }
 
-            Invalidate();
+            //Invalidate();
         }
+
+       
 
         #endregion
 
