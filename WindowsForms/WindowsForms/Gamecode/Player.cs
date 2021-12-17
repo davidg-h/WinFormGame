@@ -35,6 +35,7 @@ namespace WindowsForms.Gamecode
         internal bool IsOnGround { get => isOnGround; set => isOnGround = value; }
         public bool obstacleRight = false;
         public bool obstacleLeft = false;
+        public bool attacking = false;
 
         public override void move(Form f)
         {

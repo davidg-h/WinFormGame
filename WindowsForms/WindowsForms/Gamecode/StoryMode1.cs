@@ -17,17 +17,19 @@ namespace WindowsForms.Gamecode
         private int sec;
         public GameLvl lvl = GameLvl.storyLvl_1;
         internal Player player;
+        List<RangeEnemy> zombiesList = new List<RangeEnemy>();
         bool gameOver;
         #endregion
 
         public StoryMode1()
         {
             InitializeComponent();
-
-            player = new Player(playerBox, 100);
+            AddNextEnemy();
+            player = new Player(playerBox, 100, 3);
             this.FormClosed += StartScreen.closeGame;
             this.KeyDown += formKeyDown;
             this.Load += startTimer;
+
         }
 
         #region Esc Menu (with safe/load)
@@ -157,7 +159,8 @@ namespace WindowsForms.Gamecode
                 gameOver = true;
                 GameOver();
             }
-
+            player.obstacleLeft = false;
+            player.obstacleRight = false;
             ContactWithAnyObject();
 
             if (player.Hp < 20)
@@ -165,7 +168,7 @@ namespace WindowsForms.Gamecode
                 healthBar.ForeColor = System.Drawing.Color.Red;
             }
 
-           
+
 
             background_move();
 
@@ -218,14 +221,46 @@ namespace WindowsForms.Gamecode
                             player.coins += 1;
                         }
                     }
+                    if ((string)x.Tag == "rangeEnemy")
+                    {
+                        if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
+                        {
+
+                            //RangeEnemy zombie = new RangeEnemy((PictureBox)x);
+                            RangeEnemy foundZombie = zombiesList.Find(zm => zm.enemyBox.Name == (string)x.Name);
+                            //Check if found is null
+
+
+                            player.Hp -= foundZombie.Dmg;
+                            if (player.attacking)
+                            {
+                                foundZombie.Hp -= player.Dmg;
+                                if (foundZombie.Hp < 1)
+                                {
+                                    this.Controls.Remove(x);
+                                   
+                                    zombiesList.Remove(foundZombie);
+                                    AddNextEnemy();
+
+                                }
+                            }
+                        }
+                    }
                 }
-             
+
             }
+
             if (playerBox.Bounds.IntersectsWith(destinyBox.Bounds))
             {
                 MainGameTick.Stop();
                 YouWon();
             }
+        }
+        public void AddNextEnemy()
+        {
+            RangeEnemy nextEnemy = new RangeEnemy(10, 1);
+            this.zombiesList.Add(nextEnemy);
+            this.Controls.Add(nextEnemy.enemyBox);
         }
         internal void Restart()
         {
@@ -260,6 +295,8 @@ namespace WindowsForms.Gamecode
 
         #region Key Inputs
         bool holdDirection = true;
+        string facing = "right";
+
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -279,7 +316,7 @@ namespace WindowsForms.Gamecode
                     {
                         playerBox.Image = Properties.Resources.walkingLeft;
                         holdDirection = false;
-
+                        facing = "left";
                     }
                     break;
                 case Keys.S:
@@ -297,9 +334,18 @@ namespace WindowsForms.Gamecode
                     {
                         playerBox.Image = Properties.Resources.walking;
                         holdDirection = false;
+                        facing = "right";
+                    }
+                    break;
+                case Keys.Space:
+                    if (!gameOver)
+                    {
+                        player.attacking = true;
+                        PlayerAttack(facing);
 
                     }
                     break;
+
             }
         }
 
@@ -337,12 +383,55 @@ namespace WindowsForms.Gamecode
                         playerBox.Image = Properties.Resources.idle;
                     }
                     break;
+                case Keys.Space:
+                    if (!gameOver)
+                    {
+                        player.attacking = false;
+                        playerBox.Image = Properties.Resources.walking;
+
+                    }
+                    break;
+
             }
 
             if (player.jumps == true)
             {
                 player.jumps = false;
             }
+        }
+        public void PlayerAttack(string direction)
+        {
+            if (direction == "right")
+            {
+                playerBox.Image = Properties.Resources.attackRight;
+                //playerBox.Size= new System.Drawing.Size(60, 72);
+                playerBox.Size = new System.Drawing.Size(60, 72);
+                playerBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+
+            }
+            else if (direction == "left")
+            {
+                playerBox.Image = Properties.Resources.attack;
+                playerBox.Size = new System.Drawing.Size(68, 64); ;
+
+
+            }
+            //foreach (Control x in this.Controls)
+            //{
+            //    //TODO spawn of enemys (use the enemy classes)
+            //    if (x is PictureBox)
+            //    {
+            //        if ((string)x.Tag == "zombie")
+            //        {
+            //            if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
+            //            {
+            //                RangeEnemy small = new RangeEnemy((PictureBox)x);
+
+            //                player.Hp -= small.Dmg;
+            //            }
+            //        }
+            //    }
+            //}
         }
         #endregion
 
@@ -381,6 +470,10 @@ namespace WindowsForms.Gamecode
             Invalidate();
         }
 
+        
+
+
+
         #endregion
 
         #region Moving GameElements
@@ -390,7 +483,7 @@ namespace WindowsForms.Gamecode
             {
                 //moving the elements with the wanted Tags with the movement of the player
                 //new object that need to be moved: enter "Tag" in this if statement
-                if (x is PictureBox && (string)x.Tag == "platform" || x is PictureBox && (string)x.Tag == "obstacleTree" || x is PictureBox && (string)x.Tag == "coins" || x is PictureBox && (string)x.Tag == "finish" || x is PictureBox && (string)x.Tag == "......")
+                if (x is PictureBox && (string)x.Tag == "platform" || x is PictureBox && (string)x.Tag == "obstacleTree" || x is PictureBox && (string)x.Tag == "coins" || x is PictureBox && (string)x.Tag == "finish" || x is PictureBox && (string)x.Tag == "......" || (string)x.Tag== "rangeEnemy")
                 {
                     if (direction == "back")
                     {
