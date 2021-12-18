@@ -215,6 +215,7 @@
             this.playerBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.playerBox.TabIndex = 1;
             this.playerBox.TabStop = false;
+            this.playerBox.Tag = "player";
             // 
             // platformBox2
             // 

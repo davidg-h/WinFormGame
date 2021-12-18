@@ -17,8 +17,8 @@ namespace WindowsForms.Gamecode
         // connection to the GUI
         internal PictureBox box;
         internal int characterSpeed = 10;
-        internal int jumpSpeed = 12;
-        internal int force = 12;
+        internal int jumpSpeed = 40;
+        internal int force = 5;
         internal bool goRight, goLeft, goDown, jumps;
         internal bool isOnGround;
 

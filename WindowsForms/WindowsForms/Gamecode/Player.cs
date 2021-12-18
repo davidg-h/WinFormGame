@@ -71,7 +71,7 @@ namespace WindowsForms.Gamecode
             {
                 jumps = false;
                 isOnGround = false;
-                moveVector.Y = -jumpSpeed*5; //add initial jumpforce
+                moveVector.Y = -jumpSpeed; //add initial jumpforce
             }
             if (!IsOnGround)
             {

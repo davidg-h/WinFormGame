@@ -51,6 +51,7 @@ namespace WindowsForms.Gamecode
 
         #region performance boost / fps
         //Doublebuffer the Grafics = remove flickering
+        //EDIT: dont turn that on or it will flicker
         //protected override CreateParams CreateParams
         //{
         //    get
@@ -402,13 +403,17 @@ namespace WindowsForms.Gamecode
                 {
                     if (x is PictureBox)
                     {
-                        g.DrawImage(((PictureBox)x).Image, x.Location);
-
+                        if((string)x.Tag != "player")
+                        {
+                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
+                            Rectangle destRect = new Rectangle(x.Location, x.Size);
+                            g.DrawImage(((PictureBox)x).Image, destRect, srcRect, GraphicsUnit.Pixel);
+                            //g.DrawImage(((PictureBox)x).Image, x.Location);
+                        }
                     }
                 }
                 pf.CreateGraphics().DrawImageUnscaled(bufl, 0, 0);
             }
-            //Thread.Sleep(30);
         }
 
 
@@ -457,8 +462,6 @@ namespace WindowsForms.Gamecode
                 }
             }
         }
-
         #endregion
-
     }
 }
