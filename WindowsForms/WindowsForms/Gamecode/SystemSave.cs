@@ -63,7 +63,6 @@ namespace WindowsForms.Gamecode
 
                 if (loadGameData != null)
                 {
-                    MessageBox.Show("Your last game is loaded!", "Load game", MessageBoxButtons.OK);
                     return loadGameData;
                 }
                 else

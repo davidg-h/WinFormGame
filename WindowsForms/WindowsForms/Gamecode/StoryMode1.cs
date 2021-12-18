@@ -82,6 +82,8 @@ namespace WindowsForms.Gamecode
         {
             if (e.KeyCode == Keys.Escape)
             {
+                MainGameTick.Stop();
+                CountdownTimer.Start();
                 escMenu.BringToFront();
                 escMenu.Visible = true;
             }
@@ -94,6 +96,8 @@ namespace WindowsForms.Gamecode
 
         private void resumeClick(object sender, EventArgs e)
         {
+            MainGameTick.Start();
+            CountdownTimer.Start();
             escMenu.Visible = false;
         }
 
@@ -121,7 +125,7 @@ namespace WindowsForms.Gamecode
         private void loadGameClick(object sender, EventArgs e)
         {
             PlayerData gameData = SystemSave.loadGame();
-
+            MessageBox.Show("Your last game is loaded!", "Load game", MessageBoxButtons.OK);
             // passing the data back to the window and ts elements
             switch (gameData.lvl)
             {
