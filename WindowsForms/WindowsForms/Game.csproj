@@ -78,7 +78,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Gamecode\CollisionBox.cs" />
     <Compile Include="Gamecode\EndlessMode.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +109,7 @@
     <Compile Include="Gamecode\Player.cs" />
     <Compile Include="Gamecode\EnemySmall.cs" />
     <Compile Include="Gamecode\PlayerData.cs" />
+    <Compile Include="Gamecode\SpriteHandler.cs" />
     <Compile Include="Gamecode\StoryMode1.cs">
       <SubType>Form</SubType>
     </Compile>

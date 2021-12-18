@@ -149,7 +149,7 @@
             // MainGameTick
             // 
             this.MainGameTick.Enabled = true;
-            this.MainGameTick.Interval = 20;
+            this.MainGameTick.Interval = 50;
             this.MainGameTick.Tick += new System.EventHandler(this.MainGameTick_Tick);
             // 
             // healthLabel
@@ -925,7 +925,7 @@
             // pf
             // 
             this.pf.Controls.Add(this.panel2);
-            this.pf.Location = new System.Drawing.Point(88, 212);
+            this.pf.Location = new System.Drawing.Point(217, 259);
             this.pf.Name = "pf";
             this.pf.Size = new System.Drawing.Size(258, 148);
             this.pf.TabIndex = 23;

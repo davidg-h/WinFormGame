@@ -21,8 +21,8 @@ namespace WindowsForms.Gamecode
         internal Player player;
         bool gameOver;
         DateTime lastFrameTime = DateTime.Now; // for fps calculation
-        Graphics g;
-        bool isNewFrame = true;
+        SpriteHandler coinHandler;
+        SpriteHandler mushroomHandler;
         #endregion
 
         public StoryMode1()
@@ -34,12 +34,14 @@ namespace WindowsForms.Gamecode
             this.KeyDown += formKeyDown;
             this.Load += startTimer;
 
-
-            g = CreateGraphics();
+            coinHandler = new SpriteHandler(global::WindowsForms.Properties.Resources.coin);
+            mushroomHandler = new SpriteHandler(Properties.Resources.shroomIdle);
+            //Creates a Panel where every item is redrawn
             pf.Location = new Point(0, 0);
             pf.Size = this.Size;
             pf.SendToBack();
             this.BackgroundImage = null;
+            //makes 'normal' screen invisible 
             foreach (Control x in this.Controls)
             {
                 if (x is PictureBox)
@@ -181,6 +183,9 @@ namespace WindowsForms.Gamecode
         {
             Draw();
 
+            coinHandler.updateSpriteEveryTimeCalled();
+            mushroomHandler.updateSpriteEvery3thTimeCalled();
+
             coinCounter.Text = $": {player.coins}";
             fpsLabel.Text = "fps: " + getFramesPerSecond();
 
@@ -251,9 +256,9 @@ namespace WindowsForms.Gamecode
                     }
                     if ((string)x.Tag == "coins")
                     {
-                        if (playerBox.Bounds.IntersectsWith(x.Bounds) && x.Visible == true)
+                        if (playerBox.Bounds.IntersectsWith(x.Bounds))
                         {
-                            x.Visible = false;
+                            x.Tag = "coins.collected";
                             player.coins += 1;
                         }
                     }
@@ -385,11 +390,7 @@ namespace WindowsForms.Gamecode
         }
         #endregion
 
-        #region Background
-
-        Image backgroundlayer = Properties.Resources.Background;
-        int backgroundCoordX = 0, backgroundCoordX2 = 1600;
-
+        #region draw
         void Draw()
         {
 
@@ -398,12 +399,25 @@ namespace WindowsForms.Gamecode
             {
                 g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
                 g.DrawImage(backgroundlayer, new Point(backgroundCoordX, 0));
-                g.DrawImage(player.images[player.currentImage] , playerBox.Location);
+                g.DrawImage(player.images[player.currentImage], playerBox.Location);
                 foreach (Control x in this.Controls)
                 {
                     if (x is PictureBox)
                     {
-                        if((string)x.Tag != "player")
+                        string tag = (string)x.Tag;
+                        if (tag == "coins")
+                        {
+                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
+                            Rectangle destRect = new Rectangle(x.Location, x.Size);
+                            g.DrawImage(coinHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
+                        }
+                        else if (tag == "obstacleTree")
+                        {
+                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
+                            Rectangle destRect = new Rectangle(x.Location, x.Size);
+                            g.DrawImage(mushroomHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
+                        }
+                        else if (tag != "player" && tag != "coins.collected")
                         {
                             Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
@@ -415,6 +429,14 @@ namespace WindowsForms.Gamecode
                 pf.CreateGraphics().DrawImageUnscaled(bufl, 0, 0);
             }
         }
+        #endregion
+
+        #region Background
+
+        Image backgroundlayer = Properties.Resources.Background;
+        int backgroundCoordX = 0, backgroundCoordX2 = 1600;
+
+       
 
 
         void background_move()
