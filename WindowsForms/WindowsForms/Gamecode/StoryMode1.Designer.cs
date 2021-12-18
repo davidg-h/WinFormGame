@@ -1003,6 +1003,7 @@
             this.MainMenuStrip = this.escMenu;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "StoryMode1";
+            this.Tag = "";
             this.Text = "Story-Mode";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyIsDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyIsUp);

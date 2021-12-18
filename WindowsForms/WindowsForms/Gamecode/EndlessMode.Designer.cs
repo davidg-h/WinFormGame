@@ -63,6 +63,7 @@ namespace WindowsForms.Gamecode
             this.healthBuyBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.dmgBuyBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.doneBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.pf = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.escMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.obstacleTree)).BeginInit();
@@ -88,20 +89,20 @@ namespace WindowsForms.Gamecode
             this.healthLabel.AutoSize = true;
             this.healthLabel.BackColor = System.Drawing.Color.Transparent;
             this.healthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.healthLabel.Location = new System.Drawing.Point(11, 9);
-            this.healthLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.healthLabel.Location = new System.Drawing.Point(22, 17);
+            this.healthLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.healthLabel.Name = "healthLabel";
-            this.healthLabel.Size = new System.Drawing.Size(82, 24);
+            this.healthLabel.Size = new System.Drawing.Size(159, 44);
             this.healthLabel.TabIndex = 6;
             this.healthLabel.Text = "Health: ";
             // 
             // healthBar
             // 
             this.healthBar.BackColor = System.Drawing.SystemColors.GrayText;
-            this.healthBar.Location = new System.Drawing.Point(102, 9);
-            this.healthBar.Margin = new System.Windows.Forms.Padding(2);
+            this.healthBar.Location = new System.Drawing.Point(204, 17);
+            this.healthBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.healthBar.Name = "healthBar";
-            this.healthBar.Size = new System.Drawing.Size(83, 23);
+            this.healthBar.Size = new System.Drawing.Size(166, 44);
             this.healthBar.TabIndex = 7;
             this.healthBar.Value = 100;
             // 
@@ -116,22 +117,23 @@ namespace WindowsForms.Gamecode
             this.scoreLabel.AutoSize = true;
             this.scoreLabel.BackColor = System.Drawing.Color.White;
             this.scoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.scoreLabel.Location = new System.Drawing.Point(10, 419);
-            this.scoreLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.scoreLabel.Location = new System.Drawing.Point(20, 806);
+            this.scoreLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.scoreLabel.Name = "scoreLabel";
-            this.scoreLabel.Size = new System.Drawing.Size(100, 25);
+            this.scoreLabel.Size = new System.Drawing.Size(183, 48);
             this.scoreLabel.TabIndex = 12;
             this.scoreLabel.Text = "Score: 0\r\n";
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Black;
-            this.pictureBox1.Location = new System.Drawing.Point(-16, 394);
+            this.pictureBox1.Location = new System.Drawing.Point(-32, 758);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1079, 86);
+            this.pictureBox1.Size = new System.Drawing.Size(2158, 165);
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Tag = "plattform";
+            this.pictureBox1.Tag = "platform";
             // 
             // escMenu
             // 
@@ -139,6 +141,7 @@ namespace WindowsForms.Gamecode
             this.escMenu.BackgroundImage = global::WindowsForms.Properties.Resources.TitleScreen1;
             this.escMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.escMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.escMenu.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.escMenu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.escMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.escMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -148,11 +151,11 @@ namespace WindowsForms.Gamecode
             this.shopToolStripMenuItem});
             this.escMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.escMenu.Location = new System.Drawing.Point(0, 0);
-            this.escMenu.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
+            this.escMenu.Margin = new System.Windows.Forms.Padding(0, 0, 0, 67);
             this.escMenu.Name = "escMenu";
-            this.escMenu.Padding = new System.Windows.Forms.Padding(2, 1, 0, 1);
+            this.escMenu.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
             this.escMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.escMenu.Size = new System.Drawing.Size(1061, 470);
+            this.escMenu.Size = new System.Drawing.Size(2122, 904);
             this.escMenu.TabIndex = 11;
             this.escMenu.Text = "Menu";
             this.escMenu.Visible = false;
@@ -163,7 +166,7 @@ namespace WindowsForms.Gamecode
             this.escMenuM.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.escMenuM.Margin = new System.Windows.Forms.Padding(0, 20, 0, 60);
             this.escMenuM.Name = "escMenuM";
-            this.escMenuM.Size = new System.Drawing.Size(1058, 65);
+            this.escMenuM.Size = new System.Drawing.Size(2117, 124);
             this.escMenuM.Text = "Menu";
             // 
             // resumeToolStripMenuItem
@@ -171,7 +174,7 @@ namespace WindowsForms.Gamecode
             this.resumeToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resumeToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 65);
             this.resumeToolStripMenuItem.Name = "resumeToolStripMenuItem";
-            this.resumeToolStripMenuItem.Size = new System.Drawing.Size(1058, 35);
+            this.resumeToolStripMenuItem.Size = new System.Drawing.Size(2117, 67);
             this.resumeToolStripMenuItem.Text = "Resume";
             this.resumeToolStripMenuItem.Click += new System.EventHandler(this.resumeClick);
             // 
@@ -180,14 +183,14 @@ namespace WindowsForms.Gamecode
             this.startScreenToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startScreenToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 65);
             this.startScreenToolStripMenuItem.Name = "startScreenToolStripMenuItem";
-            this.startScreenToolStripMenuItem.Size = new System.Drawing.Size(1058, 35);
+            this.startScreenToolStripMenuItem.Size = new System.Drawing.Size(2117, 67);
             this.startScreenToolStripMenuItem.Text = "Start-Screen";
             this.startScreenToolStripMenuItem.Click += new System.EventHandler(this.startScreenClick);
             // 
             // shopToolStripMenuItem
             // 
             this.shopToolStripMenuItem.Name = "shopToolStripMenuItem";
-            this.shopToolStripMenuItem.Size = new System.Drawing.Size(1058, 35);
+            this.shopToolStripMenuItem.Size = new System.Drawing.Size(2117, 67);
             this.shopToolStripMenuItem.Text = "Shop";
             this.shopToolStripMenuItem.Click += new System.EventHandler(this.shopClick);
             // 
@@ -195,8 +198,8 @@ namespace WindowsForms.Gamecode
             // 
             this.obstacleTree.BackColor = System.Drawing.Color.Transparent;
             this.obstacleTree.Image = global::WindowsForms.Properties.Resources.shroomIdle;
-            this.obstacleTree.Location = new System.Drawing.Point(578, 367);
-            this.obstacleTree.Margin = new System.Windows.Forms.Padding(2);
+            this.obstacleTree.Location = new System.Drawing.Point(1156, 706);
+            this.obstacleTree.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.obstacleTree.Name = "obstacleTree";
             this.obstacleTree.Size = new System.Drawing.Size(32, 28);
             this.obstacleTree.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -208,22 +211,23 @@ namespace WindowsForms.Gamecode
             // 
             this.playerBox.BackColor = System.Drawing.Color.Transparent;
             this.playerBox.Image = global::WindowsForms.Properties.Resources.idle;
-            this.playerBox.Location = new System.Drawing.Point(34, 331);
-            this.playerBox.Margin = new System.Windows.Forms.Padding(2);
+            this.playerBox.Location = new System.Drawing.Point(68, 637);
+            this.playerBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.playerBox.Name = "playerBox";
             this.playerBox.Size = new System.Drawing.Size(68, 64);
             this.playerBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.playerBox.TabIndex = 9;
             this.playerBox.TabStop = false;
+            this.playerBox.Tag = "player";
             // 
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox3.Location = new System.Drawing.Point(269, 297);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox3.Location = new System.Drawing.Point(538, 571);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(20, 21);
+            this.pictureBox3.Size = new System.Drawing.Size(40, 40);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 14;
             this.pictureBox3.TabStop = false;
@@ -233,10 +237,10 @@ namespace WindowsForms.Gamecode
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox2.Location = new System.Drawing.Point(307, 263);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Location = new System.Drawing.Point(614, 506);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(20, 21);
+            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 14;
             this.pictureBox2.TabStop = false;
@@ -246,10 +250,10 @@ namespace WindowsForms.Gamecode
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox4.Location = new System.Drawing.Point(389, 263);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox4.Location = new System.Drawing.Point(778, 506);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(20, 21);
+            this.pictureBox4.Size = new System.Drawing.Size(40, 40);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 14;
             this.pictureBox4.TabStop = false;
@@ -259,10 +263,10 @@ namespace WindowsForms.Gamecode
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox5.Location = new System.Drawing.Point(372, 222);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox5.Location = new System.Drawing.Point(744, 427);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(20, 21);
+            this.pictureBox5.Size = new System.Drawing.Size(40, 40);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 14;
             this.pictureBox5.TabStop = false;
@@ -272,10 +276,10 @@ namespace WindowsForms.Gamecode
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox6.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox6.Location = new System.Drawing.Point(438, 281);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox6.Location = new System.Drawing.Point(876, 540);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(20, 21);
+            this.pictureBox6.Size = new System.Drawing.Size(40, 40);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 14;
             this.pictureBox6.TabStop = false;
@@ -285,10 +289,10 @@ namespace WindowsForms.Gamecode
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox7.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox7.Location = new System.Drawing.Point(421, 241);
-            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox7.Location = new System.Drawing.Point(842, 463);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(20, 21);
+            this.pictureBox7.Size = new System.Drawing.Size(40, 40);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox7.TabIndex = 14;
             this.pictureBox7.TabStop = false;
@@ -298,10 +302,10 @@ namespace WindowsForms.Gamecode
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox8.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox8.Location = new System.Drawing.Point(469, 297);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox8.Location = new System.Drawing.Point(938, 571);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(20, 21);
+            this.pictureBox8.Size = new System.Drawing.Size(40, 40);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox8.TabIndex = 14;
             this.pictureBox8.TabStop = false;
@@ -311,10 +315,10 @@ namespace WindowsForms.Gamecode
             // 
             this.pictureBox9.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox9.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox9.Location = new System.Drawing.Point(452, 256);
-            this.pictureBox9.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox9.Location = new System.Drawing.Point(904, 492);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(20, 21);
+            this.pictureBox9.Size = new System.Drawing.Size(40, 40);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox9.TabIndex = 14;
             this.pictureBox9.TabStop = false;
@@ -324,10 +328,10 @@ namespace WindowsForms.Gamecode
             // 
             this.pictureBox10.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox10.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox10.Location = new System.Drawing.Point(506, 288);
-            this.pictureBox10.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox10.Location = new System.Drawing.Point(1012, 554);
+            this.pictureBox10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(20, 21);
+            this.pictureBox10.Size = new System.Drawing.Size(40, 40);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox10.TabIndex = 14;
             this.pictureBox10.TabStop = false;
@@ -337,10 +341,10 @@ namespace WindowsForms.Gamecode
             // 
             this.pictureBox11.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox11.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox11.Location = new System.Drawing.Point(489, 248);
-            this.pictureBox11.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox11.Location = new System.Drawing.Point(978, 477);
+            this.pictureBox11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(20, 21);
+            this.pictureBox11.Size = new System.Drawing.Size(40, 40);
             this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox11.TabIndex = 14;
             this.pictureBox11.TabStop = false;
@@ -351,10 +355,10 @@ namespace WindowsForms.Gamecode
             this.coinCounter.AutoSize = true;
             this.coinCounter.BackColor = System.Drawing.Color.Transparent;
             this.coinCounter.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.coinCounter.Location = new System.Drawing.Point(985, 5);
-            this.coinCounter.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.coinCounter.Location = new System.Drawing.Point(1970, 10);
+            this.coinCounter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.coinCounter.Name = "coinCounter";
-            this.coinCounter.Size = new System.Drawing.Size(27, 29);
+            this.coinCounter.Size = new System.Drawing.Size(52, 55);
             this.coinCounter.TabIndex = 19;
             this.coinCounter.Text = "0";
             // 
@@ -362,10 +366,10 @@ namespace WindowsForms.Gamecode
             // 
             this.pictureBox12.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox12.Image = global::WindowsForms.Properties.Resources.coin_Counter;
-            this.pictureBox12.Location = new System.Drawing.Point(942, 5);
-            this.pictureBox12.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox12.Location = new System.Drawing.Point(1884, 10);
+            this.pictureBox12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(27, 26);
+            this.pictureBox12.Size = new System.Drawing.Size(54, 50);
             this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox12.TabIndex = 18;
             this.pictureBox12.TabStop = false;
@@ -375,10 +379,10 @@ namespace WindowsForms.Gamecode
             this.inventoryCoins.AutoSize = true;
             this.inventoryCoins.BackColor = System.Drawing.Color.White;
             this.inventoryCoins.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inventoryCoins.Location = new System.Drawing.Point(699, 415);
-            this.inventoryCoins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.inventoryCoins.Location = new System.Drawing.Point(1398, 798);
+            this.inventoryCoins.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.inventoryCoins.Name = "inventoryCoins";
-            this.inventoryCoins.Size = new System.Drawing.Size(207, 29);
+            this.inventoryCoins.Size = new System.Drawing.Size(398, 55);
             this.inventoryCoins.TabIndex = 20;
             this.inventoryCoins.Text = "Treasure Chest: ";
             // 
@@ -386,6 +390,7 @@ namespace WindowsForms.Gamecode
             // 
             this.background1.Image = global::WindowsForms.Properties.Resources.Background;
             this.background1.Location = new System.Drawing.Point(0, 0);
+            this.background1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.background1.Name = "background1";
             this.background1.Size = new System.Drawing.Size(1200, 512);
             this.background1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -396,7 +401,8 @@ namespace WindowsForms.Gamecode
             // background2
             // 
             this.background2.Image = global::WindowsForms.Properties.Resources.Background;
-            this.background2.Location = new System.Drawing.Point(1198, 0);
+            this.background2.Location = new System.Drawing.Point(2396, 0);
+            this.background2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.background2.Name = "background2";
             this.background2.Size = new System.Drawing.Size(1200, 512);
             this.background2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -410,6 +416,7 @@ namespace WindowsForms.Gamecode
             this.shopMenu.BackgroundImage = global::WindowsForms.Properties.Resources.TitleScreen1;
             this.shopMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.shopMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shopMenu.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.shopMenu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.shopMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.shopMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -420,11 +427,11 @@ namespace WindowsForms.Gamecode
             this.doneBtn});
             this.shopMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.shopMenu.Location = new System.Drawing.Point(0, 0);
-            this.shopMenu.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
+            this.shopMenu.Margin = new System.Windows.Forms.Padding(0, 0, 0, 67);
             this.shopMenu.Name = "shopMenu";
-            this.shopMenu.Padding = new System.Windows.Forms.Padding(2, 1, 0, 1);
+            this.shopMenu.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
             this.shopMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.shopMenu.Size = new System.Drawing.Size(1061, 470);
+            this.shopMenu.Size = new System.Drawing.Size(2122, 904);
             this.shopMenu.TabIndex = 23;
             this.shopMenu.Text = "Menu";
             this.shopMenu.Visible = false;
@@ -436,7 +443,7 @@ namespace WindowsForms.Gamecode
             this.toolStripMenuItem1.ForeColor = System.Drawing.Color.Black;
             this.toolStripMenuItem1.Margin = new System.Windows.Forms.Padding(0, 20, 0, 60);
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(1058, 65);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(2117, 124);
             this.toolStripMenuItem1.Text = "Shop";
             // 
             // superJumpBuyBtn
@@ -444,7 +451,7 @@ namespace WindowsForms.Gamecode
             this.superJumpBuyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.superJumpBuyBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 65);
             this.superJumpBuyBtn.Name = "superJumpBuyBtn";
-            this.superJumpBuyBtn.Size = new System.Drawing.Size(1058, 35);
+            this.superJumpBuyBtn.Size = new System.Drawing.Size(2117, 67);
             this.superJumpBuyBtn.Text = "Super Jump: 100 Coins";
             this.superJumpBuyBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.superJumpBuyBtn.Click += new System.EventHandler(this.superJumpBuy);
@@ -454,7 +461,7 @@ namespace WindowsForms.Gamecode
             this.healthBuyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.healthBuyBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 65);
             this.healthBuyBtn.Name = "healthBuyBtn";
-            this.healthBuyBtn.Size = new System.Drawing.Size(1058, 35);
+            this.healthBuyBtn.Size = new System.Drawing.Size(2117, 67);
             this.healthBuyBtn.Text = "More Health: 150 Coins";
             this.healthBuyBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.healthBuyBtn.Click += new System.EventHandler(this.healthBuy);
@@ -463,7 +470,7 @@ namespace WindowsForms.Gamecode
             // 
             this.dmgBuyBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 30);
             this.dmgBuyBtn.Name = "dmgBuyBtn";
-            this.dmgBuyBtn.Size = new System.Drawing.Size(1058, 35);
+            this.dmgBuyBtn.Size = new System.Drawing.Size(2117, 67);
             this.dmgBuyBtn.Text = "More DMG: 50 Coins";
             this.dmgBuyBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.dmgBuyBtn.Click += new System.EventHandler(this.dmgBuy);
@@ -471,16 +478,24 @@ namespace WindowsForms.Gamecode
             // doneBtn
             // 
             this.doneBtn.Name = "doneBtn";
-            this.doneBtn.Size = new System.Drawing.Size(1058, 35);
+            this.doneBtn.Size = new System.Drawing.Size(2117, 67);
             this.doneBtn.Text = "Done";
             this.doneBtn.Click += new System.EventHandler(this.doneClick);
             // 
+            // pf
+            // 
+            this.pf.Location = new System.Drawing.Point(58, 87);
+            this.pf.Name = "pf";
+            this.pf.Size = new System.Drawing.Size(200, 100);
+            this.pf.TabIndex = 24;
+            // 
             // EndlessMode
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1061, 470);
+            this.ClientSize = new System.Drawing.Size(2122, 904);
+            this.Controls.Add(this.pf);
             this.Controls.Add(this.shopMenu);
             this.Controls.Add(this.escMenu);
             this.Controls.Add(this.inventoryCoins);
@@ -505,7 +520,7 @@ namespace WindowsForms.Gamecode
             this.Controls.Add(this.background2);
             this.Controls.Add(this.background1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "EndlessMode";
             this.Text = "Endless-Mode";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keyIsDown);
@@ -570,5 +585,6 @@ namespace WindowsForms.Gamecode
         private System.Windows.Forms.ToolStripMenuItem healthBuyBtn;
         private System.Windows.Forms.ToolStripMenuItem dmgBuyBtn;
         private System.Windows.Forms.ToolStripMenuItem doneBtn;
+        private System.Windows.Forms.Panel pf;
     }
 }

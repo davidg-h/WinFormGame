@@ -42,6 +42,7 @@ namespace WindowsForms.Gamecode
             pf.SendToBack();
             this.BackgroundImage = null;
             //makes 'normal' screen invisible 
+            this.BackgroundImage = null;
             foreach (Control x in this.Controls)
             {
                 if (x is PictureBox)
