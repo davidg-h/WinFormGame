@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace WindowsForms.Gamecode
 {
@@ -18,6 +20,9 @@ namespace WindowsForms.Gamecode
         public GameLvl lvl = GameLvl.storyLvl_1;
         internal Player player;
         bool gameOver;
+        DateTime lastFrameTime = DateTime.Now; // for fps calculation
+        SpriteHandler coinHandler;
+        SpriteHandler mushroomHandler;
         #endregion
 
         public StoryMode1()
@@ -28,7 +33,44 @@ namespace WindowsForms.Gamecode
             this.FormClosed += StartScreen.closeGame;
             this.KeyDown += formKeyDown;
             this.Load += startTimer;
+
+            coinHandler = new SpriteHandler(global::WindowsForms.Properties.Resources.coin);
+            mushroomHandler = new SpriteHandler(Properties.Resources.shroomIdle);
+            //Creates a Panel where every item is redrawn
+            pf.Location = new Point(0, 0);
+            pf.Size = this.Size;
+            pf.SendToBack();
+            this.BackgroundImage = null;
+            //makes 'normal' screen invisible 
+            foreach (Control x in this.Controls)
+            {
+                if (x is PictureBox)
+                {
+                    x.Visible = false;
+                }
+            }
         }
+
+        #region performance boost / fps
+        //Doublebuffer the Grafics = remove flickering
+        //EDIT: dont turn that on or it will flicker
+        //protected override CreateParams CreateParams
+        //{
+        //    get
+        //    {
+        //        CreateParams handleParam = base.CreateParams;
+        //        handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
+        //        return handleParam;
+        //    }
+        //}
+
+        private string getFramesPerSecond()
+        {
+            string fps = Convert.ToInt32(1000.0 / (DateTime.Now - lastFrameTime).TotalMilliseconds).ToString();
+            lastFrameTime = DateTime.Now;
+            return fps;
+        }
+        #endregion
 
         #region Esc Menu (with safe/load)
         /// <summary>
@@ -143,13 +185,18 @@ namespace WindowsForms.Gamecode
         #region GameLoop StoryMode
         private void MainGameTick_Tick(object sender, EventArgs e)
         {
+            Draw();
+
+            coinHandler.updateSpriteEveryTimeCalled();
+            mushroomHandler.updateSpriteEvery3thTimeCalled();
 
             coinCounter.Text = $": {player.coins}";
+            fpsLabel.Text = "fps: " + getFramesPerSecond();
 
             player.move(this);
             player.IsOnGround = false; //gets updated to correct value below
 
-
+            ContactWithAnyObject();
 
             if (player.Hp > 1 && !gameOver)
             {
@@ -161,27 +208,24 @@ namespace WindowsForms.Gamecode
                 gameOver = true;
                 GameOver();
             }
-
-            ContactWithAnyObject();
-
             if (player.Hp < 20)
             {
                 healthBar.ForeColor = System.Drawing.Color.Red;
             }
 
-           
 
-            background_move();
 
-            //Move all GameElements
+
             if (player.goRight == true)
             {
                 MoveGameElements("back");
             }
-            if (player.goLeft == true && background1.Left < 0)
+            if (player.goLeft == true && backgroundCoordX < 0)
             {
                 MoveGameElements("forward");
             }
+            //Move all GameElements
+            background_move();
         }
         public void ContactWithAnyObject()
         {
@@ -216,9 +260,9 @@ namespace WindowsForms.Gamecode
                     }
                     if ((string)x.Tag == "coins")
                     {
-                        if (playerBox.Bounds.IntersectsWith(x.Bounds) && x.Visible == true)
+                        if (playerBox.Bounds.IntersectsWith(x.Bounds))
                         {
-                            x.Visible = false;
+                            x.Tag = "coins.collected";
                             player.coins += 1;
                         }
                     }
@@ -281,21 +325,27 @@ namespace WindowsForms.Gamecode
                     player.Left(true);
                     if (holdDirection)
                     {
+                        playerBox.Image = Properties.Resources.walkingLeft;
                         holdDirection = false;
+
                     }
                     break;
                 case Keys.S:
                     player.Down();
                     if (holdDirection)
                     {
+                        playerBox.Image = Properties.Resources.walking;
                         holdDirection = false;
+
                     }
                     break;
                 case Keys.D:
                     player.Right(true);
                     if (holdDirection)
                     {
+                        playerBox.Image = Properties.Resources.walking;
                         holdDirection = false;
+
                     }
                     break;
             }
@@ -315,21 +365,24 @@ namespace WindowsForms.Gamecode
                     //also switch to another sprite when a key is let go of
                     if (!holdDirection)
                     {
-                        holdDirection = true;
+                        holdDirection = false;
+                        playerBox.Image = Properties.Resources.idle;
                     }
                     break;
                 case Keys.A:
                     player.Left(false);
                     if (!holdDirection)
                     {
-                        holdDirection = true;
+                        holdDirection = false;
+                        playerBox.Image = Properties.Resources.idle;
                     }
                     break;
                 case Keys.S:
                     player.goDown = false;
                     if (!holdDirection)
                     {
-                        holdDirection = true;
+                        holdDirection = false;
+                        playerBox.Image = Properties.Resources.idle;
                     }
                     break;
             }
@@ -341,31 +394,77 @@ namespace WindowsForms.Gamecode
         }
         #endregion
 
+        #region draw
+        void Draw()
+        {
+
+            Bitmap bufl = new Bitmap(pf.Width, pf.Height);
+            using (Graphics g = Graphics.FromImage(bufl))
+            {
+                g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
+                g.DrawImage(backgroundlayer, new Point(backgroundCoordX, 0));
+                g.DrawImage(player.images[player.currentImage], playerBox.Location);
+                foreach (Control x in this.Controls)
+                {
+                    if (x is PictureBox)
+                    {
+                        string tag = (string)x.Tag;
+                        if (tag == "coins")
+                        {
+                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
+                            Rectangle destRect = new Rectangle(x.Location, x.Size);
+                            g.DrawImage(coinHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
+                        }
+                        else if (tag == "obstacleTree")
+                        {
+                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
+                            Rectangle destRect = new Rectangle(x.Location, x.Size);
+                            g.DrawImage(mushroomHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
+                        }
+                        else if (tag != "player" && tag != "coins.collected")
+                        {
+                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
+                            Rectangle destRect = new Rectangle(x.Location, x.Size);
+                            g.DrawImage(((PictureBox)x).Image, destRect, srcRect, GraphicsUnit.Pixel);
+                            //g.DrawImage(((PictureBox)x).Image, x.Location);
+                        }
+                    }
+                }
+                pf.CreateGraphics().DrawImageUnscaled(bufl, 0, 0);
+            }
+        }
+        #endregion
+
         #region Background
+
+        Image backgroundlayer = Properties.Resources.Background;
+        int backgroundCoordX = 0, backgroundCoordX2 = 1600;
+
+       
 
 
         void background_move()
         {
+            //if (backgroundCoordX <= -1600)
+            //    backgroundCoordX = 1600;
 
-            if (background1.Left <= -1200)
-                background1.Left = 1198;
-
-            if (background2.Left <= -1200)
-                background2.Left = 1198;
+            //if (backgroundCoordX2 <= -1600)
+            //    backgroundCoordX2 = 1600;
 
 
             if (player.goRight)
             {
-                background1.Left -= 2;
-                background2.Left -= 2;
+                backgroundCoordX -= 2;
             }
             if (player.goLeft)
             {
-                background1.Left += 2;
-                background2.Left += 2;
+                backgroundCoordX += 2;
             }
-            Invalidate();
+
+            //Invalidate();
         }
+
+       
 
         #endregion
 
@@ -389,7 +488,6 @@ namespace WindowsForms.Gamecode
                 }
             }
         }
-
         #endregion
     }
 }

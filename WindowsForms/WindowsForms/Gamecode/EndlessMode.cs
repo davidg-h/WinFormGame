@@ -226,6 +226,15 @@ namespace WindowsForms.Gamecode
                         player.coins += 1;
                     }
                 }
+
+                if (x is PictureBox && (string)x.Tag == "coins")
+                {
+                    if (playerBox.Bounds.IntersectsWith(x.Bounds) && x.Visible == true)
+                    {
+                        x.Visible = false;
+                        player.coins += 1;
+                    }
+                }
             }
 
             if (player.Hp < 20)
