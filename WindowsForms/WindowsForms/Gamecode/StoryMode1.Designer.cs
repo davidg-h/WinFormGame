@@ -96,6 +96,7 @@
             this.heart3 = new System.Windows.Forms.PictureBox();
             this.heart2 = new System.Windows.Forms.PictureBox();
             this.heart5 = new System.Windows.Forms.PictureBox();
+            this.obstacle = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.playerBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.platformBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coinBox1)).BeginInit();
@@ -152,6 +153,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.heart3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heart5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.obstacle)).BeginInit();
             this.SuspendLayout();
             // 
             // MainGameTick
@@ -958,12 +960,24 @@
             this.heart5.TabStop = false;
             this.heart5.Tag = "health";
             // 
+            // obstacle
+            // 
+            this.obstacle.BackColor = System.Drawing.Color.Transparent;
+            this.obstacle.Image = global::WindowsForms.Properties.Resources.PoisountPlant;
+            this.obstacle.Location = new System.Drawing.Point(414, 340);
+            this.obstacle.Name = "obstacle";
+            this.obstacle.Size = new System.Drawing.Size(64, 120);
+            this.obstacle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.obstacle.TabIndex = 30;
+            this.obstacle.TabStop = false;
+            this.obstacle.Tag = "thorns";
+            // 
             // StoryMode1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WindowsForms.Properties.Resources.Background;
-            this.ClientSize = new System.Drawing.Size(821, 478);
+            this.ClientSize = new System.Drawing.Size(1311, 478);
             this.Controls.Add(this.heart5);
             this.Controls.Add(this.heart2);
             this.Controls.Add(this.heart3);
@@ -1022,6 +1036,7 @@
             this.Controls.Add(this.platformBox1);
             this.Controls.Add(this.obstacleTree);
             this.Controls.Add(this.destinyBox);
+            this.Controls.Add(this.obstacle);
             this.Controls.Add(this.escMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.escMenu;
@@ -1087,6 +1102,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.heart3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.heart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.heart5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.obstacle)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1160,6 +1176,7 @@
         private System.Windows.Forms.PictureBox heart3;
         private System.Windows.Forms.PictureBox heart2;
         private System.Windows.Forms.PictureBox heart5;
+        private System.Windows.Forms.PictureBox obstacle;
     }
 }
 
