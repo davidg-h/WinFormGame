@@ -11,7 +11,7 @@ namespace WindowsForms.Gamecode
     {
         //String name = "Blutsauger";
 
-        public EnemySmall(PictureBox eBox, int hp = 10, int dmg = 1) : base(eBox, hp, dmg) { }
+        public EnemySmall(PictureBox eBox, int hp = 10, int dmg = 10) : base(eBox, hp, dmg) { }
 
         internal override int Hp { get => hp; set => hp = value; }
 

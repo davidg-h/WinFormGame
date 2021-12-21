@@ -198,23 +198,7 @@ namespace WindowsForms.Gamecode
 
             ContactWithAnyObject();
 
-            if (player.Hp > 1 && !gameOver)
-            {
-                healthBar.Value = Convert.ToInt32(player.Hp);
-            }
-            else
-            {
-                MainGameTick.Stop();
-                gameOver = true;
-                GameOver();
-            }
-            if (player.Hp < 20)
-            {
-                healthBar.ForeColor = System.Drawing.Color.Red;
-            }
-
-
-
+            Healthbar();
 
             if (player.goRight == true)
             {
@@ -488,6 +472,73 @@ namespace WindowsForms.Gamecode
                 }
             }
         }
+        #endregion
+
+
+        #region Healthbar
+        void Healthbar()
+        {
+
+            bool empty;
+            if (player.Hp < 100)
+            {
+                ChangeHeartContainer(heart5, false);
+            }
+            if (player.Hp < 90)
+            {
+                ChangeHeartContainer(heart5, true);
+            }
+            if (player.Hp < 80)
+            {
+                ChangeHeartContainer(heart4, false);
+            }
+            if (player.Hp < 70)
+            {
+                ChangeHeartContainer(heart4, true);
+            }
+            if (player.Hp < 60)
+            {
+                ChangeHeartContainer(heart3, false);
+            }
+            if (player.Hp < 50)
+            {
+                ChangeHeartContainer(heart3, true);
+            }
+            if (player.Hp < 40)
+            {
+                ChangeHeartContainer(heart2, false);
+            }
+            if (player.Hp < 30)
+            {
+                ChangeHeartContainer(heart2, true);
+            }
+            if (player.Hp < 20)
+            {
+                ChangeHeartContainer(heart1, false);
+            }
+            if (player.Hp < 10)
+            {
+                ChangeHeartContainer(heart1, true);
+            }
+            if (player.Hp <= 0)
+            {
+                MainGameTick.Stop();
+                gameOver = true;
+                GameOver();
+            }
+        }
+
+
+        void ChangeHeartContainer(PictureBox container, bool empty)
+        {
+            if(empty)
+            {
+                container.Image = Properties.Resources.HeartEmpty;
+            }
+            else
+                container.Image = Properties.Resources.HeartHalf;
+        }
+
         #endregion
     }
 }
