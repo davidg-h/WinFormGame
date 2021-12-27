@@ -168,7 +168,7 @@
             this.healthBar.Cursor = System.Windows.Forms.Cursors.Default;
             this.healthBar.ForeColor = System.Drawing.Color.SpringGreen;
             this.healthBar.Location = new System.Drawing.Point(262, 15);
-            this.healthBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.healthBar.Margin = new System.Windows.Forms.Padding(4);
             this.healthBar.Name = "healthBar";
             this.healthBar.Size = new System.Drawing.Size(166, 44);
             this.healthBar.TabIndex = 4;
@@ -209,7 +209,7 @@
             this.playerBox.BackColor = System.Drawing.Color.Transparent;
             this.playerBox.Image = global::WindowsForms.Properties.Resources.idle;
             this.playerBox.Location = new System.Drawing.Point(642, 577);
-            this.playerBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.playerBox.Margin = new System.Windows.Forms.Padding(4);
             this.playerBox.Name = "playerBox";
             this.playerBox.Size = new System.Drawing.Size(68, 64);
             this.playerBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -222,7 +222,7 @@
             this.platformBox2.BackColor = System.Drawing.Color.Black;
             this.platformBox2.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox2.Location = new System.Drawing.Point(804, 602);
-            this.platformBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.platformBox2.Margin = new System.Windows.Forms.Padding(6);
             this.platformBox2.Name = "platformBox2";
             this.platformBox2.Size = new System.Drawing.Size(294, 58);
             this.platformBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -235,7 +235,7 @@
             this.coinBox1.BackColor = System.Drawing.Color.Transparent;
             this.coinBox1.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox1.Location = new System.Drawing.Point(976, 521);
-            this.coinBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox1.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox1.Name = "coinBox1";
             this.coinBox1.Size = new System.Drawing.Size(72, 71);
             this.coinBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -320,7 +320,7 @@
             this.platformBox1.BackColor = System.Drawing.Color.Black;
             this.platformBox1.Image = global::WindowsForms.Properties.Resources.platform16;
             this.platformBox1.Location = new System.Drawing.Point(-22, 810);
-            this.platformBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.platformBox1.Margin = new System.Windows.Forms.Padding(6);
             this.platformBox1.Name = "platformBox1";
             this.platformBox1.Size = new System.Drawing.Size(1274, 138);
             this.platformBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -333,7 +333,7 @@
             this.obstacleTree.BackColor = System.Drawing.Color.Transparent;
             this.obstacleTree.Image = global::WindowsForms.Properties.Resources.shroomIdle;
             this.obstacleTree.Location = new System.Drawing.Point(1264, 746);
-            this.obstacleTree.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.obstacleTree.Margin = new System.Windows.Forms.Padding(4);
             this.obstacleTree.Name = "obstacleTree";
             this.obstacleTree.Size = new System.Drawing.Size(32, 28);
             this.obstacleTree.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -345,7 +345,7 @@
             // 
             this.destinyBox.Image = global::WindowsForms.Properties.Resources.images;
             this.destinyBox.Location = new System.Drawing.Point(7414, 337);
-            this.destinyBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.destinyBox.Margin = new System.Windows.Forms.Padding(4);
             this.destinyBox.Name = "destinyBox";
             this.destinyBox.Size = new System.Drawing.Size(108, 138);
             this.destinyBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -358,7 +358,7 @@
             this.coinBox0.BackColor = System.Drawing.Color.Transparent;
             this.coinBox0.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox0.Location = new System.Drawing.Point(854, 521);
-            this.coinBox0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox0.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox0.Name = "coinBox0";
             this.coinBox0.Size = new System.Drawing.Size(72, 71);
             this.coinBox0.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -371,7 +371,7 @@
             this.platformBox3.BackColor = System.Drawing.Color.Black;
             this.platformBox3.Image = global::WindowsForms.Properties.Resources.platform16;
             this.platformBox3.Location = new System.Drawing.Point(1238, 810);
-            this.platformBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.platformBox3.Margin = new System.Windows.Forms.Padding(6);
             this.platformBox3.Name = "platformBox3";
             this.platformBox3.Size = new System.Drawing.Size(1274, 138);
             this.platformBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -384,7 +384,7 @@
             this.obstacleTree2.BackColor = System.Drawing.Color.Transparent;
             this.obstacleTree2.Image = global::WindowsForms.Properties.Resources.shroomIdle;
             this.obstacleTree2.Location = new System.Drawing.Point(918, 546);
-            this.obstacleTree2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.obstacleTree2.Margin = new System.Windows.Forms.Padding(4);
             this.obstacleTree2.Name = "obstacleTree2";
             this.obstacleTree2.Size = new System.Drawing.Size(32, 28);
             this.obstacleTree2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -397,7 +397,7 @@
             this.platformBox4.BackColor = System.Drawing.Color.Black;
             this.platformBox4.Image = global::WindowsForms.Properties.Resources.wallLeft2;
             this.platformBox4.Location = new System.Drawing.Point(2640, 602);
-            this.platformBox4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.platformBox4.Margin = new System.Windows.Forms.Padding(6);
             this.platformBox4.Name = "platformBox4";
             this.platformBox4.Size = new System.Drawing.Size(104, 346);
             this.platformBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -410,7 +410,7 @@
             this.platformBox5.BackColor = System.Drawing.Color.Black;
             this.platformBox5.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox5.Location = new System.Drawing.Point(2930, 546);
-            this.platformBox5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.platformBox5.Margin = new System.Windows.Forms.Padding(6);
             this.platformBox5.Name = "platformBox5";
             this.platformBox5.Size = new System.Drawing.Size(294, 58);
             this.platformBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -423,7 +423,7 @@
             this.platformBox6.BackColor = System.Drawing.Color.Black;
             this.platformBox6.Image = global::WindowsForms.Properties.Resources.platform2;
             this.platformBox6.Location = new System.Drawing.Point(3434, 810);
-            this.platformBox6.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.platformBox6.Margin = new System.Windows.Forms.Padding(6);
             this.platformBox6.Name = "platformBox6";
             this.platformBox6.Size = new System.Drawing.Size(210, 138);
             this.platformBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -436,7 +436,7 @@
             this.platformBox7.BackColor = System.Drawing.Color.Black;
             this.platformBox7.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox7.Location = new System.Drawing.Point(3696, 702);
-            this.platformBox7.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.platformBox7.Margin = new System.Windows.Forms.Padding(6);
             this.platformBox7.Name = "platformBox7";
             this.platformBox7.Size = new System.Drawing.Size(294, 58);
             this.platformBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -449,7 +449,7 @@
             this.platformBox8.BackColor = System.Drawing.Color.Black;
             this.platformBox8.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox8.Location = new System.Drawing.Point(4096, 565);
-            this.platformBox8.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.platformBox8.Margin = new System.Windows.Forms.Padding(6);
             this.platformBox8.Name = "platformBox8";
             this.platformBox8.Size = new System.Drawing.Size(294, 58);
             this.platformBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -462,7 +462,7 @@
             this.platformBox10.BackColor = System.Drawing.Color.Black;
             this.platformBox10.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox10.Location = new System.Drawing.Point(4126, 252);
-            this.platformBox10.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.platformBox10.Margin = new System.Windows.Forms.Padding(6);
             this.platformBox10.Name = "platformBox10";
             this.platformBox10.Size = new System.Drawing.Size(186, 58);
             this.platformBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -475,7 +475,7 @@
             this.platformBox17.BackColor = System.Drawing.Color.Black;
             this.platformBox17.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox17.Location = new System.Drawing.Point(5342, 637);
-            this.platformBox17.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.platformBox17.Margin = new System.Windows.Forms.Padding(6);
             this.platformBox17.Name = "platformBox17";
             this.platformBox17.Size = new System.Drawing.Size(294, 58);
             this.platformBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -488,7 +488,7 @@
             this.platformBox15.BackColor = System.Drawing.Color.Black;
             this.platformBox15.Image = global::WindowsForms.Properties.Resources.wallLeft2;
             this.platformBox15.Location = new System.Drawing.Point(4834, 602);
-            this.platformBox15.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.platformBox15.Margin = new System.Windows.Forms.Padding(6);
             this.platformBox15.Name = "platformBox15";
             this.platformBox15.Size = new System.Drawing.Size(104, 346);
             this.platformBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -501,7 +501,7 @@
             this.platformBox14.BackColor = System.Drawing.Color.Black;
             this.platformBox14.Image = global::WindowsForms.Properties.Resources.wallLeft2;
             this.platformBox14.Location = new System.Drawing.Point(4834, 277);
-            this.platformBox14.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.platformBox14.Margin = new System.Windows.Forms.Padding(6);
             this.platformBox14.Name = "platformBox14";
             this.platformBox14.Size = new System.Drawing.Size(104, 346);
             this.platformBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -514,7 +514,7 @@
             this.platformBox13.BackColor = System.Drawing.Color.Black;
             this.platformBox13.Image = global::WindowsForms.Properties.Resources.platform;
             this.platformBox13.Location = new System.Drawing.Point(4834, 225);
-            this.platformBox13.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.platformBox13.Margin = new System.Windows.Forms.Padding(6);
             this.platformBox13.Name = "platformBox13";
             this.platformBox13.Size = new System.Drawing.Size(104, 62);
             this.platformBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -527,7 +527,7 @@
             this.platformBox9.BackColor = System.Drawing.Color.Black;
             this.platformBox9.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox9.Location = new System.Drawing.Point(4466, 412);
-            this.platformBox9.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.platformBox9.Margin = new System.Windows.Forms.Padding(6);
             this.platformBox9.Name = "platformBox9";
             this.platformBox9.Size = new System.Drawing.Size(294, 58);
             this.platformBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -540,7 +540,7 @@
             this.platformBox11.BackColor = System.Drawing.Color.Black;
             this.platformBox11.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox11.Location = new System.Drawing.Point(4466, 119);
-            this.platformBox11.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.platformBox11.Margin = new System.Windows.Forms.Padding(6);
             this.platformBox11.Name = "platformBox11";
             this.platformBox11.Size = new System.Drawing.Size(78, 58);
             this.platformBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -553,7 +553,7 @@
             this.platformBox12.BackColor = System.Drawing.Color.Black;
             this.platformBox12.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox12.Location = new System.Drawing.Point(4748, 52);
-            this.platformBox12.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.platformBox12.Margin = new System.Windows.Forms.Padding(6);
             this.platformBox12.Name = "platformBox12";
             this.platformBox12.Size = new System.Drawing.Size(94, 58);
             this.platformBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -566,7 +566,7 @@
             this.platformBox18.BackColor = System.Drawing.Color.Black;
             this.platformBox18.Image = global::WindowsForms.Properties.Resources.platform16;
             this.platformBox18.Location = new System.Drawing.Point(5664, 810);
-            this.platformBox18.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.platformBox18.Margin = new System.Windows.Forms.Padding(6);
             this.platformBox18.Name = "platformBox18";
             this.platformBox18.Size = new System.Drawing.Size(1274, 138);
             this.platformBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -579,7 +579,7 @@
             this.platformBox16.BackColor = System.Drawing.Color.Black;
             this.platformBox16.Image = global::WindowsForms.Properties.Resources.wallLeft2;
             this.platformBox16.Location = new System.Drawing.Point(5102, 746);
-            this.platformBox16.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.platformBox16.Margin = new System.Windows.Forms.Padding(6);
             this.platformBox16.Name = "platformBox16";
             this.platformBox16.Size = new System.Drawing.Size(104, 346);
             this.platformBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -592,7 +592,7 @@
             this.platformBox19.BackColor = System.Drawing.Color.Black;
             this.platformBox19.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox19.Location = new System.Drawing.Point(6854, 637);
-            this.platformBox19.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.platformBox19.Margin = new System.Windows.Forms.Padding(6);
             this.platformBox19.Name = "platformBox19";
             this.platformBox19.Size = new System.Drawing.Size(294, 58);
             this.platformBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -605,7 +605,7 @@
             this.platformBox20.BackColor = System.Drawing.Color.Black;
             this.platformBox20.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox20.Location = new System.Drawing.Point(7246, 479);
-            this.platformBox20.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.platformBox20.Margin = new System.Windows.Forms.Padding(6);
             this.platformBox20.Name = "platformBox20";
             this.platformBox20.Size = new System.Drawing.Size(294, 58);
             this.platformBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -618,7 +618,7 @@
             this.coinBox2.BackColor = System.Drawing.Color.Transparent;
             this.coinBox2.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox2.Location = new System.Drawing.Point(1704, 729);
-            this.coinBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox2.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox2.Name = "coinBox2";
             this.coinBox2.Size = new System.Drawing.Size(72, 71);
             this.coinBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -631,7 +631,7 @@
             this.coinBox3.BackColor = System.Drawing.Color.Transparent;
             this.coinBox3.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox3.Location = new System.Drawing.Point(2380, 729);
-            this.coinBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox3.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox3.Name = "coinBox3";
             this.coinBox3.Size = new System.Drawing.Size(72, 71);
             this.coinBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -644,7 +644,7 @@
             this.coinBox4.BackColor = System.Drawing.Color.Transparent;
             this.coinBox4.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox4.Location = new System.Drawing.Point(2656, 521);
-            this.coinBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox4.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox4.Name = "coinBox4";
             this.coinBox4.Size = new System.Drawing.Size(72, 71);
             this.coinBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -657,7 +657,7 @@
             this.coinBox5.BackColor = System.Drawing.Color.Transparent;
             this.coinBox5.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox5.Location = new System.Drawing.Point(2972, 465);
-            this.coinBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox5.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox5.Name = "coinBox5";
             this.coinBox5.Size = new System.Drawing.Size(72, 71);
             this.coinBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -670,7 +670,7 @@
             this.pictureBox30.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox30.Image = global::WindowsForms.Properties.Resources.coin;
             this.pictureBox30.Location = new System.Drawing.Point(3126, 469);
-            this.pictureBox30.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox30.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox30.Name = "pictureBox30";
             this.pictureBox30.Size = new System.Drawing.Size(72, 71);
             this.pictureBox30.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -683,7 +683,7 @@
             this.coinBox6.BackColor = System.Drawing.Color.Transparent;
             this.coinBox6.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox6.Location = new System.Drawing.Point(3126, 465);
-            this.coinBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox6.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox6.Name = "coinBox6";
             this.coinBox6.Size = new System.Drawing.Size(72, 71);
             this.coinBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -696,7 +696,7 @@
             this.coinBox7.BackColor = System.Drawing.Color.Transparent;
             this.coinBox7.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox7.Location = new System.Drawing.Point(4134, 479);
-            this.coinBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox7.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox7.Name = "coinBox7";
             this.coinBox7.Size = new System.Drawing.Size(72, 71);
             this.coinBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -709,7 +709,7 @@
             this.coinBox8.BackColor = System.Drawing.Color.Transparent;
             this.coinBox8.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox8.Location = new System.Drawing.Point(4288, 479);
-            this.coinBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox8.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox8.Name = "coinBox8";
             this.coinBox8.Size = new System.Drawing.Size(72, 71);
             this.coinBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -722,7 +722,7 @@
             this.coinBox9.BackColor = System.Drawing.Color.Transparent;
             this.coinBox9.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox9.Location = new System.Drawing.Point(4112, 171);
-            this.coinBox9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox9.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox9.Name = "coinBox9";
             this.coinBox9.Size = new System.Drawing.Size(72, 71);
             this.coinBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -735,7 +735,7 @@
             this.coinBox10.BackColor = System.Drawing.Color.Transparent;
             this.coinBox10.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox10.Location = new System.Drawing.Point(4266, 171);
-            this.coinBox10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox10.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox10.Name = "coinBox10";
             this.coinBox10.Size = new System.Drawing.Size(72, 71);
             this.coinBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -748,7 +748,7 @@
             this.coinBox11.BackColor = System.Drawing.Color.Transparent;
             this.coinBox11.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox11.Location = new System.Drawing.Point(4850, 144);
-            this.coinBox11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox11.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox11.Name = "coinBox11";
             this.coinBox11.Size = new System.Drawing.Size(72, 71);
             this.coinBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -761,7 +761,7 @@
             this.coinBox12.BackColor = System.Drawing.Color.Transparent;
             this.coinBox12.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox12.Location = new System.Drawing.Point(5376, 556);
-            this.coinBox12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox12.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox12.Name = "coinBox12";
             this.coinBox12.Size = new System.Drawing.Size(72, 71);
             this.coinBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -774,7 +774,7 @@
             this.coinBox13.BackColor = System.Drawing.Color.Transparent;
             this.coinBox13.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox13.Location = new System.Drawing.Point(5530, 556);
-            this.coinBox13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox13.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox13.Name = "coinBox13";
             this.coinBox13.Size = new System.Drawing.Size(72, 71);
             this.coinBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -787,7 +787,7 @@
             this.coinBox14.BackColor = System.Drawing.Color.Transparent;
             this.coinBox14.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox14.Location = new System.Drawing.Point(6058, 729);
-            this.coinBox14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox14.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox14.Name = "coinBox14";
             this.coinBox14.Size = new System.Drawing.Size(72, 71);
             this.coinBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -800,7 +800,7 @@
             this.coinBox15.BackColor = System.Drawing.Color.Transparent;
             this.coinBox15.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox15.Location = new System.Drawing.Point(6166, 729);
-            this.coinBox15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox15.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox15.Name = "coinBox15";
             this.coinBox15.Size = new System.Drawing.Size(72, 71);
             this.coinBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -813,7 +813,7 @@
             this.coinBox16.BackColor = System.Drawing.Color.Transparent;
             this.coinBox16.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox16.Location = new System.Drawing.Point(6320, 729);
-            this.coinBox16.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox16.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox16.Name = "coinBox16";
             this.coinBox16.Size = new System.Drawing.Size(72, 71);
             this.coinBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -826,7 +826,7 @@
             this.coinBox17.BackColor = System.Drawing.Color.Transparent;
             this.coinBox17.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox17.Location = new System.Drawing.Point(6432, 729);
-            this.coinBox17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox17.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox17.Name = "coinBox17";
             this.coinBox17.Size = new System.Drawing.Size(72, 71);
             this.coinBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -839,7 +839,7 @@
             this.coinBox18.BackColor = System.Drawing.Color.Transparent;
             this.coinBox18.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox18.Location = new System.Drawing.Point(6166, 623);
-            this.coinBox18.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox18.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox18.Name = "coinBox18";
             this.coinBox18.Size = new System.Drawing.Size(72, 71);
             this.coinBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -852,7 +852,7 @@
             this.coinBox19.BackColor = System.Drawing.Color.Transparent;
             this.coinBox19.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox19.Location = new System.Drawing.Point(6320, 623);
-            this.coinBox19.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox19.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox19.Name = "coinBox19";
             this.coinBox19.Size = new System.Drawing.Size(72, 71);
             this.coinBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -865,7 +865,7 @@
             this.coinBox20.BackColor = System.Drawing.Color.Transparent;
             this.coinBox20.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox20.Location = new System.Drawing.Point(6250, 521);
-            this.coinBox20.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox20.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox20.Name = "coinBox20";
             this.coinBox20.Size = new System.Drawing.Size(72, 71);
             this.coinBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -878,7 +878,7 @@
             this.coinBox21.BackColor = System.Drawing.Color.Transparent;
             this.coinBox21.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox21.Location = new System.Drawing.Point(6910, 546);
-            this.coinBox21.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox21.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox21.Name = "coinBox21";
             this.coinBox21.Size = new System.Drawing.Size(72, 71);
             this.coinBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -891,7 +891,7 @@
             this.coinBox22.BackColor = System.Drawing.Color.Transparent;
             this.coinBox22.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox22.Location = new System.Drawing.Point(7022, 546);
-            this.coinBox22.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox22.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox22.Name = "coinBox22";
             this.coinBox22.Size = new System.Drawing.Size(72, 71);
             this.coinBox22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -904,7 +904,7 @@
             this.coinBox23.BackColor = System.Drawing.Color.Transparent;
             this.coinBox23.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinBox23.Location = new System.Drawing.Point(7300, 398);
-            this.coinBox23.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinBox23.Margin = new System.Windows.Forms.Padding(4);
             this.coinBox23.Name = "coinBox23";
             this.coinBox23.Size = new System.Drawing.Size(72, 71);
             this.coinBox23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -926,7 +926,7 @@
             // pf
             // 
             this.pf.Location = new System.Drawing.Point(216, 260);
-            this.pf.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pf.Margin = new System.Windows.Forms.Padding(4);
             this.pf.Name = "pf";
             this.pf.Size = new System.Drawing.Size(258, 148);
             this.pf.TabIndex = 23;
@@ -936,7 +936,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WindowsForms.Properties.Resources.Background;
-            this.ClientSize = new System.Drawing.Size(1904, 881);
+            this.ClientSize = new System.Drawing.Size(1266, 881);
             this.Controls.Add(this.pf);
             this.Controls.Add(this.fpsLabel);
             this.Controls.Add(this.obstacleTree2);
@@ -995,7 +995,7 @@
             this.Controls.Add(this.escMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.escMenu;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "StoryMode1";
             this.Tag = "";
             this.Text = "Story-Mode";

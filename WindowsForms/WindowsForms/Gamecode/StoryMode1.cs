@@ -49,7 +49,7 @@ namespace WindowsForms.Gamecode
                 {
                     x.Visible = false;
                 }
-                if(x is Label)
+                if (x is Label)
                 {
                     x.Visible = false;
                 }
