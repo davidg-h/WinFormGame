@@ -100,7 +100,7 @@ namespace WindowsForms.Gamecode
             // 
             this.healthBar.BackColor = System.Drawing.SystemColors.GrayText;
             this.healthBar.Location = new System.Drawing.Point(204, 17);
-            this.healthBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.healthBar.Margin = new System.Windows.Forms.Padding(4);
             this.healthBar.Name = "healthBar";
             this.healthBar.Size = new System.Drawing.Size(166, 44);
             this.healthBar.TabIndex = 7;
@@ -109,7 +109,7 @@ namespace WindowsForms.Gamecode
             // MainGameTick
             // 
             this.MainGameTick.Enabled = true;
-            this.MainGameTick.Interval = 20;
+            this.MainGameTick.Interval = 50;
             this.MainGameTick.Tick += new System.EventHandler(this.endlessTickTimer);
             // 
             // scoreLabel
@@ -128,7 +128,7 @@ namespace WindowsForms.Gamecode
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Black;
             this.pictureBox1.Location = new System.Drawing.Point(-32, 758);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(2158, 165);
             this.pictureBox1.TabIndex = 8;
@@ -199,7 +199,7 @@ namespace WindowsForms.Gamecode
             this.obstacleTree.BackColor = System.Drawing.Color.Transparent;
             this.obstacleTree.Image = global::WindowsForms.Properties.Resources.shroomIdle;
             this.obstacleTree.Location = new System.Drawing.Point(1156, 706);
-            this.obstacleTree.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.obstacleTree.Margin = new System.Windows.Forms.Padding(4);
             this.obstacleTree.Name = "obstacleTree";
             this.obstacleTree.Size = new System.Drawing.Size(32, 28);
             this.obstacleTree.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -212,7 +212,7 @@ namespace WindowsForms.Gamecode
             this.playerBox.BackColor = System.Drawing.Color.Transparent;
             this.playerBox.Image = global::WindowsForms.Properties.Resources.idle;
             this.playerBox.Location = new System.Drawing.Point(68, 637);
-            this.playerBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.playerBox.Margin = new System.Windows.Forms.Padding(4);
             this.playerBox.Name = "playerBox";
             this.playerBox.Size = new System.Drawing.Size(68, 64);
             this.playerBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -225,7 +225,7 @@ namespace WindowsForms.Gamecode
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = global::WindowsForms.Properties.Resources.coin;
             this.pictureBox3.Location = new System.Drawing.Point(538, 571);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(40, 40);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -238,7 +238,7 @@ namespace WindowsForms.Gamecode
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = global::WindowsForms.Properties.Resources.coin;
             this.pictureBox2.Location = new System.Drawing.Point(614, 506);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(40, 40);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -251,7 +251,7 @@ namespace WindowsForms.Gamecode
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = global::WindowsForms.Properties.Resources.coin;
             this.pictureBox4.Location = new System.Drawing.Point(778, 506);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(40, 40);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -264,7 +264,7 @@ namespace WindowsForms.Gamecode
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.Image = global::WindowsForms.Properties.Resources.coin;
             this.pictureBox5.Location = new System.Drawing.Point(744, 427);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(40, 40);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -277,7 +277,7 @@ namespace WindowsForms.Gamecode
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox6.Image = global::WindowsForms.Properties.Resources.coin;
             this.pictureBox6.Location = new System.Drawing.Point(876, 540);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(40, 40);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -290,7 +290,7 @@ namespace WindowsForms.Gamecode
             this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox7.Image = global::WindowsForms.Properties.Resources.coin;
             this.pictureBox7.Location = new System.Drawing.Point(842, 463);
-            this.pictureBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(40, 40);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -303,7 +303,7 @@ namespace WindowsForms.Gamecode
             this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox8.Image = global::WindowsForms.Properties.Resources.coin;
             this.pictureBox8.Location = new System.Drawing.Point(938, 571);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(40, 40);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -316,7 +316,7 @@ namespace WindowsForms.Gamecode
             this.pictureBox9.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox9.Image = global::WindowsForms.Properties.Resources.coin;
             this.pictureBox9.Location = new System.Drawing.Point(904, 492);
-            this.pictureBox9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(40, 40);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -329,7 +329,7 @@ namespace WindowsForms.Gamecode
             this.pictureBox10.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox10.Image = global::WindowsForms.Properties.Resources.coin;
             this.pictureBox10.Location = new System.Drawing.Point(1012, 554);
-            this.pictureBox10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox10.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(40, 40);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -342,7 +342,7 @@ namespace WindowsForms.Gamecode
             this.pictureBox11.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox11.Image = global::WindowsForms.Properties.Resources.coin;
             this.pictureBox11.Location = new System.Drawing.Point(978, 477);
-            this.pictureBox11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox11.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(40, 40);
             this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -367,7 +367,7 @@ namespace WindowsForms.Gamecode
             this.pictureBox12.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox12.Image = global::WindowsForms.Properties.Resources.coin_Counter;
             this.pictureBox12.Location = new System.Drawing.Point(1884, 10);
-            this.pictureBox12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox12.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(54, 50);
             this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -390,7 +390,7 @@ namespace WindowsForms.Gamecode
             // 
             this.background1.Image = global::WindowsForms.Properties.Resources.Background;
             this.background1.Location = new System.Drawing.Point(0, 0);
-            this.background1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.background1.Margin = new System.Windows.Forms.Padding(6);
             this.background1.Name = "background1";
             this.background1.Size = new System.Drawing.Size(1200, 512);
             this.background1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -402,7 +402,7 @@ namespace WindowsForms.Gamecode
             // 
             this.background2.Image = global::WindowsForms.Properties.Resources.Background;
             this.background2.Location = new System.Drawing.Point(2396, 0);
-            this.background2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.background2.Margin = new System.Windows.Forms.Padding(6);
             this.background2.Name = "background2";
             this.background2.Size = new System.Drawing.Size(1200, 512);
             this.background2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -520,7 +520,7 @@ namespace WindowsForms.Gamecode
             this.Controls.Add(this.background2);
             this.Controls.Add(this.background1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "EndlessMode";
             this.Text = "Endless-Mode";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keyIsDown);

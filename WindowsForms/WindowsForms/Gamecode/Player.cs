@@ -17,15 +17,22 @@ namespace WindowsForms.Gamecode
         internal int score = 0;
         internal int coins = 0;
         internal System.Windows.Vector moveVector;
-        internal Image[] images;
-        internal int currentImage = 0;
+        internal Image[] spritesIdle;
+        internal Image[] spritesWalkLeft;
+        internal Image[] spritesWalkRight;
+        internal Image currentImage = null;
+        int currentImageIndex = 0;
         int animationUpdate = 0;
+        int currentAnimation = 0; //TODO: create enum animations
 
         public Player(PictureBox playerBox, int hp, int dmg = 1) : base(playerBox, hp, dmg) { 
             defaultLocation = new Point(34,31);
             moveVector = new System.Windows.Vector(0, 0);
             isOnGround = false;
-            images = SpriteHandler.getFrames(playerBox.Image);
+            spritesIdle = SpriteHandler.getFrames(playerBox.Image);
+            spritesWalkLeft = SpriteHandler.getFrames(Properties.Resources.walkingLeft);
+            spritesWalkRight = SpriteHandler.getFrames(Properties.Resources.walking);
+            currentImage = spritesIdle[0];
         }
 
         internal override int Hp { get => hp; set => hp = value; }
@@ -44,18 +51,34 @@ namespace WindowsForms.Gamecode
 
         public override void move(Form f)
         {
-
-            if (goLeft && box.Left > 30 && !obstacleLeft)
+            
+            if (goLeft && box.Left > 30)// && !obstacleLeft)
             {
-                moveVector.X = -characterSpeed;
+                //moveVector.X = -characterSpeed;
+                if (currentAnimation != 1)
+                {
+                    animationUpdate = 0;
+                    currentAnimation = 1;
+                }
             }
-            else if (goRight && box.Left + (box.Width + 30) < f.ClientSize.Width && !obstacleRight)
+            else if (goRight && box.Left + (box.Width + 30) < f.ClientSize.Width)// && !obstacleRight)
             {
-                moveVector.X = characterSpeed;
+                //moveVector.X = characterSpeed;
+                if(currentAnimation != 2)
+                {
+                    animationUpdate = 0;
+                    currentAnimation = 2;
+                }
             }
             else
             {
                 moveVector.X = 0;
+
+                if (currentAnimation != 0)
+                {
+                    animationUpdate = 0;
+                    currentAnimation = 0;
+                }
             }
 
             #region jumping mechanics
@@ -82,10 +105,37 @@ namespace WindowsForms.Gamecode
             #endregion
             //finaly the position gets Updated with the created moveVector
             box.Location = new Point(box.Location.X + (int)moveVector.X, box.Location.Y + (int)moveVector.Y);
-            if (animationUpdate % 5 == 0)
-                currentImage = (currentImage + 1) % images.Length;
-            animationUpdate++;
+
+            updateAnimation();
         }
+
+        private void updateAnimation()
+        {
+            if (animationUpdate % 3 == 0)
+            {
+                switch (currentAnimation)
+                {
+                    case 0: 
+                            currentImage = spritesIdle[ (currentImageIndex + 1) % spritesIdle.Length];
+                        break;
+                    case 1:
+                            currentImage = spritesWalkLeft[ (currentImageIndex + 1) % spritesIdle.Length];
+                        break;
+                    case 2:
+                            currentImage = spritesWalkRight[ (currentImageIndex + 1) % spritesIdle.Length];
+                        break;
+                }
+                currentImageIndex++;
+                animationUpdate = 0;
+            }
+            animationUpdate++;
+            
+
+        }
+
+        private void idle() { }
+        private void walkLeft() { }
+        private void walkRight() { }
 
         public override void attack()
         {

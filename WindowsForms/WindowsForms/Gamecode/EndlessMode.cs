@@ -266,6 +266,7 @@ namespace WindowsForms.Gamecode
 
         private void GameReset()
         {
+            player.Hp = 100;
             player.score = 0;
             player.coins = 0;
             scoreLabel.Text = "Score: " + player.score;
@@ -386,7 +387,7 @@ namespace WindowsForms.Gamecode
                 g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
                 //g.DrawImage(backgroundlayer, new Point(backgroundCoordX, 0));
                 g.DrawImage(backgroundBox.Image, Point.Empty);
-                g.DrawImage(player.images[player.currentImage], playerBox.Location);
+                g.DrawImage(player.currentImage, playerBox.Location);
                 foreach (Control x in this.Controls)
                 {
                     if (x is PictureBox )

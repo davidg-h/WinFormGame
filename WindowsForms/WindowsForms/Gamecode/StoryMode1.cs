@@ -49,6 +49,10 @@ namespace WindowsForms.Gamecode
                 {
                     x.Visible = false;
                 }
+                if(x is Label)
+                {
+                    x.Visible = false;
+                }
             }
         }
 
@@ -199,6 +203,10 @@ namespace WindowsForms.Gamecode
 
             ContactWithAnyObject();
 
+            if(player.box.Location.Y > 2000)
+            {
+                gameOver = true;
+            }
             if (player.Hp > 1 && !gameOver)
             {
                 healthBar.Value = Convert.ToInt32(player.Hp);
@@ -221,7 +229,7 @@ namespace WindowsForms.Gamecode
             {
                 MoveGameElements("back");
             }
-            if (player.goLeft == true && backgroundCoordX < 0)
+            if (player.goLeft == true)
             {
                 MoveGameElements("forward");
             }
@@ -230,6 +238,8 @@ namespace WindowsForms.Gamecode
         }
         public void ContactWithAnyObject()
         {
+            player.obstacleLeft = false;
+            player.obstacleRight = false;
             foreach (Control x in this.Controls)
             {
                 //TODO spawn of enemys (use the enemy classes)
@@ -237,7 +247,7 @@ namespace WindowsForms.Gamecode
                 {
                     if ((string)x.Tag == "obstacleTree")
                     {
-                        if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
+                        if (playerBox.Bounds.IntersectsWith(x.Bounds))
                         {
                             if ((((PictureBox)x).Location.X - playerBox.Location.X) > 0)
                             {
@@ -253,10 +263,25 @@ namespace WindowsForms.Gamecode
                     }
                     if ((string)x.Tag == "platform")
                     {
-                        if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
+                        if (playerBox.Bounds.IntersectsWith(x.Bounds))
                         {
-                            player.IsOnGround = true;
-                            player.MoveToTopOfPlatform(x.Top);
+                            if(playerBox.Top  < x.Top)
+                            {
+                                player.IsOnGround = true;
+
+                                player.MoveToTopOfPlatform(x.Top);
+                            }
+                            else
+                            {
+                                if ((x.Location.X - playerBox.Location.X) > 0)
+                                {
+                                    player.obstacleRight = true;
+                                }
+                                else
+                                {
+                                    player.obstacleLeft = true;
+                                }
+                            }
                         }
                     }
                     if ((string)x.Tag == "coins")
@@ -293,7 +318,6 @@ namespace WindowsForms.Gamecode
         }
         internal void YouWon()
         {
-            gameOver = true;
             WinnerScreen winnerScreen = new WinnerScreen();
             winnerScreen.Show();
             this.Hide();
@@ -403,8 +427,9 @@ namespace WindowsForms.Gamecode
             using (Graphics g = Graphics.FromImage(bufl))
             {
                 g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
-                g.DrawImage(backgroundlayer, new Point(backgroundCoordX, 0));
-                g.DrawImage(player.images[player.currentImage], playerBox.Location);
+
+                g.DrawImage(backgroundlayer, new Rectangle(new Point(0,0), this.Size), new Rectangle(new Point(-backgroundCoordX, 0), new Size(backgroundlayer.Width / 2, backgroundlayer.Height)), GraphicsUnit.Pixel);
+                g.DrawImage(player.currentImage, playerBox.Location);
                 foreach (Control x in this.Controls)
                 {
                     if (x is PictureBox)
@@ -430,6 +455,10 @@ namespace WindowsForms.Gamecode
                             //g.DrawImage(((PictureBox)x).Image, x.Location);
                         }
                     }
+                    if (x is Label)
+                    {
+                        g.DrawString(x.Text, new Font("Arial", 11), new SolidBrush(Color.Black) , x.Location ) ;
+                    }
                 }
                 pf.CreateGraphics().DrawImageUnscaled(bufl, 0, 0);
             }
@@ -453,11 +482,11 @@ namespace WindowsForms.Gamecode
             //    backgroundCoordX2 = 1600;
 
 
-            if (player.goRight)
+            if (player.goRight && !player.obstacleRight)
             {
                 backgroundCoordX -= 2;
             }
-            if (player.goLeft)
+            if (player.goLeft && ! player.obstacleLeft)
             {
                 backgroundCoordX += 2;
             }
@@ -476,16 +505,30 @@ namespace WindowsForms.Gamecode
             {
                 //moving the elements with the wanted Tags with the movement of the player
                 //new object that need to be moved: enter "Tag" in this if statement
-                if (x is PictureBox && (string)x.Tag == "platform" || x is PictureBox && (string)x.Tag == "obstacleTree" || x is PictureBox && (string)x.Tag == "coins" || x is PictureBox && (string)x.Tag == "finish" || x is PictureBox && (string)x.Tag == "......")
+                if (direction == "back" && !player.obstacleRight)
                 {
-                    if (direction == "back")
+                    if (x is PictureBox)
                     {
-                        x.Left -= player.characterSpeed;
+                        string tag = (string)x.Tag;
+                        if (tag == "platform" || tag == "obstacleTree" || tag == "coins" || tag == "finish" || tag == "......")
+                        {
+
+                            x.Left -= player.characterSpeed;
+                        }
                     }
-                    if (direction == "forward")
+
+                }      
+                if (direction == "forward" && !player.obstacleLeft)
+                {
+                    if (x is PictureBox)
                     {
-                        x.Left += player.characterSpeed;
+                        string tag = (string)x.Tag;
+                        if (tag == "platform" || tag == "obstacleTree" || tag == "coins" || tag == "finish" || tag == "......")
+                        {
+                            x.Left += player.characterSpeed;
+                        }
                     }
+                    
                 }
             }
         }
