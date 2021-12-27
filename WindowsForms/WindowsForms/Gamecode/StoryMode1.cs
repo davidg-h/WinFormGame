@@ -36,7 +36,7 @@ namespace WindowsForms.Gamecode
             InitializeComponent();
             CreateEnemysLIst();
 
-            player = new Player(playerBox, 200);
+            player = new Player(playerBox, 100);
             this.FormClosed += StartScreen.closeGame;
             this.KeyDown += formKeyDown;
             this.Load += startTimer;
@@ -291,11 +291,7 @@ namespace WindowsForms.Gamecode
                     {
                         if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
                         {
-
-                            RangeEnemyShot shot = new RangeEnemyShot();
-                            player.Hp -= shot.ShotDmg;
-                            this.Controls.Remove(x);
-                            ((PictureBox)x).Dispose();
+                            player.Hp -= RangeEnemyShot.ShotDmg;
                         }
                     }
                     if ((string)x.Tag == "platform")
@@ -532,7 +528,7 @@ namespace WindowsForms.Gamecode
         {
             foreach (var rangeEnemy in this.rangeEnemyList)
             {
-                if (rangeEnemy.box != null && (rangeEnemy.box.Left - player.box.Right < 100 && player.box.Right < rangeEnemy.box.Left))
+                if (rangeEnemy.box != null && (rangeEnemy.box.Left - player.box.Right < 200 && player.box.Right < rangeEnemy.box.Left))
                 {
                     rangeEnemy.ShootShot(this, "left");
                 }

@@ -15,10 +15,10 @@ namespace WindowsForms.Gamecode
         public int shotLeft;
         public int shotTop;
 
-        private int speed = 20;
+        private int speed = 30;
         private PictureBox shot = new PictureBox();
         private Timer shotTimer = new Timer();
-        public int ShotDmg = 1;
+        public static int ShotDmg = 1;
        
         public void CreateShot(Form form)
         {
