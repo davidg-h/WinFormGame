@@ -157,15 +157,6 @@
   <data name="WinnerScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WinnerScreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="coin Counter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\coin Counter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PoisountPlant" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PoisountPlant.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="WinnerScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\WinnerScreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="TitleScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TitleScreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -202,6 +193,9 @@
   <data name="HeartHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\HeartHalf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Piranha-ball" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Piranha-ball.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="shroomIdle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shroomIdle.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -217,7 +211,7 @@
   <data name="coin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\coin.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Piranha-ball" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Piranha-ball.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="eagle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eagle.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -47,7 +47,7 @@ namespace WindowsForms.Gamecode
 
             coinHandler = new SpriteHandler(global::WindowsForms.Properties.Resources.coin);
             mushroomHandler = new SpriteHandler(Properties.Resources.shroomIdle);
-            eagleHandler = new SpriteHandler(Properties.Resources.eagleTest);
+            eagleHandler = new SpriteHandler(Properties.Resources.eagle);
             //Creates a Panel where every item is redrawn
             pf.Location = new Point(0, 0);
             pf.Size = this.Size;
@@ -675,7 +675,7 @@ namespace WindowsForms.Gamecode
             {
                 //moving the elements with the wanted Tags with the movement of the player
                 //new object that need to be moved: enter "Tag" in this if statement
-                if (x is PictureBox && (string)x.Tag == "platform" || x is PictureBox && (string)x.Tag == "obstacleTree" || x is PictureBox && (string)x.Tag == "coins" || x is PictureBox && (string)x.Tag == "finish" || x is PictureBox && (string)x.Tag == "thorns")
+                if (x is PictureBox && (string)x.Tag == "platform" || x is PictureBox && (string)x.Tag == "obstacleTree" || x is PictureBox && (string)x.Tag == "eagleEnemy" || x is PictureBox && (string)x.Tag == "coins" || x is PictureBox && (string)x.Tag == "finish" || x is PictureBox && (string)x.Tag == "thorns")
                 {
                     if (direction == "back")
                     {

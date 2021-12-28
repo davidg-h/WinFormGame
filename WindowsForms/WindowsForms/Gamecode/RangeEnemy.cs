@@ -10,13 +10,9 @@ namespace WindowsForms.Gamecode
 {
     class RangeEnemy : Enemy
     {
-        private RangeEnemy(PictureBox eBox, int hp = 10, int dmg = 1) : base(eBox, hp, dmg)
-        {
-
-        }
+        private RangeEnemy(PictureBox eBox, int hp = 10, int dmg = 1) : base(eBox, hp, dmg) { }
         public RangeEnemy(int hp = 10, int dmg = 1) : base(null, hp, dmg)
         {
-
             this.CreateNewRangeEnemy();
         }
         internal override int Hp { get => hp; set => hp = value; }
@@ -44,18 +40,8 @@ namespace WindowsForms.Gamecode
                 Shot.shotLeft = this.box.Left + (this.box.Width / 2) ;
                 Shot.shotTop = this.box.Top + (this.box.Height / 2);
                 Shot.CreateShot(f);
-               
             }
-         
             shootingCounter++;
-        }
-        public override void move(Form f)
-        {
-            //TODO move pattern of enemy
-        }
-        public override void attack()
-        {
-            //TODO attack pattern enemy small
         }
 
         private void CreateNewRangeEnemy()
@@ -77,6 +63,5 @@ namespace WindowsForms.Gamecode
             this.box.Tag = "rangeEnemy";
             CurrentPictureIndex++;
         }
-
     }
 }

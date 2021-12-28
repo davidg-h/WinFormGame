@@ -33,7 +33,7 @@ namespace WindowsForms.Gamecode
         }
 
         // move pattern 
-        public abstract void move(Form f);
+        public virtual void move(Form f) { }
         // attack pattern
         public virtual void attack() { }
     }
