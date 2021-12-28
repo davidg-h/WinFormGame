@@ -71,6 +71,12 @@
       <DependentUpon>HighscoreList.cs</DependentUpon>
     </Compile>
     <Compile Include="Gamecode\HighscoresData.cs" />
+    <Compile Include="Gamecode\Instructions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gamecode\Instructions.Designer.cs">
+      <DependentUpon>Instructions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gamecode\NameInput.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gamecode\HighscoreList.resx">
       <DependentUpon>HighscoreList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gamecode\Instructions.resx">
+      <DependentUpon>Instructions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gamecode\NameInput.resx">
       <DependentUpon>NameInput.cs</DependentUpon>
@@ -186,6 +195,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\eagle.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\piranha-plant.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\attackingLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\attackingRight.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

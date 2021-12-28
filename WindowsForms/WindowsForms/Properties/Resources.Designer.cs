@@ -73,6 +73,26 @@ namespace WindowsForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap attackingLeft {
+            get {
+                object obj = ResourceManager.GetObject("attackingLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap attackingRight {
+            get {
+                object obj = ResourceManager.GetObject("attackingRight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap attackRight {
             get {
                 object obj = ResourceManager.GetObject("attackRight", resourceCulture);
@@ -226,6 +246,36 @@ namespace WindowsForms.Properties {
         internal static System.Drawing.Bitmap Piranha_ball {
             get {
                 object obj = ResourceManager.GetObject("Piranha-ball", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Piranha_ball1 {
+            get {
+                object obj = ResourceManager.GetObject("Piranha-ball1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Piranha_ball2 {
+            get {
+                object obj = ResourceManager.GetObject("Piranha-ball2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap piranha_plant {
+            get {
+                object obj = ResourceManager.GetObject("piranha-plant", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
