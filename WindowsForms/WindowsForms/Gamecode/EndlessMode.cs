@@ -192,8 +192,7 @@ namespace WindowsForms.Gamecode
 
                         if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
                         {
-                            //player.Hp -= small.Dmg;
-                            player.Hp = 0; // only for testing
+                            player.Hp -= small.Dmg;
                         }
 
                         //TODO spawn other types of enemys (use the enemy classes)
@@ -201,12 +200,12 @@ namespace WindowsForms.Gamecode
                         // moves the enemy to the player
                         small.box.Left -= small.characterSpeed;
 
-                        if (small.box.Left < -50)
-                        {
-                            small.box.Left = this.ClientSize.Width + rand.Next(100, 300) + (x.Width * 15);
-                            // increment score for longer survival time
-                            player.score++;
-                        }
+                        //if (small.box.Left < -50)
+                        //{
+                        //    small.box.Left = this.ClientSize.Width + rand.Next(100, 300) + (x.Width * 15);
+                        //    // increment score for longer survival time
+                        //}
+                        randomPlacement(small.box, true);
                     }
                     if ((string)x.Tag == "plattform")
                     {
@@ -215,15 +214,6 @@ namespace WindowsForms.Gamecode
                             player.IsOnGround = true;
                             player.MoveToTopOfPlatform(x.Top);
                         }
-                    }
-                }
-
-                if (x is PictureBox && (string)x.Tag == "coins")
-                {
-                    if (playerBox.Bounds.IntersectsWith(x.Bounds) && x.Visible == true)
-                    {
-                        x.Visible = false;
-                        player.coins += 1;
                     }
                 }
 
@@ -283,8 +273,6 @@ namespace WindowsForms.Gamecode
         {
             switch (e.KeyCode)
             {
-
-                //TODO jumpinglimit 
                 case Keys.W:
                     player.jump();
                     //different sprites for holding a 'move' button
@@ -382,5 +370,17 @@ namespace WindowsForms.Gamecode
         }
         #endregion
 
+        private void randomPlacement(PictureBox box, bool upDownPlacement)
+        {
+            if (box.Left < -50)
+            {
+                box.Left = this.ClientSize.Width + rand.Next(100, 300) + (box.Width * 15);
+                if (upDownPlacement)
+                {
+                    box.Top = rand.Next(37, 367);
+                }
+                player.score++;
+            }
+        }
     }
 }

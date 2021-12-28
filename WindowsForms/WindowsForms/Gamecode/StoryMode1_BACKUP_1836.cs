@@ -47,7 +47,7 @@ namespace WindowsForms.Gamecode
 
             coinHandler = new SpriteHandler(global::WindowsForms.Properties.Resources.coin);
             mushroomHandler = new SpriteHandler(Properties.Resources.shroomIdle);
-            eagleHandler = new SpriteHandler(Properties.Resources.eagle);
+            eagleHandler = new SpriteHandler(Properties.Resources.eagleTest);
             //Creates a Panel where every item is redrawn
             pf.Location = new Point(0, 0);
             pf.Size = this.Size;
@@ -601,6 +601,13 @@ namespace WindowsForms.Gamecode
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
                             g.DrawImage(mushroomHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
                         }
+<<<<<<< HEAD
+                        else if (tag == "eagleEnemy")
+                        {
+                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
+                            Rectangle destRect = new Rectangle(x.Location, x.Size);
+                            g.DrawImage(eagleHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
+=======
                         else if (tag == "attackRight" || tag == "attack")
                         {
                             Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
@@ -617,12 +624,7 @@ namespace WindowsForms.Gamecode
                             g.DrawImage(((PictureBox)x).Image, destRect, srcRect, GraphicsUnit.Pixel);
 
 
-                        }
-                        else if (tag == "eagleEnemy")
-                        {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
-                            Rectangle destRect = new Rectangle(x.Location, x.Size);
-                            g.DrawImage(eagleHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
+>>>>>>> 5db3af78522db7ce8b8667279d6e9428e917531a
                         }
                         else if (tag != "player" && tag != "coins.collected")
                         {
@@ -675,7 +677,11 @@ namespace WindowsForms.Gamecode
             {
                 //moving the elements with the wanted Tags with the movement of the player
                 //new object that need to be moved: enter "Tag" in this if statement
+<<<<<<< HEAD
                 if (x is PictureBox && (string)x.Tag == "platform" || x is PictureBox && (string)x.Tag == "obstacleTree" || x is PictureBox && (string)x.Tag == "eagleEnemy" || x is PictureBox && (string)x.Tag == "coins" || x is PictureBox && (string)x.Tag == "finish" || x is PictureBox && (string)x.Tag == "thorns")
+=======
+                if (x is PictureBox && (string)x.Tag == "platform" || x is PictureBox && (string)x.Tag == "obstacleTree" || x is PictureBox && (string)x.Tag == "coins" || x is PictureBox && (string)x.Tag == "rangeEnemy" || x is PictureBox && (string)x.Tag == "finish" || x is PictureBox && (string)x.Tag == "thorns")
+>>>>>>> 5db3af78522db7ce8b8667279d6e9428e917531a
                 {
                     if (direction == "back")
                     {
