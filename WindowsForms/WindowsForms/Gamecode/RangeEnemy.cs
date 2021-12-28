@@ -25,20 +25,20 @@ namespace WindowsForms.Gamecode
 
         public static Tuple<Bitmap, Point, string>[] picturesAndLocationArray =
         {
-            new Tuple<Bitmap, Point, string>(Properties.Resources.zoombie, new Point(272,310),"monster1"),
-            new Tuple<Bitmap, Point,string>(Properties.Resources.monster, new Point(800,310),"monster2"),
-            new Tuple<Bitmap, Point, string>(Properties.Resources.zoombie, new Point(1300,310),"monster3"),
-            new Tuple<Bitmap, Point,string>(Properties.Resources.monster, new Point(1900,310),"monster4")
+            new Tuple<Bitmap, Point, string>(Properties.Resources.piranha_plant, new Point(272,350),"monster1"),
+            new Tuple<Bitmap, Point,string>(Properties.Resources.piranha_plant, new Point(800,350),"monster2"),
+            new Tuple<Bitmap, Point, string>(Properties.Resources.piranha_plant, new Point(1320,245),"monster3"),
+            new Tuple<Bitmap, Point,string>(Properties.Resources.piranha_plant, new Point(1900,300),"monster4")
                 //here you can add the next rangeenemies picture position and name must be adjusted
         };
         public void ShootShot(Form f, string direction)
         {
-            if (shootingCounter % 5 == 0) //manipulates frequency of shooting
+            if (shootingCounter % 20 == 0) //manipulates frequency of shooting
             {
                 this.Shot = new RangeEnemyShot();
                 Shot.direction = direction;
-                Shot.shotLeft = this.box.Left + (this.box.Width / 2) ;
-                Shot.shotTop = this.box.Top + (this.box.Height / 2);
+                Shot.shotLeft = this.box.Left + (this.box.Width / 130) ;
+                Shot.shotTop = this.box.Top + (this.box.Height / 4);
                 Shot.CreateShot(f);
             }
             shootingCounter++;
@@ -59,7 +59,9 @@ namespace WindowsForms.Gamecode
             this.box.Location = currentPicture.Item2;
             this.box.TabIndex = 21;
             this.box.TabStop = false;
-            this.box.Size = new System.Drawing.Size(100, 110);
+            this.box.BackColor = System.Drawing.Color.Transparent;
+            this.box.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.box.Size = new System.Drawing.Size(46, 68);
             this.box.Tag = "rangeEnemy";
             CurrentPictureIndex++;
         }

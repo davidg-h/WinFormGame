@@ -38,7 +38,7 @@ namespace WindowsForms.Gamecode
             InitializeComponent();
             CreateEnemysLIst();
 
-            player = new Player(playerBox, 100);
+            player = new Player(playerBox, 300);
             this.FormClosed += StartScreen.closeGame;
             this.KeyDown += formKeyDown;
             this.Load += startTimer;
@@ -529,16 +529,15 @@ namespace WindowsForms.Gamecode
         {
             if (direction == "right")
             {
-                playerBox.Image = Properties.Resources.attackRight;
-                playerBox.Tag = "attackRight";
-                playerBox.Size = new System.Drawing.Size(60, 72);
-                playerBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+                playerBox.Image = Properties.Resources.attackingRight;
+                playerBox.Tag = "attackingRight";
+               
             }
-            else if (direction == "left")
+            else if (direction == "left") // must be improved
             {
-                playerBox.Image = Properties.Resources.attack;
-                playerBox.Tag = "attack";
-                playerBox.Size = new System.Drawing.Size(68, 64);
+                playerBox.Image = Properties.Resources.attackingLeft;
+                playerBox.Tag = "attackingLeft";
+                
             }
         }
         #endregion
@@ -601,7 +600,7 @@ namespace WindowsForms.Gamecode
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
                             g.DrawImage(mushroomHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
                         }
-                        else if (tag == "attackRight" || tag == "attack")
+                        else if (tag == "attackingRight" || tag == "attackingLeft")
                         {
                             Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
@@ -675,7 +674,7 @@ namespace WindowsForms.Gamecode
             {
                 //moving the elements with the wanted Tags with the movement of the player
                 //new object that need to be moved: enter "Tag" in this if statement
-                if (x is PictureBox && (string)x.Tag == "platform" || x is PictureBox && (string)x.Tag == "obstacleTree" || x is PictureBox && (string)x.Tag == "eagleEnemy" || x is PictureBox && (string)x.Tag == "coins" || x is PictureBox && (string)x.Tag == "finish" || x is PictureBox && (string)x.Tag == "thorns")
+                if (x is PictureBox && (string)x.Tag == "platform" || x is PictureBox && (string)x.Tag == "obstacleTree" || x is PictureBox && (string)x.Tag == "eagleEnemy" || x is PictureBox && (string)x.Tag == "rangeEnemy" || x is PictureBox && (string)x.Tag == "coins" || x is PictureBox && (string)x.Tag == "finish" || x is PictureBox && (string)x.Tag == "thorns")
                 {
                     if (direction == "back")
                     {

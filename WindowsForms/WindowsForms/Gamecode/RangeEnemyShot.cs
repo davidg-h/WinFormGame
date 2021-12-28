@@ -23,7 +23,7 @@ namespace WindowsForms.Gamecode
         public void CreateShot(Form form)
         {
             shot.Image = Properties.Resources.Piranha_ball;
-            shot.Size = new Size(30, 31);
+            shot.Size = new Size(26, 16);
             shot.Tag = "shot";
             shot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             shot.Left = shotLeft;
