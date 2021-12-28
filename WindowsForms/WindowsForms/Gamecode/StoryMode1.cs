@@ -18,6 +18,7 @@ namespace WindowsForms.Gamecode
         private int min = 5;
         private int sec;
         public GameLvl lvl = GameLvl.storyLvl_1;
+        List<RangeEnemy> rangeEnemyList;
         internal Player player;
         bool gameOver;
         DateTime lastFrameTime = DateTime.Now; // for fps calculation
@@ -35,6 +36,7 @@ namespace WindowsForms.Gamecode
         public StoryMode1()
         {
             InitializeComponent();
+            CreateEnemysLIst();
 
             player = new Player(playerBox, 100);
             this.FormClosed += StartScreen.closeGame;
@@ -277,8 +279,10 @@ namespace WindowsForms.Gamecode
             {
                 MoveGameElements("forward");
             }
+            ShootWhenPlayerNear();
             //Move all GameElements
             background_move();
+
         }
         public void ContactWithAnyObject()
         {
@@ -317,6 +321,13 @@ namespace WindowsForms.Gamecode
                             player.Hp -= eagleArray[0].Dmg;
                         }
                     }
+                    if ((string)x.Tag == "shot")
+                    {
+                        if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
+                        {
+                            player.Hp -= RangeEnemyShot.ShotDmg;
+                        }
+                    }
                     if ((string)x.Tag == "platform")
                     {
                         if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
@@ -331,6 +342,26 @@ namespace WindowsForms.Gamecode
                         {
                             x.Tag = "coins.collected";
                             player.coins += 1;
+                        }
+                    }
+                    if ((string)x.Tag == "rangeEnemy")
+                    {
+                        if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
+                        {
+                            RangeEnemy foundRangeEnemy = rangeEnemyList.Find(rangeEnemy => rangeEnemy.box.Name == (string)x.Name);
+                            player.Hp -= foundRangeEnemy.Dmg;
+                            if (player.attacking)
+                            {
+                                foundRangeEnemy.Hp -= player.Dmg;
+                                if (foundRangeEnemy.Hp < 1)
+                                {
+                                    this.Controls.Remove(x);
+
+                                    rangeEnemyList.Remove(foundRangeEnemy);
+                                    //AddNextEnemy();
+
+                                }
+                            }
                         }
                     }
 
@@ -378,8 +409,6 @@ namespace WindowsForms.Gamecode
             this.Hide();
         }
 
-
-
         private void StartGame(object sender, EventArgs e)
         {
             Application.Exit();
@@ -388,6 +417,7 @@ namespace WindowsForms.Gamecode
 
         #region Key Inputs
         bool holdDirection = true;
+        string facing = "right";
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -407,6 +437,7 @@ namespace WindowsForms.Gamecode
                     {
                         playerBox.Image = Properties.Resources.walkingLeft;
                         holdDirection = false;
+                        facing = "left";
 
                     }
                     break;
@@ -427,6 +458,16 @@ namespace WindowsForms.Gamecode
                     {
                         playerBox.Image = Properties.Resources.walking;
                         holdDirection = false;
+                        facing = "right";
+
+                    }
+                    break;
+                case Keys.Space:
+                    if (!gameOver)
+                    {
+                        player.attacking = true;
+                        PlayerAttack(facing);
+
                     }
                     break;
             }
@@ -437,8 +478,8 @@ namespace WindowsForms.Gamecode
             switch (e.KeyCode)
             {
                 case Keys.R:
-                    if (gameOver == true)
-                        Restart();
+                    //if (gameOver == true)
+                    Restart();
                     break;
                 case Keys.D:
                     player.Right(false);
@@ -466,11 +507,69 @@ namespace WindowsForms.Gamecode
                         playerBox.Image = Properties.Resources.idle;
                     }
                     break;
+                case Keys.Space:
+                    if (!gameOver)
+                    {
+                        player.attacking = false;
+                        playerBox.Image = Properties.Resources.walking;
+
+                    }
+                    break;
             }
 
             if (player.jumps == true)
             {
                 player.jumps = false;
+            }
+        }
+        #endregion
+
+        #region PlayerAttack
+        public void PlayerAttack(string direction)
+        {
+            if (direction == "right")
+            {
+                playerBox.Image = Properties.Resources.attackRight;
+                playerBox.Tag = "attackRight";
+                playerBox.Size = new System.Drawing.Size(60, 72);
+                playerBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            }
+            else if (direction == "left")
+            {
+                playerBox.Image = Properties.Resources.attack;
+                playerBox.Tag = "attack";
+                playerBox.Size = new System.Drawing.Size(68, 64);
+            }
+        }
+        #endregion
+
+        #region CreateEnemyList
+        public void CreateEnemysLIst()
+        {
+            rangeEnemyList = new List<RangeEnemy>();
+            foreach (var item in RangeEnemy.picturesAndLocationArray)
+            {
+                RangeEnemy nextEnemy = new RangeEnemy(10, 1);
+                this.rangeEnemyList.Add(nextEnemy);
+                this.Controls.Add(nextEnemy.box);
+            }
+
+        }
+        #endregion
+
+        #region ShootingOfEnemy
+        public void ShootWhenPlayerNear()
+        {
+            foreach (var rangeEnemy in this.rangeEnemyList)
+            {
+                if (rangeEnemy.box != null && (rangeEnemy.box.Left - player.box.Right < 200 && player.box.Right < rangeEnemy.box.Left))
+                {
+                    rangeEnemy.ShootShot(this, "left");
+                }
+                else if (rangeEnemy.Shot != null)
+                {
+                    rangeEnemy.Shot.DeleteShot();
+                }
             }
         }
         #endregion
@@ -501,6 +600,23 @@ namespace WindowsForms.Gamecode
                             Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
                             g.DrawImage(mushroomHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
+                        }
+                        else if (tag == "attackRight" || tag == "attack")
+                        {
+                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
+                            Rectangle destRect = new Rectangle(x.Location, x.Size);
+                            g.DrawImage(((PictureBox)x).Image, destRect, srcRect, GraphicsUnit.Pixel);
+
+                        }
+                        else if (tag == "rangeEnemy")
+                        {
+                            RangeEnemy rangeEnemy = rangeEnemyList.Find(zm => zm.box.Name == (string)x.Name);
+                            // rangeEnemy.box.Left -= rangeEnemy.characterSpeed;  -> moves enemy towards player
+                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
+                            Rectangle destRect = new Rectangle(x.Location, x.Size);
+                            g.DrawImage(((PictureBox)x).Image, destRect, srcRect, GraphicsUnit.Pixel);
+
+
                         }
                         else if (tag == "eagleEnemy")
                         {
@@ -550,9 +666,6 @@ namespace WindowsForms.Gamecode
 
             //Invalidate();
         }
-
-
-
         #endregion
 
         #region Moving GameElements
@@ -562,7 +675,7 @@ namespace WindowsForms.Gamecode
             {
                 //moving the elements with the wanted Tags with the movement of the player
                 //new object that need to be moved: enter "Tag" in this if statement
-                if (x is PictureBox && (string)x.Tag == "platform" || x is PictureBox && (string)x.Tag == "obstacleTree" || x is PictureBox && (string)x.Tag == "eagleEnemy" || x is PictureBox && (string)x.Tag == "coins" || x is PictureBox && (string)x.Tag == "finish" || x is PictureBox && (string)x.Tag == "thorns")
+                if (x is PictureBox && (string)x.Tag == "platform" || x is PictureBox && (string)x.Tag == "obstacleTree" || x is PictureBox && (string)x.Tag == "coins" || x is PictureBox && (string)x.Tag == "finish" || x is PictureBox && (string)x.Tag == "thorns")
                 {
                     if (direction == "back")
                     {
