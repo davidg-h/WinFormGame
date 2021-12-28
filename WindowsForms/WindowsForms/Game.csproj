@@ -149,9 +149,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Properties\Enemy_Klein.png" />
-    <Content Include="Properties\Player.png" />
-    <None Include="Resources\eagle.gif" />
     <None Include="Resources\Piranha-ball.png" />
     <None Include="Resources\monster.png" />
     <None Include="Resources\zoombie.png" />
@@ -177,7 +174,6 @@
     <None Include="Resources\coin.gif" />
     <None Include="Resources\timer.jpg" />
     <None Include="Resources\Berge.png" />
-    <None Include="Resources\.png" />
     <None Include="Resources\blackhole.gif" />
     <None Include="Resources\Back.png" />
     <None Include="Resources\shroomIdle.gif" />
@@ -187,6 +183,9 @@
     <None Include="Resources\TitleScreen1.png" />
     <None Include="Resources\TitleScreen.png" />
     <None Include="Resources\images.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eagle.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
