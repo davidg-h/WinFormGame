@@ -46,10 +46,5 @@ namespace WindowsForms.Gamecode
                 movementCounterRight = 0;
             }
         }
-
-        public override void attack()
-        {
-            //TODO attack pattern enemy small
-        }
     }
 }

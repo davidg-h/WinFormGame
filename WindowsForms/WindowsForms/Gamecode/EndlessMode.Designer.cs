@@ -195,7 +195,7 @@ namespace WindowsForms.Gamecode
             // 
             this.obstacleTree.BackColor = System.Drawing.Color.Transparent;
             this.obstacleTree.Image = global::WindowsForms.Properties.Resources.shroomIdle;
-            this.obstacleTree.Location = new System.Drawing.Point(578, 367);
+            this.obstacleTree.Location = new System.Drawing.Point(658, 367);
             this.obstacleTree.Margin = new System.Windows.Forms.Padding(2);
             this.obstacleTree.Name = "obstacleTree";
             this.obstacleTree.Size = new System.Drawing.Size(32, 28);
@@ -480,10 +480,10 @@ namespace WindowsForms.Gamecode
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1061, 470);
-            this.Controls.Add(this.shopMenu);
-            this.Controls.Add(this.escMenu);
+            this.ClientSize = new System.Drawing.Size(1061, 466);
+            this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.inventoryCoins);
+            this.Controls.Add(this.obstacleTree);
             this.Controls.Add(this.coinCounter);
             this.Controls.Add(this.pictureBox12);
             this.Controls.Add(this.pictureBox11);
@@ -496,14 +496,14 @@ namespace WindowsForms.Gamecode
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.obstacleTree);
             this.Controls.Add(this.playerBox);
             this.Controls.Add(this.healthBar);
             this.Controls.Add(this.healthLabel);
             this.Controls.Add(this.background2);
             this.Controls.Add(this.background1);
+            this.Controls.Add(this.shopMenu);
+            this.Controls.Add(this.escMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EndlessMode";
