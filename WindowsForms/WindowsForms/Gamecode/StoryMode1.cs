@@ -23,6 +23,11 @@ namespace WindowsForms.Gamecode
         DateTime lastFrameTime = DateTime.Now; // for fps calculation
         SpriteHandler coinHandler;
         SpriteHandler mushroomHandler;
+        EnemySmall[] mushroomArray;
+        bool debuff;
+        int debuffCounter = 0;
+        bool obstacleInWay;
+
         #endregion
 
         public StoryMode1()
@@ -33,6 +38,7 @@ namespace WindowsForms.Gamecode
             this.FormClosed += StartScreen.closeGame;
             this.KeyDown += formKeyDown;
             this.Load += startTimer;
+            int mushroomEnemyCounter = 0;
 
             coinHandler = new SpriteHandler(global::WindowsForms.Properties.Resources.coin);
             mushroomHandler = new SpriteHandler(Properties.Resources.shroomIdle);
@@ -49,10 +55,27 @@ namespace WindowsForms.Gamecode
                 {
                     x.Visible = false;
                 }
+                //counter: how many mushroom enemies
+                if ((string)x.Tag == "obstacleTree")
+                {
+                    mushroomEnemyCounter++;
+                }
                 if (x is Label)
                 {
                     x.Visible = false;
                 }
+            }
+            //put all mushroom enemies in array
+            mushroomArray = new EnemySmall[mushroomEnemyCounter];
+            mushroomEnemyCounter = 0;
+            foreach (Control x in this.Controls)
+            {
+                if ((string)x.Tag == "obstacleTree")
+                {
+                    mushroomArray[mushroomEnemyCounter] = new EnemySmall((PictureBox)x);
+                    mushroomEnemyCounter++;
+                }
+
             }
         }
 
@@ -203,27 +226,32 @@ namespace WindowsForms.Gamecode
 
             ContactWithAnyObject();
 
-            if(player.box.Location.Y > 2000)
-            {
-                gameOver = true;
-            }
-            if (player.Hp > 1 && !gameOver)
-            {
-                healthBar.Value = Convert.ToInt32(player.Hp);
-            }
-            else
+            if(playerBox.Location.Y > 550)
             {
                 MainGameTick.Stop();
                 gameOver = true;
                 GameOver();
             }
-            if (player.Hp < 20)
+
+            //debuff check (also possible to change the debuff EFFECT here!)
+            if (debuff && debuffCounter <= 20)
             {
-                healthBar.ForeColor = System.Drawing.Color.Red;
+                player.Hp -= 1;
+                debuffCounter++;
             }
 
 
+            if (obstacleInWay)
+                player.goRight = false;
 
+            //HP HUD
+            Healthbar();
+
+            //make the enemies move
+            foreach (EnemySmall mushroom in mushroomArray)
+            {
+                mushroom.move(this);
+            }
 
             if (player.goRight == true)
             {
@@ -292,8 +320,21 @@ namespace WindowsForms.Gamecode
                             player.coins += 1;
                         }
                     }
+
+                    if ((string)x.Tag == "thorns")
+                    {
+                        if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
+                        {
+                            debuff = true;
+                            debuffCounter = 0;
+                            obstacleInWay = true;
+                            playerBox.Left -= 20;
+                        }
+                        else
+                            obstacleInWay = false;
+                    }
                 }
-             
+
             }
             if (playerBox.Bounds.IntersectsWith(destinyBox.Bounds))
             {
@@ -365,12 +406,13 @@ namespace WindowsForms.Gamecode
                     }
                     break;
                 case Keys.D:
+                    if (obstacleInWay)
+                        break;
                     player.Right(true);
                     if (holdDirection)
                     {
                         playerBox.Image = Properties.Resources.walking;
                         holdDirection = false;
-
                     }
                     break;
             }
@@ -426,7 +468,7 @@ namespace WindowsForms.Gamecode
             Bitmap bufl = new Bitmap(pf.Width, pf.Height);
             using (Graphics g = Graphics.FromImage(bufl))
             {
-                g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
+                //g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
 
                 g.DrawImage(backgroundlayer, new Rectangle(new Point(0,0), this.Size), new Rectangle(new Point(-backgroundCoordX, 0), new Size(backgroundlayer.Width / 2, backgroundlayer.Height)), GraphicsUnit.Pixel);
                 g.DrawImage(player.currentImage, playerBox.Location);
@@ -470,7 +512,7 @@ namespace WindowsForms.Gamecode
         Image backgroundlayer = Properties.Resources.Background;
         int backgroundCoordX = 0, backgroundCoordX2 = 1600;
 
-       
+
 
 
         void background_move()
@@ -494,7 +536,7 @@ namespace WindowsForms.Gamecode
             //Invalidate();
         }
 
-       
+
 
         #endregion
 
@@ -532,6 +574,70 @@ namespace WindowsForms.Gamecode
                 }
             }
         }
+        #endregion
+
+
+        #region Healthbar
+        void Healthbar()
+        {
+
+            //if HP fall on a specific count, then change the container to empty or half empty
+            if (player.Hp < 100)
+            {
+                ChangeHeartContainer(heart5, false);
+            }
+            if (player.Hp < 90)
+            {
+                ChangeHeartContainer(heart5, true);
+            }
+            if (player.Hp < 80)
+            {
+                ChangeHeartContainer(heart4, false);
+            }
+            if (player.Hp < 70)
+            {
+                ChangeHeartContainer(heart4, true);
+            }
+            if (player.Hp < 60)
+            {
+                ChangeHeartContainer(heart3, false);
+            }
+            if (player.Hp < 50)
+            {
+                ChangeHeartContainer(heart3, true);
+            }
+            if (player.Hp < 40)
+            {
+                ChangeHeartContainer(heart2, false);
+            }
+            if (player.Hp < 30)
+            {
+                ChangeHeartContainer(heart2, true);
+            }
+            if (player.Hp < 20)
+            {
+                ChangeHeartContainer(heart1, false);
+            }
+            //end game if hp is zero
+            if (player.Hp <= 0)
+            {
+                MainGameTick.Stop();
+                gameOver = true;
+                GameOver();
+            }
+        }
+
+
+        void ChangeHeartContainer(PictureBox container, bool empty)
+        {
+            if (empty)
+            {
+                container.Image = Properties.Resources.HeartEmpty;
+            }
+            else
+                container.Image = Properties.Resources.HeartHalf;
+        }
+
         #endregion
     }
 }

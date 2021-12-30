@@ -148,6 +148,11 @@
   <ItemGroup>
     <Content Include="Properties\Enemy_Klein.png" />
     <Content Include="Properties\Player.png" />
+    <None Include="Resources\damaged.gif" />
+    <None Include="Resources\PoisountPlant.png" />
+    <None Include="Resources\HeartHalf.png" />
+    <None Include="Resources\HeartEmpty.png" />
+    <None Include="Resources\Heart.png" />
     <None Include="Resources\Held.png" />
     <None Include="Resources\platform.png" />
     <None Include="Resources\platform2.png" />

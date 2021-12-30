@@ -11,7 +11,13 @@ namespace WindowsForms.Gamecode
     {
         //String name = "Blutsauger";
 
-        public EnemySmall(PictureBox eBox, int hp = 10, int dmg = 1) : base(eBox, hp, dmg) { }
+        bool movingLeft;
+        int movementCounterLeft, movementCounterRight;
+        public EnemySmall(PictureBox eBox, int hp = 10, int dmg = 10) : base(eBox, hp, dmg)
+        {
+            movementCounterLeft = 0;
+            movementCounterRight = 0;
+        }
 
         internal override int Hp { get => hp; set => hp = value; }
 
@@ -19,7 +25,26 @@ namespace WindowsForms.Gamecode
 
         public override void move(Form f)
         {
-            //TODO move pattern of enemy
+            if (movingLeft)
+            {
+                box.Left -= 3;
+                movementCounterLeft++;
+            }
+            if (movementCounterLeft == 20)
+            {
+                movingLeft = false;
+                movementCounterLeft = 0;
+            }
+            if (!movingLeft)
+            {
+                box.Left += 3;
+                movementCounterRight++;
+            }
+            if (movementCounterRight == 20)
+            {
+                movingLeft = true;
+                movementCounterRight = 0;
+            }
         }
 
         public override void attack()
