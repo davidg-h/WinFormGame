@@ -205,5 +205,26 @@
   <ItemGroup>
     <None Include="Resources\attackingRight.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heart_Armor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heart_Armor_Half.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\health_potion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\health_potion_empty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Merchant.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PressH.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ShopHUD.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

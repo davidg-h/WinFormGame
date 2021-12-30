@@ -24,6 +24,7 @@ namespace WindowsForms.Gamecode
         int currentImageIndex = 0;
         int animationUpdate = 0;
         int currentAnimation = 0; //TODO: create enum animations
+        public bool armor1, armor2, potion;
 
         public Player(PictureBox playerBox, int hp, int dmg = 1) : base(playerBox, hp, dmg) { 
             defaultLocation = new Point(34,31);
@@ -33,9 +34,33 @@ namespace WindowsForms.Gamecode
             spritesWalkLeft = SpriteHandler.getFrames(Properties.Resources.walkingLeft);
             spritesWalkRight = SpriteHandler.getFrames(Properties.Resources.walking);
             currentImage = spritesIdle[0];
+            armor1 = false;
+            armor2 = false;
+            potion = false;
         }
 
-        internal override int Hp { get => hp; set => hp = value; }
+        internal override int Hp
+        {
+            get => hp;
+            set
+            {
+                if (value > 100)
+                    hp = 100;
+                else if (armor2 && value <= hp)
+                {
+                    armor2 = false;
+                    hp += 0;
+                }
+                else if (armor1 && value <= hp)
+                {
+                    armor1 = false;
+                    hp += 0;
+                }
+                else
+                    hp = value;
+
+            }
+        }
 
         internal override int Dmg { get => dmg; set => dmg = value; }
 
