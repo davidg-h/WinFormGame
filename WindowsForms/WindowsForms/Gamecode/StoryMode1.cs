@@ -230,7 +230,6 @@ namespace WindowsForms.Gamecode
         #region GameLoop StoryMode
         private void MainGameTick_Tick(object sender, EventArgs e)
         {
-            Draw();
 
             coinHandler.updateSpriteEveryTimeCalled();
             mushroomHandler.updateSpriteEvery3thTimeCalled();
@@ -287,6 +286,7 @@ namespace WindowsForms.Gamecode
             //Move all GameElements
             background_move();
 
+            Draw();
         }
         public void ContactWithAnyObject()
         {
@@ -371,7 +371,7 @@ namespace WindowsForms.Gamecode
                         {
                             RangeEnemy foundRangeEnemy = rangeEnemyList.Find(rangeEnemy => rangeEnemy.box.Name == (string)x.Name);
                             player.Hp -= foundRangeEnemy.Dmg;
-                            if (player.attacking)
+                            if (player.isAttacking)
                             {
                                 foundRangeEnemy.Hp -= player.Dmg;
                                 if (foundRangeEnemy.Hp < 1)
@@ -485,8 +485,8 @@ namespace WindowsForms.Gamecode
                 case Keys.Space:
                     if (!gameOver)
                     {
-                        player.attacking = true;
-                        PlayerAttack(facing);
+                        player.attack();
+                        //PlayerAttack(facing);
 
                     }
                     break;
@@ -530,7 +530,7 @@ namespace WindowsForms.Gamecode
                 case Keys.Space:
                     if (!gameOver)
                     {
-                        player.attacking = false;
+                        player.isAttacking = false;
                         playerBox.Image = Properties.Resources.walking;
 
                     }
@@ -549,14 +549,17 @@ namespace WindowsForms.Gamecode
         {
             if (direction == "right")
             {
-                playerBox.Image = Properties.Resources.attackingRight;
-                playerBox.Tag = "attackingRight";
+                player.attack();
+                //playerBox.Image = Properties.Resources.attackingRight;
+
+                //playerBox.Tag = "attackingRight";
                
             }
             else if (direction == "left") // must be improved
             {
-                playerBox.Image = Properties.Resources.attackingLeft;
-                playerBox.Tag = "attackingLeft";
+                player.attack();
+                //playerBox.Image = Properties.Resources.attackingLeft;
+                //playerBox.Tag = "attackingLeft";
                 
             }
         }
@@ -603,7 +606,7 @@ namespace WindowsForms.Gamecode
                 //g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
 
                 g.DrawImage(backgroundlayer, new Rectangle(new Point(0,0), this.Size), new Rectangle(new Point(-backgroundCoordX, 0), new Size(backgroundlayer.Width / 2, backgroundlayer.Height)), GraphicsUnit.Pixel);
-                g.DrawImage(player.currentImage, playerBox.Location);
+                
                 foreach (Control x in this.Controls)
                 {
                     if (x is PictureBox)
@@ -626,13 +629,6 @@ namespace WindowsForms.Gamecode
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
                             g.DrawImage(mushroomHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
                         }
-                        else if (tag == "attackingRight" || tag == "attackingLeft")
-                        {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
-                            Rectangle destRect = new Rectangle(x.Location, x.Size);
-                            g.DrawImage(((PictureBox)x).Image, destRect, srcRect, GraphicsUnit.Pixel);
-
-                        }
                         else if (tag == "rangeEnemy")
                         {
                             RangeEnemy rangeEnemy = rangeEnemyList.Find(zm => zm.box.Name == (string)x.Name);
@@ -640,8 +636,6 @@ namespace WindowsForms.Gamecode
                             Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
                             g.DrawImage(((PictureBox)x).Image, destRect, srcRect, GraphicsUnit.Pixel);
-
-
                         }
                         else if (tag == "eagleEnemy")
                         {
@@ -649,7 +643,26 @@ namespace WindowsForms.Gamecode
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
                             g.DrawImage(eagleHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
                         }
-                        else if (tag != "player" && tag != "coins.collected")
+                        else if(tag == "player")
+                        {
+                            if (player.isAttacking)
+                            {
+                                Rectangle srcRect = new Rectangle(new Point(0, 0), player.currentImage.Size);
+                                Rectangle destRect;
+                                if (player.goLeft)
+                                {
+                                     destRect = new Rectangle(new Point(x.Location.X - 60 , x.Location.Y), player.currentImage.Size);
+                                }
+                                else
+                                {
+                                     destRect = new Rectangle(x.Location, player.currentImage.Size);
+                                }
+                                g.DrawImage(player.currentImage, destRect, srcRect, GraphicsUnit.Pixel);
+                            }
+                            else
+                                g.DrawImage(player.currentImage, playerBox.Location);
+                        }
+                        else if (tag != "coins.collected")
                         {
                             Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
                             Rectangle destRect = new Rectangle(x.Location, x.Size);

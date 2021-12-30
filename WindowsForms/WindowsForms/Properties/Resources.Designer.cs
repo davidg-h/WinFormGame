@@ -63,16 +63,6 @@ namespace WindowsForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap attack {
-            get {
-                object obj = ResourceManager.GetObject("attack", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap attackingLeft {
             get {
                 object obj = ResourceManager.GetObject("attackingLeft", resourceCulture);
@@ -86,16 +76,6 @@ namespace WindowsForms.Properties {
         internal static System.Drawing.Bitmap attackingRight {
             get {
                 object obj = ResourceManager.GetObject("attackingRight", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap attackRight {
-            get {
-                object obj = ResourceManager.GetObject("attackRight", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
