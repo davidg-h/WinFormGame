@@ -704,7 +704,7 @@ namespace WindowsForms.Gamecode
                     if (x is PictureBox)
                     {
                         string tag = (string)x.Tag;
-                        if (tag == "platform" || tag == "obstacleTree" || tag == "coins" || tag == "finish" || tag == "......")
+                        if (tag == "platform" || tag == "obstacleTree" || tag == "coins" || tag == "finish" || tag == "......" || tag == "thorns" || tag == "eagleEnemy")
                         {
 
                             x.Left -= player.characterSpeed;
@@ -717,12 +717,11 @@ namespace WindowsForms.Gamecode
                     if (x is PictureBox)
                     {
                         string tag = (string)x.Tag;
-                        if (tag == "platform" || tag == "obstacleTree" || tag == "coins" || tag == "finish" || tag == "......")
+                        if (tag == "platform" || tag == "obstacleTree" || tag == "coins" || tag == "finish" || tag == "......" || tag == "thorns" || tag == "eagleEnemy")
                         {
                             x.Left += player.characterSpeed;
                         }
                     }
-                    
                 }
             }
         }
