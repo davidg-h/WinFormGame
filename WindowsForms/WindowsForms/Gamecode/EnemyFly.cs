@@ -7,27 +7,26 @@ using System.Windows.Forms;
 
 namespace WindowsForms.Gamecode
 {
-    class EnemySmall : Enemy
+    class EnemyFly : Enemy
     {
-        //String name = "Blutsauger";
-
         bool movingLeft;
         int movementCounterLeft, movementCounterRight;
-        public EnemySmall(PictureBox eBox, int hp = 10, int dmg = 10) : base(eBox, hp, dmg)
+
+        internal override int Hp { get => hp; set => hp = value; }
+        internal override int Dmg { get => dmg; set => dmg = value; }
+
+        public EnemyFly(PictureBox eBox, int hp = 1, int dmg = 20) : base(eBox, hp, dmg)
         {
             movementCounterLeft = 0;
             movementCounterRight = 0;
         }
-
-        internal override int Hp { get => hp; set => hp = value; }
-
-        internal override int Dmg { get => dmg; set => dmg = value; }
 
         public override void move(Form f)
         {
             if (movingLeft)
             {
                 box.Left -= 3;
+                box.Top -= 3;
                 movementCounterLeft++;
             }
             if (movementCounterLeft == 20)
@@ -38,6 +37,7 @@ namespace WindowsForms.Gamecode
             if (!movingLeft)
             {
                 box.Left += 3;
+                box.Top += 3;
                 movementCounterRight++;
             }
             if (movementCounterRight == 20)

@@ -55,6 +55,7 @@
       <DependentUpon>EndlessMode.cs</DependentUpon>
     </Compile>
     <Compile Include="Gamecode\Enemy.cs" />
+    <Compile Include="Gamecode\EnemyFly.cs" />
     <Compile Include="Gamecode\Entity.cs" />
     <Compile Include="Gamecode\EnumGameLvl.cs" />
     <Compile Include="Gamecode\GameOverScreen.cs">
@@ -70,6 +71,12 @@
       <DependentUpon>HighscoreList.cs</DependentUpon>
     </Compile>
     <Compile Include="Gamecode\HighscoresData.cs" />
+    <Compile Include="Gamecode\Instructions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gamecode\Instructions.Designer.cs">
+      <DependentUpon>Instructions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gamecode\NameInput.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +86,8 @@
     <Compile Include="Gamecode\Player.cs" />
     <Compile Include="Gamecode\EnemySmall.cs" />
     <Compile Include="Gamecode\PlayerData.cs" />
+    <Compile Include="Gamecode\RangeEnemy.cs" />
+    <Compile Include="Gamecode\RangeEnemyShot.cs" />
     <Compile Include="Gamecode\SpriteHandler.cs" />
     <Compile Include="Gamecode\StoryMode1.cs">
       <SubType>Form</SubType>
@@ -109,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gamecode\HighscoreList.resx">
       <DependentUpon>HighscoreList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gamecode\Instructions.resx">
+      <DependentUpon>Instructions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gamecode\NameInput.resx">
       <DependentUpon>NameInput.cs</DependentUpon>
@@ -146,8 +158,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Properties\Enemy_Klein.png" />
-    <Content Include="Properties\Player.png" />
+    <None Include="Resources\Piranha-ball.png" />
+    <None Include="Resources\monster.png" />
+    <None Include="Resources\zoombie.png" />
+    <None Include="Resources\attackRight.png" />
+    <None Include="Resources\attack.png" />
     <None Include="Resources\damaged.gif" />
     <None Include="Resources\PoisountPlant.png" />
     <None Include="Resources\HeartHalf.png" />
@@ -168,7 +183,6 @@
     <None Include="Resources\coin.gif" />
     <None Include="Resources\timer.jpg" />
     <None Include="Resources\Berge.png" />
-    <None Include="Resources\.png" />
     <None Include="Resources\blackhole.gif" />
     <None Include="Resources\Back.png" />
     <None Include="Resources\shroomIdle.gif" />
@@ -178,6 +192,18 @@
     <None Include="Resources\TitleScreen1.png" />
     <None Include="Resources\TitleScreen.png" />
     <None Include="Resources\images.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eagle.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\piranha-plant.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\attackingLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\attackingRight.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

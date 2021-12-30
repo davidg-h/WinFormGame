@@ -47,5 +47,11 @@ namespace WindowsForms.Gamecode
         {
             closeGame(sender, e);
         }
+
+        private void Instructions(object sender, EventArgs e)
+        {
+            Instructions instructions = new Instructions();
+            instructions.Show();
+        }
     }
 }

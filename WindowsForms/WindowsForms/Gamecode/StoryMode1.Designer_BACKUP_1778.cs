@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StoryMode1));
             this.MainGameTick = new System.Windows.Forms.Timer(this.components);
             this.CountdownTimer = new System.Windows.Forms.Timer(this.components);
             this.countdownLabel = new System.Windows.Forms.Label();
@@ -1006,9 +1007,9 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::WindowsForms.Properties.Resources.eagle;
-            this.pictureBox1.Location = new System.Drawing.Point(1087, 6);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(737, 32);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(129, 137);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1019,9 +1020,9 @@
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::WindowsForms.Properties.Resources.eagle;
-            this.pictureBox2.Location = new System.Drawing.Point(705, 14);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Image = global::WindowsForms.Properties.Resources.eagleTest;
+            this.pictureBox2.Location = new System.Drawing.Point(459, 15);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(129, 137);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1034,7 +1035,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WindowsForms.Properties.Resources.Background;
-            this.ClientSize = new System.Drawing.Size(1340, 601);
+<<<<<<< HEAD
+            this.ClientSize = new System.Drawing.Size(929, 478);
+=======
+            this.ClientSize = new System.Drawing.Size(1748, 588);
+>>>>>>> 5db3af78522db7ce8b8667279d6e9428e917531a
             this.Controls.Add(this.heart5);
             this.Controls.Add(this.heart2);
             this.Controls.Add(this.heart3);

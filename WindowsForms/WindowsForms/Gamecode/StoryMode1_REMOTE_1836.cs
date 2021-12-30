@@ -24,9 +24,7 @@ namespace WindowsForms.Gamecode
         DateTime lastFrameTime = DateTime.Now; // for fps calculation
         SpriteHandler coinHandler;
         SpriteHandler mushroomHandler;
-        SpriteHandler eagleHandler;
         EnemySmall[] mushroomArray;
-        EnemyFly[] eagleArray;
         bool debuff;
         int debuffCounter = 0;
         bool obstacleInWay;
@@ -38,23 +36,20 @@ namespace WindowsForms.Gamecode
             InitializeComponent();
             CreateEnemysLIst();
 
-            player = new Player(playerBox, 300);
+            player = new Player(playerBox, 100);
             this.FormClosed += StartScreen.closeGame;
             this.KeyDown += formKeyDown;
             this.Load += startTimer;
-            int eagleEnemyCounter = 0;
             int mushroomEnemyCounter = 0;
 
             coinHandler = new SpriteHandler(global::WindowsForms.Properties.Resources.coin);
             mushroomHandler = new SpriteHandler(Properties.Resources.shroomIdle);
-            eagleHandler = new SpriteHandler(Properties.Resources.eagle);
             //Creates a Panel where every item is redrawn
             pf.Location = new Point(0, 0);
             pf.Size = this.Size;
             pf.SendToBack();
             this.BackgroundImage = null;
             //makes 'normal' screen invisible 
-            this.BackgroundImage = null;
             foreach (Control x in this.Controls)
             {
                 if (x is PictureBox)
@@ -66,21 +61,11 @@ namespace WindowsForms.Gamecode
                 {
                     mushroomEnemyCounter++;
                 }
-                if ((string)x.Tag == "eagleEnemy")
-                {
-                    eagleEnemyCounter++;
-                }
-                if (x is Label)
-                {
-                    x.Visible = false;
-                }
             }
+
             //put all mushroom enemies in array
             mushroomArray = new EnemySmall[mushroomEnemyCounter];
             mushroomEnemyCounter = 0;
-
-            eagleArray = new EnemyFly[eagleEnemyCounter];
-            eagleEnemyCounter = 0;
             foreach (Control x in this.Controls)
             {
                 if ((string)x.Tag == "obstacleTree")
@@ -88,11 +73,7 @@ namespace WindowsForms.Gamecode
                     mushroomArray[mushroomEnemyCounter] = new EnemySmall((PictureBox)x);
                     mushroomEnemyCounter++;
                 }
-                if ((string)x.Tag == "eagleEnemy")
-                {
-                    eagleArray[eagleEnemyCounter] = new EnemyFly((PictureBox)x);
-                    eagleEnemyCounter++;
-                }
+
             }
         }
 
@@ -234,7 +215,6 @@ namespace WindowsForms.Gamecode
 
             coinHandler.updateSpriteEveryTimeCalled();
             mushroomHandler.updateSpriteEvery3thTimeCalled();
-            eagleHandler.updateSpriteEvery3thTimeCalled();
 
             coinCounter.Text = $": {player.coins}";
             fpsLabel.Text = "fps: " + getFramesPerSecond();
@@ -270,16 +250,12 @@ namespace WindowsForms.Gamecode
             {
                 mushroom.move(this);
             }
-            foreach (EnemyFly eagle in eagleArray)
-            {
-                eagle.move(this);
-            }
 
             if (player.goRight == true)
             {
                 MoveGameElements("back");
             }
-            if (player.goLeft == true)
+            if (player.goLeft == true && backgroundCoordX < 0)
             {
                 MoveGameElements("forward");
             }
@@ -290,29 +266,12 @@ namespace WindowsForms.Gamecode
         }
         public void ContactWithAnyObject()
         {
-            player.obstacleLeft = false;
-            player.obstacleRight = false;
             foreach (Control x in this.Controls)
             {
                 //TODO spawn of enemys (use the enemy classes)
                 if (x is PictureBox)
                 {
                     if ((string)x.Tag == "obstacleTree")
-                    {
-                        if (playerBox.Bounds.IntersectsWith(x.Bounds))
-                        {
-                            if ((((PictureBox)x).Location.X - playerBox.Location.X) > 0)
-                            {
-                                player.obstacleRight = true;
-                            }
-                            else
-                            {
-                                player.obstacleLeft = true;
-                            }
-                            player.Hp -= mushroomArray[0].Dmg;
-                        }
-                    }
-                    if ((string)x.Tag == "eagleEnemy")
                     {
                         if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
                         {
@@ -324,7 +283,8 @@ namespace WindowsForms.Gamecode
                             {
                                 player.obstacleLeft = true;
                             }
-                            player.Hp -= eagleArray[0].Dmg;
+                            EnemySmall small = new EnemySmall((PictureBox)x);
+                            player.Hp -= small.Dmg;
                         }
                     }
                     if ((string)x.Tag == "shot")
@@ -336,25 +296,10 @@ namespace WindowsForms.Gamecode
                     }
                     if ((string)x.Tag == "platform")
                     {
-                        if (playerBox.Bounds.IntersectsWith(x.Bounds))
+                        if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
                         {
-                            if(playerBox.Top  < x.Top)
-                            {
-                                player.IsOnGround = true;
-
-                                player.MoveToTopOfPlatform(x.Top);
-                            }
-                            else
-                            {
-                                if ((x.Location.X - playerBox.Location.X) > 0)
-                                {
-                                    player.obstacleRight = true;
-                                }
-                                else
-                                {
-                                    player.obstacleLeft = true;
-                                }
-                            }
+                            player.IsOnGround = true;
+                            player.MoveToTopOfPlatform(x.Top);
                         }
                     }
                     if ((string)x.Tag == "coins")
@@ -424,6 +369,7 @@ namespace WindowsForms.Gamecode
         }
         internal void YouWon()
         {
+            gameOver = true;
             WinnerScreen winnerScreen = new WinnerScreen();
             winnerScreen.Show();
             this.Hide();
@@ -549,15 +495,16 @@ namespace WindowsForms.Gamecode
         {
             if (direction == "right")
             {
-                playerBox.Image = Properties.Resources.attackingRight;
-                playerBox.Tag = "attackingRight";
-               
+                playerBox.Image = Properties.Resources.attackRight;
+                playerBox.Tag = "attackRight";
+                playerBox.Size = new System.Drawing.Size(60, 72);
+                playerBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             }
-            else if (direction == "left") // must be improved
+            else if (direction == "left")
             {
-                playerBox.Image = Properties.Resources.attackingLeft;
-                playerBox.Tag = "attackingLeft";
-                
+                playerBox.Image = Properties.Resources.attack;
+                playerBox.Tag = "attack";
+                playerBox.Size = new System.Drawing.Size(68, 64);
             }
         }
         #endregion
@@ -600,10 +547,9 @@ namespace WindowsForms.Gamecode
             Bitmap bufl = new Bitmap(pf.Width, pf.Height);
             using (Graphics g = Graphics.FromImage(bufl))
             {
-                //g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
-
-                g.DrawImage(backgroundlayer, new Rectangle(new Point(0,0), this.Size), new Rectangle(new Point(-backgroundCoordX, 0), new Size(backgroundlayer.Width / 2, backgroundlayer.Height)), GraphicsUnit.Pixel);
-                g.DrawImage(player.currentImage, playerBox.Location);
+                g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
+                g.DrawImage(backgroundlayer, new Point(backgroundCoordX, 0));
+                g.DrawImage(player.images[player.currentImage], playerBox.Location);
                 foreach (Control x in this.Controls)
                 {
                     if (x is PictureBox)
@@ -621,7 +567,7 @@ namespace WindowsForms.Gamecode
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
                             g.DrawImage(mushroomHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
                         }
-                        else if (tag == "attackingRight" || tag == "attackingLeft")
+                        else if (tag == "attackRight" || tag == "attack")
                         {
                             Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
@@ -638,12 +584,6 @@ namespace WindowsForms.Gamecode
 
 
                         }
-                        else if (tag == "eagleEnemy")
-                        {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
-                            Rectangle destRect = new Rectangle(x.Location, x.Size);
-                            g.DrawImage(eagleHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
-                        }
                         else if (tag != "player" && tag != "coins.collected")
                         {
                             Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
@@ -651,10 +591,6 @@ namespace WindowsForms.Gamecode
                             g.DrawImage(((PictureBox)x).Image, destRect, srcRect, GraphicsUnit.Pixel);
                             //g.DrawImage(((PictureBox)x).Image, x.Location);
                         }
-                    }
-                    if (x is Label)
-                    {
-                        g.DrawString(x.Text, new Font("Arial", 11), new SolidBrush(Color.Black) , x.Location ) ;
                     }
                 }
                 pf.CreateGraphics().DrawImageUnscaled(bufl, 0, 0);
@@ -679,11 +615,11 @@ namespace WindowsForms.Gamecode
             //    backgroundCoordX2 = 1600;
 
 
-            if (player.goRight && !player.obstacleRight)
+            if (player.goRight)
             {
                 backgroundCoordX -= 2;
             }
-            if (player.goLeft && ! player.obstacleLeft)
+            if (player.goLeft)
             {
                 backgroundCoordX += 2;
             }
@@ -699,30 +635,16 @@ namespace WindowsForms.Gamecode
             {
                 //moving the elements with the wanted Tags with the movement of the player
                 //new object that need to be moved: enter "Tag" in this if statement
-                if (direction == "back" && !player.obstacleRight)
+                if (x is PictureBox && (string)x.Tag == "platform" || x is PictureBox && (string)x.Tag == "obstacleTree" || x is PictureBox && (string)x.Tag == "coins" || x is PictureBox && (string)x.Tag == "rangeEnemy" || x is PictureBox && (string)x.Tag == "finish" || x is PictureBox && (string)x.Tag == "thorns")
                 {
-                    if (x is PictureBox)
+                    if (direction == "back")
                     {
-                        string tag = (string)x.Tag;
-                        if (tag == "platform" || tag == "obstacleTree" || tag == "coins" || tag == "finish" || tag == "......")
-                        {
-
-                            x.Left -= player.characterSpeed;
-                        }
+                        x.Left -= player.characterSpeed;
                     }
-
-                }      
-                if (direction == "forward" && !player.obstacleLeft)
-                {
-                    if (x is PictureBox)
+                    if (direction == "forward")
                     {
-                        string tag = (string)x.Tag;
-                        if (tag == "platform" || tag == "obstacleTree" || tag == "coins" || tag == "finish" || tag == "......")
-                        {
-                            x.Left += player.characterSpeed;
-                        }
+                        x.Left += player.characterSpeed;
                     }
-                    
                 }
             }
         }

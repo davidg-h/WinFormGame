@@ -218,8 +218,7 @@ namespace WindowsForms.Gamecode
 
                         if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
                         {
-                            //player.Hp -= small.Dmg;
-                            player.Hp = 0; // only for testing
+                            player.Hp -= small.Dmg;
                         }
 
                         //TODO spawn other types of enemys (use the enemy classes)
@@ -227,12 +226,12 @@ namespace WindowsForms.Gamecode
                         // moves the enemy to the player
                         small.box.Left -= small.characterSpeed;
 
-                        if (small.box.Left < -50)
-                        {
-                            small.box.Left = this.ClientSize.Width + rand.Next(100, 300) + (x.Width * 15);
-                            // increment score for longer survival time
-                            player.score++;
-                        }
+                        //if (small.box.Left < -50)
+                        //{
+                        //    small.box.Left = this.ClientSize.Width + rand.Next(100, 300) + (x.Width * 15);
+                        //    // increment score for longer survival time
+                        //}
+                        randomPlacement(small.box, true);
                     }
                     if ((string)x.Tag == "platform")
                     {
@@ -296,8 +295,6 @@ namespace WindowsForms.Gamecode
         {
             switch (e.KeyCode)
             {
-
-                //TODO jumpinglimit 
                 case Keys.W:
                     player.jump();
                     //different sprites for holding a 'move' button
@@ -439,5 +436,18 @@ namespace WindowsForms.Gamecode
             Invalidate();
         }
         #endregion
+
+        private void randomPlacement(PictureBox box, bool upDownPlacement)
+        {
+            if (box.Left < -50)
+            {
+                box.Left = this.ClientSize.Width + rand.Next(100, 300) + (box.Width * 15);
+                if (upDownPlacement)
+                {
+                    box.Top = rand.Next(37, 367);
+                }
+                player.score++;
+            }
+        }
     }
 }

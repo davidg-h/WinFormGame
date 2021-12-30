@@ -97,8 +97,6 @@
             this.heart2 = new System.Windows.Forms.PictureBox();
             this.heart5 = new System.Windows.Forms.PictureBox();
             this.obstacle = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.playerBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.platformBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coinBox1)).BeginInit();
@@ -156,8 +154,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.heart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heart5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obstacle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // MainGameTick
@@ -1003,38 +999,12 @@
             this.obstacle.TabStop = false;
             this.obstacle.Tag = "thorns";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::WindowsForms.Properties.Resources.eagle;
-            this.pictureBox1.Location = new System.Drawing.Point(1087, 6);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(129, 137);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Tag = "eagleEnemy";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::WindowsForms.Properties.Resources.eagle;
-            this.pictureBox2.Location = new System.Drawing.Point(705, 14);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(129, 137);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Tag = "eagleEnemy";
-            // 
             // StoryMode1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WindowsForms.Properties.Resources.Background;
-            this.ClientSize = new System.Drawing.Size(1340, 601);
+            this.ClientSize = new System.Drawing.Size(1748, 588);
             this.Controls.Add(this.heart5);
             this.Controls.Add(this.heart2);
             this.Controls.Add(this.heart3);
@@ -1091,8 +1061,6 @@
             this.Controls.Add(this.platformBox18);
             this.Controls.Add(this.platformBox3);
             this.Controls.Add(this.platformBox1);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.obstacleTree);
             this.Controls.Add(this.destinyBox);
             this.Controls.Add(this.obstacle);
@@ -1162,8 +1130,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.heart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.heart5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.obstacle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1238,8 +1204,6 @@
         private System.Windows.Forms.PictureBox heart2;
         private System.Windows.Forms.PictureBox heart5;
         private System.Windows.Forms.PictureBox obstacle;
-        internal System.Windows.Forms.PictureBox pictureBox1;
-        internal System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 
