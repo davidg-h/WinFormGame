@@ -111,6 +111,67 @@ namespace WindowsForms.Gamecode
             updateAnimation();
         }
 
+
+        public void moveEndlessmode(Form f) // player is able to move in window
+        {
+            if (goLeft && box.Left > 30 && !obstacleLeft)
+            {
+                moveVector.X = -characterSpeed;
+                if (currentAnimation != 1)
+                {
+                    animationUpdate = 0;
+                    currentAnimation = 1;
+                }
+            }
+            else if (goRight && box.Left + (box.Width + 30) < f.ClientSize.Width && !obstacleRight)
+            {
+                moveVector.X = characterSpeed;
+                if (currentAnimation != 2)
+                {
+                    animationUpdate = 0;
+                    currentAnimation = 2;
+                }
+            }
+            else
+            {
+                moveVector.X = 0;
+
+                if (currentAnimation != 0)
+                {
+                    animationUpdate = 0;
+                    currentAnimation = 0;
+                }
+            }
+
+            #region jumping mechanics
+            //isonGround is handled in StoryMode1
+
+            // moves the box up or down depending on the threshold 'force'
+
+
+            if (jumps && IsOnGround)
+            {
+                jumps = false;
+                isOnGround = false;
+                moveVector.Y = -jumpSpeed; //add initial jumpforce
+            }
+            if (!IsOnGround)
+            {
+                //if inAir then add downforce
+                moveVector.Y += force;
+            }
+            else
+            {   //if isOnGround then stay on Ground
+                moveVector.Y = 0;
+            }
+            #endregion
+            //finaly the position gets Updated with the created moveVector
+            box.Location = new Point(box.Location.X + (int)moveVector.X, box.Location.Y + (int)moveVector.Y);
+
+            updateAnimation();
+        }
+
+
         private void updateAnimation()
         {
             if (animationUpdate % 3 == 0)
@@ -131,13 +192,7 @@ namespace WindowsForms.Gamecode
                 animationUpdate = 0;
             }
             animationUpdate++;
-            
-
         }
-
-        private void idle() { }
-        private void walkLeft() { }
-        private void walkRight() { }
 
         public override void attack()
         {

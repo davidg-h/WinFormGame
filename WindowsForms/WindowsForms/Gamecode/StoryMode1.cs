@@ -609,7 +609,12 @@ namespace WindowsForms.Gamecode
                     if (x is PictureBox)
                     {
                         string tag = (string)x.Tag;
-                        if (tag == "coins")
+                        if (((PictureBox)x).Image == null)
+                        {
+                            //do nothing
+                            continue;
+                        }
+                        else if (tag == "coins")
                         {
                             Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
