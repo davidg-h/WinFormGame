@@ -77,3 +77,4 @@ C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\Wi
 C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.GameOverScreen.resources
 C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.WinnerScreen.resources
 C:\Users\lizab\source\repos\project\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.Instructions.resources
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.Instructions.resources
