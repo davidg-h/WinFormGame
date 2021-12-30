@@ -181,6 +181,7 @@ namespace WindowsForms.Gamecode
                     player.Hp = gameData.hp;
                     player.Dmg = gameData.dmg;
                     escMenu.Visible = false;
+                    Draw();
                     break;
                 case GameLvl.storyLvl_2:
                     //TODO
