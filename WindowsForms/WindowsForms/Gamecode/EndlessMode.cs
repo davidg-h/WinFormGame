@@ -168,7 +168,7 @@ namespace WindowsForms.Gamecode
             coinCounter.Text = $": {player.coins}";
             inventoryCoins.Text = $"Tresure Chest: {inventoryChestCoins}";
 
-            player.move(this);
+            player.moveEndlessmode(this);
             player.isOnGround = false;
 
             if (player.Hp > 0)

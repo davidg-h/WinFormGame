@@ -58,6 +58,7 @@
     <Compile Include="Gamecode\EnemyFly.cs" />
     <Compile Include="Gamecode\Entity.cs" />
     <Compile Include="Gamecode\EnumGameLvl.cs" />
+    <Compile Include="Gamecode\EnumPlayerAnimation.cs" />
     <Compile Include="Gamecode\GameOverScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,8 +194,6 @@
     <None Include="Resources\Piranha-ball.png" />
     <None Include="Resources\monster.png" />
     <None Include="Resources\zoombie.png" />
-    <None Include="Resources\attackRight.png" />
-    <None Include="Resources\attack.png" />
     <None Include="Resources\damaged.gif" />
     <None Include="Resources\PoisountPlant.png" />
     <None Include="Resources\HeartHalf.png" />
@@ -260,6 +259,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\PoisountPlant_destroyed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\idleLeft.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
