@@ -8,7 +8,8 @@ namespace WindowsForms.Gamecode
 {
     enum EnumPlayerAnimation
     {
-        idle,
+        idleRight,
+        idleLeft,
         moveLeft,
         moveRight,
         attackLeft,

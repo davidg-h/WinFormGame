@@ -36,24 +36,32 @@ namespace WindowsForms.Gamecode
         public StoryMode1()
         {
             InitializeComponent();
-            CreateEnemysLIst();
+            CreateEnemysLIst(); //needs fix
 
             player = new Player(playerBox, 300);
             this.FormClosed += StartScreen.closeGame;
             this.KeyDown += formKeyDown;
             this.Load += startTimer;
-            int eagleEnemyCounter = 0;
-            int mushroomEnemyCounter = 0;
 
-            coinHandler = new SpriteHandler(global::WindowsForms.Properties.Resources.coin);
+            //creates the handler for animations (coins, enemys...)
+            createAnimationHandlers();
+            //Creates a Panel where every item is redrawn
+            createDrawingPanel();
+            //makes 'normal' screen invisible 
+            makeDefaultDrawingInvisible();
+
+            fillEnemyArrays();
+
+        }
+
+        private void createAnimationHandlers()
+        {
+            coinHandler = new SpriteHandler(Properties.Resources.coin);
             mushroomHandler = new SpriteHandler(Properties.Resources.shroomIdle);
             eagleHandler = new SpriteHandler(Properties.Resources.eagle);
-            //Creates a Panel where every item is redrawn
-            pf.Location = new Point(0, 0);
-            pf.Size = this.Size;
-            pf.SendToBack();
-            this.BackgroundImage = null;
-            //makes 'normal' screen invisible 
+        }
+        void makeDefaultDrawingInvisible()
+        {
             this.BackgroundImage = null;
             foreach (Control x in this.Controls)
             {
@@ -61,6 +69,25 @@ namespace WindowsForms.Gamecode
                 {
                     x.Visible = false;
                 }
+                if (x is Label)
+                {
+                    x.Visible = false;
+                }
+            }
+        }
+        void createDrawingPanel()
+        {
+            pf.Location = new Point(0, 0);
+            pf.Size = this.Size;
+            pf.SendToBack();
+        }
+        void fillEnemyArrays()
+        {
+            int mushroomEnemyCounter = 0;
+            int eagleEnemyCounter = 0;
+
+            foreach (Control x in this.Controls)
+            {
                 //counter: how many mushroom enemies
                 if ((string)x.Tag == "obstacleTree")
                 {
@@ -70,16 +97,11 @@ namespace WindowsForms.Gamecode
                 {
                     eagleEnemyCounter++;
                 }
-                if (x is Label)
-                {
-                    x.Visible = false;
-                }
             }
             //put all mushroom enemies in array
             mushroomArray = new EnemySmall[mushroomEnemyCounter];
-            mushroomEnemyCounter = 0;
-
             eagleArray = new EnemyFly[eagleEnemyCounter];
+            mushroomEnemyCounter = 0;
             eagleEnemyCounter = 0;
             foreach (Control x in this.Controls)
             {
@@ -361,7 +383,7 @@ namespace WindowsForms.Gamecode
                     {
                         if (playerBox.Bounds.IntersectsWith(x.Bounds))
                         {
-                            x.Tag = "coins.collected";
+                            x.Tag = "coins.collected"; //coins are not drawn anymore
                             player.coins += 1;
                         }
                     }
@@ -445,50 +467,18 @@ namespace WindowsForms.Gamecode
                 case Keys.W:
                     player.jump();
                     //different sprites for holding a 'move' button
-                    if (holdDirection)
-                    {
-                        playerBox.Image = Properties.Resources.walking;
-
-                    }
                     break;
                 case Keys.A:
                     player.Left(true);
-                    if (holdDirection)
-                    {
-                        playerBox.Image = Properties.Resources.walkingLeft;
-                        holdDirection = false;
-                        facing = "left";
-
-                    }
                     break;
                 case Keys.S:
                     player.Down();
-                    if (holdDirection)
-                    {
-                        playerBox.Image = Properties.Resources.walking;
-                        holdDirection = false;
-
-                    }
                     break;
                 case Keys.D:
-                    if (obstacleInWay)
-                        break;
                     player.Right(true);
-                    if (holdDirection)
-                    {
-                        playerBox.Image = Properties.Resources.walking;
-                        holdDirection = false;
-                        facing = "right";
-
-                    }
                     break;
                 case Keys.Space:
-                    if (!gameOver)
-                    {
                         player.attack();
-                        //PlayerAttack(facing);
-
-                    }
                     break;
             }
         }
@@ -503,44 +493,21 @@ namespace WindowsForms.Gamecode
                     break;
                 case Keys.D:
                     player.Right(false);
-
-                    //also switch to another sprite when a key is let go of
-                    if (!holdDirection)
-                    {
-                        holdDirection = false;
-                        playerBox.Image = Properties.Resources.idle;
-                    }
                     break;
                 case Keys.A:
                     player.Left(false);
-                    if (!holdDirection)
-                    {
-                        holdDirection = false;
-                        playerBox.Image = Properties.Resources.idle;
-                    }
                     break;
                 case Keys.S:
                     player.goDown = false;
-                    if (!holdDirection)
-                    {
-                        holdDirection = false;
-                        playerBox.Image = Properties.Resources.idle;
-                    }
+                    break;
+                case Keys.W:
+                    player.jumps = false;
                     break;
                 case Keys.Space:
-                    if (!gameOver)
-                    {
-                        player.isAttacking = false;
-                        playerBox.Image = Properties.Resources.walking;
-
-                    }
+                    player.isAttacking = false;
                     break;
             }
 
-            if (player.jumps == true)
-            {
-                player.jumps = false;
-            }
         }
         #endregion
 
@@ -795,7 +762,6 @@ namespace WindowsForms.Gamecode
                 GameOver();
             }
         }
-
 
         void ChangeHeartContainer(PictureBox container, bool empty)
         {

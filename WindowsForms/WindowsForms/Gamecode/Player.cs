@@ -30,18 +30,19 @@ namespace WindowsForms.Gamecode
         public bool obstacleRight = false;
         public bool obstacleLeft = false;
         bool attacking = false;
+        bool facingRight = true;
         public bool isAttacking { get => attacking; set => attacking =  value; }
         internal override int Hp { get => hp; set => hp = value; }
         internal override int Dmg { get => dmg; set => dmg = value; }
 
         // move pattern for WASD - controls
-        internal void Left(bool go) { goLeft = go; }
-        internal void Right(bool go) { goRight = go; }
+        internal void Left(bool go) { goLeft = go; facingRight = false; }
+        internal void Right(bool go) { goRight = go; facingRight = true; }
         internal void jump() { jumps = true; }
         internal void Down() { goDown = true; }
         internal bool IsOnGround { get => isOnGround; set => isOnGround = value; }
 
-#endregion
+        #endregion
 
         public Player(PictureBox playerBox, int hp, int dmg = 1) : base(playerBox, hp, dmg) { 
             defaultLocation = new Point(34,31);
@@ -50,10 +51,8 @@ namespace WindowsForms.Gamecode
             spritesIdle = SpriteHandler.getFrames(playerBox.Image);
             spritesWalkLeft = SpriteHandler.getFrames(Properties.Resources.walkingLeft);
             spritesWalkRight = SpriteHandler.getFrames(Properties.Resources.walking);
-            spritesAttackLeft = Properties.Resources.attackingLeft;
-            spritesAttackRight = Properties.Resources.attackingRight;
-            //spritesAttackLeft = SpriteHandler.getFrames(Properties.Resources.attackingLeft); 
-            //spritesAttackRight = SpriteHandler.getFrames(Properties.Resources.attackingRight); 
+            spritesAttackLeft = Properties.Resources.attackingLeft; //spritesAttackLeft = SpriteHandler.getFrames(Properties.Resources.attackingLeft); 
+            spritesAttackRight = Properties.Resources.attackingRight; //spritesAttackRight = SpriteHandler.getFrames(Properties.Resources.attackingRight); 
 
             currentImage = spritesIdle[0];
         }
@@ -159,12 +158,20 @@ namespace WindowsForms.Gamecode
                     currentAnimation = EnumPlayerAnimation.moveRight;
                 }
             }
-            else
+            else if(facingRight)
             {
-                if (currentAnimation != EnumPlayerAnimation.idle)
+                if (currentAnimation != EnumPlayerAnimation.idleRight)
                 {
                     animationUpdate = 0;
-                    currentAnimation = EnumPlayerAnimation.idle;
+                    currentAnimation = EnumPlayerAnimation.idleRight;
+                }
+            }
+            else
+            {
+                if (currentAnimation != EnumPlayerAnimation.idleLeft)
+                {
+                    animationUpdate = 0;
+                    currentAnimation = EnumPlayerAnimation.idleLeft;
                 }
             }
 
@@ -177,8 +184,12 @@ namespace WindowsForms.Gamecode
             {
                 switch (currentAnimation)
                 {
-                    case EnumPlayerAnimation.idle: 
+                    case EnumPlayerAnimation.idleRight: 
                             currentImage = spritesIdle[ (currentImageIndex + 1) % spritesIdle.Length];
+                        break;
+                    case EnumPlayerAnimation.idleLeft:
+                        
+                        currentImage = spritesIdle[(currentImageIndex + 1) % spritesIdle.Length];
                         break;
                     case EnumPlayerAnimation.moveLeft:
                             currentImage = spritesWalkLeft[ (currentImageIndex + 1) % spritesIdle.Length];
