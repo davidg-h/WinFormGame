@@ -18,7 +18,8 @@ namespace WindowsForms.Gamecode
         internal int score = 0;
         internal int coins = 0;
         internal System.Windows.Vector moveVector;
-        internal Image[] spritesIdle;
+        internal Image[] spritesIdleLeft;
+        internal Image[] spritesIdleRight;
         internal Image[] spritesWalkLeft;
         internal Image[] spritesWalkRight;
         internal Image spritesAttackLeft;
@@ -30,10 +31,11 @@ namespace WindowsForms.Gamecode
         public bool obstacleRight = false;
         public bool obstacleLeft = false;
         bool attacking = false;
-        bool facingRight = true;
+        internal bool facingRight = true;
         public bool isAttacking { get => attacking; set => attacking =  value; }
-        internal override int Hp { get => hp; set => hp = value; }
         internal override int Dmg { get => dmg; set => dmg = value; }
+        public bool armor1, armor2, potion, invulnerable;
+        int currentHealth;
 
         // move pattern for WASD - controls
         internal void Left(bool go) { goLeft = go; facingRight = false; }
@@ -48,15 +50,53 @@ namespace WindowsForms.Gamecode
             defaultLocation = new Point(34,31);
             moveVector = new System.Windows.Vector(0, 0);
             isOnGround = false;
-            spritesIdle = SpriteHandler.getFrames(playerBox.Image);
+            spritesIdleLeft = SpriteHandler.getFrames(Properties.Resources.idle);
+            spritesIdleRight = SpriteHandler.getFrames(Properties.Resources.idleLeft);
             spritesWalkLeft = SpriteHandler.getFrames(Properties.Resources.walkingLeft);
             spritesWalkRight = SpriteHandler.getFrames(Properties.Resources.walking);
             spritesAttackLeft = Properties.Resources.attackingLeft; //spritesAttackLeft = SpriteHandler.getFrames(Properties.Resources.attackingLeft); 
             spritesAttackRight = Properties.Resources.attackingRight; //spritesAttackRight = SpriteHandler.getFrames(Properties.Resources.attackingRight); 
 
-            currentImage = spritesIdle[0];
+            currentImage = spritesIdleLeft[0];
+            armor1 = false;
+            armor2 = false;
+            potion = false;
+            invulnerable = false;
         }
 
+        internal override int Hp
+        {
+            get => hp;
+            set
+            {
+                currentHealth = Hp;
+
+
+                if (value > 100)
+                    hp = 100;
+                else if (invulnerable)
+                {
+                    hp = currentHealth;
+                    currentHealth = value;
+                }
+                else if (armor2 && value <= hp)
+                {
+                    armor2 = false;
+                    hp += 0;
+                }
+                else if (armor1 && value <= hp)
+                {
+                    armor1 = false;
+                    hp += 0;
+                }
+
+                else
+                {
+                    invulnerable = true;
+                    hp = value;
+                }
+            }
+        }
         public override void move(Form f)
         {
             animatePlayer();
@@ -132,12 +172,12 @@ namespace WindowsForms.Gamecode
 
         private void animatePlayer()
         {
-            if (attacking && goLeft)
+            if (attacking && !facingRight)
             {
                 animationUpdate = 0;
                 currentAnimation = EnumPlayerAnimation.attackLeft;
             }
-            else if(attacking)
+            else if(attacking && facingRight)
             {
                 animationUpdate = 0;
                 currentAnimation = EnumPlayerAnimation.attackRight;
@@ -185,17 +225,17 @@ namespace WindowsForms.Gamecode
                 switch (currentAnimation)
                 {
                     case EnumPlayerAnimation.idleRight: 
-                            currentImage = spritesIdle[ (currentImageIndex + 1) % spritesIdle.Length];
+                            currentImage = spritesIdleLeft[ (currentImageIndex + 1) % spritesIdleLeft.Length];
                         break;
                     case EnumPlayerAnimation.idleLeft:
                         
-                        currentImage = spritesIdle[(currentImageIndex + 1) % spritesIdle.Length];
+                        currentImage = spritesIdleRight[(currentImageIndex + 1) % spritesIdleLeft.Length];
                         break;
                     case EnumPlayerAnimation.moveLeft:
-                            currentImage = spritesWalkLeft[ (currentImageIndex + 1) % spritesIdle.Length];
+                            currentImage = spritesWalkLeft[ (currentImageIndex + 1) % spritesIdleLeft.Length];
                         break;
                     case EnumPlayerAnimation.moveRight:
-                            currentImage = spritesWalkRight[ (currentImageIndex + 1) % spritesIdle.Length];
+                            currentImage = spritesWalkRight[ (currentImageIndex + 1) % spritesIdleLeft.Length];
                         break;
                     case EnumPlayerAnimation.attackLeft:
                         currentImage = spritesAttackLeft;

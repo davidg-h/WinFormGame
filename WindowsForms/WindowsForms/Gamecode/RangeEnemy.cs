@@ -10,8 +10,8 @@ namespace WindowsForms.Gamecode
 {
     class RangeEnemy : Enemy
     {
-        private RangeEnemy(PictureBox eBox, int hp = 10, int dmg = 1) : base(eBox, hp, dmg) { }
-        public RangeEnemy(int hp = 10, int dmg = 1) : base(null, hp, dmg)
+        private RangeEnemy(PictureBox eBox, int hp = 10, int dmg = 10) : base(eBox, hp, dmg) { }
+        public RangeEnemy(int hp = 10, int dmg = 10) : base(null, hp, dmg)
         {
             this.CreateNewRangeEnemy();
         }
