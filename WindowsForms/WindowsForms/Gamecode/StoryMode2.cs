@@ -13,7 +13,7 @@ using System.Drawing.Drawing2D;
 
 namespace WindowsForms.Gamecode
 {
-    public partial class StoryMode1 : Form
+    public partial class StoryMode2 : Form
     {
         #region Game variables
         private int min = 5;
@@ -29,7 +29,7 @@ namespace WindowsForms.Gamecode
         EnemySmall[] mushroomArray;
         EnemyFly[] eagleArray;
         bool debuff;
-        int debuffCounter = 0; int invulnerableCounter = 0;
+        int debuffCounter = 0;
         bool obstacleInWay;
         PictureBox armorHeart1 = new PictureBox();
         PictureBox armorHeart2 = new PictureBox();
@@ -38,7 +38,7 @@ namespace WindowsForms.Gamecode
 
         #endregion
 
-        public StoryMode1()
+        public StoryMode2()
         {
             InitializeComponent();
             CreateEnemysLIst();
@@ -258,21 +258,12 @@ namespace WindowsForms.Gamecode
             }
 
             //debuff check (also possible to change the debuff EFFECT here!)
-            if (debuff && debuffCounter <= 40)
+            if (debuff && debuffCounter <= 20)
             {
-                player.Hp -= 50;
+                player.Hp -= 1;
                 debuffCounter++;
             }
 
-            if(player.invulnerable)
-            {
-                invulnerableCounter++;
-            }
-            if(invulnerableCounter > 10)
-            {
-                invulnerableCounter = 0;
-                player.invulnerable = false;
-            }
 
             if (obstacleInWay)
                 player.goRight = false;
@@ -321,8 +312,6 @@ namespace WindowsForms.Gamecode
                             {
                                 EnemyDamage(x);
                             }
-                            else
-                                player.Hp -= mushroomArray[0].Dmg;
                             if ((((PictureBox)x).Location.X - playerBox.Location.X) > 0)
                             {
                                 player.obstacleRight = true;
@@ -331,7 +320,7 @@ namespace WindowsForms.Gamecode
                             {
                                 player.obstacleLeft = true;
                             }
-
+                            player.Hp -= mushroomArray[0].Dmg;
                         }
                     }
                     if ((string)x.Tag == "eagleEnemy")
@@ -417,19 +406,10 @@ namespace WindowsForms.Gamecode
                     {
                         if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
                         {
-                            if (player.attacking)
-                            {
-                                obstacle.Image = Properties.Resources.PoisountPlant_destroyed;
-                                x.Tag = "destroyedThorns";
-                                obstacleInWay = false;
-                            }
-                            else
-                            {
-                                debuff = true;
-                                debuffCounter = 0;
-                                obstacleInWay = true;
-                                playerBox.Left -= 20;
-                            }
+                            debuff = true;
+                            debuffCounter = 0;
+                            obstacleInWay = true;
+                            playerBox.Left -= 20;
                         }
                         else
                             obstacleInWay = false;
@@ -443,7 +423,7 @@ namespace WindowsForms.Gamecode
                             //TODO shop is for free because of testing: finished project -> put the comments into the code
                             if (buyChoice == Choices.Potion /*&& player.coins >= 10*/)
                             {
-                                player.coins -= 10;
+                                //player.coins -= 10;
                                 HealthPotionHUD.Image = Properties.Resources.health_potion;
                                 buyChoice = Choices.None;
                                 player.potion = true;
@@ -477,9 +457,9 @@ namespace WindowsForms.Gamecode
             if (playerBox.Bounds.IntersectsWith(destinyBox.Bounds))
             {
                 MainGameTick.Stop();
-                MessageBox.Show("Entering Lvl 2", "", MessageBoxButtons.OK);
-                StoryMode2 lvl2 = new StoryMode2();
-                lvl2.Show();
+                MessageBox.Show("Entering final Lvl", "", MessageBoxButtons.OK);
+                StoryMode3 lvl3 = new StoryMode3();
+                lvl3.Show();
                 this.Visible = false;
             }
         }
@@ -625,6 +605,7 @@ namespace WindowsForms.Gamecode
                     {
                         player.attacking = false;
                         playerBox.Image = Properties.Resources.walking;
+
                     }
                     break;
 
@@ -747,7 +728,7 @@ namespace WindowsForms.Gamecode
                     }
                     if (x is Label)
                     {
-                        g.DrawString(x.Text, new Font("Unispace", 11), new SolidBrush(Color.Black) , x.Location ) ;
+                        g.DrawString(x.Text, new Font("Unispace", 11), new SolidBrush(Color.Black), x.Location);
                     }
                 }
                 pf.CreateGraphics().DrawImageUnscaled(bufl, 0, 0);
@@ -797,7 +778,7 @@ namespace WindowsForms.Gamecode
                     if (x is PictureBox)
                     {
                         string tag = (string)x.Tag;
-                        if (tag == "platform" || tag == "obstacleTree" || tag == "coins" || tag == "finish" || tag == "......" || tag == "thorns" || tag == "eagleEnemy" || tag == "rangeEnemy" || tag == "shopHUD" || tag == "merchant" || tag == "destroyedThorns")
+                        if (tag == "platform" || tag == "obstacleTree" || tag == "coins" || tag == "finish" || tag == "......" || tag == "thorns" || tag == "eagleEnemy" || tag == "rangeEnemy" || tag == "shopHUD" || tag == "merchant")
                         {
                             x.Left -= player.characterSpeed;
                         }
@@ -809,7 +790,7 @@ namespace WindowsForms.Gamecode
                     if (x is PictureBox)
                     {
                         string tag = (string)x.Tag;
-                        if (tag == "platform" || tag == "obstacleTree" || tag == "coins" || tag == "finish" || tag == "......" || tag == "thorns" || tag == "eagleEnemy" || tag == "rangeEnemy" || tag == "shopHUD" || tag == "merchant" || tag == "destroyedThorns")
+                        if (tag == "platform" || tag == "obstacleTree" || tag == "coins" || tag == "finish" || tag == "......" || tag == "thorns" || tag == "eagleEnemy" || tag == "rangeEnemy" || tag == "shopHUD" || tag == "merchant")
                         {
                             x.Left += player.characterSpeed;
                         }
@@ -863,7 +844,7 @@ namespace WindowsForms.Gamecode
                 ChangeHeartContainer(heart2);
                 ChangeHeartContainer(heart1);
             }
-            if (player.Hp < 100 && player.Hp > 80)
+            if (player.Hp == 90)
             {
                 ChangeHeartContainer(heart5, "half");
                 ChangeHeartContainer(heart4);
@@ -871,7 +852,7 @@ namespace WindowsForms.Gamecode
                 ChangeHeartContainer(heart2);
                 ChangeHeartContainer(heart1);
             }
-            if (player.Hp <= 80 && player.Hp > 70)
+            if (player.Hp == 80)
             {
                 ChangeHeartContainer(heart5, "empty");
                 ChangeHeartContainer(heart4);
@@ -879,70 +860,50 @@ namespace WindowsForms.Gamecode
                 ChangeHeartContainer(heart2);
                 ChangeHeartContainer(heart1);
             }
-            if (player.Hp <= 70 && player.Hp > 60)
+            if (player.Hp == 70)
             {
-                ChangeHeartContainer(heart5, "empty");
                 ChangeHeartContainer(heart4, "half");
                 ChangeHeartContainer(heart3);
                 ChangeHeartContainer(heart2);
                 ChangeHeartContainer(heart1);
             }
-            if (player.Hp <= 60 && player.Hp > 50)
+            if (player.Hp == 60)
             {
-                ChangeHeartContainer(heart5, "empty");
                 ChangeHeartContainer(heart4, "empty");
                 ChangeHeartContainer(heart3);
                 ChangeHeartContainer(heart2);
                 ChangeHeartContainer(heart1);
             }
-            if (player.Hp <= 50 && player.Hp > 40)
+            if (player.Hp == 50)
             {
-                ChangeHeartContainer(heart5, "empty");
-                ChangeHeartContainer(heart4, "empty");
                 ChangeHeartContainer(heart3, "half");
                 ChangeHeartContainer(heart2);
                 ChangeHeartContainer(heart1);
             }
-            if (player.Hp <= 40 && player.Hp > 30)
+            if (player.Hp == 40)
             {
-                ChangeHeartContainer(heart5, "empty");
-                ChangeHeartContainer(heart4, "empty");
                 ChangeHeartContainer(heart3, "empty");
                 ChangeHeartContainer(heart2);
                 ChangeHeartContainer(heart1);
 
             }
-            if (player.Hp <= 30 && player.Hp > 20)
+            if (player.Hp == 30)
             {
-                ChangeHeartContainer(heart5, "empty");
-                ChangeHeartContainer(heart4, "empty");
-                ChangeHeartContainer(heart3, "empty");
                 ChangeHeartContainer(heart2, "half");
                 ChangeHeartContainer(heart1);
             }
-            if (player.Hp <= 20 && player.Hp > 10)
+            if (player.Hp == 20)
             {
-                ChangeHeartContainer(heart5, "empty");
-                ChangeHeartContainer(heart4, "empty");
-                ChangeHeartContainer(heart3, "empty");
                 ChangeHeartContainer(heart2, "empty");
                 ChangeHeartContainer(heart1);
             }
-            if (player.Hp <= 10 && player.Hp > 0)
+            if (player.Hp == 10)
             {
-                ChangeHeartContainer(heart5, "empty");
-                ChangeHeartContainer(heart4, "empty");
-                ChangeHeartContainer(heart3, "empty");
-                ChangeHeartContainer(heart2, "empty");
                 ChangeHeartContainer(heart1, "half");
             }
             //end game if hp is zero
-            if (player.Hp <= 0)
+            if (player.Hp == 0)
             {
-                ChangeHeartContainer(heart5, "empty");
-                ChangeHeartContainer(heart4, "empty");
-                ChangeHeartContainer(heart3, "empty");
-                ChangeHeartContainer(heart2, "empty");
                 ChangeHeartContainer(heart1, "empty");
                 MainGameTick.Stop();
                 gameOver = true;

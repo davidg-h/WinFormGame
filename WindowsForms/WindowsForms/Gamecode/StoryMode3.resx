@@ -117,37 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="MainGameTick.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Before you begin:
-
-Decide whether you want to play in a story mode or an endlessmode.
-The story mode has 3 levels you must pass to win the game.
-The endless mode stays in the same screen and enemys are being 
-spawnd towards you.
-
-How to play:
-
-Press W to jump
-Press A to move left
-Press D to move right
-Press Space to attack the enemys with the sword.
-
-On the top left you can see your health status. 
-Try to kill all enemys and avoid the obstacles,
- falling in a hole means you are instantly dead.
-
-Notice:
-
-During the game you can collect the coins and buy different upgrades.
-
-Aim of the Game: 
-
-Safe the System from the dangerous graphic bug!!</value>
-  </data>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>29</value>
+  <metadata name="CountdownTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>149, 17</value>
+  </metadata>
+  <metadata name="escMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>295, 17</value>
   </metadata>
 </root>

@@ -1,6 +1,6 @@
 ﻿namespace WindowsForms.Gamecode
 {
-    partial class StoryMode1
+    partial class StoryMode3
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -198,7 +198,7 @@
             this.coinCounter.AutoSize = true;
             this.coinCounter.BackColor = System.Drawing.Color.Transparent;
             this.coinCounter.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.coinCounter.Location = new System.Drawing.Point(395, 5);
+            this.coinCounter.Location = new System.Drawing.Point(394, 5);
             this.coinCounter.Name = "coinCounter";
             this.coinCounter.Size = new System.Drawing.Size(36, 37);
             this.coinCounter.TabIndex = 17;
@@ -208,7 +208,7 @@
             // 
             this.playerBox.BackColor = System.Drawing.Color.Transparent;
             this.playerBox.Image = global::WindowsForms.Properties.Resources.idle;
-            this.playerBox.Location = new System.Drawing.Point(94, 330);
+            this.playerBox.Location = new System.Drawing.Point(65, 340);
             this.playerBox.Margin = new System.Windows.Forms.Padding(2);
             this.playerBox.Name = "playerBox";
             this.playerBox.Size = new System.Drawing.Size(68, 64);
@@ -969,7 +969,7 @@
             // 
             this.obstacle.BackColor = System.Drawing.Color.Transparent;
             this.obstacle.Image = global::WindowsForms.Properties.Resources.PoisountPlant;
-            this.obstacle.Location = new System.Drawing.Point(402, 317);
+            this.obstacle.Location = new System.Drawing.Point(414, 340);
             this.obstacle.Name = "obstacle";
             this.obstacle.Size = new System.Drawing.Size(64, 120);
             this.obstacle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -994,7 +994,7 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = global::WindowsForms.Properties.Resources.eagle;
-            this.pictureBox2.Location = new System.Drawing.Point(529, 11);
+            this.pictureBox2.Location = new System.Drawing.Point(548, 51);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(97, 111);
@@ -1072,12 +1072,12 @@
             this.pictureBox12.TabIndex = 31;
             this.pictureBox12.TabStop = false;
             // 
-            // StoryMode1
+            // StoryMode3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WindowsForms.Properties.Resources.Background;
-            this.ClientSize = new System.Drawing.Size(909, 490);
+            this.ClientSize = new System.Drawing.Size(909, 488);
             this.Controls.Add(this.shopHUD);
             this.Controls.Add(this.merchant1);
             this.Controls.Add(this.textHUD);
@@ -1149,8 +1149,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.escMenu;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "StoryMode1";
-            this.Text = "Story-Mode LVL 1";
+            this.Name = "StoryMode3";
+            this.Text = "Story-Mode LVL 3";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyIsDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyIsUp);
             ((System.ComponentModel.ISupportInitialize)(this.playerBox)).EndInit();

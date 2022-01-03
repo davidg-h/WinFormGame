@@ -119,7 +119,7 @@ namespace WindowsForms.Gamecode
             if (buySomethingValid(cost))
             {
                 player.Hp = player.Hp * 2;
-                healthBar.Maximum = player.Hp;
+                //healthBar.Maximum = player.Hp;
             }
         }
 
@@ -171,9 +171,9 @@ namespace WindowsForms.Gamecode
             player.move(this);
             player.isOnGround = false;
 
-            if (player.Hp > 1)
+            if (player.Hp > 0)
             {
-                healthBar.Value = Convert.ToInt32(player.Hp);
+                Healthbar();
             }
             else
             {
@@ -253,11 +253,6 @@ namespace WindowsForms.Gamecode
                 }
             }
 
-            if (player.Hp < 20)
-            {
-                healthBar.ForeColor = System.Drawing.Color.Red;
-            }
-
             if (player.score > 5) obstacleSpeed = 20;
             if (player.score > 15) obstacleSpeed = 30;
             if (player.score > 30) obstacleSpeed = 50;
@@ -283,6 +278,10 @@ namespace WindowsForms.Gamecode
                         x.Left = this.ClientSize.Width + rand.Next(450, 800) + (x.Width * 10);
                     }
 
+                    if ((string)x.Tag == "health")
+                    {
+                        ((PictureBox)x).Image = WindowsForms.Properties.Resources.Heart;
+                    }
                 }
             }
             MainGameTick.Start();
@@ -435,6 +434,60 @@ namespace WindowsForms.Gamecode
 
             Invalidate();
         }
+        #endregion
+
+        #region Healthbar
+        void Healthbar()
+        {
+            //if HP fall on a specific count, then change the container to empty or half empty
+            if (player.Hp < 100)
+            {
+                ChangeHeartContainer(heart5, false);
+            }
+            if (player.Hp < 90)
+            {
+                ChangeHeartContainer(heart5, true);
+            }
+            if (player.Hp < 80)
+            {
+                ChangeHeartContainer(heart4, false);
+            }
+            if (player.Hp < 70)
+            {
+                ChangeHeartContainer(heart4, true);
+            }
+            if (player.Hp < 60)
+            {
+                ChangeHeartContainer(heart3, false);
+            }
+            if (player.Hp < 50)
+            {
+                ChangeHeartContainer(heart3, true);
+            }
+            if (player.Hp < 40)
+            {
+                ChangeHeartContainer(heart2, false);
+            }
+            if (player.Hp < 30)
+            {
+                ChangeHeartContainer(heart2, true);
+            }
+            if (player.Hp < 20)
+            {
+                ChangeHeartContainer(heart1, false);
+            }
+        }
+
+        void ChangeHeartContainer(PictureBox container, bool empty)
+        {
+            if (empty)
+            {
+                container.Image = Properties.Resources.HeartEmpty;
+            }
+            else
+                container.Image = Properties.Resources.HeartHalf;
+        }
+
         #endregion
 
         private void randomPlacement(PictureBox box, bool upDownPlacement)
