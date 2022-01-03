@@ -13,7 +13,7 @@ using System.Drawing.Drawing2D;
 
 namespace WindowsForms.Gamecode
 {
-    public partial class StoryMode1 : Form
+    public partial class StoryMode3 : Form
     {
         #region Game variables
         private int min = 5;
@@ -38,7 +38,7 @@ namespace WindowsForms.Gamecode
 
         #endregion
 
-        public StoryMode1()
+        public StoryMode3()
         {
             InitializeComponent();
             CreateEnemysLIst();
@@ -353,7 +353,7 @@ namespace WindowsForms.Gamecode
                     {
                         if (playerBox.Bounds.IntersectsWith(x.Bounds))
                         {
-                            if(playerBox.Top  < x.Top)
+                            if (playerBox.Top < x.Top)
                             {
                                 player.IsOnGround = true;
 
@@ -457,10 +457,7 @@ namespace WindowsForms.Gamecode
             if (playerBox.Bounds.IntersectsWith(destinyBox.Bounds))
             {
                 MainGameTick.Stop();
-                MessageBox.Show("Entering Lvl 2", "", MessageBoxButtons.OK);
-                StoryMode2 lvl2 = new StoryMode2();
-                lvl2.Show();
-                this.Visible = false;
+                YouWon();
             }
         }
         internal void Restart()
@@ -608,7 +605,7 @@ namespace WindowsForms.Gamecode
 
                     }
                     break;
-                
+
             }
 
             if (player.jumps == true)
@@ -625,13 +622,13 @@ namespace WindowsForms.Gamecode
             {
                 playerBox.Image = Properties.Resources.attackingRight;
                 playerBox.Tag = "attackingRight";
-               
+
             }
             else if (direction == "left") // must be improved
             {
                 playerBox.Image = Properties.Resources.attackingLeft;
                 playerBox.Tag = "attackingLeft";
-                
+
             }
         }
         #endregion
@@ -676,7 +673,7 @@ namespace WindowsForms.Gamecode
             {
                 //g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
 
-                g.DrawImage(backgroundlayer, new Rectangle(new Point(0,0), this.Size), new Rectangle(new Point(-backgroundCoordX, 0), new Size(backgroundlayer.Width / 2, backgroundlayer.Height)), GraphicsUnit.Pixel);
+                g.DrawImage(backgroundlayer, new Rectangle(new Point(0, 0), this.Size), new Rectangle(new Point(-backgroundCoordX, 0), new Size(backgroundlayer.Width / 2, backgroundlayer.Height)), GraphicsUnit.Pixel);
                 g.DrawImage(player.currentImage, playerBox.Location);
                 foreach (Control x in this.Controls)
                 {
@@ -728,7 +725,7 @@ namespace WindowsForms.Gamecode
                     }
                     if (x is Label)
                     {
-                        g.DrawString(x.Text, new Font("Unispace", 11), new SolidBrush(Color.Black) , x.Location ) ;
+                        g.DrawString(x.Text, new Font("Unispace", 11), new SolidBrush(Color.Black), x.Location);
                     }
                 }
                 pf.CreateGraphics().DrawImageUnscaled(bufl, 0, 0);
@@ -757,7 +754,7 @@ namespace WindowsForms.Gamecode
             {
                 backgroundCoordX -= 2;
             }
-            if (player.goLeft && ! player.obstacleLeft)
+            if (player.goLeft && !player.obstacleLeft)
             {
                 backgroundCoordX += 2;
             }
@@ -784,7 +781,7 @@ namespace WindowsForms.Gamecode
                         }
                     }
 
-                }      
+                }
                 if (direction == "forward" && !player.obstacleLeft)
                 {
                     if (x is PictureBox)

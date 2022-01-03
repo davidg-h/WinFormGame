@@ -102,6 +102,18 @@
     <Compile Include="Gamecode\StartScreen.Designer.cs">
       <DependentUpon>StartScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gamecode\StoryMode2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gamecode\StoryMode2.Designer.cs">
+      <DependentUpon>StoryMode2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gamecode\StoryMode3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gamecode\StoryMode3.Designer.cs">
+      <DependentUpon>StoryMode3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gamecode\SystemSave.cs" />
     <Compile Include="Gamecode\WinnerScreen.cs">
       <SubType>Form</SubType>
@@ -131,6 +143,12 @@
     <EmbeddedResource Include="Gamecode\StartScreen.resx">
       <DependentUpon>StartScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Gamecode\StoryMode2.resx">
+      <DependentUpon>StoryMode2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gamecode\StoryMode3.resx">
+      <DependentUpon>StoryMode3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gamecode\WinnerScreen.resx">
       <DependentUpon>WinnerScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,6 +157,14 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\WindowsForms.Gamecode.EndlessMode.datasource" />
+    <None Include="Properties\DataSources\WindowsForms.Gamecode.GameOverScreen.datasource" />
+    <None Include="Properties\DataSources\WindowsForms.Gamecode.HighscoreList.datasource" />
+    <None Include="Properties\DataSources\WindowsForms.Gamecode.Instructions.datasource" />
+    <None Include="Properties\DataSources\WindowsForms.Gamecode.NameInput.datasource" />
+    <None Include="Properties\DataSources\WindowsForms.Gamecode.StartScreen.datasource" />
+    <None Include="Properties\DataSources\WindowsForms.Gamecode.StoryMode3.datasource" />
+    <None Include="Properties\DataSources\WindowsForms.Gamecode.WinnerScreen.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
