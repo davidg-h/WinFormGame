@@ -967,7 +967,7 @@
             // 
             this.obstacle.BackColor = System.Drawing.Color.Transparent;
             this.obstacle.Image = global::WindowsForms.Properties.Resources.PoisountPlant;
-            this.obstacle.Location = new System.Drawing.Point(414, 340);
+            this.obstacle.Location = new System.Drawing.Point(402, 317);
             this.obstacle.Name = "obstacle";
             this.obstacle.Size = new System.Drawing.Size(64, 120);
             this.obstacle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;

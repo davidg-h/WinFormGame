@@ -130,6 +130,9 @@
   <data name="wallTop2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wallTop2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Heart_Armor_Half" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Heart_Armor_Half.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="timer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\timer.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -193,6 +196,9 @@
   <data name="TitleScreen1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TitleScreen1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="health_potion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\health_potion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="piranha-plant" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\piranha-plant.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -211,8 +217,17 @@
   <data name="shroomIdle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shroomIdle.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ShopHUD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ShopHUD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PressH" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PressH.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="blackhole" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\blackhole.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="health_potion_empty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\health_potion_empty.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -223,31 +238,19 @@
   <data name="attackingLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\attackingLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Merchant" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Merchant.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Heart_Armor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Heart_Armor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Piranha-ball2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Piranha-ball.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="coin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\coin.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Heart_Armor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Heart_Armor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Heart_Armor_Half" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Heart_Armor_Half.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="health_potion" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\health_potion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="health_potion_empty" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\health_potion_empty.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Merchant" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Merchant.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PressH" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PressH.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ShopHUD" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ShopHUD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="PoisountPlant_destroyed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PoisountPlant_destroyed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
