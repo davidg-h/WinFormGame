@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.Drawing.Drawing2D;
 
 namespace WindowsForms.Gamecode
 {
@@ -128,7 +129,7 @@ namespace WindowsForms.Gamecode
             if (e.KeyCode == Keys.Escape)
             {
                 MainGameTick.Stop();
-                CountdownTimer.Start();
+                CountdownTimer.Stop();
                 escMenu.BringToFront();
                 escMenu.Visible = true;
             }
@@ -180,8 +181,9 @@ namespace WindowsForms.Gamecode
                     player.coins = gameData.coins;
                     player.Hp = gameData.hp;
                     player.Dmg = gameData.dmg;
+                    MainGameTick.Start();
+                    CountdownTimer.Start();
                     escMenu.Visible = false;
-                    Draw();
                     break;
                 case GameLvl.storyLvl_2:
                     //TODO
@@ -563,7 +565,7 @@ namespace WindowsForms.Gamecode
         }
         #endregion
 
-        #region CreateEnemyList
+        #region CreateEnemyList RangeEnemy
         public void CreateEnemysLIst()
         {
             rangeEnemyList = new List<RangeEnemy>();
@@ -577,7 +579,7 @@ namespace WindowsForms.Gamecode
         }
         #endregion
 
-        #region ShootingOfEnemy
+        #region ShootingOfEnemy RangeEnemy
         public void ShootWhenPlayerNear()
         {
             foreach (var rangeEnemy in this.rangeEnemyList)
@@ -655,7 +657,7 @@ namespace WindowsForms.Gamecode
                     }
                     if (x is Label)
                     {
-                        g.DrawString(x.Text, new Font("Arial", 11), new SolidBrush(Color.Black) , x.Location ) ;
+                        g.DrawString(x.Text, new Font("Unispace", 11), new SolidBrush(Color.Black) , x.Location ) ;
                     }
                 }
                 pf.CreateGraphics().DrawImageUnscaled(bufl, 0, 0);
