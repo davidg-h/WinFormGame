@@ -373,6 +373,16 @@ namespace WindowsForms.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap PoisountPlant_destroyed {
+            get {
+                object obj = ResourceManager.GetObject("PoisountPlant_destroyed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap PressH {
             get {
                 object obj = ResourceManager.GetObject("PressH", resourceCulture);

@@ -24,10 +24,12 @@ namespace WindowsForms.Gamecode
         int currentImageIndex = 0;
         int animationUpdate = 0;
         int currentAnimation = 0; //TODO: create enum animations
-        public bool armor1, armor2, potion;
+        public bool armor1, armor2, potion, invulnerable;
+        int currentHealth;
 
-        public Player(PictureBox playerBox, int hp, int dmg = 1) : base(playerBox, hp, dmg) { 
-            defaultLocation = new Point(34,31);
+        public Player(PictureBox playerBox, int hp, int dmg = 1) : base(playerBox, hp, dmg)
+        {
+            defaultLocation = new Point(34, 31);
             moveVector = new System.Windows.Vector(0, 0);
             isOnGround = false;
             spritesIdle = SpriteHandler.getFrames(playerBox.Image);
@@ -37,6 +39,7 @@ namespace WindowsForms.Gamecode
             armor1 = false;
             armor2 = false;
             potion = false;
+            invulnerable = false;
         }
 
         internal override int Hp
@@ -44,8 +47,16 @@ namespace WindowsForms.Gamecode
             get => hp;
             set
             {
+                currentHealth = Hp;
+
+
                 if (value > 100)
                     hp = 100;
+                else if (invulnerable)
+                {
+                    hp = currentHealth;
+                    currentHealth = value;
+                }
                 else if (armor2 && value <= hp)
                 {
                     armor2 = false;
@@ -56,9 +67,12 @@ namespace WindowsForms.Gamecode
                     armor1 = false;
                     hp += 0;
                 }
-                else
-                    hp = value;
 
+                else
+                {
+                    invulnerable = true;
+                    hp = value;
+                }
             }
         }
 
@@ -78,7 +92,7 @@ namespace WindowsForms.Gamecode
 
         public override void move(Form f)
         {
-            
+
             if (goLeft && box.Left > 30)// && !obstacleLeft)
             {
                 //moveVector.X = -characterSpeed;
@@ -91,7 +105,7 @@ namespace WindowsForms.Gamecode
             else if (goRight && box.Left + (box.Width + 30) < f.ClientSize.Width)// && !obstacleRight)
             {
                 //moveVector.X = characterSpeed;
-                if(currentAnimation != 2)
+                if (currentAnimation != 2)
                 {
                     animationUpdate = 0;
                     currentAnimation = 2;
@@ -142,21 +156,21 @@ namespace WindowsForms.Gamecode
             {
                 switch (currentAnimation)
                 {
-                    case 0: 
-                            currentImage = spritesIdle[ (currentImageIndex + 1) % spritesIdle.Length];
+                    case 0:
+                        currentImage = spritesIdle[(currentImageIndex + 1) % spritesIdle.Length];
                         break;
                     case 1:
-                            currentImage = spritesWalkLeft[ (currentImageIndex + 1) % spritesIdle.Length];
+                        currentImage = spritesWalkLeft[(currentImageIndex + 1) % spritesIdle.Length];
                         break;
                     case 2:
-                            currentImage = spritesWalkRight[ (currentImageIndex + 1) % spritesIdle.Length];
+                        currentImage = spritesWalkRight[(currentImageIndex + 1) % spritesIdle.Length];
                         break;
                 }
                 currentImageIndex++;
                 animationUpdate = 0;
             }
             animationUpdate++;
-            
+
 
         }
 
