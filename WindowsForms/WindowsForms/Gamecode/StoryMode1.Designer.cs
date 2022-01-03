@@ -98,6 +98,11 @@
             this.obstacle = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.HealthPotionHUD = new System.Windows.Forms.PictureBox();
+            this.textHUD = new System.Windows.Forms.PictureBox();
+            this.coinsHUD = new System.Windows.Forms.PictureBox();
+            this.merchant1 = new System.Windows.Forms.PictureBox();
+            this.shopHUD = new System.Windows.Forms.PictureBox();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.playerBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.platformBox2)).BeginInit();
@@ -157,6 +162,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.obstacle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HealthPotionHUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textHUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coinsHUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.merchant1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shopHUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             this.SuspendLayout();
             // 
@@ -993,6 +1003,63 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Tag = "eagleEnemy";
             // 
+            // HealthPotionHUD
+            // 
+            this.HealthPotionHUD.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.HealthPotionHUD.BackColor = System.Drawing.Color.Transparent;
+            this.HealthPotionHUD.Image = global::WindowsForms.Properties.Resources.health_potion_empty;
+            this.HealthPotionHUD.Location = new System.Drawing.Point(174, 46);
+            this.HealthPotionHUD.Name = "HealthPotionHUD";
+            this.HealthPotionHUD.Size = new System.Drawing.Size(24, 30);
+            this.HealthPotionHUD.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.HealthPotionHUD.TabIndex = 31;
+            this.HealthPotionHUD.TabStop = false;
+            this.HealthPotionHUD.Tag = "HUD";
+            // 
+            // textHUD
+            // 
+            this.textHUD.BackColor = System.Drawing.Color.Transparent;
+            this.textHUD.Image = global::WindowsForms.Properties.Resources.PressH;
+            this.textHUD.Location = new System.Drawing.Point(207, 51);
+            this.textHUD.Name = "textHUD";
+            this.textHUD.Size = new System.Drawing.Size(50, 20);
+            this.textHUD.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.textHUD.TabIndex = 32;
+            this.textHUD.TabStop = false;
+            // 
+            // coinsHUD
+            // 
+            this.coinsHUD.BackColor = System.Drawing.Color.Transparent;
+            this.coinsHUD.Image = global::WindowsForms.Properties.Resources.coin;
+            this.coinsHUD.Location = new System.Drawing.Point(311, -14);
+            this.coinsHUD.Name = "coinsHUD";
+            this.coinsHUD.Size = new System.Drawing.Size(77, 71);
+            this.coinsHUD.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.coinsHUD.TabIndex = 33;
+            this.coinsHUD.TabStop = false;
+            // 
+            // merchant1
+            // 
+            this.merchant1.Image = global::WindowsForms.Properties.Resources.Merchant;
+            this.merchant1.Location = new System.Drawing.Point(990, 358);
+            this.merchant1.Name = "merchant1";
+            this.merchant1.Size = new System.Drawing.Size(68, 64);
+            this.merchant1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.merchant1.TabIndex = 34;
+            this.merchant1.TabStop = false;
+            this.merchant1.Tag = "merchant";
+            // 
+            // shopHUD
+            // 
+            this.shopHUD.Image = global::WindowsForms.Properties.Resources.ShopHUD;
+            this.shopHUD.Location = new System.Drawing.Point(914, 196);
+            this.shopHUD.Name = "shopHUD";
+            this.shopHUD.Size = new System.Drawing.Size(220, 134);
+            this.shopHUD.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.shopHUD.TabIndex = 35;
+            this.shopHUD.TabStop = false;
+            this.shopHUD.Tag = "shopHUD";
+            // 
             // pictureBox12
             // 
             this.pictureBox12.BackColor = System.Drawing.Color.Transparent;
@@ -1011,6 +1078,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WindowsForms.Properties.Resources.Background;
             this.ClientSize = new System.Drawing.Size(1005, 488);
+            this.Controls.Add(this.shopHUD);
+            this.Controls.Add(this.merchant1);
+            this.Controls.Add(this.textHUD);
+            this.Controls.Add(this.HealthPotionHUD);
             this.Controls.Add(this.pictureBox12);
             this.Controls.Add(this.heart5);
             this.Controls.Add(this.heart2);
@@ -1073,6 +1144,7 @@
             this.Controls.Add(this.obstacleTree);
             this.Controls.Add(this.destinyBox);
             this.Controls.Add(this.obstacle);
+            this.Controls.Add(this.coinsHUD);
             this.Controls.Add(this.escMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.escMenu;
@@ -1140,6 +1212,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.obstacle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HealthPotionHUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textHUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coinsHUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.merchant1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shopHUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1216,6 +1293,11 @@
         private System.Windows.Forms.PictureBox obstacle;
         internal System.Windows.Forms.PictureBox pictureBox1;
         internal System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox HealthPotionHUD;
+        private System.Windows.Forms.PictureBox textHUD;
+        private System.Windows.Forms.PictureBox coinsHUD;
+        private System.Windows.Forms.PictureBox merchant1;
+        private System.Windows.Forms.PictureBox shopHUD;
         private System.Windows.Forms.PictureBox pictureBox12;
     }
 }
