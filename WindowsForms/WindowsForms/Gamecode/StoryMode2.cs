@@ -308,7 +308,7 @@ namespace WindowsForms.Gamecode
                     {
                         if (playerBox.Bounds.IntersectsWith(x.Bounds))
                         {
-                            if (player.attacking)
+                            if (player.isAttacking)
                             {
                                 EnemyDamage(x);
                             }
@@ -327,7 +327,7 @@ namespace WindowsForms.Gamecode
                     {
                         if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
                         {
-                            if (player.attacking)
+                            if (player.isAttacking)
                             {
                                 EnemyDamage(x);
                             }
@@ -387,7 +387,7 @@ namespace WindowsForms.Gamecode
                         {
                             RangeEnemy foundRangeEnemy = rangeEnemyList.Find(rangeEnemy => rangeEnemy.box.Name == (string)x.Name);
                             player.Hp -= foundRangeEnemy.Dmg;
-                            if (player.attacking)
+                            if (player.isAttacking)
                             {
                                 foundRangeEnemy.Hp -= player.Dmg;
                                 if (foundRangeEnemy.Hp < 1)
@@ -541,7 +541,7 @@ namespace WindowsForms.Gamecode
                 case Keys.Space:
                     if (!gameOver)
                     {
-                        player.attacking = true;
+                        player.isAttacking = true;
                         PlayerAttack(facing);
 
                     }
@@ -603,7 +603,7 @@ namespace WindowsForms.Gamecode
                 case Keys.Space:
                     if (!gameOver)
                     {
-                        player.attacking = false;
+                        player.isAttacking = false;
                         playerBox.Image = Properties.Resources.walking;
 
                     }

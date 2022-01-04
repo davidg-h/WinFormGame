@@ -13,29 +13,51 @@ namespace WindowsForms.Gamecode
 {
     internal class Player : Entity
     {
+        #region class variables
         internal Point defaultLocation;
         internal int score = 0;
         internal int coins = 0;
         internal System.Windows.Vector moveVector;
-        internal Image[] spritesIdle;
+        internal Image[] spritesIdleLeft;
+        internal Image[] spritesIdleRight;
         internal Image[] spritesWalkLeft;
         internal Image[] spritesWalkRight;
+        internal Image spritesAttackLeft;
+        internal Image spritesAttackRight;
         internal Image currentImage = null;
         int currentImageIndex = 0;
         int animationUpdate = 0;
-        int currentAnimation = 0; //TODO: create enum animations
+        EnumPlayerAnimation currentAnimation = 0; //TODO: create enum animations
+        public bool obstacleRight = false;
+        public bool obstacleLeft = false;
+        bool attacking = false;
+        internal bool facingRight = true;
+        public bool isAttacking { get => attacking; set => attacking =  value; }
+        internal override int Dmg { get => dmg; set => dmg = value; }
         public bool armor1, armor2, potion, invulnerable;
         int currentHealth;
 
-        public Player(PictureBox playerBox, int hp, int dmg = 1) : base(playerBox, hp, dmg)
-        {
-            defaultLocation = new Point(34, 31);
+        // move pattern for WASD - controls
+        internal void Left(bool go) { goLeft = go; facingRight = false; }
+        internal void Right(bool go) { goRight = go; facingRight = true; }
+        internal void jump() { jumps = true; }
+        internal void Down() { goDown = true; }
+        internal bool IsOnGround { get => isOnGround; set => isOnGround = value; }
+
+        #endregion
+
+        public Player(PictureBox playerBox, int hp, int dmg = 1) : base(playerBox, hp, dmg) { 
+            defaultLocation = new Point(34,31);
             moveVector = new System.Windows.Vector(0, 0);
             isOnGround = false;
-            spritesIdle = SpriteHandler.getFrames(playerBox.Image);
+            spritesIdleLeft = SpriteHandler.getFrames(Properties.Resources.idle);
+            spritesIdleRight = SpriteHandler.getFrames(Properties.Resources.idleLeft);
             spritesWalkLeft = SpriteHandler.getFrames(Properties.Resources.walkingLeft);
             spritesWalkRight = SpriteHandler.getFrames(Properties.Resources.walking);
-            currentImage = spritesIdle[0];
+            spritesAttackLeft = Properties.Resources.attackingLeft; //spritesAttackLeft = SpriteHandler.getFrames(Properties.Resources.attackingLeft); 
+            spritesAttackRight = Properties.Resources.attackingRight; //spritesAttackRight = SpriteHandler.getFrames(Properties.Resources.attackingRight); 
+
+            currentImage = spritesIdleLeft[0];
             armor1 = false;
             armor2 = false;
             potion = false;
@@ -75,51 +97,50 @@ namespace WindowsForms.Gamecode
                 }
             }
         }
-
-        internal override int Dmg { get => dmg; set => dmg = value; }
-
-        // move pattern for WASD - controls
-
-        internal void Left(bool go) { goLeft = go; }
-        internal void Right(bool go) { goRight = go; }
-        internal void jump() { jumps = true; }
-        internal void Down() { goDown = true; }
-        internal bool IsOnGround { get => isOnGround; set => isOnGround = value; }
-        public bool obstacleRight = false;
-        public bool obstacleLeft = false;
-        public bool attacking = false;
-
-
         public override void move(Form f)
         {
+            animatePlayer();
 
-            if (goLeft && box.Left > 30)// && !obstacleLeft)
+            #region jumping mechanics
+            //isonGround is handled in StoryMode1
+
+            // moves the box up or down depending on the threshold 'force'
+
+
+            if (jumps && IsOnGround)
             {
-                //moveVector.X = -characterSpeed;
-                if (currentAnimation != 1)
-                {
-                    animationUpdate = 0;
-                    currentAnimation = 1;
-                }
+                jumps = false;
+                isOnGround = false;
+                moveVector.Y = -jumpSpeed; //add initial jumpforce
             }
-            else if (goRight && box.Left + (box.Width + 30) < f.ClientSize.Width)// && !obstacleRight)
+            if (!IsOnGround)
             {
-                //moveVector.X = characterSpeed;
-                if (currentAnimation != 2)
-                {
-                    animationUpdate = 0;
-                    currentAnimation = 2;
-                }
+                //if inAir then add downforce
+                moveVector.Y += force;
+            }
+            else
+            {   //if isOnGround then stay on Ground
+                moveVector.Y = 0;
+            }
+            #endregion
+            //finaly the position gets Updated with the created moveVector
+            box.Location = new Point(box.Location.X + (int)moveVector.X, box.Location.Y + (int)moveVector.Y);
+
+        }
+        public void moveEndlessmode(Form f) // player is able to move in window
+        {
+            animatePlayer();
+            if (goLeft && box.Left > 30 && !obstacleLeft)
+            {
+                moveVector.X = -characterSpeed;
+            }
+            else if (goRight && box.Left + (box.Width + 30) < f.ClientSize.Width && !obstacleRight)
+            {
+                moveVector.X = characterSpeed;
             }
             else
             {
                 moveVector.X = 0;
-
-                if (currentAnimation != 0)
-                {
-                    animationUpdate = 0;
-                    currentAnimation = 0;
-                }
             }
 
             #region jumping mechanics
@@ -147,40 +168,91 @@ namespace WindowsForms.Gamecode
             //finaly the position gets Updated with the created moveVector
             box.Location = new Point(box.Location.X + (int)moveVector.X, box.Location.Y + (int)moveVector.Y);
 
+        }
+
+        private void animatePlayer()
+        {
+            if (attacking && !facingRight)
+            {
+                animationUpdate = 0;
+                currentAnimation = EnumPlayerAnimation.attackLeft;
+            }
+            else if(attacking && facingRight)
+            {
+                animationUpdate = 0;
+                currentAnimation = EnumPlayerAnimation.attackRight;
+            }
+            else if (goLeft && !obstacleLeft)
+            {
+                if (currentAnimation != EnumPlayerAnimation.moveLeft)
+                {
+                    animationUpdate = 0;
+                    currentAnimation = EnumPlayerAnimation.moveLeft;
+                }
+            }
+            else if (goRight && !obstacleRight)
+            {
+                if (currentAnimation != EnumPlayerAnimation.moveRight)
+                {
+                    animationUpdate = 0;
+                    currentAnimation = EnumPlayerAnimation.moveRight;
+                }
+            }
+            else if(facingRight)
+            {
+                if (currentAnimation != EnumPlayerAnimation.idleRight)
+                {
+                    animationUpdate = 0;
+                    currentAnimation = EnumPlayerAnimation.idleRight;
+                }
+            }
+            else
+            {
+                if (currentAnimation != EnumPlayerAnimation.idleLeft)
+                {
+                    animationUpdate = 0;
+                    currentAnimation = EnumPlayerAnimation.idleLeft;
+                }
+            }
+
             updateAnimation();
         }
 
         private void updateAnimation()
         {
-            if (animationUpdate % 3 == 0)
+            if (animationUpdate % 3 == 0) //delays animations speed
             {
                 switch (currentAnimation)
                 {
-                    case 0:
-                        currentImage = spritesIdle[(currentImageIndex + 1) % spritesIdle.Length];
+                    case EnumPlayerAnimation.idleRight: 
+                            currentImage = spritesIdleLeft[ (currentImageIndex + 1) % spritesIdleLeft.Length];
                         break;
-                    case 1:
-                        currentImage = spritesWalkLeft[(currentImageIndex + 1) % spritesIdle.Length];
+                    case EnumPlayerAnimation.idleLeft:
+                        
+                        currentImage = spritesIdleRight[(currentImageIndex + 1) % spritesIdleLeft.Length];
                         break;
-                    case 2:
-                        currentImage = spritesWalkRight[(currentImageIndex + 1) % spritesIdle.Length];
+                    case EnumPlayerAnimation.moveLeft:
+                            currentImage = spritesWalkLeft[ (currentImageIndex + 1) % spritesIdleLeft.Length];
+                        break;
+                    case EnumPlayerAnimation.moveRight:
+                            currentImage = spritesWalkRight[ (currentImageIndex + 1) % spritesIdleLeft.Length];
+                        break;
+                    case EnumPlayerAnimation.attackLeft:
+                        currentImage = spritesAttackLeft;
+                        break;
+                    case EnumPlayerAnimation.attackRight:
+                        currentImage = spritesAttackRight;
                         break;
                 }
                 currentImageIndex++;
                 animationUpdate = 0;
             }
             animationUpdate++;
-
-
         }
-
-        private void idle() { }
-        private void walkLeft() { }
-        private void walkRight() { }
 
         public override void attack()
         {
-            //TODO player attack
+            attacking = true;
         }
 
         internal void MoveToTopOfPlatform(int topOfPlatform)

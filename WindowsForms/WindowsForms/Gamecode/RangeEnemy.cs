@@ -31,6 +31,7 @@ namespace WindowsForms.Gamecode
             new Tuple<Bitmap, Point,string>(Properties.Resources.piranha_plant, new Point(1900,300),"monster4")
                 //here you can add the next rangeenemies picture position and name must be adjusted
         };
+
         public void ShootShot(Form f, string direction)
         {
             if (shootingCounter % 20 == 0) //manipulates frequency of shooting
