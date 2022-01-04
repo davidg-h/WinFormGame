@@ -1077,7 +1077,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WindowsForms.Properties.Resources.Background;
-            this.ClientSize = new System.Drawing.Size(909, 490);
+            this.ClientSize = new System.Drawing.Size(914, 490);
             this.Controls.Add(this.shopHUD);
             this.Controls.Add(this.merchant1);
             this.Controls.Add(this.textHUD);
