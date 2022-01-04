@@ -16,7 +16,7 @@ namespace WindowsForms.Gamecode
         #region Game(EndlessMode) variables
         Random rand = new Random();
         bool gameOver = false;
-        int obstacleSpeed = 10;
+        int obstacleSpeed = 15;
         int inventoryChestCoins;
         internal Player player;
 
@@ -158,8 +158,6 @@ namespace WindowsForms.Gamecode
         #region EndlessMode Gameloop
         private void endlessTickTimer(object sender, EventArgs e)
         {
-            Draw();
-
             coinHandler.updateSpriteEveryTimeCalled();
             mushroomHandler.updateSpriteEvery3thTimeCalled();
 
@@ -178,10 +176,8 @@ namespace WindowsForms.Gamecode
             else
             {
                 MainGameTick.Stop();
+                ScoreTimer.Stop();
                 gameOver = true;
-                //MessageBox.Show("You Died!!!"+Environment.NewLine+ "Press OK to play again");
-
-                //Restart();
 
                 DialogResult dialogresult = MessageBox.Show("You Died!!!" + Environment.NewLine + "Press Yes to play again", "", MessageBoxButtons.YesNo);
 
@@ -226,29 +222,56 @@ namespace WindowsForms.Gamecode
                         // moves the enemy to the player
                         small.box.Left -= small.characterSpeed;
 
-                        //if (small.box.Left < -50)
-                        //{
-                        //    small.box.Left = this.ClientSize.Width + rand.Next(100, 300) + (x.Width * 15);
-                        //    // increment score for longer survival time
-                        //}
                         randomPlacement(small.box, true);
+                    }
+                    if ((string)x.Tag == "eagleEnemy")
+                    {
+                        EnemyFly fly = new EnemyFly((PictureBox)x);
+
+                        if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
+                        {
+                            player.Hp -= fly.Dmg;
+                        }
+
+                        //TODO spawn other types of enemys (use the enemy classes)
+                        fly.characterSpeed = obstacleSpeed;
+                        // moves the enemy to the player
+                        fly.box.Left -= fly.characterSpeed;
+
+                        randomPlacement(fly.box, true);
                     }
                     if ((string)x.Tag == "platform")
                     {
+                        x.Left -= obstacleSpeed;
                         if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
                         {
                             player.IsOnGround = true;
                             player.MoveToTopOfPlatform(x.Top);
                         }
-                    }
-                }
 
-                if (x is PictureBox && (string)x.Tag == "coins")
-                {
-                    if (playerBox.Bounds.IntersectsWith(x.Bounds))
+                        if (x.Name != "startPlatform")
+                        {
+                            if (x.Name == "platformBox1")
+                            {
+                                randomPlacement(x as PictureBox, false);
+                            }
+                            randomPlacement(x as PictureBox, true);
+                        }
+                    }
+                    if ((string)x.Tag == "coins")
                     {
-                        x.Tag = "coins.collected";
-                        player.coins += 1;
+                        x.Left -= obstacleSpeed;
+                        if (playerBox.Bounds.IntersectsWith(x.Bounds))
+                        {
+                            x.Tag = "coins.collected";
+                            player.coins += 1;
+                        }
+                        randomPlacement(x as PictureBox, true);
+                    }
+                    if ((string)x.Tag == "thorns")
+                    {
+                        x.Left -= obstacleSpeed;
+                        randomPlacement(x as PictureBox, true);
                     }
                 }
             }
@@ -256,6 +279,10 @@ namespace WindowsForms.Gamecode
             if (player.score > 5) obstacleSpeed = 20;
             if (player.score > 15) obstacleSpeed = 30;
             if (player.score > 30) obstacleSpeed = 50;
+            if (player.score > 60) obstacleSpeed = 80;
+            if (player.score > 100) obstacleSpeed = 120;
+
+            Draw();
         }
 
         private void GameReset()
@@ -285,6 +312,7 @@ namespace WindowsForms.Gamecode
                 }
             }
             MainGameTick.Start();
+            ScoreTimer.Start();
         }
         #endregion
 
@@ -386,14 +414,14 @@ namespace WindowsForms.Gamecode
                 g.DrawImage(player.currentImage, playerBox.Location);
                 foreach (Control x in this.Controls)
                 {
-                    if (x is PictureBox )
+                    if (x is PictureBox)
                     {
                         string tag = (string)x.Tag;
                         Rectangle destRect = new Rectangle(x.Location, x.Size);
 
                         if (((PictureBox)x).Image == null)
                         {
-                            g.FillRectangle(new SolidBrush(x.BackColor) , destRect);
+                            g.FillRectangle(new SolidBrush(x.BackColor), destRect);
                         }
                         else if (tag == "coins")
                         {
@@ -490,17 +518,30 @@ namespace WindowsForms.Gamecode
 
         #endregion
 
+        #region random Placement of objects
         private void randomPlacement(PictureBox box, bool upDownPlacement)
         {
-            if (box.Left < -50)
+            if (box.Location.X + box.Width < 0)
             {
-                box.Left = this.ClientSize.Width + rand.Next(100, 300) + (box.Width * 15);
+                box.Left = this.ClientSize.Width + rand.Next(50, 250);
                 if (upDownPlacement)
                 {
                     box.Top = rand.Next(37, 367);
                 }
-                player.score++;
             }
         }
+        #endregion
+
+        #region ScoreTimer
+        internal void scoreTimerTick(object sender, EventArgs e)
+        {
+            player.score++;
+            if (player.score > 5) ScoreTimer.Interval = 3000;
+            if (player.score > 15) ScoreTimer.Interval = 2250;
+            if (player.score > 30) ScoreTimer.Interval = 1500;
+            if (player.score > 60) ScoreTimer.Interval = 1000;
+            if (player.score > 100) ScoreTimer.Interval = 500;
+        }
+        #endregion
     }
 }
