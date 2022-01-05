@@ -15,7 +15,7 @@ namespace WindowsForms.Gamecode
         #region Game variables
         protected int min = 5;
         protected int sec;
-        public GameLvl lvl = GameLvl.storyLvl_1;
+        public GameLvl lvl;
         internal List<RangeEnemy> rangeEnemyList;
         internal Player player;
         protected bool gameOver;

@@ -20,6 +20,7 @@ namespace WindowsForms.Gamecode
             InitializeComponent();
             initializeParent(this);
 
+            this.lvl = GameLvl.storyLvl_1;
             this.FormClosed += StartScreen.closeGame;
             this.KeyDown += formKeyDown;
             this.Load += startTimer;

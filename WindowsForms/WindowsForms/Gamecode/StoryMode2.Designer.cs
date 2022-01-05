@@ -228,7 +228,7 @@
             // 
             this.platformBox2.BackColor = System.Drawing.Color.Black;
             this.platformBox2.Image = global::WindowsForms.Properties.Resources.wallTop4;
-            this.platformBox2.Location = new System.Drawing.Point(804, 602);
+            this.platformBox2.Location = new System.Drawing.Point(1044, 602);
             this.platformBox2.Margin = new System.Windows.Forms.Padding(6);
             this.platformBox2.Name = "platformBox2";
             this.platformBox2.Size = new System.Drawing.Size(294, 58);
@@ -292,6 +292,7 @@
             this.resumeToolStripMenuItem.Name = "resumeToolStripMenuItem";
             this.resumeToolStripMenuItem.Size = new System.Drawing.Size(1813, 67);
             this.resumeToolStripMenuItem.Text = "Resume";
+            this.resumeToolStripMenuItem.Click += new System.EventHandler(this.resumeToolStripMenuItem_Click);
             // 
             // startScreenToolStripMenuItem
             // 
@@ -300,6 +301,7 @@
             this.startScreenToolStripMenuItem.Name = "startScreenToolStripMenuItem";
             this.startScreenToolStripMenuItem.Size = new System.Drawing.Size(1813, 67);
             this.startScreenToolStripMenuItem.Text = "Start-Screen";
+            this.startScreenToolStripMenuItem.Click += new System.EventHandler(this.startScreenToolStripMenuItem_Click);
             // 
             // saveGameToolStripMenuItem
             // 
@@ -308,6 +310,7 @@
             this.saveGameToolStripMenuItem.Name = "saveGameToolStripMenuItem";
             this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(1813, 67);
             this.saveGameToolStripMenuItem.Text = "Save Game";
+            this.saveGameToolStripMenuItem.Click += new System.EventHandler(this.saveGameToolStripMenuItem_Click);
             // 
             // loadGameToolStripMenuItem
             // 
@@ -316,6 +319,7 @@
             this.loadGameToolStripMenuItem.Name = "loadGameToolStripMenuItem";
             this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(1813, 67);
             this.loadGameToolStripMenuItem.Text = "Load Game";
+            this.loadGameToolStripMenuItem.Click += new System.EventHandler(this.loadGameToolStripMenuItem_Click);
             // 
             // platformBox1
             // 
@@ -989,7 +993,7 @@
             // 
             this.obstacle.BackColor = System.Drawing.Color.Transparent;
             this.obstacle.Image = global::WindowsForms.Properties.Resources.PoisountPlant;
-            this.obstacle.Location = new System.Drawing.Point(828, 654);
+            this.obstacle.Location = new System.Drawing.Point(1104, 630);
             this.obstacle.Margin = new System.Windows.Forms.Padding(6);
             this.obstacle.Name = "obstacle";
             this.obstacle.Size = new System.Drawing.Size(64, 120);
