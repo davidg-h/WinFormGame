@@ -416,7 +416,6 @@ namespace WindowsForms.Gamecode
                             else
                             {
                                 player.Hp -= mushroomArray[0].Dmg;
-                                goToNextLevel();
                             }
                             if ((((PictureBox)x).Location.X - player.box.Location.X) > 0)
                             {

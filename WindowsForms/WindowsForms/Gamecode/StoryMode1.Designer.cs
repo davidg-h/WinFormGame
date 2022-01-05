@@ -1174,7 +1174,7 @@
             this.Controls.Add(this.escMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.escMenu;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "StoryMode1";
             this.Text = "Story-Mode LVL 1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyIsDown);
