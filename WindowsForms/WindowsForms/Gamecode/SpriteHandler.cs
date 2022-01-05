@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WindowsForms.Gamecode
 {
-    class SpriteHandler
+    internal class SpriteHandler
     {
         Image[] sprites;
         int currentAnimationSprite = 0;
