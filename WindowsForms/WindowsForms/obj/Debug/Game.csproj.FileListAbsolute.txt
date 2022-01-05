@@ -99,3 +99,4 @@ C:\Users\David\Desktop\SE\Graphic Knight\WindowsForms\WindowsForms\obj\Debug\Win
 C:\Users\David\Desktop\SE\Graphic Knight\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.StoryMode3.resources
 C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.StoryMode2.resources
 C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.StoryMode3.resources
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\Game.csproj.AssemblyReference.cache
