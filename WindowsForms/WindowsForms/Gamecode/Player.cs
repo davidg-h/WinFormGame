@@ -81,11 +81,13 @@ namespace WindowsForms.Gamecode
                 }
                 else if (armor2 && value <= hp)
                 {
+                    invulnerable = true;
                     armor2 = false;
                     hp += 0;
                 }
                 else if (armor1 && value <= hp)
                 {
+                    invulnerable = true;
                     armor1 = false;
                     hp += 0;
                 }
