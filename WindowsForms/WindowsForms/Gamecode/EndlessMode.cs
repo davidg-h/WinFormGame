@@ -11,46 +11,28 @@ using System.Windows.Forms;
 
 namespace WindowsForms.Gamecode
 {
-    public partial class EndlessMode : Form
+    public partial class EndlessMode : Level
     {
         #region Game(EndlessMode) variables
         Random rand = new Random();
-        bool gameOver = false;
         int obstacleSpeed = 15;
         int inventoryChestCoins;
-        internal Player player;
 
         PictureBox backgroundBox;
-        SpriteHandler coinHandler;
-        SpriteHandler mushroomHandler;
         #endregion
 
         public EndlessMode()
         {
             InitializeComponent();
-            player = new Player(playerBox, 100);
+            initializeLevel(this);
+
             this.FormClosed += StartScreen.closeGame;
             this.KeyDown += formKeyDown;
             this.Load += loadInventory;
             this.FormClosing += saveInventory;
 
-            coinHandler = new SpriteHandler(Properties.Resources.coin);
-            mushroomHandler = new SpriteHandler(Properties.Resources.shroomIdle);
-            backgroundBox = (PictureBox)Controls.Find("background1", false)[0];
-            //Creates a Panel where every item is redrawn
-            pf.Location = new Point(0, 0);
-            pf.Size = this.Size;
-            pf.SendToBack();
-            this.BackgroundImage = null;
-            //makes 'normal' screen invisible 
-            foreach (Control x in this.Controls)
-            {
-                if (x is PictureBox)
-                {
-                    x.Visible = false;
-                }
-            }
-            GameReset();
+            //backgroundBox = (PictureBox)Controls.Find("background1", false)[0];
+
         }
 
         #region Esc Menu (with safe/load)
@@ -325,35 +307,23 @@ namespace WindowsForms.Gamecode
                 case Keys.W:
                     player.jump();
                     //different sprites for holding a 'move' button
-                    if (holdDirection)
-                    {
-                        holdDirection = false;
-                        playerBox.Image = Properties.Resources.walking;
-                    }
+                    holdDirection = false;
+                    playerBox.Image = Properties.Resources.walking;
                     break;
                 case Keys.A:
                     player.Left(true);
-                    if (holdDirection)
-                    {
-                        holdDirection = false;
-                        playerBox.Image = Properties.Resources.walkingLeft;
-                    }
+                    holdDirection = false;
+                    playerBox.Image = Properties.Resources.walkingLeft;
                     break;
                 case Keys.S:
                     player.Down();
-                    if (holdDirection)
-                    {
-                        holdDirection = false;
-                        playerBox.Image = Properties.Resources.walking;
-                    }
+                    holdDirection = false;
+                    playerBox.Image = Properties.Resources.walking;
                     break;
                 case Keys.D:
                     player.Right(true);
-                    if (holdDirection)
-                    {
-                        holdDirection = false;
-                        playerBox.Image = Properties.Resources.walking;
-                    }
+                    holdDirection = false;
+                    playerBox.Image = Properties.Resources.walking;
                     break;
             }
         }
@@ -401,50 +371,6 @@ namespace WindowsForms.Gamecode
         }
         #endregion
 
-        #region draw
-        void Draw()
-        {
-
-            Bitmap bufl = new Bitmap(pf.Width, pf.Height);
-            using (Graphics g = Graphics.FromImage(bufl))
-            {
-                g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
-                //g.DrawImage(backgroundlayer, new Point(backgroundCoordX, 0));
-                g.DrawImage(backgroundBox.Image, Point.Empty);
-                g.DrawImage(player.currentImage, playerBox.Location);
-                foreach (Control x in this.Controls)
-                {
-                    if (x is PictureBox)
-                    {
-                        string tag = (string)x.Tag;
-                        Rectangle destRect = new Rectangle(x.Location, x.Size);
-
-                        if (((PictureBox)x).Image == null)
-                        {
-                            g.FillRectangle(new SolidBrush(x.BackColor), destRect);
-                        }
-                        else if (tag == "coins")
-                        {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
-                            g.DrawImage(coinHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
-                        }
-                        else if (tag == "obstacleTree")
-                        {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
-                            g.DrawImage(mushroomHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
-                        }
-                        else if (tag != "player" && tag != "coins.collected" && tag != "background")
-                        {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
-                            g.DrawImage(((PictureBox)x).Image, destRect, srcRect, GraphicsUnit.Pixel);
-                            //g.DrawImage(((PictureBox)x).Image, x.Location);
-                        }
-                    }
-                }
-                pf.CreateGraphics().DrawImageUnscaled(bufl, 0, 0);
-            }
-        }
-        #endregion
 
         #region endless backgroundScrolling
 
@@ -462,60 +388,6 @@ namespace WindowsForms.Gamecode
 
             Invalidate();
         }
-        #endregion
-
-        #region Healthbar
-        void Healthbar()
-        {
-            //if HP fall on a specific count, then change the container to empty or half empty
-            if (player.Hp < 100)
-            {
-                ChangeHeartContainer(heart5, false);
-            }
-            if (player.Hp < 90)
-            {
-                ChangeHeartContainer(heart5, true);
-            }
-            if (player.Hp < 80)
-            {
-                ChangeHeartContainer(heart4, false);
-            }
-            if (player.Hp < 70)
-            {
-                ChangeHeartContainer(heart4, true);
-            }
-            if (player.Hp < 60)
-            {
-                ChangeHeartContainer(heart3, false);
-            }
-            if (player.Hp < 50)
-            {
-                ChangeHeartContainer(heart3, true);
-            }
-            if (player.Hp < 40)
-            {
-                ChangeHeartContainer(heart2, false);
-            }
-            if (player.Hp < 30)
-            {
-                ChangeHeartContainer(heart2, true);
-            }
-            if (player.Hp < 20)
-            {
-                ChangeHeartContainer(heart1, false);
-            }
-        }
-
-        void ChangeHeartContainer(PictureBox container, bool empty)
-        {
-            if (empty)
-            {
-                container.Image = Properties.Resources.HeartEmpty;
-            }
-            else
-                container.Image = Properties.Resources.HeartHalf;
-        }
-
         #endregion
 
         #region random Placement of objects

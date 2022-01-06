@@ -61,7 +61,7 @@ namespace WindowsForms.Gamecode
         {
         }
 
-        protected void initializeParent(Level levelForm)
+        protected void initializeLevel(Level levelForm)
         {
             if (levelForm is StoryMode1)
             {
@@ -101,10 +101,29 @@ namespace WindowsForms.Gamecode
                 countdownLabel = form.countdownLabel;
                 coinCounter = form.coinCounter;
             }
-            else
+            else if (levelForm is StoryMode3)
             {
                 StoryMode3 form = (StoryMode3)levelForm;
                 MainGameTick = form.MainGameTick;
+                playerBox = form.playerBox;
+                obstacle = form.obstacle;
+                heart1 = form.heart1;
+                heart2 = form.heart2;
+                heart3 = form.heart3;
+                heart4 = form.heart4;
+                heart5 = form.heart5;
+                fpsLabel = form.fpsLabel;
+                HealthPotionHUD = form.HealthPotionHUD;
+                escMenu = form.escMenu;
+                destinyBox = form.destinyBox;
+                CountdownTimer = form.CountdownTimer;
+                countdownLabel = form.countdownLabel;
+                coinCounter = form.coinCounter;
+            }
+            else if(levelForm is EndlessMode)
+            {
+                EndlessMode form = (EndlessMode)levelForm;
+                //MainGameTick = form.MainGameTick;
                 playerBox = form.playerBox;
                 obstacle = form.obstacle;
                 heart1 = form.heart1;
@@ -802,7 +821,7 @@ namespace WindowsForms.Gamecode
                             else
                                 g.DrawImage(player.currentImage, player.box.Location);
                         }
-                        else if (tag != "coins.collected")
+                        else if (tag != "coins.collected" && tag != "background")
                         {
                             Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
