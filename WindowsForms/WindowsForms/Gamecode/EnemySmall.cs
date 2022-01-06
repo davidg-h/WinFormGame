@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace WindowsForms.Gamecode
 {
-    class EnemySmall : Enemy
+    internal class EnemySmall : Enemy
     {
         //String name = "Blutsauger";
 
