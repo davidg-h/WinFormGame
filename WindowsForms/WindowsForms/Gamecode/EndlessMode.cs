@@ -16,7 +16,7 @@ namespace WindowsForms.Gamecode
         #region Game(EndlessMode) variables
         Random rand = new Random();
         bool gameOver = false;
-        int obstacleSpeed = 15;
+        int obstacleSpeed = 10;
         int inventoryChestCoins;
         internal Player player;
 
@@ -402,6 +402,7 @@ namespace WindowsForms.Gamecode
         #endregion
 
         #region draw
+        int backGroundKoordX = 0;
         void Draw()
         {
 
@@ -410,7 +411,7 @@ namespace WindowsForms.Gamecode
             {
                 g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
                 //g.DrawImage(backgroundlayer, new Point(backgroundCoordX, 0));
-                g.DrawImage(backgroundBox.Image, Point.Empty);
+                g.DrawImage(backgroundBox.Image, new Point(backGroundKoordX, 0));
                 g.DrawImage(player.currentImage, playerBox.Location);
                 foreach (Control x in this.Controls)
                 {
@@ -450,17 +451,21 @@ namespace WindowsForms.Gamecode
 
         void background_move()
         {
+            //if (background1.Left <= -1200)
+            //    background1.Left = 1198;
 
-            if (background1.Left <= -1200)
-                background1.Left = 1198;
+            //if (background2.Left <= -1200)
+            //    background2.Left = 1198;
 
-            if (background2.Left <= -1200)
-                background2.Left = 1198;
+            //background1.Left -= 2;
+            //background2.Left -= 2;
 
-            background1.Left -= 2;
-            background2.Left -= 2;
-
-            Invalidate();
+            //Invalidate();
+            backGroundKoordX -= 4;
+            if (backGroundKoordX == -580)
+            {
+                backGroundKoordX = 0;
+            }
         }
         #endregion
 

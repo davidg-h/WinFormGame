@@ -54,7 +54,6 @@ namespace WindowsForms.Gamecode
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.inventoryCoins = new System.Windows.Forms.Label();
             this.background1 = new System.Windows.Forms.PictureBox();
-            this.background2 = new System.Windows.Forms.PictureBox();
             this.shopMenu = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.superJumpBuyBtn = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,7 +96,6 @@ namespace WindowsForms.Gamecode
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.background1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.background2)).BeginInit();
             this.shopMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.heart5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heart2)).BeginInit();
@@ -408,17 +406,6 @@ namespace WindowsForms.Gamecode
             this.background1.TabStop = false;
             this.background1.Tag = "background";
             // 
-            // background2
-            // 
-            this.background2.Image = global::WindowsForms.Properties.Resources.Background;
-            this.background2.Location = new System.Drawing.Point(1198, 0);
-            this.background2.Name = "background2";
-            this.background2.Size = new System.Drawing.Size(1200, 512);
-            this.background2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.background2.TabIndex = 22;
-            this.background2.TabStop = false;
-            this.background2.Tag = "background";
-            // 
             // shopMenu
             // 
             this.shopMenu.BackColor = System.Drawing.Color.Transparent;
@@ -725,7 +712,7 @@ namespace WindowsForms.Gamecode
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1139, 466);
+            this.ClientSize = new System.Drawing.Size(1024, 466);
             this.Controls.Add(this.pictureBox16);
             this.Controls.Add(this.pictureBox15);
             this.Controls.Add(this.platformBox14);
@@ -762,7 +749,6 @@ namespace WindowsForms.Gamecode
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.startPlatform);
             this.Controls.Add(this.playerBox);
-            this.Controls.Add(this.background2);
             this.Controls.Add(this.shopMenu);
             this.Controls.Add(this.escMenu);
             this.Controls.Add(this.background1);
@@ -789,7 +775,6 @@ namespace WindowsForms.Gamecode
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.background1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.background2)).EndInit();
             this.shopMenu.ResumeLayout(false);
             this.shopMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.heart5)).EndInit();
@@ -839,7 +824,6 @@ namespace WindowsForms.Gamecode
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.Label inventoryCoins;
         private System.Windows.Forms.PictureBox background1;
-        private System.Windows.Forms.PictureBox background2;
         private System.Windows.Forms.ToolStripMenuItem shopToolStripMenuItem;
         private System.Windows.Forms.MenuStrip shopMenu;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
