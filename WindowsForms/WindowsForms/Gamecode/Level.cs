@@ -352,7 +352,7 @@ namespace WindowsForms.Gamecode
             //debuff check (also possible to change the debuff EFFECT here!)
             if (debuff && debuffCounter <= 40)
             {
-                player.Hp -= 50;
+                player.Hp -= 10;
                 debuffCounter++;
             }
 

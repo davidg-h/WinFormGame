@@ -80,6 +80,7 @@ namespace WindowsForms.Gamecode
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.ScoreTimer = new System.Windows.Forms.Timer(this.components);
+            this.background2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.startPlatform)).BeginInit();
             this.escMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.obstacleTree)).BeginInit();
@@ -115,6 +116,7 @@ namespace WindowsForms.Gamecode
             ((System.ComponentModel.ISupportInitialize)(this.platformBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.background2)).BeginInit();
             this.SuspendLayout();
             // 
             // MainGameTick
@@ -398,7 +400,7 @@ namespace WindowsForms.Gamecode
             // background1
             // 
             this.background1.Image = global::WindowsForms.Properties.Resources.Background;
-            this.background1.Location = new System.Drawing.Point(0, 0);
+            this.background1.Location = new System.Drawing.Point(0, -4);
             this.background1.Name = "background1";
             this.background1.Size = new System.Drawing.Size(1200, 512);
             this.background1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -426,7 +428,7 @@ namespace WindowsForms.Gamecode
             this.shopMenu.Name = "shopMenu";
             this.shopMenu.Padding = new System.Windows.Forms.Padding(2, 1, 0, 1);
             this.shopMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.shopMenu.Size = new System.Drawing.Size(1061, 470);
+            this.shopMenu.Size = new System.Drawing.Size(1058, 466);
             this.shopMenu.TabIndex = 23;
             this.shopMenu.Text = "Menu";
             this.shopMenu.Visible = false;
@@ -438,7 +440,7 @@ namespace WindowsForms.Gamecode
             this.toolStripMenuItem1.ForeColor = System.Drawing.Color.Black;
             this.toolStripMenuItem1.Margin = new System.Windows.Forms.Padding(0, 20, 0, 60);
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(1058, 65);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(1055, 65);
             this.toolStripMenuItem1.Text = "Shop";
             // 
             // superJumpBuyBtn
@@ -446,7 +448,7 @@ namespace WindowsForms.Gamecode
             this.superJumpBuyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.superJumpBuyBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 65);
             this.superJumpBuyBtn.Name = "superJumpBuyBtn";
-            this.superJumpBuyBtn.Size = new System.Drawing.Size(1058, 35);
+            this.superJumpBuyBtn.Size = new System.Drawing.Size(1055, 35);
             this.superJumpBuyBtn.Text = "Super Jump: 100 Coins";
             this.superJumpBuyBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.superJumpBuyBtn.Click += new System.EventHandler(this.superJumpBuy);
@@ -456,7 +458,7 @@ namespace WindowsForms.Gamecode
             this.healthBuyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.healthBuyBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 65);
             this.healthBuyBtn.Name = "healthBuyBtn";
-            this.healthBuyBtn.Size = new System.Drawing.Size(1058, 35);
+            this.healthBuyBtn.Size = new System.Drawing.Size(1055, 35);
             this.healthBuyBtn.Text = "More Health: 150 Coins";
             this.healthBuyBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.healthBuyBtn.Click += new System.EventHandler(this.healthBuy);
@@ -465,7 +467,7 @@ namespace WindowsForms.Gamecode
             // 
             this.dmgBuyBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 30);
             this.dmgBuyBtn.Name = "dmgBuyBtn";
-            this.dmgBuyBtn.Size = new System.Drawing.Size(1058, 35);
+            this.dmgBuyBtn.Size = new System.Drawing.Size(1055, 35);
             this.dmgBuyBtn.Text = "More DMG: 50 Coins";
             this.dmgBuyBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.dmgBuyBtn.Click += new System.EventHandler(this.dmgBuy);
@@ -473,7 +475,7 @@ namespace WindowsForms.Gamecode
             // doneBtn
             // 
             this.doneBtn.Name = "doneBtn";
-            this.doneBtn.Size = new System.Drawing.Size(1058, 35);
+            this.doneBtn.Size = new System.Drawing.Size(1055, 35);
             this.doneBtn.Text = "Done";
             this.doneBtn.Click += new System.EventHandler(this.doneClick);
             // 
@@ -707,12 +709,23 @@ namespace WindowsForms.Gamecode
             this.ScoreTimer.Interval = 4000;
             this.ScoreTimer.Tick += new System.EventHandler(this.scoreTimerTick);
             // 
+            // background2
+            // 
+            this.background2.Image = global::WindowsForms.Properties.Resources.Background;
+            this.background2.Location = new System.Drawing.Point(1200, 0);
+            this.background2.Name = "background2";
+            this.background2.Size = new System.Drawing.Size(1200, 512);
+            this.background2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.background2.TabIndex = 48;
+            this.background2.TabStop = false;
+            this.background2.Tag = "background";
+            // 
             // EndlessMode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1024, 466);
+            this.ClientSize = new System.Drawing.Size(1026, 466);
             this.Controls.Add(this.pictureBox16);
             this.Controls.Add(this.pictureBox15);
             this.Controls.Add(this.platformBox14);
@@ -752,6 +765,7 @@ namespace WindowsForms.Gamecode
             this.Controls.Add(this.shopMenu);
             this.Controls.Add(this.escMenu);
             this.Controls.Add(this.background1);
+            this.Controls.Add(this.background2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EndlessMode";
@@ -795,6 +809,7 @@ namespace WindowsForms.Gamecode
             ((System.ComponentModel.ISupportInitialize)(this.platformBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.background2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -851,5 +866,6 @@ namespace WindowsForms.Gamecode
         internal System.Windows.Forms.PictureBox pictureBox15;
         internal System.Windows.Forms.PictureBox pictureBox16;
         internal System.Windows.Forms.Timer ScoreTimer;
+        private System.Windows.Forms.PictureBox background2;
     }
 }
