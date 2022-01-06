@@ -19,6 +19,7 @@ namespace WindowsForms.Gamecode
         int obstacleSpeed = 15;
         int inventoryChestCoins;
         internal Player player;
+        protected int invulnerableCounter = 0;
 
         PictureBox backgroundBox;
         SpriteHandler coinHandler;
@@ -33,6 +34,7 @@ namespace WindowsForms.Gamecode
             this.KeyDown += formKeyDown;
             this.Load += loadInventory;
             this.FormClosing += saveInventory;
+            player.gamemodeEndless = true;
 
             coinHandler = new SpriteHandler(Properties.Resources.coin);
             mushroomHandler = new SpriteHandler(Properties.Resources.shroomIdle);
@@ -42,6 +44,7 @@ namespace WindowsForms.Gamecode
             pf.Size = this.Size;
             pf.SendToBack();
             this.BackgroundImage = null;
+
             //makes 'normal' screen invisible 
             foreach (Control x in this.Controls)
             {
@@ -169,11 +172,21 @@ namespace WindowsForms.Gamecode
             player.moveEndlessmode(this);
             player.isOnGround = false;
 
-            if (player.Hp > 0)
+            // "invinceble frames" as long as invulnerable is on true: no dmg can be taken (as to see in player.Hp property)
+            if (player.invulnerable)
             {
-                Healthbar();
+                invulnerableCounter++;
             }
-            else
+            if (invulnerableCounter > 20)
+            {
+                invulnerableCounter = 0;
+                player.invulnerable = false;
+            }
+            //keeps health status up to date 
+            Healthbar();
+
+            //if statement for the game to end: hp=0 or falling into pit
+            if(player.Hp < 1 || player.box.Location.Y > 550)
             {
                 MainGameTick.Stop();
                 ScoreTimer.Stop();
@@ -183,8 +196,7 @@ namespace WindowsForms.Gamecode
 
                 if (dialogresult == DialogResult.Yes)
                 {
-                    inventoryChestCoins += player.coins;
-                    GameReset();
+                    DeathGameReset(player.coins);
                 }
                 else if (dialogresult == DialogResult.No)
                 {
@@ -285,15 +297,25 @@ namespace WindowsForms.Gamecode
             Draw();
         }
 
+        //resets the game and gives the last coin count to the player bank
+        private void DeathGameReset(int coinCount)
+        {
+            EndlessMode endless = new EndlessMode();
+            endless.Show();
+            endless.player.coins += coinCount;
+            this.Visible = false;
+        }
+
         private void GameReset()
         {
-            player.Hp = 100;
+            player.Hp += 100;
             player.score = 0;
             player.coins = 0;
             scoreLabel.Text = "Score: " + player.score;
             playerBox.Image = Properties.Resources.idle;
             gameOver = false;
             playerBox.Location = player.defaultLocation;
+            
 
             foreach (Control x in this.Controls)
             {
@@ -465,55 +487,104 @@ namespace WindowsForms.Gamecode
         #endregion
 
         #region Healthbar
-        void Healthbar()
+        protected void Healthbar()
         {
+
             //if HP fall on a specific count, then change the container to empty or half empty
-            if (player.Hp < 100)
+            if (player.Hp >= 100)
             {
-                ChangeHeartContainer(heart5, false);
+                ChangeHeartContainer(heart5);
+                ChangeHeartContainer(heart4);
+                ChangeHeartContainer(heart3);
+                ChangeHeartContainer(heart2);
+                ChangeHeartContainer(heart1);
             }
-            if (player.Hp < 90)
+            if (player.Hp < 100 && player.Hp > 80)
             {
-                ChangeHeartContainer(heart5, true);
+                ChangeHeartContainer(heart5, "half");
+                ChangeHeartContainer(heart4);
+                ChangeHeartContainer(heart3);
+                ChangeHeartContainer(heart2);
+                ChangeHeartContainer(heart1);
             }
-            if (player.Hp < 80)
+            if (player.Hp <= 80 && player.Hp > 70)
             {
-                ChangeHeartContainer(heart4, false);
+                ChangeHeartContainer(heart5, "empty");
+                ChangeHeartContainer(heart4);
+                ChangeHeartContainer(heart3);
+                ChangeHeartContainer(heart2);
+                ChangeHeartContainer(heart1);
             }
-            if (player.Hp < 70)
+            if (player.Hp <= 70 && player.Hp > 60)
             {
-                ChangeHeartContainer(heart4, true);
+                ChangeHeartContainer(heart5, "empty");
+                ChangeHeartContainer(heart4, "half");
+                ChangeHeartContainer(heart3);
+                ChangeHeartContainer(heart2);
+                ChangeHeartContainer(heart1);
             }
-            if (player.Hp < 60)
+            if (player.Hp <= 60 && player.Hp > 50)
             {
-                ChangeHeartContainer(heart3, false);
+                ChangeHeartContainer(heart5, "empty");
+                ChangeHeartContainer(heart4, "empty");
+                ChangeHeartContainer(heart3);
+                ChangeHeartContainer(heart2);
+                ChangeHeartContainer(heart1);
             }
-            if (player.Hp < 50)
+            if (player.Hp <= 50 && player.Hp > 40)
             {
-                ChangeHeartContainer(heart3, true);
+                ChangeHeartContainer(heart5, "empty");
+                ChangeHeartContainer(heart4, "empty");
+                ChangeHeartContainer(heart3, "half");
+                ChangeHeartContainer(heart2);
+                ChangeHeartContainer(heart1);
             }
-            if (player.Hp < 40)
+            if (player.Hp <= 40 && player.Hp > 30)
             {
-                ChangeHeartContainer(heart2, false);
+                ChangeHeartContainer(heart5, "empty");
+                ChangeHeartContainer(heart4, "empty");
+                ChangeHeartContainer(heart3, "empty");
+                ChangeHeartContainer(heart2);
+                ChangeHeartContainer(heart1);
+
             }
-            if (player.Hp < 30)
+            if (player.Hp <= 30 && player.Hp > 20)
             {
-                ChangeHeartContainer(heart2, true);
+                ChangeHeartContainer(heart5, "empty");
+                ChangeHeartContainer(heart4, "empty");
+                ChangeHeartContainer(heart3, "empty");
+                ChangeHeartContainer(heart2, "half");
+                ChangeHeartContainer(heart1);
             }
-            if (player.Hp < 20)
+            if (player.Hp <= 20 && player.Hp > 10)
             {
-                ChangeHeartContainer(heart1, false);
+                ChangeHeartContainer(heart5, "empty");
+                ChangeHeartContainer(heart4, "empty");
+                ChangeHeartContainer(heart3, "empty");
+                ChangeHeartContainer(heart2, "empty");
+                ChangeHeartContainer(heart1);
             }
+            if (player.Hp <= 10 && player.Hp > 0)
+            {
+                ChangeHeartContainer(heart5, "empty");
+                ChangeHeartContainer(heart4, "empty");
+                ChangeHeartContainer(heart3, "empty");
+                ChangeHeartContainer(heart2, "empty");
+                ChangeHeartContainer(heart1, "half");
+            }
+            
         }
 
-        void ChangeHeartContainer(PictureBox container, bool empty)
+        protected void ChangeHeartContainer(PictureBox container, string heart = "full")
         {
-            if (empty)
+            if (heart == "empty")
             {
                 container.Image = Properties.Resources.HeartEmpty;
             }
-            else
+            if (heart == "half")
                 container.Image = Properties.Resources.HeartHalf;
+            if (heart == "full")
+                container.Image = Properties.Resources.Heart;
         }
 
         #endregion

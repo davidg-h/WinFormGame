@@ -34,7 +34,7 @@ namespace WindowsForms.Gamecode
         internal bool facingRight = true;
         public bool isAttacking { get => attacking; set => attacking =  value; }
         internal override int Dmg { get => dmg; set => dmg = value; }
-        public bool armor1, armor2, potion, invulnerable;
+        public bool armor1, armor2, potion, invulnerable, gamemodeEndless;
         int currentHealth;
 
         // move pattern for WASD - controls
@@ -62,13 +62,14 @@ namespace WindowsForms.Gamecode
             armor2 = false;
             potion = false;
             invulnerable = false;
+
         }
 
         internal override int Hp
         {
             get => hp;
             set
-            {
+             {
                 currentHealth = Hp;
 
 
@@ -79,7 +80,7 @@ namespace WindowsForms.Gamecode
                     hp = currentHealth;
                     currentHealth = value;
                 }
-                else if (armor2 && value <= hp)
+                else if (armor2 && value <= hp )
                 {
                     invulnerable = true;
                     armor2 = false;
