@@ -25,5 +25,47 @@ namespace WindowsForms.Gamecode
             this.KeyDown += formKeyDown;
             this.Load += startTimer;
         }
+
+        private void MainGameTick_Tick_1(object sender, EventArgs e)
+        {
+            MainGameTick_Tick(sender, e);
+        }
+
+
+        private void CountdownTimer_Tick(object sender, EventArgs e)
+        {
+            startTimer(sender, e);
+        }
+
+        private void StoryMode1_KeyDown(object sender, KeyEventArgs e)
+        {
+            KeyIsDown(sender, e);
+        }
+
+        private void StoryMode1_KeyUp(object sender, KeyEventArgs e)
+        {
+            KeyIsUp(sender, e);
+        }
+
+        private void resumeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resumeClick(sender, e);
+        }
+
+        private void startScreenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            startScreenClick(sender, e);
+        }
+
+        private void saveGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveGameClick(sender, e);
+        }
+
+        private void loadGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadGameClick(sender, e);
+        }
+
     }
 }
