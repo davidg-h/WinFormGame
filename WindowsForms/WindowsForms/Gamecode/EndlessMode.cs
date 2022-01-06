@@ -16,7 +16,7 @@ namespace WindowsForms.Gamecode
         #region Game(EndlessMode) variables
         Random rand = new Random();
         bool gameOver = false;
-        int obstacleSpeed = 15;
+        int obstacleSpeed = 10;
         int inventoryChestCoins;
         internal Player player;
         protected int invulnerableCounter = 0;
@@ -424,6 +424,8 @@ namespace WindowsForms.Gamecode
         #endregion
 
         #region draw
+        int backGround1KoordX = 0;
+        int backGround2KoordX = Properties.Resources.Background.Width - 2;
         void Draw()
         {
 
@@ -431,8 +433,8 @@ namespace WindowsForms.Gamecode
             using (Graphics g = Graphics.FromImage(bufl))
             {
                 g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
-                //g.DrawImage(backgroundlayer, new Point(backgroundCoordX, 0));
-                g.DrawImage(backgroundBox.Image, Point.Empty);
+                g.DrawImage(backgroundBox.Image, new Rectangle(new Point(0, 0), this.Size), new Rectangle(new Point(-backGround1KoordX, 0), new Size(backgroundBox.Width, backgroundBox.Height)), GraphicsUnit.Pixel);
+                g.DrawImage(backgroundBox.Image, new Rectangle(new Point(0, 0), this.Size), new Rectangle(new Point(-backGround2KoordX, 0), new Size(backgroundBox.Width, backgroundBox.Height)), GraphicsUnit.Pixel);
                 g.DrawImage(player.currentImage, playerBox.Location);
                 foreach (Control x in this.Controls)
                 {
@@ -472,17 +474,17 @@ namespace WindowsForms.Gamecode
 
         void background_move()
         {
-
-            if (background1.Left <= -1200)
-                background1.Left = 1198;
-
-            if (background2.Left <= -1200)
-                background2.Left = 1198;
-
-            background1.Left -= 2;
-            background2.Left -= 2;
-
-            Invalidate();
+            backGround1KoordX -= 2;
+            backGround2KoordX -= 2;
+            //resets the background if not in ClientSize
+            if (backGround1KoordX == -backgroundBox.Width)
+            {
+                backGround1KoordX = backgroundBox.Width - 2;
+            }
+            if (backGround2KoordX == -backgroundBox.Width)
+            {
+                backGround2KoordX = backgroundBox.Width - 2;
+            }
         }
         #endregion
 
