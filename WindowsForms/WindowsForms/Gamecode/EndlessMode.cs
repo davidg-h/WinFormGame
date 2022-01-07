@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,8 @@ namespace WindowsForms.Gamecode
         int inventoryChestCoins;
         internal Player player;
         protected int invulnerableCounter = 0;
+        List<List<PictureBox>> chapterList;
+        List<PictureBox> pictureBoxList;
 
         PictureBox backgroundBox;
         SpriteHandler coinHandler;
@@ -29,13 +32,14 @@ namespace WindowsForms.Gamecode
         public EndlessMode()
         {
             InitializeComponent();
+            pictureBoxList = getPictureBoxes();
+            chapterList = chapters();
             player = new Player(playerBox, 100);
             this.FormClosed += StartScreen.closeGame;
             this.KeyDown += formKeyDown;
             this.Load += loadInventory;
             this.FormClosing += saveInventory;
             player.gamemodeEndless = true;
-
             coinHandler = new SpriteHandler(Properties.Resources.coin);
             mushroomHandler = new SpriteHandler(Properties.Resources.shroomIdle);
             backgroundBox = (PictureBox)Controls.Find("background1", false)[0];
@@ -53,6 +57,7 @@ namespace WindowsForms.Gamecode
                     x.Visible = false;
                 }
             }
+
             GameReset();
         }
 
@@ -68,6 +73,7 @@ namespace WindowsForms.Gamecode
                 MainGameTick.Stop();
                 ScoreTimer.Stop();
                 CoinSpawnTimer.Stop();
+                ChapterSpawnTimer.Stop();
                 escMenu.BringToFront();
                 escMenu.Visible = true;
             }
@@ -79,6 +85,7 @@ namespace WindowsForms.Gamecode
             MainGameTick.Start();
             ScoreTimer.Start();
             CoinSpawnTimer.Start();
+            ChapterSpawnTimer.Start();
         }
 
         private void startScreenClick(object sender, EventArgs e)
@@ -195,6 +202,7 @@ namespace WindowsForms.Gamecode
                 MainGameTick.Stop();
                 ScoreTimer.Stop();
                 CoinSpawnTimer.Stop();
+                ChapterSpawnTimer.Stop();
                 gameOver = true;
 
                 DialogResult dialogresult = MessageBox.Show("You Died!!!" + Environment.NewLine + "Press Yes to play again", "", MessageBoxButtons.YesNo);
@@ -286,7 +294,6 @@ namespace WindowsForms.Gamecode
             if (player.score > 60) obstacleSpeed = 80;
             if (player.score > 100) obstacleSpeed = 120;
 
-            randomPlacement();
             Draw();
         }
 
@@ -323,6 +330,7 @@ namespace WindowsForms.Gamecode
             MainGameTick.Start();
             ScoreTimer.Start();
             CoinSpawnTimer.Start();
+            ChapterSpawnTimer.Start();
         }
         #endregion
 
@@ -413,7 +421,7 @@ namespace WindowsForms.Gamecode
 
         #region draw
         int backGround1KoordX = 0;
-        int backGround2KoordX = Properties.Resources.Background.Width - 4;
+        int backGround2KoordX = Properties.Resources.Background.Width - 6;
         void Draw()
         {
             Bitmap bufl = new Bitmap(pf.Width, pf.Height);
@@ -458,7 +466,6 @@ namespace WindowsForms.Gamecode
         #endregion
 
         #region endless backgroundScrolling
-
         void background_move()
         {
             backGround1KoordX -= 2;
@@ -466,11 +473,11 @@ namespace WindowsForms.Gamecode
             //resets the background if not in ClientSize
             if (backGround1KoordX == -backgroundBox.Width)
             {
-                backGround1KoordX = backgroundBox.Width - 2;
+                backGround1KoordX = backgroundBox.Width - 6;
             }
             if (backGround2KoordX == -backgroundBox.Width)
             {
-                backGround2KoordX = backgroundBox.Width - 2;
+                backGround2KoordX = backgroundBox.Width - 6;
             }
         }
         #endregion
@@ -478,7 +485,6 @@ namespace WindowsForms.Gamecode
         #region Healthbar
         protected void Healthbar()
         {
-
             //if HP fall on a specific count, then change the container to empty or half empty
             if (player.Hp >= 100)
             {
@@ -579,21 +585,135 @@ namespace WindowsForms.Gamecode
         #endregion
 
         #region random Placement of objects
+        internal void chapterSpawnTick(object sender, EventArgs e)
+        {
+            randomPlacement();
+        }
+
+
         private void randomPlacement()
         {
-            //int chapter = rand.Next(1, 5);
-            //foreach (Control x in Controls)
-            //{
-            //    PictureBox box = x as PictureBox;
-            //}
-            //switch (chapter)
-            //{
-            //    case 1:
-            //        chapter1();
-            //        break;
-            //    default:
-            //        break;
-            //}
+            int x = getLargestXKoord();
+
+            int chapter = rand.Next(1, 5);
+            switch (chapter)
+            {
+                case 1:
+                    createChapter(chapterList[0], x, 470, rand.Next(10, 60));
+                    break;
+                case 2:
+                    createChapter(chapterList[1], x, 1185, rand.Next(10, 60));
+                    break;
+                case 3:
+                    createChapter(chapterList[2], x, 1639, rand.Next(10, 60));
+                    break;
+                case 4:
+                    createChapter(chapterList[3], x, 2131, rand.Next(10, 60));
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void createChapter(List<PictureBox> chapter, int x, int boxLeft, int randomNumber)
+        {
+            foreach (PictureBox box in chapter)
+            {
+                // create box
+                PictureBox boxNew = createPB(box);
+                // new Location is after the last object with a random buffer(=randomNumber)
+                // box.Location.X - boxLeft: to keep the ratio of the objects to each other the same and position it to the left edge of the client area
+                boxNew.Location = new Point(x + (box.Location.X - boxLeft) + randomNumber, box.Location.Y);
+                // adds box to the window
+                this.Controls.Add(boxNew);
+            }
+        }
+        /// <summary>
+        /// saving the chapters in a list
+        /// </summary>
+        /// <returns></returns>
+        private List<List<PictureBox>> chapters()
+        {
+            List<PictureBox> chapter1 = new List<PictureBox>();
+            List<PictureBox> chapter2 = new List<PictureBox>();
+            List<PictureBox> chapter3 = new List<PictureBox>();
+            List<PictureBox> chapter4 = new List<PictureBox>();
+            foreach (PictureBox picture in pictureBoxList)
+            {
+                switch (picture.AccessibleName)
+                {
+                    case "chapter1":
+                        chapter1.Add(createPB(picture));
+                        break;
+                    case "chapter2":
+                        chapter2.Add(createPB(picture));
+                        break;
+                    case "chapter3":
+                        chapter3.Add(createPB(picture));
+                        break;
+                    case "chapter4":
+                        chapter4.Add(createPB(picture));
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return new List<List<PictureBox>>() { chapter1, chapter2, chapter3, chapter4 };
+        }
+
+        private PictureBox createPB(PictureBox pictureBox)
+        {
+            PictureBox box = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(box)).BeginInit();
+            box.Tag = pictureBox.Tag;
+            box.Image = pictureBox.Image;
+            box.Visible = true;
+            box.Size = pictureBox.Size;
+            box.SizeMode = pictureBox.SizeMode;
+            box.Location = pictureBox.Location;
+            return box;
+        }
+        /// <summary>
+        /// gets the largest x-Koord for random placement of lvl chapters
+        /// </summary>
+        /// <returns></returns>
+        private int getLargestXKoord()
+        {
+            int largestXKoord = 0;
+            foreach (Control x in Controls)
+            {
+                if (x is PictureBox)
+                {
+                    if (largestXKoord < x.Location.X && (string)x.Tag != "coins")
+                    {
+                        largestXKoord = x.Location.X + x.Width;
+                    }
+                }
+            }
+            return largestXKoord;
+        }
+        /// <summary>
+        /// returns a list with all pictureBoxes in the window
+        /// </summary>
+        /// <returns></returns>
+        private List<PictureBox> getPictureBoxes()
+        {
+            List<PictureBox> picBoxList = new List<PictureBox>();
+            foreach (Control x in Controls)
+            {
+                if (x is PictureBox)
+                {
+                    picBoxList.Add((PictureBox)x);
+                }
+            }
+            return picBoxList;
+        }
+        #endregion
+
+        #region coinSpawn Timer
+        internal void coinSpawnTimerTick(object sender, EventArgs e)
+        {
+            spawnCoins();
         }
 
         private void spawnCoins()
@@ -601,20 +721,24 @@ namespace WindowsForms.Gamecode
             // create coin
             PictureBox coinSpawn = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)(coinSpawn)).BeginInit();
+
             coinSpawn.Tag = "coins";
             coinSpawn.Image = Properties.Resources.coin;
             coinSpawn.Visible = true;
             coinSpawn.Size = new Size(38, 39);
             coinSpawn.SizeMode = PictureBoxSizeMode.StretchImage;
             coinSpawn.Location = new Point(ClientSize.Width + rand.Next(0, 50), rand.Next(ClientSize.Height));
-            coinSpawn.BringToFront();
             // adds coin to the window
             this.Controls.Add(coinSpawn);
         }
-
         #endregion
 
         #region ScoreTimer
+        /// <summary>
+        /// score linearly increase with increasing obstacleSpeed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         internal void scoreTimerTick(object sender, EventArgs e)
         {
             player.score++;
@@ -623,15 +747,6 @@ namespace WindowsForms.Gamecode
             if (player.score > 30) ScoreTimer.Interval = 1500;
             if (player.score > 60) ScoreTimer.Interval = 1000;
             if (player.score > 100) ScoreTimer.Interval = 500;
-
-
-        }
-        #endregion
-
-        #region coinSpawn Timer
-        internal void coinSpawnTimerTick(object sender, EventArgs e)
-        {
-            spawnCoins();
         }
         #endregion
     }
