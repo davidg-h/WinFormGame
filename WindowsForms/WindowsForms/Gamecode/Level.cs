@@ -52,6 +52,14 @@ namespace WindowsForms.Gamecode
 
         protected Choices buyChoice = Choices.None;
 
+        Bitmap emptyHeart = new Bitmap(Properties.Resources.HeartEmpty);
+        Bitmap halfHeart = new Bitmap(Properties.Resources.HeartHalf);
+        Bitmap fullHeart = new Bitmap(Properties.Resources.Heart);
+
+        Bitmap gEmptyHeart = new Bitmap(Properties.Resources.HeartEmpty);
+        Bitmap gHalfHeart = new Bitmap(Properties.Resources.HeartHalf);
+        Bitmap gFullHeart = new Bitmap(Properties.Resources.Heart);
+
 
         protected enum Choices { Potion, Armor, Attack, None };
 
@@ -130,6 +138,31 @@ namespace WindowsForms.Gamecode
             //makes 'normal' screen invisible 
             makeDefaultDrawingInvisible();
             fillEnemyArrays();
+
+
+
+            // create green types of the original hearts 2 stands for half heart, 3 for fullHearts 
+            for (int y = 0; y < heart1.Height; y++)
+            {
+                for (int x = 0; x < heart1.Width; x++)
+                {
+                    Color p = emptyHeart.GetPixel(x, y);
+                    Color p2 = halfHeart.GetPixel(x, y);
+                    Color p3 = fullHeart.GetPixel(x, y);
+
+                    int a = p.A;
+                    int a2 = p2.A;
+                    int a3 = p3.A;
+
+                    int g = p.G;
+                    int g2 = p2.G;
+                    int g3 = p3.G;
+
+                    gEmptyHeart.SetPixel(x, y, Color.FromArgb(a, 0, g, 0));
+                    gHalfHeart.SetPixel(x, y, Color.FromArgb(a2, 0, g2, 0));
+                    gFullHeart.SetPixel(x, y, Color.FromArgb(a3, 0, g3, 0));
+                }
+            }
         }
 
         protected void createAnimationHandlers()
@@ -164,6 +197,8 @@ namespace WindowsForms.Gamecode
         }
         protected void fillEnemyArrays()
         {
+
+
             int mushroomEnemyCounter = 0;
             int eagleEnemyCounter = 0;
 
@@ -519,7 +554,7 @@ namespace WindowsForms.Gamecode
                                 if (foundRangeEnemy.Hp < 1)
                                 {
                                     this.Controls.Remove(x);
-
+                                    debuff = false;
                                     rangeEnemyList.Remove(foundRangeEnemy);
                                     //AddNextEnemy();
 
@@ -945,7 +980,10 @@ namespace WindowsForms.Gamecode
                 if (enemy.box.Name == x.Name)
                     enemy.Hp -= player.Dmg;
                 if (enemy.Hp <= 0)
+                {
+                    debuff = false;
                     this.Controls.Remove(x);
+                }
             }
         }
 
@@ -980,9 +1018,10 @@ namespace WindowsForms.Gamecode
         #endregion
 
         #region Healthbar
+
+
         protected void Healthbar()
         {
-
             if (!player.armor2)
                 this.Controls.Remove(armorHeart2);
             if (!player.armor1)
@@ -1089,13 +1128,25 @@ namespace WindowsForms.Gamecode
         {
             if (heart == "empty")
             {
-                container.Image = Properties.Resources.HeartEmpty;
+                //if debuff i active change color of the hearts to green
+                if (debuff)
+                    container.Image = gEmptyHeart;
+                else
+                    container.Image = Properties.Resources.HeartEmpty;
             }
             if (heart == "half")
-                container.Image = Properties.Resources.HeartHalf;
+                if (debuff)
+                    container.Image = gHalfHeart;
+                else
+                    container.Image = Properties.Resources.HeartHalf;
             if (heart == "full")
-                container.Image = Properties.Resources.Heart;
+                if (debuff)
+                    container.Image = gFullHeart;
+                else
+                    container.Image = Properties.Resources.Heart;
         }
+
+
 
 
         #endregion
