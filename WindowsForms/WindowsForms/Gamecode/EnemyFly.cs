@@ -11,6 +11,9 @@ namespace WindowsForms.Gamecode
     {
         bool movingLeft;
         int movementCounterLeft, movementCounterRight;
+        internal System.Windows.Vector startingPoint;
+        public bool chase, onStart;
+
 
         internal override int Hp { get => hp; set => hp = value; }
         internal override int Dmg { get => dmg; set => dmg = value; }
@@ -19,32 +22,67 @@ namespace WindowsForms.Gamecode
         {
             movementCounterLeft = 0;
             movementCounterRight = 0;
+            onStart = true;
         }
 
         public override void move(Form f)
         {
-            if (movingLeft)
+
+            if (onStart && !chase)
             {
-                box.Left -= 3;
-                box.Top -= 3;
-                movementCounterLeft++;
+                //"normal" move pattern
+                if (movingLeft)
+                {
+                    box.Left -= 4;
+                    box.Top -= 4;
+                    movementCounterLeft++;
+                }
+                if (movementCounterLeft == 20)
+                {
+                    movingLeft = false;
+                    movementCounterLeft = 0;
+                }
+                if (!movingLeft)
+                {
+                    box.Left += 4;
+                    box.Top += 4;
+                    movementCounterRight++;
+                }
+                if (movementCounterRight == 20)
+                {
+                    movingLeft = true;
+                    movementCounterRight = 0;
+                }
             }
-            if (movementCounterLeft == 20)
+            else
             {
-                movingLeft = false;
-                movementCounterLeft = 0;
+                //chase pattern is on Level.cs because it needs the Player Location
+                if (chase)
+                {
+                    onStart = false;
+                }
+                else
+                {
+                    ReturnStartPoint();
+                }
+
             }
-            if (!movingLeft)
-            {
-                box.Left += 3;
-                box.Top += 3;
-                movementCounterRight++;
-            }
-            if (movementCounterRight == 20)
-            {
-                movingLeft = true;
-                movementCounterRight = 0;
-            }
+        }
+
+        //method to let the enemy return to his spawn point (not exactly correct because of the scrolling
+        private void ReturnStartPoint()
+        {
+            if (box.Location.X >= startingPoint.X - 20 && box.Location.X <= startingPoint.X + 20 && box.Location.Y <= startingPoint.Y + 20 && box.Location.Y >= startingPoint.Y - 20)
+                onStart = true;
+            if (box.Location.X > startingPoint.X && !onStart)
+                box.Left -= 2;
+            if (box.Location.X < startingPoint.X && !onStart)
+                box.Left += 2;
+            if (box.Location.Y > startingPoint.Y && !onStart)
+                box.Top -= 2;
+            if (box.Location.Y < startingPoint.Y && !onStart)
+                box.Top += 2;
+
         }
     }
 }

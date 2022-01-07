@@ -121,9 +121,6 @@
   <data name="attackingRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\attackingRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="zoombie" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\zoombie.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="wallLeft2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wallLeft2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -156,9 +153,6 @@
   </data>
   <data name="PoisountPlant" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PoisountPlant.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="monster" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\monster.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Piranha-ball1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Piranha-ball.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -252,5 +246,11 @@
   </data>
   <data name="walkingLeft_old_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\walkingleft(old).gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="monster" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\monster.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zoombie" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zoombie.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
