@@ -54,7 +54,6 @@ namespace WindowsForms.Gamecode
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.inventoryCoins = new System.Windows.Forms.Label();
             this.background1 = new System.Windows.Forms.PictureBox();
-            this.background2 = new System.Windows.Forms.PictureBox();
             this.shopMenu = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.superJumpBuyBtn = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,6 +79,7 @@ namespace WindowsForms.Gamecode
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.ScoreTimer = new System.Windows.Forms.Timer(this.components);
+            this.background2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.armorHeart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.armorHeart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.startPlatform)).BeginInit();
@@ -98,7 +98,6 @@ namespace WindowsForms.Gamecode
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.background1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.background2)).BeginInit();
             this.shopMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.heart5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heart2)).BeginInit();
@@ -118,6 +117,7 @@ namespace WindowsForms.Gamecode
             ((System.ComponentModel.ISupportInitialize)(this.platformBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.background2)).BeginInit();
             this.SuspendLayout();
             // 
             // MainGameTick
@@ -169,7 +169,7 @@ namespace WindowsForms.Gamecode
             this.escMenu.Name = "escMenu";
             this.escMenu.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
             this.escMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.escMenu.Size = new System.Drawing.Size(2278, 896);
+            this.escMenu.Size = new System.Drawing.Size(2122, 904);
             this.escMenu.TabIndex = 11;
             this.escMenu.Text = "Menu";
             this.escMenu.Visible = false;
@@ -180,7 +180,7 @@ namespace WindowsForms.Gamecode
             this.escMenuM.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.escMenuM.Margin = new System.Windows.Forms.Padding(0, 20, 0, 60);
             this.escMenuM.Name = "escMenuM";
-            this.escMenuM.Size = new System.Drawing.Size(2273, 124);
+            this.escMenuM.Size = new System.Drawing.Size(2117, 124);
             this.escMenuM.Text = "Menu";
             // 
             // resumeToolStripMenuItem
@@ -188,7 +188,7 @@ namespace WindowsForms.Gamecode
             this.resumeToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resumeToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 65);
             this.resumeToolStripMenuItem.Name = "resumeToolStripMenuItem";
-            this.resumeToolStripMenuItem.Size = new System.Drawing.Size(2273, 67);
+            this.resumeToolStripMenuItem.Size = new System.Drawing.Size(2117, 67);
             this.resumeToolStripMenuItem.Text = "Resume";
             this.resumeToolStripMenuItem.Click += new System.EventHandler(this.resumeClick);
             // 
@@ -197,14 +197,14 @@ namespace WindowsForms.Gamecode
             this.startScreenToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startScreenToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 65);
             this.startScreenToolStripMenuItem.Name = "startScreenToolStripMenuItem";
-            this.startScreenToolStripMenuItem.Size = new System.Drawing.Size(2273, 67);
+            this.startScreenToolStripMenuItem.Size = new System.Drawing.Size(2117, 67);
             this.startScreenToolStripMenuItem.Text = "Start-Screen";
             this.startScreenToolStripMenuItem.Click += new System.EventHandler(this.startScreenClick);
             // 
             // shopToolStripMenuItem
             // 
             this.shopToolStripMenuItem.Name = "shopToolStripMenuItem";
-            this.shopToolStripMenuItem.Size = new System.Drawing.Size(2273, 67);
+            this.shopToolStripMenuItem.Size = new System.Drawing.Size(2117, 67);
             this.shopToolStripMenuItem.Text = "Shop";
             this.shopToolStripMenuItem.Click += new System.EventHandler(this.shopClick);
             // 
@@ -404,7 +404,7 @@ namespace WindowsForms.Gamecode
             // background1
             // 
             this.background1.Image = global::WindowsForms.Properties.Resources.Background;
-            this.background1.Location = new System.Drawing.Point(0, 0);
+            this.background1.Location = new System.Drawing.Point(0, -8);
             this.background1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.background1.Name = "background1";
             this.background1.Size = new System.Drawing.Size(1200, 512);
@@ -412,18 +412,6 @@ namespace WindowsForms.Gamecode
             this.background1.TabIndex = 21;
             this.background1.TabStop = false;
             this.background1.Tag = "background";
-            // 
-            // background2
-            // 
-            this.background2.Image = global::WindowsForms.Properties.Resources.Background;
-            this.background2.Location = new System.Drawing.Point(2396, 0);
-            this.background2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.background2.Name = "background2";
-            this.background2.Size = new System.Drawing.Size(1200, 512);
-            this.background2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.background2.TabIndex = 22;
-            this.background2.TabStop = false;
-            this.background2.Tag = "background";
             // 
             // shopMenu
             // 
@@ -446,7 +434,7 @@ namespace WindowsForms.Gamecode
             this.shopMenu.Name = "shopMenu";
             this.shopMenu.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
             this.shopMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.shopMenu.Size = new System.Drawing.Size(2278, 896);
+            this.shopMenu.Size = new System.Drawing.Size(2116, 896);
             this.shopMenu.TabIndex = 23;
             this.shopMenu.Text = "Menu";
             this.shopMenu.Visible = false;
@@ -458,7 +446,7 @@ namespace WindowsForms.Gamecode
             this.toolStripMenuItem1.ForeColor = System.Drawing.Color.Black;
             this.toolStripMenuItem1.Margin = new System.Windows.Forms.Padding(0, 20, 0, 60);
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(2273, 124);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(2111, 124);
             this.toolStripMenuItem1.Text = "Shop";
             // 
             // superJumpBuyBtn
@@ -466,7 +454,7 @@ namespace WindowsForms.Gamecode
             this.superJumpBuyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.superJumpBuyBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 65);
             this.superJumpBuyBtn.Name = "superJumpBuyBtn";
-            this.superJumpBuyBtn.Size = new System.Drawing.Size(2273, 67);
+            this.superJumpBuyBtn.Size = new System.Drawing.Size(2111, 67);
             this.superJumpBuyBtn.Text = "Super Jump: 100 Coins";
             this.superJumpBuyBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.superJumpBuyBtn.Click += new System.EventHandler(this.superJumpBuy);
@@ -476,7 +464,7 @@ namespace WindowsForms.Gamecode
             this.healthBuyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.healthBuyBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 65);
             this.healthBuyBtn.Name = "healthBuyBtn";
-            this.healthBuyBtn.Size = new System.Drawing.Size(2273, 67);
+            this.healthBuyBtn.Size = new System.Drawing.Size(2111, 67);
             this.healthBuyBtn.Text = "More Health: 150 Coins";
             this.healthBuyBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.healthBuyBtn.Click += new System.EventHandler(this.healthBuy);
@@ -485,7 +473,7 @@ namespace WindowsForms.Gamecode
             // 
             this.dmgBuyBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 30);
             this.dmgBuyBtn.Name = "dmgBuyBtn";
-            this.dmgBuyBtn.Size = new System.Drawing.Size(2273, 67);
+            this.dmgBuyBtn.Size = new System.Drawing.Size(2111, 67);
             this.dmgBuyBtn.Text = "More DMG: 50 Coins";
             this.dmgBuyBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.dmgBuyBtn.Click += new System.EventHandler(this.dmgBuy);
@@ -493,7 +481,7 @@ namespace WindowsForms.Gamecode
             // doneBtn
             // 
             this.doneBtn.Name = "doneBtn";
-            this.doneBtn.Size = new System.Drawing.Size(2273, 67);
+            this.doneBtn.Size = new System.Drawing.Size(2111, 67);
             this.doneBtn.Text = "Done";
             this.doneBtn.Click += new System.EventHandler(this.doneClick);
             // 
@@ -733,12 +721,24 @@ namespace WindowsForms.Gamecode
             this.ScoreTimer.Interval = 4000;
             this.ScoreTimer.Tick += new System.EventHandler(this.scoreTimerTick);
             // 
+            // background2
+            // 
+            this.background2.Image = global::WindowsForms.Properties.Resources.Background;
+            this.background2.Location = new System.Drawing.Point(2400, 0);
+            this.background2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.background2.Name = "background2";
+            this.background2.Size = new System.Drawing.Size(1200, 512);
+            this.background2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.background2.TabIndex = 48;
+            this.background2.TabStop = false;
+            this.background2.Tag = "background";
+            // 
             // EndlessMode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(2278, 896);
+            this.ClientSize = new System.Drawing.Size(2052, 896);
             this.Controls.Add(this.pictureBox16);
             this.Controls.Add(this.pictureBox15);
             this.Controls.Add(this.platformBox14);
@@ -774,10 +774,10 @@ namespace WindowsForms.Gamecode
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.startPlatform);
             this.Controls.Add(this.playerBox);
-            this.Controls.Add(this.background2);
             this.Controls.Add(this.shopMenu);
             this.Controls.Add(this.escMenu);
             this.Controls.Add(this.background1);
+            this.Controls.Add(this.background2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "EndlessMode";
@@ -803,7 +803,6 @@ namespace WindowsForms.Gamecode
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.background1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.background2)).EndInit();
             this.shopMenu.ResumeLayout(false);
             this.shopMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.heart5)).EndInit();
@@ -824,6 +823,7 @@ namespace WindowsForms.Gamecode
             ((System.ComponentModel.ISupportInitialize)(this.platformBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.background2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -839,21 +839,20 @@ namespace WindowsForms.Gamecode
         internal System.Windows.Forms.ToolStripMenuItem resumeToolStripMenuItem;
         internal System.Windows.Forms.ToolStripMenuItem startScreenToolStripMenuItem;
         internal System.Windows.Forms.Label scoreLabel;
-        internal System.Windows.Forms.PictureBox pictureBox3;
-        internal System.Windows.Forms.PictureBox pictureBox2;
-        internal System.Windows.Forms.PictureBox pictureBox4;
-        internal System.Windows.Forms.PictureBox pictureBox5;
-        internal System.Windows.Forms.PictureBox pictureBox6;
-        internal System.Windows.Forms.PictureBox pictureBox7;
-        internal System.Windows.Forms.PictureBox pictureBox8;
-        internal System.Windows.Forms.PictureBox pictureBox9;
-        internal System.Windows.Forms.PictureBox pictureBox10;
-        internal System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.PictureBox pictureBox10;
+        private System.Windows.Forms.PictureBox pictureBox11;
         internal System.Windows.Forms.Label coinCounter;
-        internal System.Windows.Forms.PictureBox pictureBox12;
+        private System.Windows.Forms.PictureBox pictureBox12;
         internal System.Windows.Forms.Label inventoryCoins;
         internal System.Windows.Forms.PictureBox background1;
-        internal System.Windows.Forms.PictureBox background2;
         internal System.Windows.Forms.ToolStripMenuItem shopToolStripMenuItem;
         internal System.Windows.Forms.MenuStrip shopMenu;
         internal System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
@@ -880,5 +879,6 @@ namespace WindowsForms.Gamecode
         internal System.Windows.Forms.PictureBox pictureBox15;
         internal System.Windows.Forms.PictureBox pictureBox16;
         internal System.Windows.Forms.Timer ScoreTimer;
+        internal System.Windows.Forms.PictureBox background2;
     }
 }

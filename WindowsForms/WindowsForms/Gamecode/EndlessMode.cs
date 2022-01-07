@@ -30,8 +30,9 @@ namespace WindowsForms.Gamecode
             this.KeyDown += formKeyDown;
             this.Load += loadInventory;
             this.FormClosing += saveInventory;
+            player.gamemodeEndless = true;
 
-            //backgroundBox = (PictureBox)Controls.Find("background1", false)[0];
+            backgroundBox = (PictureBox)Controls.Find("background1", false)[0];
 
         }
 
@@ -151,11 +152,21 @@ namespace WindowsForms.Gamecode
             player.moveEndlessmode(this);
             player.isOnGround = false;
 
-            if (player.Hp > 0)
+            // "invinceble frames" as long as invulnerable is on true: no dmg can be taken (as to see in player.Hp property)
+            if (player.invulnerable)
             {
-                Healthbar();
+                invulnerableCounter++;
             }
-            else
+            if (invulnerableCounter > 20)
+            {
+                invulnerableCounter = 0;
+                player.invulnerable = false;
+            }
+            //keeps health status up to date 
+            Healthbar();
+
+            //if statement for the game to end: hp=0 or falling into pit
+            if(player.Hp < 1 || player.box.Location.Y > 550)
             {
                 MainGameTick.Stop();
                 ScoreTimer.Stop();
@@ -165,8 +176,7 @@ namespace WindowsForms.Gamecode
 
                 if (dialogresult == DialogResult.Yes)
                 {
-                    inventoryChestCoins += player.coins;
-                    GameReset();
+                    DeathGameReset(player.coins);
                 }
                 else if (dialogresult == DialogResult.No)
                 {
@@ -267,9 +277,18 @@ namespace WindowsForms.Gamecode
             Draw();
         }
 
+        //resets the game and gives the last coin count to the player bank
+        private void DeathGameReset(int coinCount)
+        {
+            EndlessMode endless = new EndlessMode();
+            endless.Show();
+            endless.player.coins += coinCount;
+            this.Visible = false;
+        }
+
         private void GameReset()
         {
-            player.Hp = 100;
+            player.Hp += 100;
             player.score = 0;
             player.coins = 0;
             scoreLabel.Text = "Score: " + player.score;
@@ -371,22 +390,68 @@ namespace WindowsForms.Gamecode
         }
         #endregion
 
+        #region draw
+        int backGround1KoordX = 0;
+        int backGround2KoordX = Properties.Resources.Background.Width - 2;
+        void Draw()
+        {
+
+            Bitmap bufl = new Bitmap(pf.Width, pf.Height);
+            using (Graphics g = Graphics.FromImage(bufl))
+            {
+                g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
+                g.DrawImage(backgroundBox.Image, new Rectangle(new Point(0, 0), this.Size), new Rectangle(new Point(-backGround1KoordX, 0), new Size(backgroundBox.Width, backgroundBox.Height)), GraphicsUnit.Pixel);
+                g.DrawImage(backgroundBox.Image, new Rectangle(new Point(0, 0), this.Size), new Rectangle(new Point(-backGround2KoordX, 0), new Size(backgroundBox.Width, backgroundBox.Height)), GraphicsUnit.Pixel);
+                g.DrawImage(player.currentImage, playerBox.Location);
+                foreach (Control x in this.Controls)
+                {
+                    if (x is PictureBox)
+                    {
+                        string tag = (string)x.Tag;
+                        Rectangle destRect = new Rectangle(x.Location, x.Size);
+
+                        if (((PictureBox)x).Image == null)
+                        {
+                            g.FillRectangle(new SolidBrush(x.BackColor), destRect);
+                        }
+                        else if (tag == "coins")
+                        {
+                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
+                            g.DrawImage(coinHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
+                        }
+                        else if (tag == "obstacleTree")
+                        {
+                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
+                            g.DrawImage(mushroomHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
+                        }
+                        else if (tag != "player" && tag != "coins.collected" && tag != "background")
+                        {
+                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
+                            g.DrawImage(((PictureBox)x).Image, destRect, srcRect, GraphicsUnit.Pixel);
+                            //g.DrawImage(((PictureBox)x).Image, x.Location);
+                        }
+                    }
+                }
+                pf.CreateGraphics().DrawImageUnscaled(bufl, 0, 0);
+            }
+        }
+        #endregion
 
         #region endless backgroundScrolling
 
         void background_move()
         {
-
-            if (background1.Left <= -1200)
-                background1.Left = 1198;
-
-            if (background2.Left <= -1200)
-                background2.Left = 1198;
-
-            background1.Left -= 2;
-            background2.Left -= 2;
-
-            Invalidate();
+            backGround1KoordX -= 2;
+            backGround2KoordX -= 2;
+            //resets the background if not in ClientSize
+            if (backGround1KoordX == -backgroundBox.Width)
+            {
+                backGround1KoordX = backgroundBox.Width - 2;
+            }
+            if (backGround2KoordX == -backgroundBox.Width)
+            {
+                backGround2KoordX = backgroundBox.Width - 2;
+            }
         }
         #endregion
 

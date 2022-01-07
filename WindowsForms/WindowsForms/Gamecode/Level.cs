@@ -50,7 +50,7 @@ namespace WindowsForms.Gamecode
         internal Label countdownLabel;
         internal Label coinCounter;
         
-        protected Choices buyChoice;
+        protected Choices buyChoice = Choices.None;
 
 
         protected enum Choices { Potion, Armor, Attack, None };
@@ -120,10 +120,10 @@ namespace WindowsForms.Gamecode
                 countdownLabel = form.countdownLabel;
                 coinCounter = form.coinCounter;
             }
-            else if(levelForm is EndlessMode)
+            if(levelForm is EndlessMode)
             {
                 EndlessMode form = (EndlessMode)levelForm;
-                //MainGameTick = form.MainGameTick;
+                MainGameTick = form.MainGameTick;
                 playerBox = form.playerBox;
                 obstacle = form.obstacle;
                 heart1 = form.heart1;
@@ -139,8 +139,11 @@ namespace WindowsForms.Gamecode
                 countdownLabel = form.countdownLabel;
                 coinCounter = form.coinCounter;
             }
+            else
+            {
+                CreateEnemysLIst(); //needs fix
+            }
 
-            CreateEnemysLIst(); //needs fix
             player = new Player(playerBox, 100);
             //creates the handler for animations (coins, enemys...)
             createAnimationHandlers();
@@ -174,8 +177,6 @@ namespace WindowsForms.Gamecode
         }
         protected void createDrawingPanel()
         {
-
-
             pf = new Panel();
             pf.Location = new Point(0, 0);
             pf.Size = this.Size;
@@ -369,10 +370,15 @@ namespace WindowsForms.Gamecode
             }
 
             //debuff check (also possible to change the debuff EFFECT here!)
-            if (debuff && debuffCounter <= 40)
+            if (debuff && debuffCounter <= 60)
             {
-                player.Hp -= 50;
+                player.Hp -= 5;
                 debuffCounter++;
+                if (debuffCounter > 60)
+                {
+                    debuffCounter = 0;
+                    debuff = false;
+                }
             }
 
             if (player.invulnerable)
@@ -541,7 +547,6 @@ namespace WindowsForms.Gamecode
                                 debuff = true;
                                 debuffCounter = 0;
                                 obstacleInWay = true;
-                                player.box.Left -= 20;
                             }
                         }
                         else
@@ -553,17 +558,17 @@ namespace WindowsForms.Gamecode
                         if (((PictureBox)x).Bounds.IntersectsWith(player.box.Bounds))
                         {
 
-                            //TODO shop is for free because of testing: finished project -> put the comments into the code
-                            if (buyChoice == Choices.Potion /*&& player.coins >= 10*/)
+                            //depends on buy choice: consumable, not healable hearts or permanent damage upgrade
+                            if (buyChoice == Choices.Potion && player.coins >= 10)
                             {
                                 player.coins -= 10;
                                 HealthPotionHUD.Image = Properties.Resources.health_potion;
                                 buyChoice = Choices.None;
                                 player.potion = true;
                             }
-                            if (buyChoice == Choices.Armor /*&& player.coins >= 20*/)
+                            if (buyChoice == Choices.Armor && player.coins >= 20)
                             {
-                                //player.coins -= 20;
+                                player.coins -= 20;
                                 player.armor1 = true;
                                 player.armor2 = true;
                                 armorHeart1.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -576,9 +581,9 @@ namespace WindowsForms.Gamecode
                                 this.Controls.Add(armorHeart1);
                                 this.Controls.Add(armorHeart2);
                             }
-                            if (buyChoice == Choices.Attack /*&& player.coins >= 20 */)
+                            if (buyChoice == Choices.Attack && player.coins >= 20 )
                             {
-                                //player.coins -= 20;
+                                player.coins -= 20;
                                 player.Dmg += 1;
                                 buyChoice = Choices.None;
                             }
@@ -662,6 +667,7 @@ namespace WindowsForms.Gamecode
                         player.Hp += 40;
                     }
                     break;
+                    //key inputs for buy choice with the merchant
                 case Keys.Z:
                     buyChoice = Choices.Potion;
                     break;
@@ -764,7 +770,7 @@ namespace WindowsForms.Gamecode
             {
                 //g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
 
-                g.DrawImage(backgroundlayer, new Rectangle(new Point(0, 0), this.Size), new Rectangle(new Point(-backgroundCoordX, 0), new Size(backgroundlayer.Width / 2, backgroundlayer.Height)), GraphicsUnit.Pixel);
+                g.DrawImage(backgroundlayer, new Rectangle(new Point(0, 0), this.Size), new Rectangle(new Point(-backgroundCoordX, 0), new Size(backgroundlayer.Width, backgroundlayer.Height)), GraphicsUnit.Pixel);
 
                 foreach (Control x in this.Controls)
                 {
@@ -914,7 +920,10 @@ namespace WindowsForms.Gamecode
                 if (enemy.box.Name == x.Name)
                     enemy.Hp -= player.Dmg;
                 if (enemy.Hp <= 0)
+                {
+                    debuff = false;
                     this.Controls.Remove(x);
+                }
             }
             foreach (var enemy in eagleArray)
             {
