@@ -23,6 +23,8 @@ namespace WindowsForms.Gamecode
 
         internal override int Dmg { get => dmg; set => dmg = value; }
 
+
+        //normal move pattern
         public override void move(Form f)
         {
             if (movingLeft)

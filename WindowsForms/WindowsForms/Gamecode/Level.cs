@@ -20,13 +20,13 @@ namespace WindowsForms.Gamecode
         internal Player player;
         protected bool gameOver;
         protected DateTime lastFrameTime = DateTime.Now; // for fps calculation
-        internal  SpriteHandler coinHandler;
+        internal SpriteHandler coinHandler;
         internal SpriteHandler mushroomHandler;
         internal SpriteHandler eagleHandler;
         internal EnemySmall[] mushroomArray;
-        internal EnemyFly[] eagleArray;
+        internal EnemyFly[] flyEnemyArray;
         protected bool debuff;
-        protected int debuffCounter = 0; 
+        protected int debuffCounter = 0;
         protected int invulnerableCounter = 0;
         internal bool obstacleInWay;
         protected PictureBox armorHeart1 = new PictureBox();
@@ -49,7 +49,7 @@ namespace WindowsForms.Gamecode
         internal Timer CountdownTimer;
         internal Label countdownLabel;
         internal Label coinCounter;
-        
+
         protected Choices buyChoice = Choices.None;
 
 
@@ -82,7 +82,7 @@ namespace WindowsForms.Gamecode
                 countdownLabel = form.countdownLabel;
                 coinCounter = form.coinCounter;
             }
-            else if(levelForm is StoryMode2)
+            else if (levelForm is StoryMode2)
             {
                 StoryMode2 form = (StoryMode2)levelForm;
                 MainGameTick = form.MainGameTick;
@@ -155,8 +155,6 @@ namespace WindowsForms.Gamecode
         }
         protected void createDrawingPanel()
         {
-
-
             pf = new Panel();
             pf.Location = new Point(0, 0);
             pf.Size = this.Size;
@@ -181,9 +179,9 @@ namespace WindowsForms.Gamecode
                     eagleEnemyCounter++;
                 }
             }
-            //put all mushroom enemies in array
+            //put all enemies in array for later uses
             mushroomArray = new EnemySmall[mushroomEnemyCounter];
-            eagleArray = new EnemyFly[eagleEnemyCounter];
+            flyEnemyArray = new EnemyFly[eagleEnemyCounter];
             mushroomEnemyCounter = 0;
             eagleEnemyCounter = 0;
             foreach (Control x in this.Controls)
@@ -195,7 +193,7 @@ namespace WindowsForms.Gamecode
                 }
                 if ((string)x.Tag == "eagleEnemy")
                 {
-                    eagleArray[eagleEnemyCounter] = new EnemyFly((PictureBox)x);
+                    flyEnemyArray[eagleEnemyCounter] = new EnemyFly((PictureBox)x);
                     eagleEnemyCounter++;
                 }
             }
@@ -334,7 +332,7 @@ namespace WindowsForms.Gamecode
 
             if (coinCounter != null)
                 coinCounter.Text = $": {player.coins}";
-            if(fpsLabel != null)
+            if (fpsLabel != null)
                 fpsLabel.Text = "fps: " + getFramesPerSecond();
 
             player.move(this);
@@ -377,13 +375,31 @@ namespace WindowsForms.Gamecode
             //HP HUD
             Healthbar();
 
+
+
+
             //make the enemies move
+            InRangeOfEnemy(flyEnemyArray);
             foreach (EnemySmall mushroom in mushroomArray)
             {
                 mushroom.move(this);
             }
-            foreach (EnemyFly eagle in eagleArray)
+            foreach (EnemyFly eagle in flyEnemyArray)
             {
+                //chasing the player around as long as he is in range (see InRangeOfEnemy(flyEnemyArray);)
+                if (eagle.chase)
+                {
+                    if (eagle.box.Left > playerBox.Left + 2)
+                        eagle.box.Left -= 4;
+                    else if (eagle.box.Left < playerBox.Left - 2)
+                        eagle.box.Left += 4;
+                    if (eagle.box.Top > playerBox.Top)
+                        eagle.box.Top -= 4;
+                    else if (eagle.box.Top < playerBox.Top - 20)
+                        eagle.box.Top += 4;
+                }
+
+                //move in a normal pattern without attacking the player
                 eagle.move(this);
             }
 
@@ -449,7 +465,7 @@ namespace WindowsForms.Gamecode
                             {
                                 player.obstacleLeft = true;
                             }
-                            player.Hp -= eagleArray[0].Dmg;
+                            player.Hp -= flyEnemyArray[0].Dmg;
                         }
                     }
                     if ((string)x.Tag == "shot")
@@ -551,6 +567,7 @@ namespace WindowsForms.Gamecode
                                 player.coins -= 20;
                                 player.armor1 = true;
                                 player.armor2 = true;
+                                // add the picture of armor hearts onto screen
                                 armorHeart1.SizeMode = PictureBoxSizeMode.AutoSize;
                                 armorHeart2.SizeMode = PictureBoxSizeMode.AutoSize;
                                 armorHeart1.Location = new Point(210, 5);
@@ -560,8 +577,9 @@ namespace WindowsForms.Gamecode
                                 buyChoice = Choices.None;
                                 this.Controls.Add(armorHeart1);
                                 this.Controls.Add(armorHeart2);
+
                             }
-                            if (buyChoice == Choices.Attack && player.coins >= 20 )
+                            if (buyChoice == Choices.Attack && player.coins >= 20)
                             {
                                 player.coins -= 20;
                                 player.Dmg += 1;
@@ -647,7 +665,7 @@ namespace WindowsForms.Gamecode
                         player.Hp += 40;
                     }
                     break;
-                    //key inputs for buy choice with the merchant
+                //key inputs for buy choice with the merchant
                 case Keys.Z:
                     buyChoice = Choices.Potion;
                     break;
@@ -872,6 +890,15 @@ namespace WindowsForms.Gamecode
                         {
                             x.Left -= player.characterSpeed;
                         }
+
+                        //the starting point of the flying enemy has to be scrolled too!
+                        foreach (var item in flyEnemyArray)
+                        {
+                            if (item.box.Tag == x.Tag)
+                            {
+                                item.startingPoint.X -= player.characterSpeed;
+                            }
+                        }
                     }
 
                 }
@@ -883,6 +910,13 @@ namespace WindowsForms.Gamecode
                         if (tag == "platform" || tag == "obstacleTree" || tag == "coins" || tag == "finish" || tag == "......" || tag == "thorns" || tag == "eagleEnemy" || tag == "rangeEnemy" || tag == "shopHUD" || tag == "merchant" || tag == "destroyedThorns")
                         {
                             x.Left += player.characterSpeed;
+                        }
+                        foreach (var item in flyEnemyArray)
+                        {
+                            if (item.box.Tag == x.Tag)
+                            {
+                                item.startingPoint.X += player.characterSpeed;
+                            }
                         }
                     }
                 }
@@ -906,7 +940,7 @@ namespace WindowsForms.Gamecode
                     this.Controls.Remove(x);
                 }
             }
-            foreach (var enemy in eagleArray)
+            foreach (var enemy in flyEnemyArray)
             {
                 if (enemy.box.Name == x.Name)
                     enemy.Hp -= player.Dmg;
@@ -917,6 +951,32 @@ namespace WindowsForms.Gamecode
 
 
 
+        #endregion
+
+        #region FlyEnemy 
+
+        //method to test if the player is in the Fly enemies range
+        void InRangeOfEnemy(EnemyFly[] flyEnemy)
+        {
+            foreach (EnemyFly enemy in flyEnemy)
+            {
+                if (enemy.onStart)
+                {
+                    enemy.startingPoint.X = enemy.box.Location.X;
+                    enemy.startingPoint.Y = enemy.box.Location.Y;
+                }
+
+                //aggro range can be changed here                  vvv                                                   vvv
+                if (enemy.box.Location.X <= playerBox.Location.X + 200 && enemy.box.Location.X >= playerBox.Location.X - 150)
+                {
+                    enemy.chase = true;
+                }
+                else
+                {
+                    enemy.chase = false;
+                }
+            }
+        }
         #endregion
 
         #region Healthbar
@@ -1024,7 +1084,7 @@ namespace WindowsForms.Gamecode
             }
         }
 
-
+        //method for changing the Image in the specific PictureBox --> empty,half and full
         protected void ChangeHeartContainer(PictureBox container, string heart = "full")
         {
             if (heart == "empty")
