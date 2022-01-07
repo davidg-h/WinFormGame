@@ -66,6 +66,8 @@ namespace WindowsForms.Gamecode
             if (e.KeyCode == Keys.Escape)
             {
                 MainGameTick.Stop();
+                ScoreTimer.Stop();
+                CoinSpawnTimer.Stop();
                 escMenu.BringToFront();
                 escMenu.Visible = true;
             }
@@ -75,6 +77,8 @@ namespace WindowsForms.Gamecode
         {
             escMenu.Visible = false;
             MainGameTick.Start();
+            ScoreTimer.Start();
+            CoinSpawnTimer.Start();
         }
 
         private void startScreenClick(object sender, EventArgs e)
@@ -186,10 +190,11 @@ namespace WindowsForms.Gamecode
             Healthbar();
 
             //if statement for the game to end: hp=0 or falling into pit
-            if(player.Hp < 1 || player.box.Location.Y > 550)
+            if (player.Hp < 1 /*|| player.box.Location.Y > 550*/)
             {
                 MainGameTick.Stop();
                 ScoreTimer.Stop();
+                CoinSpawnTimer.Stop();
                 gameOver = true;
 
                 DialogResult dialogresult = MessageBox.Show("You Died!!!" + Environment.NewLine + "Press Yes to play again", "", MessageBoxButtons.YesNo);
@@ -234,7 +239,6 @@ namespace WindowsForms.Gamecode
                         // moves the enemy to the player
                         small.box.Left -= small.characterSpeed;
 
-                        randomPlacement(small.box, true);
                     }
                     if ((string)x.Tag == "eagleEnemy")
                     {
@@ -250,7 +254,6 @@ namespace WindowsForms.Gamecode
                         // moves the enemy to the player
                         fly.box.Left -= fly.characterSpeed;
 
-                        randomPlacement(fly.box, true);
                     }
                     if ((string)x.Tag == "platform")
                     {
@@ -259,15 +262,6 @@ namespace WindowsForms.Gamecode
                         {
                             player.IsOnGround = true;
                             player.MoveToTopOfPlatform(x.Top);
-                        }
-
-                        if (x.Name != "startPlatform")
-                        {
-                            if (x.Name == "platformBox1")
-                            {
-                                randomPlacement(x as PictureBox, false);
-                            }
-                            randomPlacement(x as PictureBox, true);
                         }
                     }
                     if ((string)x.Tag == "coins")
@@ -278,12 +272,10 @@ namespace WindowsForms.Gamecode
                             x.Tag = "coins.collected";
                             player.coins += 1;
                         }
-                        randomPlacement(x as PictureBox, true);
                     }
                     if ((string)x.Tag == "thorns")
                     {
                         x.Left -= obstacleSpeed;
-                        randomPlacement(x as PictureBox, true);
                     }
                 }
             }
@@ -294,6 +286,7 @@ namespace WindowsForms.Gamecode
             if (player.score > 60) obstacleSpeed = 80;
             if (player.score > 100) obstacleSpeed = 120;
 
+            randomPlacement();
             Draw();
         }
 
@@ -315,18 +308,12 @@ namespace WindowsForms.Gamecode
             playerBox.Image = Properties.Resources.idle;
             gameOver = false;
             playerBox.Location = player.defaultLocation;
-            
+
 
             foreach (Control x in this.Controls)
             {
-                // takes all pictureBoxes with the tag == "obstacleTree" and places them further to the right (outside the viewing screen)
                 if (x is PictureBox)
                 {
-                    if ((string)x.Tag == "obstacleTree")
-                    {
-                        x.Left = this.ClientSize.Width + rand.Next(450, 800) + (x.Width * 10);
-                    }
-
                     if ((string)x.Tag == "health")
                     {
                         ((PictureBox)x).Image = WindowsForms.Properties.Resources.Heart;
@@ -335,6 +322,7 @@ namespace WindowsForms.Gamecode
             }
             MainGameTick.Start();
             ScoreTimer.Start();
+            CoinSpawnTimer.Start();
         }
         #endregion
 
@@ -425,10 +413,9 @@ namespace WindowsForms.Gamecode
 
         #region draw
         int backGround1KoordX = 0;
-        int backGround2KoordX = Properties.Resources.Background.Width - 2;
+        int backGround2KoordX = Properties.Resources.Background.Width - 4;
         void Draw()
         {
-
             Bitmap bufl = new Bitmap(pf.Width, pf.Height);
             using (Graphics g = Graphics.FromImage(bufl))
             {
@@ -574,7 +561,7 @@ namespace WindowsForms.Gamecode
                 ChangeHeartContainer(heart2, "empty");
                 ChangeHeartContainer(heart1, "half");
             }
-            
+
         }
 
         protected void ChangeHeartContainer(PictureBox container, string heart = "full")
@@ -592,17 +579,39 @@ namespace WindowsForms.Gamecode
         #endregion
 
         #region random Placement of objects
-        private void randomPlacement(PictureBox box, bool upDownPlacement)
+        private void randomPlacement()
         {
-            if (box.Location.X + box.Width < 0)
-            {
-                box.Left = this.ClientSize.Width + rand.Next(50, 250);
-                if (upDownPlacement)
-                {
-                    box.Top = rand.Next(37, 367);
-                }
-            }
+            //int chapter = rand.Next(1, 5);
+            //foreach (Control x in Controls)
+            //{
+            //    PictureBox box = x as PictureBox;
+            //}
+            //switch (chapter)
+            //{
+            //    case 1:
+            //        chapter1();
+            //        break;
+            //    default:
+            //        break;
+            //}
         }
+
+        private void spawnCoins()
+        {
+            // create coin
+            PictureBox coinSpawn = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(coinSpawn)).BeginInit();
+            coinSpawn.Tag = "coins";
+            coinSpawn.Image = Properties.Resources.coin;
+            coinSpawn.Visible = true;
+            coinSpawn.Size = new Size(38, 39);
+            coinSpawn.SizeMode = PictureBoxSizeMode.StretchImage;
+            coinSpawn.Location = new Point(ClientSize.Width + rand.Next(0, 50), rand.Next(ClientSize.Height));
+            coinSpawn.BringToFront();
+            // adds coin to the window
+            this.Controls.Add(coinSpawn);
+        }
+
         #endregion
 
         #region ScoreTimer
@@ -614,6 +623,15 @@ namespace WindowsForms.Gamecode
             if (player.score > 30) ScoreTimer.Interval = 1500;
             if (player.score > 60) ScoreTimer.Interval = 1000;
             if (player.score > 100) ScoreTimer.Interval = 500;
+
+
+        }
+        #endregion
+
+        #region coinSpawn Timer
+        internal void coinSpawnTimerTick(object sender, EventArgs e)
+        {
+            spawnCoins();
         }
         #endregion
     }

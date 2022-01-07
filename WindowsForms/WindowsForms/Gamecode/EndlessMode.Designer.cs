@@ -81,6 +81,19 @@ namespace WindowsForms.Gamecode
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.ScoreTimer = new System.Windows.Forms.Timer(this.components);
             this.background2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox17 = new System.Windows.Forms.PictureBox();
+            this.pictureBox18 = new System.Windows.Forms.PictureBox();
+            this.pictureBox19 = new System.Windows.Forms.PictureBox();
+            this.pictureBox20 = new System.Windows.Forms.PictureBox();
+            this.pictureBox21 = new System.Windows.Forms.PictureBox();
+            this.CoinSpawnTimer = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox22 = new System.Windows.Forms.PictureBox();
+            this.pictureBox23 = new System.Windows.Forms.PictureBox();
+            this.pictureBox24 = new System.Windows.Forms.PictureBox();
+            this.pictureBox25 = new System.Windows.Forms.PictureBox();
+            this.pictureBox26 = new System.Windows.Forms.PictureBox();
+            this.pictureBox27 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.startPlatform)).BeginInit();
             this.escMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.obstacleTree)).BeginInit();
@@ -117,6 +130,18 @@ namespace WindowsForms.Gamecode
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.background2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
             this.SuspendLayout();
             // 
             // MainGameTick
@@ -207,10 +232,10 @@ namespace WindowsForms.Gamecode
             // 
             // obstacleTree
             // 
-            this.obstacleTree.AccessibleName = "group1";
+            this.obstacleTree.AccessibleName = "chapter1";
             this.obstacleTree.BackColor = System.Drawing.Color.Transparent;
             this.obstacleTree.Image = global::WindowsForms.Properties.Resources.shroomIdle;
-            this.obstacleTree.Location = new System.Drawing.Point(820, 367);
+            this.obstacleTree.Location = new System.Drawing.Point(778, 367);
             this.obstacleTree.Margin = new System.Windows.Forms.Padding(2);
             this.obstacleTree.Name = "obstacleTree";
             this.obstacleTree.Size = new System.Drawing.Size(32, 28);
@@ -233,9 +258,10 @@ namespace WindowsForms.Gamecode
             // 
             // pictureBox3
             // 
+            this.pictureBox3.AccessibleName = "";
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox3.Location = new System.Drawing.Point(310, 248);
+            this.pictureBox3.Location = new System.Drawing.Point(264, 350);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(38, 39);
@@ -246,9 +272,10 @@ namespace WindowsForms.Gamecode
             // 
             // pictureBox2
             // 
+            this.pictureBox2.AccessibleName = "";
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox2.Location = new System.Drawing.Point(310, 153);
+            this.pictureBox2.Location = new System.Drawing.Point(262, 297);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(40, 36);
@@ -259,9 +286,10 @@ namespace WindowsForms.Gamecode
             // 
             // pictureBox4
             // 
+            this.pictureBox4.AccessibleName = "chapter1";
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox4.Location = new System.Drawing.Point(372, 248);
+            this.pictureBox4.Location = new System.Drawing.Point(911, 353);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(37, 39);
@@ -272,9 +300,10 @@ namespace WindowsForms.Gamecode
             // 
             // pictureBox5
             // 
+            this.pictureBox5.AccessibleName = "";
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox5.Location = new System.Drawing.Point(372, 204);
+            this.pictureBox5.Location = new System.Drawing.Point(262, 243);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(37, 37);
@@ -285,9 +314,10 @@ namespace WindowsForms.Gamecode
             // 
             // pictureBox6
             // 
+            this.pictureBox6.AccessibleName = "chapter2";
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox6.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox6.Location = new System.Drawing.Point(487, 131);
+            this.pictureBox6.Location = new System.Drawing.Point(1307, 197);
             this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(39, 37);
@@ -298,9 +328,10 @@ namespace WindowsForms.Gamecode
             // 
             // pictureBox7
             // 
+            this.pictureBox7.AccessibleName = "chapter3";
             this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox7.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox7.Location = new System.Drawing.Point(372, 153);
+            this.pictureBox7.Location = new System.Drawing.Point(2024, 162);
             this.pictureBox7.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(37, 36);
@@ -311,12 +342,13 @@ namespace WindowsForms.Gamecode
             // 
             // pictureBox8
             // 
+            this.pictureBox8.AccessibleName = "chapter1";
             this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox8.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox8.Location = new System.Drawing.Point(488, 288);
+            this.pictureBox8.Location = new System.Drawing.Point(532, 356);
             this.pictureBox8.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(38, 39);
+            this.pictureBox8.Size = new System.Drawing.Size(38, 36);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox8.TabIndex = 14;
             this.pictureBox8.TabStop = false;
@@ -324,9 +356,10 @@ namespace WindowsForms.Gamecode
             // 
             // pictureBox9
             // 
+            this.pictureBox9.AccessibleName = "chapter3";
             this.pictureBox9.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox9.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox9.Location = new System.Drawing.Point(540, 164);
+            this.pictureBox9.Location = new System.Drawing.Point(1808, 207);
             this.pictureBox9.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(35, 38);
@@ -337,9 +370,10 @@ namespace WindowsForms.Gamecode
             // 
             // pictureBox10
             // 
+            this.pictureBox10.AccessibleName = "chapter4";
             this.pictureBox10.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox10.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox10.Location = new System.Drawing.Point(488, 204);
+            this.pictureBox10.Location = new System.Drawing.Point(2164, 328);
             this.pictureBox10.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(38, 39);
@@ -350,9 +384,10 @@ namespace WindowsForms.Gamecode
             // 
             // pictureBox11
             // 
+            this.pictureBox11.AccessibleName = "chapter1";
             this.pictureBox11.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox11.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox11.Location = new System.Drawing.Point(489, 248);
+            this.pictureBox11.Location = new System.Drawing.Point(665, 356);
             this.pictureBox11.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(37, 36);
@@ -544,9 +579,10 @@ namespace WindowsForms.Gamecode
             // 
             // pictureBox13
             // 
+            this.pictureBox13.AccessibleName = "chapter2";
             this.pictureBox13.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox13.Image = global::WindowsForms.Properties.Resources.shroomIdle;
-            this.pictureBox13.Location = new System.Drawing.Point(1709, 229);
+            this.pictureBox13.Location = new System.Drawing.Point(1433, 253);
             this.pictureBox13.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(32, 28);
@@ -557,7 +593,7 @@ namespace WindowsForms.Gamecode
             // 
             // platformBox1
             // 
-            this.platformBox1.AccessibleName = "group1";
+            this.platformBox1.AccessibleName = "chapter1";
             this.platformBox1.BackColor = System.Drawing.Color.Black;
             this.platformBox1.Image = global::WindowsForms.Properties.Resources.platform16;
             this.platformBox1.Location = new System.Drawing.Point(470, 394);
@@ -570,9 +606,10 @@ namespace WindowsForms.Gamecode
             // 
             // pictureBox14
             // 
+            this.pictureBox14.AccessibleName = "";
             this.pictureBox14.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox14.Image = global::WindowsForms.Properties.Resources.eagle;
-            this.pictureBox14.Location = new System.Drawing.Point(1365, 56);
+            this.pictureBox14.Location = new System.Drawing.Point(1260, 11);
             this.pictureBox14.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(97, 111);
@@ -583,9 +620,10 @@ namespace WindowsForms.Gamecode
             // 
             // obstacle
             // 
+            this.obstacle.AccessibleName = "chapter2";
             this.obstacle.BackColor = System.Drawing.Color.Transparent;
             this.obstacle.Image = global::WindowsForms.Properties.Resources.PoisountPlant;
-            this.obstacle.Location = new System.Drawing.Point(1450, 222);
+            this.obstacle.Location = new System.Drawing.Point(1233, 257);
             this.obstacle.Name = "obstacle";
             this.obstacle.Size = new System.Drawing.Size(64, 120);
             this.obstacle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -595,9 +633,10 @@ namespace WindowsForms.Gamecode
             // 
             // platformBox4
             // 
+            this.platformBox4.AccessibleName = "chapter3";
             this.platformBox4.BackColor = System.Drawing.Color.Black;
             this.platformBox4.Image = global::WindowsForms.Properties.Resources.wallLeft2;
-            this.platformBox4.Location = new System.Drawing.Point(2201, 264);
+            this.platformBox4.Location = new System.Drawing.Point(2020, 215);
             this.platformBox4.Name = "platformBox4";
             this.platformBox4.Size = new System.Drawing.Size(52, 180);
             this.platformBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -607,9 +646,10 @@ namespace WindowsForms.Gamecode
             // 
             // coinBox4
             // 
+            this.coinBox4.AccessibleName = "chapter1";
             this.coinBox4.BackColor = System.Drawing.Color.Transparent;
             this.coinBox4.Image = global::WindowsForms.Properties.Resources.coin;
-            this.coinBox4.Location = new System.Drawing.Point(540, 206);
+            this.coinBox4.Location = new System.Drawing.Point(1022, 353);
             this.coinBox4.Margin = new System.Windows.Forms.Padding(2);
             this.coinBox4.Name = "coinBox4";
             this.coinBox4.Size = new System.Drawing.Size(35, 37);
@@ -620,9 +660,10 @@ namespace WindowsForms.Gamecode
             // 
             // platformBox5
             // 
+            this.platformBox5.AccessibleName = "chapter2";
             this.platformBox5.BackColor = System.Drawing.Color.Black;
             this.platformBox5.Image = global::WindowsForms.Properties.Resources.wallTop4;
-            this.platformBox5.Location = new System.Drawing.Point(1649, 257);
+            this.platformBox5.Location = new System.Drawing.Point(1373, 281);
             this.platformBox5.Name = "platformBox5";
             this.platformBox5.Size = new System.Drawing.Size(147, 30);
             this.platformBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -632,9 +673,10 @@ namespace WindowsForms.Gamecode
             // 
             // platformBox6
             // 
+            this.platformBox6.AccessibleName = "chapter4";
             this.platformBox6.BackColor = System.Drawing.Color.Black;
             this.platformBox6.Image = global::WindowsForms.Properties.Resources.platform2;
-            this.platformBox6.Location = new System.Drawing.Point(1973, 331);
+            this.platformBox6.Location = new System.Drawing.Point(2131, 375);
             this.platformBox6.Name = "platformBox6";
             this.platformBox6.Size = new System.Drawing.Size(105, 72);
             this.platformBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -644,9 +686,10 @@ namespace WindowsForms.Gamecode
             // 
             // platformBox14
             // 
+            this.platformBox14.AccessibleName = "chapter4";
             this.platformBox14.BackColor = System.Drawing.Color.Black;
             this.platformBox14.Image = global::WindowsForms.Properties.Resources.wallLeft2;
-            this.platformBox14.Location = new System.Drawing.Point(2418, 206);
+            this.platformBox14.Location = new System.Drawing.Point(2554, 197);
             this.platformBox14.Name = "platformBox14";
             this.platformBox14.Size = new System.Drawing.Size(52, 180);
             this.platformBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -656,9 +699,10 @@ namespace WindowsForms.Gamecode
             // 
             // platformBox15
             // 
+            this.platformBox15.AccessibleName = "chapter4";
             this.platformBox15.BackColor = System.Drawing.Color.Black;
             this.platformBox15.Image = global::WindowsForms.Properties.Resources.wallLeft2;
-            this.platformBox15.Location = new System.Drawing.Point(2418, 375);
+            this.platformBox15.Location = new System.Drawing.Point(2554, 366);
             this.platformBox15.Name = "platformBox15";
             this.platformBox15.Size = new System.Drawing.Size(52, 180);
             this.platformBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -668,9 +712,10 @@ namespace WindowsForms.Gamecode
             // 
             // platformBox13
             // 
+            this.platformBox13.AccessibleName = "chapter4";
             this.platformBox13.BackColor = System.Drawing.Color.Black;
             this.platformBox13.Image = global::WindowsForms.Properties.Resources.platform;
-            this.platformBox13.Location = new System.Drawing.Point(2418, 179);
+            this.platformBox13.Location = new System.Drawing.Point(2554, 170);
             this.platformBox13.Name = "platformBox13";
             this.platformBox13.Size = new System.Drawing.Size(52, 32);
             this.platformBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -680,9 +725,10 @@ namespace WindowsForms.Gamecode
             // 
             // pictureBox15
             // 
+            this.pictureBox15.AccessibleName = "";
             this.pictureBox15.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox15.Image = global::WindowsForms.Properties.Resources.eagle;
-            this.pictureBox15.Location = new System.Drawing.Point(2277, 47);
+            this.pictureBox15.Location = new System.Drawing.Point(1949, 0);
             this.pictureBox15.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox15.Name = "pictureBox15";
             this.pictureBox15.Size = new System.Drawing.Size(97, 111);
@@ -693,9 +739,10 @@ namespace WindowsForms.Gamecode
             // 
             // pictureBox16
             // 
+            this.pictureBox16.AccessibleName = "chapter2";
             this.pictureBox16.BackColor = System.Drawing.Color.Black;
             this.pictureBox16.Image = global::WindowsForms.Properties.Resources.wallTop4;
-            this.pictureBox16.Location = new System.Drawing.Point(1402, 340);
+            this.pictureBox16.Location = new System.Drawing.Point(1185, 375);
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.Size = new System.Drawing.Size(147, 30);
             this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -720,19 +767,194 @@ namespace WindowsForms.Gamecode
             this.background2.TabStop = false;
             this.background2.Tag = "background";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.AccessibleName = "chapter3";
+            this.pictureBox1.BackColor = System.Drawing.Color.Black;
+            this.pictureBox1.Image = global::WindowsForms.Properties.Resources.wallTop4;
+            this.pictureBox1.Location = new System.Drawing.Point(1741, 331);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(147, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 41;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Tag = "platform";
+            // 
+            // pictureBox17
+            // 
+            this.pictureBox17.AccessibleName = "chapter4";
+            this.pictureBox17.BackColor = System.Drawing.Color.Black;
+            this.pictureBox17.Image = global::WindowsForms.Properties.Resources.wallLeft2;
+            this.pictureBox17.Location = new System.Drawing.Point(2708, 253);
+            this.pictureBox17.Name = "pictureBox17";
+            this.pictureBox17.Size = new System.Drawing.Size(52, 180);
+            this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox17.TabIndex = 39;
+            this.pictureBox17.TabStop = false;
+            this.pictureBox17.Tag = "platform";
+            // 
+            // pictureBox18
+            // 
+            this.pictureBox18.AccessibleName = "chapter3";
+            this.pictureBox18.BackColor = System.Drawing.Color.Black;
+            this.pictureBox18.Image = global::WindowsForms.Properties.Resources.wallTop4;
+            this.pictureBox18.Location = new System.Drawing.Point(1848, 243);
+            this.pictureBox18.Name = "pictureBox18";
+            this.pictureBox18.Size = new System.Drawing.Size(147, 30);
+            this.pictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox18.TabIndex = 41;
+            this.pictureBox18.TabStop = false;
+            this.pictureBox18.Tag = "platform";
+            // 
+            // pictureBox19
+            // 
+            this.pictureBox19.AccessibleName = "chapter4";
+            this.pictureBox19.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox19.Image = global::WindowsForms.Properties.Resources.coin;
+            this.pictureBox19.Location = new System.Drawing.Point(2708, 209);
+            this.pictureBox19.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox19.Name = "pictureBox19";
+            this.pictureBox19.Size = new System.Drawing.Size(38, 39);
+            this.pictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox19.TabIndex = 14;
+            this.pictureBox19.TabStop = false;
+            this.pictureBox19.Tag = "coins";
+            // 
+            // pictureBox20
+            // 
+            this.pictureBox20.AccessibleName = "chapter4";
+            this.pictureBox20.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox20.Image = global::WindowsForms.Properties.Resources.coin;
+            this.pictureBox20.Location = new System.Drawing.Point(2554, 126);
+            this.pictureBox20.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox20.Name = "pictureBox20";
+            this.pictureBox20.Size = new System.Drawing.Size(38, 39);
+            this.pictureBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox20.TabIndex = 14;
+            this.pictureBox20.TabStop = false;
+            this.pictureBox20.Tag = "coins";
+            // 
+            // pictureBox21
+            // 
+            this.pictureBox21.AccessibleName = "chapter4";
+            this.pictureBox21.BackColor = System.Drawing.Color.Black;
+            this.pictureBox21.Image = global::WindowsForms.Properties.Resources.wallTop4;
+            this.pictureBox21.Location = new System.Drawing.Point(2253, 306);
+            this.pictureBox21.Name = "pictureBox21";
+            this.pictureBox21.Size = new System.Drawing.Size(147, 30);
+            this.pictureBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox21.TabIndex = 41;
+            this.pictureBox21.TabStop = false;
+            this.pictureBox21.Tag = "platform";
+            // 
+            // CoinSpawnTimer
+            // 
+            this.CoinSpawnTimer.Enabled = true;
+            this.CoinSpawnTimer.Interval = 2500;
+            this.CoinSpawnTimer.Tick += new System.EventHandler(this.coinSpawnTimerTick);
+            // 
+            // pictureBox22
+            // 
+            this.pictureBox22.AccessibleName = "chapter3";
+            this.pictureBox22.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox22.Image = global::WindowsForms.Properties.Resources.coin;
+            this.pictureBox22.Location = new System.Drawing.Point(1639, 297);
+            this.pictureBox22.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox22.Name = "pictureBox22";
+            this.pictureBox22.Size = new System.Drawing.Size(38, 39);
+            this.pictureBox22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox22.TabIndex = 14;
+            this.pictureBox22.TabStop = false;
+            this.pictureBox22.Tag = "coins";
+            // 
+            // pictureBox23
+            // 
+            this.pictureBox23.AccessibleName = "chapter3";
+            this.pictureBox23.BackColor = System.Drawing.Color.Black;
+            this.pictureBox23.Image = global::WindowsForms.Properties.Resources.platform;
+            this.pictureBox23.Location = new System.Drawing.Point(1639, 341);
+            this.pictureBox23.Name = "pictureBox23";
+            this.pictureBox23.Size = new System.Drawing.Size(52, 32);
+            this.pictureBox23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox23.TabIndex = 43;
+            this.pictureBox23.TabStop = false;
+            this.pictureBox23.Tag = "platform";
+            // 
+            // pictureBox24
+            // 
+            this.pictureBox24.AccessibleName = "g6";
+            this.pictureBox24.BackColor = System.Drawing.Color.Black;
+            this.pictureBox24.Image = global::WindowsForms.Properties.Resources.wallLeft2;
+            this.pictureBox24.Location = new System.Drawing.Point(1687, 545);
+            this.pictureBox24.Name = "pictureBox24";
+            this.pictureBox24.Size = new System.Drawing.Size(52, 180);
+            this.pictureBox24.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox24.TabIndex = 44;
+            this.pictureBox24.TabStop = false;
+            this.pictureBox24.Tag = "platform";
+            // 
+            // pictureBox25
+            // 
+            this.pictureBox25.AccessibleName = "chapter3";
+            this.pictureBox25.BackColor = System.Drawing.Color.Black;
+            this.pictureBox25.Image = global::WindowsForms.Properties.Resources.wallLeft2;
+            this.pictureBox25.Location = new System.Drawing.Point(1639, 368);
+            this.pictureBox25.Name = "pictureBox25";
+            this.pictureBox25.Size = new System.Drawing.Size(52, 180);
+            this.pictureBox25.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox25.TabIndex = 45;
+            this.pictureBox25.TabStop = false;
+            this.pictureBox25.Tag = "platform";
+            // 
+            // pictureBox26
+            // 
+            this.pictureBox26.AccessibleName = "chapter2";
+            this.pictureBox26.BackColor = System.Drawing.Color.Black;
+            this.pictureBox26.Image = global::WindowsForms.Properties.Resources.wallTop4;
+            this.pictureBox26.Location = new System.Drawing.Point(1413, 394);
+            this.pictureBox26.Name = "pictureBox26";
+            this.pictureBox26.Size = new System.Drawing.Size(147, 30);
+            this.pictureBox26.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox26.TabIndex = 41;
+            this.pictureBox26.TabStop = false;
+            this.pictureBox26.Tag = "platform";
+            // 
+            // pictureBox27
+            // 
+            this.pictureBox27.AccessibleName = "chapter4";
+            this.pictureBox27.BackColor = System.Drawing.Color.Black;
+            this.pictureBox27.Image = global::WindowsForms.Properties.Resources.wallTop4;
+            this.pictureBox27.Location = new System.Drawing.Point(2380, 215);
+            this.pictureBox27.Name = "pictureBox27";
+            this.pictureBox27.Size = new System.Drawing.Size(147, 30);
+            this.pictureBox27.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox27.TabIndex = 41;
+            this.pictureBox27.TabStop = false;
+            this.pictureBox27.Tag = "platform";
+            // 
             // EndlessMode
             // 
+            this.AccessibleName = "chapter2";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1026, 466);
+            this.ClientSize = new System.Drawing.Size(3091, 466);
             this.Controls.Add(this.pictureBox16);
             this.Controls.Add(this.pictureBox15);
+            this.Controls.Add(this.pictureBox25);
+            this.Controls.Add(this.pictureBox24);
             this.Controls.Add(this.platformBox14);
+            this.Controls.Add(this.pictureBox23);
             this.Controls.Add(this.platformBox15);
             this.Controls.Add(this.platformBox13);
             this.Controls.Add(this.platformBox6);
+            this.Controls.Add(this.pictureBox18);
+            this.Controls.Add(this.pictureBox26);
+            this.Controls.Add(this.pictureBox27);
+            this.Controls.Add(this.pictureBox21);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.platformBox5);
+            this.Controls.Add(this.pictureBox17);
             this.Controls.Add(this.coinBox4);
             this.Controls.Add(this.platformBox4);
             this.Controls.Add(this.obstacle);
@@ -752,7 +974,10 @@ namespace WindowsForms.Gamecode
             this.Controls.Add(this.pictureBox12);
             this.Controls.Add(this.pictureBox11);
             this.Controls.Add(this.pictureBox9);
+            this.Controls.Add(this.pictureBox22);
             this.Controls.Add(this.pictureBox7);
+            this.Controls.Add(this.pictureBox20);
+            this.Controls.Add(this.pictureBox19);
             this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.pictureBox6);
@@ -762,8 +987,8 @@ namespace WindowsForms.Gamecode
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.startPlatform);
             this.Controls.Add(this.playerBox);
-            this.Controls.Add(this.shopMenu);
             this.Controls.Add(this.escMenu);
+            this.Controls.Add(this.shopMenu);
             this.Controls.Add(this.background1);
             this.Controls.Add(this.background2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -810,6 +1035,18 @@ namespace WindowsForms.Gamecode
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.background2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -867,5 +1104,18 @@ namespace WindowsForms.Gamecode
         internal System.Windows.Forms.PictureBox pictureBox16;
         internal System.Windows.Forms.Timer ScoreTimer;
         private System.Windows.Forms.PictureBox background2;
+        internal System.Windows.Forms.PictureBox pictureBox1;
+        internal System.Windows.Forms.PictureBox pictureBox17;
+        internal System.Windows.Forms.PictureBox pictureBox18;
+        private System.Windows.Forms.PictureBox pictureBox19;
+        private System.Windows.Forms.PictureBox pictureBox20;
+        internal System.Windows.Forms.PictureBox pictureBox21;
+        internal System.Windows.Forms.Timer CoinSpawnTimer;
+        private System.Windows.Forms.PictureBox pictureBox22;
+        internal System.Windows.Forms.PictureBox pictureBox23;
+        internal System.Windows.Forms.PictureBox pictureBox24;
+        internal System.Windows.Forms.PictureBox pictureBox25;
+        internal System.Windows.Forms.PictureBox pictureBox26;
+        internal System.Windows.Forms.PictureBox pictureBox27;
     }
 }
