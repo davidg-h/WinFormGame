@@ -18,7 +18,7 @@ namespace WindowsForms.Gamecode
         public StoryMode3()
         {
             InitializeComponent();
-            initializeParent(this);
+            initializeLevel(this);
 
 
             this.lvl = GameLvl.storyLvl_3;

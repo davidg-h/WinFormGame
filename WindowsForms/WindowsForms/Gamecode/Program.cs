@@ -16,7 +16,7 @@ namespace WindowsForms.Gamecode
         {
             //Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new StoryMode2());
+            Application.Run(new StartScreen());
         }
     }
 }

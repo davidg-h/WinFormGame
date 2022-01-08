@@ -27,7 +27,7 @@ namespace WindowsForms.Gamecode
         internal Image currentImage = null;
         int currentImageIndex = 0;
         int animationUpdate = 0;
-        EnumPlayerAnimation currentAnimation = 0; //TODO: create enum animations
+        EnumPlayerAnimation currentAnimation = EnumPlayerAnimation.idleRight; 
         public bool obstacleRight = false;
         public bool obstacleLeft = false;
         bool attacking = false;
@@ -36,6 +36,7 @@ namespace WindowsForms.Gamecode
         internal override int Dmg { get => dmg; set => dmg = value; }
         public bool armor1, armor2, potion, invulnerable, gamemodeEndless;
         int currentHealth;
+        public Rectangle swordHitRange;
 
         // move pattern for WASD - controls
         internal void Left(bool go) { goLeft = go; facingRight = false; }
@@ -62,7 +63,6 @@ namespace WindowsForms.Gamecode
             armor2 = false;
             potion = false;
             invulnerable = false;
-
         }
 
         internal override int Hp
@@ -92,7 +92,6 @@ namespace WindowsForms.Gamecode
                     armor1 = false;
                     hp += 0;
                 }
-
                 else
                 {
                     invulnerable = true;
@@ -223,22 +222,21 @@ namespace WindowsForms.Gamecode
 
         private void updateAnimation()
         {
-            if (animationUpdate % 3 == 0) //delays animations speed
+            if (animationUpdate % 3 == 0) //slows down animations speed
             {
                 switch (currentAnimation)
                 {
                     case EnumPlayerAnimation.idleRight: 
-                            currentImage = spritesIdleLeft[ (currentImageIndex + 1) % spritesIdleLeft.Length];
+                        currentImage = spritesIdleLeft[ (currentImageIndex + 1) % spritesIdleLeft.Length]; //swows next frame od animation
                         break;
                     case EnumPlayerAnimation.idleLeft:
-                        
                         currentImage = spritesIdleRight[(currentImageIndex + 1) % spritesIdleLeft.Length];
                         break;
                     case EnumPlayerAnimation.moveLeft:
-                            currentImage = spritesWalkLeft[ (currentImageIndex + 1) % spritesIdleLeft.Length];
+                        currentImage = spritesWalkLeft[ (currentImageIndex + 1) % spritesIdleLeft.Length];
                         break;
                     case EnumPlayerAnimation.moveRight:
-                            currentImage = spritesWalkRight[ (currentImageIndex + 1) % spritesIdleLeft.Length];
+                        currentImage = spritesWalkRight[ (currentImageIndex + 1) % spritesIdleLeft.Length];
                         break;
                     case EnumPlayerAnimation.attackLeft:
                         currentImage = spritesAttackLeft;
@@ -256,6 +254,11 @@ namespace WindowsForms.Gamecode
         public override void attack()
         {
             attacking = true;
+            //creates attackingarea on left or right of the Player with Size of Sword
+            if (facingRight)
+                swordHitRange = new Rectangle(new Point(box.Location.X + box.Width, box.Location.Y + box.Height / 2), new Size(new Point(box.Size.Width, box.Size.Height / 2)));
+            else
+                swordHitRange = new Rectangle(new Point(box.Location.X - box.Width, box.Location.Y + box.Height / 2), new Size(new Point(box.Size.Width, box.Size.Height / 2)));
         }
 
         internal void MoveToTopOfPlatform(int topOfPlatform)
