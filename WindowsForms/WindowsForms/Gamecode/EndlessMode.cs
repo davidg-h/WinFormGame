@@ -249,7 +249,6 @@ namespace WindowsForms.Gamecode
         #endregion
 
         #region Key Inputs
-        bool holdDirection = true;
         private void keyIsDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
