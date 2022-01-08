@@ -149,6 +149,7 @@ namespace WindowsForms.Gamecode
         #region EndlessMode Gameloop
         private void endlessTickTimer(object sender, EventArgs e)
         {
+            //this.Location = playerBox.Location;    //adds some fun
             coinHandler.updateSpriteEveryTimeCalled();
             mushroomHandler.updateSpriteEvery3thTimeCalled();
 

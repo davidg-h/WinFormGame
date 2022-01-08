@@ -49,8 +49,7 @@ namespace WindowsForms.Gamecode
         internal SpriteHandler eagleHandler;
         internal EnemySmall[] mushroomArray;
         internal EnemyFly[] flyEnemyArray;
-        internal bool obstacleInWay;
-
+        internal int relativeXPositionOfPlayer = 0;
 
         Bitmap emptyHeart = new Bitmap(Properties.Resources.HeartEmpty);
         Bitmap halfHeart = new Bitmap(Properties.Resources.HeartHalf);
@@ -71,7 +70,6 @@ namespace WindowsForms.Gamecode
 
         protected void initializeLevel(Level levelForm)
         {
-
 
             if (levelForm is StoryMode1)
             {
@@ -324,7 +322,7 @@ namespace WindowsForms.Gamecode
                 case GameLvl.storyLvl_1:
                     StoryMode1 lvl1 = new StoryMode1();
                     lvl1.timer = gameData.timer;
-                    lvl1.player.box.Location = gameData.location;
+                    lvl1.playerBox.Location = gameData.location;
                     lvl1.player.coins = gameData.coins;
                     lvl1.player.Hp = gameData.hp;
                     lvl1.player.Dmg = gameData.dmg;
@@ -332,10 +330,11 @@ namespace WindowsForms.Gamecode
                     lvl1.player.armor2 = gameData.amor2;
                     lvl1.player.invulnerable = gameData.invulnerable;
                     lvl1.player.potion = gameData.potion;
+                    lvl1.MoveGameElements(gameData.relativePlayerCoord);
                     lvl1.Show();
                     break;
                 case GameLvl.storyLvl_2:
-                    StoryMode1 lvl2 = new StoryMode1();
+                    StoryMode2 lvl2 = new StoryMode2();
                     lvl2.timer = gameData.timer;
                     lvl2.player.box.Location = gameData.location;
                     lvl2.player.coins = gameData.coins;
@@ -345,10 +344,12 @@ namespace WindowsForms.Gamecode
                     lvl2.player.armor2 = gameData.amor2;
                     lvl2.player.invulnerable = gameData.invulnerable;
                     lvl2.player.potion = gameData.potion;
+                    lvl2.MoveGameElements(gameData.relativePlayerCoord);
                     lvl2.Show();
+
                     break;
                 case GameLvl.storyLvl_3:
-                    StoryMode1 lvl3 = new StoryMode1();
+                    StoryMode3 lvl3 = new StoryMode3();
                     lvl3.timer = gameData.timer;
                     lvl3.player.box.Location = gameData.location;
                     lvl3.player.coins = gameData.coins;
@@ -358,6 +359,7 @@ namespace WindowsForms.Gamecode
                     lvl3.player.armor2 = gameData.amor2;
                     lvl3.player.invulnerable = gameData.invulnerable;
                     lvl3.player.potion = gameData.potion;
+                    lvl3.MoveGameElements(gameData.relativePlayerCoord);
                     lvl3.Show();
                     break;
             }
@@ -413,7 +415,7 @@ namespace WindowsForms.Gamecode
             ContactWithAnyObject();
 
             //if he falls out of the world
-            fallPutOfTheWorld();
+            //fallPutOfTheWorld();
 
             //debuff check (also possible to change the debuff EFFECT here!)
             playerDebuffs();
@@ -921,6 +923,7 @@ namespace WindowsForms.Gamecode
         #region Moving GameElements
         protected void MoveGameElements(int moveAmount)
         {
+            relativeXPositionOfPlayer += moveAmount;
             foreach (Control x in this.Controls)
             {
                 //moving the elements with the wanted Tags with the movement of the player
@@ -939,13 +942,13 @@ namespace WindowsForms.Gamecode
             {
                 item.startingPoint.X -= moveAmount;
             }
+
         }
         #endregion
 
         #region enemy Death
         protected void EnemyDamage(Control x)
         {
-
             //find the same Enemy in array that is interacted with, then dmg phase and remove if HP of enemy is 0
             //TODO if more enemies added: write another foreach with the enemyType array
             foreach (var enemy in mushroomArray)

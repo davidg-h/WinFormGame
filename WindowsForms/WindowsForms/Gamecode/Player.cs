@@ -71,8 +71,6 @@ namespace WindowsForms.Gamecode
             set
              {
                 currentHealth = Hp;
-
-
                 if (value > 100)
                     hp = 100;
                 else if (invulnerable)
