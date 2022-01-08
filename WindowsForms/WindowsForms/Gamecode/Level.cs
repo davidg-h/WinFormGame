@@ -13,25 +13,16 @@ namespace WindowsForms.Gamecode
     public class Level : Form
     {
         #region Game variables
-        protected int min = 5;
-        protected int sec;
         public GameLvl lvl;
-        internal List<RangeEnemy> rangeEnemyList;
-        internal Player player;
+
         protected bool gameOver;
-        protected DateTime lastFrameTime = DateTime.Now; // for fps calculation
-        internal SpriteHandler coinHandler;
-        internal SpriteHandler mushroomHandler;
-        internal SpriteHandler eagleHandler;
-        internal EnemySmall[] mushroomArray;
-        internal EnemyFly[] flyEnemyArray;
         protected bool debuff;
         protected int debuffCounter = 0;
         protected int invulnerableCounter = 0;
-        internal bool obstacleInWay;
+        protected DateTime lastFrameTime = DateTime.Now; // for fps calculation
         protected PictureBox armorHeart1 = new PictureBox();
         protected PictureBox armorHeart2 = new PictureBox();
-
+        protected Choices buyChoice = Choices.None;
 
         protected Panel pf;
         internal Timer MainGameTick;
@@ -49,8 +40,17 @@ namespace WindowsForms.Gamecode
         internal Timer CountdownTimer;
         internal Label countdownLabel;
         internal Label coinCounter;
+        //timer: min and sec
+        internal (int min, int sec) timer = (5, 0);
+        internal List<RangeEnemy> rangeEnemyList;
+        internal Player player;
+        internal SpriteHandler coinHandler;
+        internal SpriteHandler mushroomHandler;
+        internal SpriteHandler eagleHandler;
+        internal EnemySmall[] mushroomArray;
+        internal EnemyFly[] flyEnemyArray;
+        internal bool obstacleInWay;
 
-        protected Choices buyChoice = Choices.None;
 
         Bitmap emptyHeart = new Bitmap(Properties.Resources.HeartEmpty);
         Bitmap halfHeart = new Bitmap(Properties.Resources.HeartHalf);
@@ -197,8 +197,6 @@ namespace WindowsForms.Gamecode
         }
         protected void fillEnemyArrays()
         {
-
-
             int mushroomEnemyCounter = 0;
             int eagleEnemyCounter = 0;
 
@@ -262,11 +260,6 @@ namespace WindowsForms.Gamecode
             }
         }
 
-        internal void menuEastereggClick(object sender, EventArgs e)
-        {
-            //TODO add a textBox for commands for easteregg
-        }
-
         internal void resumeClick(object sender, EventArgs e)
         {
             MainGameTick.Start();
@@ -303,57 +296,77 @@ namespace WindowsForms.Gamecode
             switch (gameData.lvl)
             {
                 case GameLvl.storyLvl_1:
-                    playerBox.Location = gameData.location;
-                    // player.score = gameData.score; for endless mode
-                    player.coins = gameData.coins;
-                    player.Hp = gameData.hp;
-                    player.Dmg = gameData.dmg;
-                    MainGameTick.Start();
-                    CountdownTimer.Start();
-                    escMenu.Visible = false;
+                    StoryMode1 lvl1 = new StoryMode1();
+                    lvl1.timer = gameData.timer;
+                    lvl1.player.box.Location = gameData.location;
+                    lvl1.player.coins = gameData.coins;
+                    lvl1.player.Hp = gameData.hp;
+                    lvl1.player.Dmg = gameData.dmg;
+                    lvl1.player.armor1 = gameData.amor1;
+                    lvl1.player.armor2 = gameData.amor2;
+                    lvl1.player.invulnerable = gameData.invulnerable;
+                    lvl1.player.potion = gameData.potion;
+                    lvl1.Show();
                     break;
                 case GameLvl.storyLvl_2:
-                    //TODO
-                    //zb: 
-                    // StoryMode2 mode2 = new StoryMode2();
-                    // mode2.playerBox.Location = gameData.playerLocation;
-                    // ...
-                    // mode2.Show();
-                    // this.Visible = false;
+                    StoryMode1 lvl2 = new StoryMode1();
+                    lvl2.timer = gameData.timer;
+                    lvl2.player.box.Location = gameData.location;
+                    lvl2.player.coins = gameData.coins;
+                    lvl2.player.Hp = gameData.hp;
+                    lvl2.player.Dmg = gameData.dmg;
+                    lvl2.player.armor1 = gameData.amor1;
+                    lvl2.player.armor2 = gameData.amor2;
+                    lvl2.player.invulnerable = gameData.invulnerable;
+                    lvl2.player.potion = gameData.potion;
+                    lvl2.Show();
                     break;
                 case GameLvl.storyLvl_3:
-                    //TODO same as above
+                    StoryMode1 lvl3 = new StoryMode1();
+                    lvl3.timer = gameData.timer;
+                    lvl3.player.box.Location = gameData.location;
+                    lvl3.player.coins = gameData.coins;
+                    lvl3.player.Hp = gameData.hp;
+                    lvl3.player.Dmg = gameData.dmg;
+                    lvl3.player.armor1 = gameData.amor1;
+                    lvl3.player.armor2 = gameData.amor2;
+                    lvl3.player.invulnerable = gameData.invulnerable;
+                    lvl3.player.potion = gameData.potion;
+                    lvl3.Show();
                     break;
             }
+            this.Visible = false;
         }
         #endregion
 
         #region Countdown Timer
+        // initialize timer
         protected void startTimer(object sender, EventArgs e)
         {
-            countdownLabel.Text = $"{min}:00";
+            countdownLabel.Text = $"{timer.min}:00";
             CountdownTimer.Start();
         }
 
+        // logic for timer
         internal void timerTick(object sender, EventArgs e)
         {
-            if (min == 5)
+            if (timer.min == 5)
             {
-                min -= 1;
-                sec = 59;
+                timer.min -= 1;
+                timer.sec = 59;
             }
             else
             {
-                sec -= 1;
-                if (sec == 0 && !gameOver)
+                timer.sec -= 1;
+                if (timer.sec == 0 && !gameOver)
                 {
-                    if (min == 0) { gameOver = true; CountdownTimer.Stop(); }
-                    else { min -= 1; sec = 59; }
+                    if (timer.min == 0) { gameOver = true; CountdownTimer.Stop(); }
+                    else { timer.min -= 1; timer.sec = 59; }
                 }
             }
 
-            if (sec < 10) countdownLabel.Text = $"{min}:0{sec}";
-            else countdownLabel.Text = $"{min}:{sec}";
+            if (timer.sec < 10) countdownLabel.Text = $"{timer.min}:0{timer.sec}";
+            else countdownLabel.Text = $"{timer.min}:{timer.sec}";
         }
         #endregion
 
@@ -375,7 +388,7 @@ namespace WindowsForms.Gamecode
 
             ContactWithAnyObject();
 
-            if (player.box.Location.Y > 550)
+            if (player.box.Location.Y > 550 || gameOver)
             {
                 MainGameTick.Stop();
                 gameOver = true;

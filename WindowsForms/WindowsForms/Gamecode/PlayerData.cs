@@ -15,20 +15,26 @@ namespace WindowsForms.Gamecode
     internal class PlayerData
     {
         internal GameLvl lvl;
-        internal int score;
-        internal int coins;
         internal int hp;
+        internal int coins;
         internal int dmg;
+        internal (int, int) timer;
+        internal bool amor1, amor2, potion, invulnerable;
+
         internal Point location;
 
-        internal PlayerData(GameLvl lvl, Point location, Player player)
+        internal PlayerData(GameLvl lvl, Point location, Player player, (int, int) timer)
         {
             this.lvl = lvl;
+            this.timer = timer;
             this.location = location;
-            score = player.score;
             coins = player.coins;
             hp = player.Hp;
             dmg = player.Dmg;
+            amor1 = player.armor1;
+            amor2 = player.armor2;
+            potion = player.potion;
+            invulnerable = player.invulnerable;
         }
     }
 }
