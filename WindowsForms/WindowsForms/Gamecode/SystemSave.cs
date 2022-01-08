@@ -15,8 +15,6 @@ namespace WindowsForms.Gamecode
     /// </summary>
     public static class SystemSave
     {
-        //TODO zusammenfassen der safe/load funktionalität
-
         #region save/load game StoryMode
         internal static void saveGame(GameLvl lvl, Level window)
         {
@@ -26,15 +24,15 @@ namespace WindowsForms.Gamecode
             {
                 case GameLvl.storyLvl_1:
                     StoryMode1 m1 = window as StoryMode1;
-                    data = new PlayerData(lvl, m1.playerBox.Location, m1.player);
+                    data = new PlayerData(lvl, m1.playerBox.Location, m1.player, m1.timer);
                     break;
                 case GameLvl.storyLvl_2:
                     StoryMode2 m2 = window as StoryMode2;
-                    data = new PlayerData(lvl, m2.playerBox.Location, m2.player);
+                    data = new PlayerData(lvl, m2.playerBox.Location, m2.player, m2.timer);
                     break;
                 case GameLvl.storyLvl_3:
                     StoryMode3 m3 = window as StoryMode3;
-                    data = new PlayerData(lvl, m3.playerBox.Location, m3.player);
+                    data = new PlayerData(lvl, m3.playerBox.Location, m3.player, m3.timer);
                     break;
             }
 
