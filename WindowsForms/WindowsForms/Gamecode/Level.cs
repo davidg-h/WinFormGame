@@ -20,13 +20,13 @@ namespace WindowsForms.Gamecode
         internal Player player;
         protected bool gameOver;
         protected DateTime lastFrameTime = DateTime.Now; // for fps calculation
-        internal  SpriteHandler coinHandler;
+        internal SpriteHandler coinHandler;
         internal SpriteHandler mushroomHandler;
         internal SpriteHandler eagleHandler;
         internal EnemySmall[] mushroomArray;
-        internal EnemyFly[] eagleArray;
+        internal EnemyFly[] flyEnemyArray;
         protected bool debuff;
-        protected int debuffCounter = 0; 
+        protected int debuffCounter = 0;
         protected int invulnerableCounter = 0;
         internal bool obstacleInWay;
         protected PictureBox armorHeart1 = new PictureBox();
@@ -49,7 +49,7 @@ namespace WindowsForms.Gamecode
         internal Timer CountdownTimer;
         internal Label countdownLabel;
         internal Label coinCounter;
-        
+
         protected Choices buyChoice = Choices.None;
 
 
@@ -63,6 +63,8 @@ namespace WindowsForms.Gamecode
 
         protected void initializeLevel(Level levelForm)
         {
+
+
             if (levelForm is StoryMode1)
             {
                 StoryMode1 form = (StoryMode1)levelForm;
@@ -82,7 +84,7 @@ namespace WindowsForms.Gamecode
                 countdownLabel = form.countdownLabel;
                 coinCounter = form.coinCounter;
             }
-            else if(levelForm is StoryMode2)
+            else if (levelForm is StoryMode2)
             {
                 StoryMode2 form = (StoryMode2)levelForm;
                 MainGameTick = form.MainGameTick;
@@ -138,13 +140,15 @@ namespace WindowsForms.Gamecode
                 CountdownTimer = form.CountdownTimer;
                 countdownLabel = form.countdownLabel;
                 coinCounter = form.coinCounter;
+
+                player = new Player(playerBox, 100);    
+                player.gamemodeEndless = true;
             }
             else
             {
                 CreateEnemysLIst(); //needs fix
+                player = new Player(playerBox, 100);
             }
-
-            player = new Player(playerBox, 100);
             //creates the handler for animations (coins, enemys...)
             createAnimationHandlers();
             //Creates a Panel where every item is redrawn
@@ -201,9 +205,9 @@ namespace WindowsForms.Gamecode
                     eagleEnemyCounter++;
                 }
             }
-            //put all mushroom enemies in array
+            //put all enemies in array for later uses
             mushroomArray = new EnemySmall[mushroomEnemyCounter];
-            eagleArray = new EnemyFly[eagleEnemyCounter];
+            flyEnemyArray = new EnemyFly[eagleEnemyCounter];
             mushroomEnemyCounter = 0;
             eagleEnemyCounter = 0;
             foreach (Control x in this.Controls)
@@ -215,7 +219,7 @@ namespace WindowsForms.Gamecode
                 }
                 if ((string)x.Tag == "eagleEnemy")
                 {
-                    eagleArray[eagleEnemyCounter] = new EnemyFly((PictureBox)x);
+                    flyEnemyArray[eagleEnemyCounter] = new EnemyFly((PictureBox)x);
                     eagleEnemyCounter++;
                 }
             }
@@ -347,29 +351,57 @@ namespace WindowsForms.Gamecode
         #region GameLoop StoryMode
         internal void MainGameTick_Tick(object sender, EventArgs e)
         {
-
             coinHandler.updateSpriteEveryTimeCalled();
             mushroomHandler.updateSpriteEvery3thTimeCalled();
             eagleHandler.updateSpriteEvery3thTimeCalled();
 
             if (coinCounter != null)
                 coinCounter.Text = $": {player.coins}";
-            if(fpsLabel != null)
+            if (fpsLabel != null)
                 fpsLabel.Text = "fps: " + getFramesPerSecond();
 
             player.move(this);
-            player.IsOnGround = false; //gets updated to correct value below
 
             ContactWithAnyObject();
 
-            if (player.box.Location.Y > 550)
-            {
-                MainGameTick.Stop();
-                gameOver = true;
-                GameOver();
-            }
+            //if he falls out of the world
+            fallPutOfTheWorld();
 
             //debuff check (also possible to change the debuff EFFECT here!)
+            playerDebuffs();
+
+            invulnerableFrames();
+
+            //HP HUD
+            Healthbar();
+            //make the enemies move
+            moveEnemys();
+            if(player.goLeft)
+                MoveGameElements(player.characterSpeed);
+            if (player.goRight)
+                MoveGameElements(-player.characterSpeed);
+            ShootWhenPlayerNear();
+            //Move all GameElements
+            background_move();
+
+            Draw();
+        }
+
+        protected void invulnerableFrames()
+        {
+            if (player.invulnerable)
+            {
+                invulnerableCounter++;
+            }
+            if (invulnerableCounter > 10)
+            {
+                invulnerableCounter = 0;
+                player.invulnerable = false;
+            }
+        }
+
+        private void playerDebuffs()
+        {
             if (debuff && debuffCounter <= 60)
             {
                 player.Hp -= 5;
@@ -380,49 +412,47 @@ namespace WindowsForms.Gamecode
                     debuff = false;
                 }
             }
+        }
 
-            if (player.invulnerable)
+        protected void fallPutOfTheWorld()
+        {
+            if (player.box.Location.Y > 1550)
             {
-                invulnerableCounter++;
+                GameOver();
             }
-            if (invulnerableCounter > 10)
-            {
-                invulnerableCounter = 0;
-                player.invulnerable = false;
-            }
+        }
 
-            if (obstacleInWay)
-                player.goRight = false;
-
-            //HP HUD
-            Healthbar();
-
-            //make the enemies move
+        private void moveEnemys()
+        {
+            InRangeOfEnemy(flyEnemyArray);
             foreach (EnemySmall mushroom in mushroomArray)
             {
                 mushroom.move(this);
             }
-            foreach (EnemyFly eagle in eagleArray)
+            foreach (EnemyFly eagle in flyEnemyArray)
             {
+                //chasing the player around as long as he is in range (see InRangeOfEnemy(flyEnemyArray);)
+                if (eagle.chase)
+                {
+                    if (eagle.box.Left > playerBox.Left + 2)
+                        eagle.box.Left -= 4;
+                    else if (eagle.box.Left < playerBox.Left - 2)
+                        eagle.box.Left += 4;
+                    if (eagle.box.Top > playerBox.Top)
+                        eagle.box.Top -= 4;
+                    else if (eagle.box.Top < playerBox.Top - 20)
+                        eagle.box.Top += 4;
+                }
+
+                //move in a normal pattern without attacking the player
                 eagle.move(this);
             }
-
-            if (player.goRight == true)
-            {
-                MoveGameElements("back");
-            }
-            if (player.goLeft == true)
-            {
-                MoveGameElements("forward");
-            }
-            ShootWhenPlayerNear();
-            //Move all GameElements
-            background_move();
-
-            Draw();
         }
+
         protected void ContactWithAnyObject()
         {
+            //get updated to correct value below
+            player.IsOnGround = false; 
             player.obstacleLeft = false;
             player.obstacleRight = false;
             foreach (Control x in this.Controls)
@@ -430,18 +460,11 @@ namespace WindowsForms.Gamecode
                 //TODO spawn of enemys (use the enemy classes)
                 if (x is PictureBox)
                 {
-                    if ((string)x.Tag == "obstacleTree")
+                    if (player.box.Bounds.IntersectsWith(x.Bounds))
                     {
-                        if (player.box.Bounds.IntersectsWith(x.Bounds))
+                        if ((string)x.Tag == "obstacleTree")
                         {
-                            if (player.isAttacking)
-                            {
-                                EnemyDamage(x);
-                            }
-                            else
-                            {
-                                player.Hp -= mushroomArray[0].Dmg;
-                            }
+                            player.Hp -= mushroomArray[0].Dmg;
                             if ((((PictureBox)x).Location.X - player.box.Location.X) > 0)
                             {
                                 player.obstacleRight = true;
@@ -452,15 +475,9 @@ namespace WindowsForms.Gamecode
                             }
 
                         }
-                    }
-                    if ((string)x.Tag == "eagleEnemy")
-                    {
-                        if (((PictureBox)x).Bounds.IntersectsWith(player.box.Bounds))
+                        if ((string)x.Tag == "eagleEnemy")
                         {
-                            if (player.isAttacking)
-                            {
-                                EnemyDamage(x);
-                            }
+                           
                             if ((((PictureBox)x).Location.X - player.box.Location.X) > 0)
                             {
                                 player.obstacleRight = true;
@@ -469,19 +486,15 @@ namespace WindowsForms.Gamecode
                             {
                                 player.obstacleLeft = true;
                             }
-                            player.Hp -= eagleArray[0].Dmg;
+                            player.Hp -= flyEnemyArray[0].Dmg;
                         }
-                    }
-                    if ((string)x.Tag == "shot")
-                    {
-                        if (((PictureBox)x).Bounds.IntersectsWith(player.box.Bounds))
+
+                        if ((string)x.Tag == "shot")
                         {
                             player.Hp -= RangeEnemyShot.ShotDmg;
                         }
-                    }
-                    if ((string)x.Tag == "platform")
-                    {
-                        if (player.box.Bounds.IntersectsWith(x.Bounds))
+
+                        if ((string)x.Tag == "platform")
                         {
                             if (player.box.Top < x.Top)
                             {
@@ -501,19 +514,13 @@ namespace WindowsForms.Gamecode
                                 }
                             }
                         }
-                    }
-
-                    if ((string)x.Tag == "coins")
-                    {
-                        if (player.box.Bounds.IntersectsWith(x.Bounds))
+                        if ((string)x.Tag == "coins")
                         {
                             x.Tag = "coins.collected"; //coins are not drawn anymore
                             player.coins += 1;
                         }
-                    }
-                    if ((string)x.Tag == "rangeEnemy")
-                    {
-                        if (((PictureBox)x).Bounds.IntersectsWith(player.box.Bounds))
+
+                        if ((string)x.Tag == "rangeEnemy")
                         {
                             RangeEnemy foundRangeEnemy = rangeEnemyList.Find(rangeEnemy => rangeEnemy.box.Name == (string)x.Name);
                             player.Hp -= foundRangeEnemy.Dmg;
@@ -530,34 +537,21 @@ namespace WindowsForms.Gamecode
                                 }
                             }
                         }
-                    }
-
-                    if ((string)x.Tag == "thorns")
-                    {
-                        if (((PictureBox)x).Bounds.IntersectsWith(player.box.Bounds))
+                        if ((string)x.Tag == "thorns")
                         {
                             if (player.isAttacking)
                             {
                                 obstacle.Image = Properties.Resources.PoisountPlant_destroyed;
                                 x.Tag = "destroyedThorns";
-                                obstacleInWay = false;
                             }
                             else
                             {
                                 debuff = true;
                                 debuffCounter = 0;
-                                obstacleInWay = true;
                             }
                         }
-                        else
-                            obstacleInWay = false;
-                    }
-
-                    if ((string)x.Tag == "merchant")
-                    {
-                        if (((PictureBox)x).Bounds.IntersectsWith(player.box.Bounds))
+                        if ((string)x.Tag == "merchant")
                         {
-
                             //depends on buy choice: consumable, not healable hearts or permanent damage upgrade
                             if (buyChoice == Choices.Potion && player.coins >= 10)
                             {
@@ -571,6 +565,7 @@ namespace WindowsForms.Gamecode
                                 player.coins -= 20;
                                 player.armor1 = true;
                                 player.armor2 = true;
+                                // add the picture of armor hearts onto screen
                                 armorHeart1.SizeMode = PictureBoxSizeMode.AutoSize;
                                 armorHeart2.SizeMode = PictureBoxSizeMode.AutoSize;
                                 armorHeart1.Location = new Point(210, 5);
@@ -580,21 +575,24 @@ namespace WindowsForms.Gamecode
                                 buyChoice = Choices.None;
                                 this.Controls.Add(armorHeart1);
                                 this.Controls.Add(armorHeart2);
+
                             }
-                            if (buyChoice == Choices.Attack && player.coins >= 20 )
+                            if (buyChoice == Choices.Attack && player.coins >= 20)
                             {
                                 player.coins -= 20;
                                 player.Dmg += 1;
                                 buyChoice = Choices.None;
                             }
                         }
-                    }
-                    if ((string)x.Tag == "finish")
-                    {
-                        if (((PictureBox)x).Bounds.IntersectsWith(player.box.Bounds))
+
+                        if ((string)x.Tag == "finish")
                         {
                             goToNextLevel();
                         }
+                    }
+                    if (player.isAttacking && player.swordHitRange.IntersectsWith(x.Bounds))
+                    {
+                        EnemyDamage(x);
                     }
                 }
             }
@@ -616,8 +614,10 @@ namespace WindowsForms.Gamecode
             this.Hide();
         }
 
-        internal void GameOver()
+        //is overwritten in Endlessmode
+        internal virtual void GameOver()
         {
+            MainGameTick.Stop();
             gameOver = false;
             GameOverScreen gameOverScreen = new GameOverScreen();
             gameOverScreen.Show();
@@ -667,7 +667,7 @@ namespace WindowsForms.Gamecode
                         player.Hp += 40;
                     }
                     break;
-                    //key inputs for buy choice with the merchant
+                //key inputs for buy choice with the merchant
                 case Keys.Z:
                     buyChoice = Choices.Potion;
                     break;
@@ -768,9 +768,10 @@ namespace WindowsForms.Gamecode
             Bitmap bufl = new Bitmap(pf.Width, pf.Height);
             using (Graphics g = Graphics.FromImage(bufl))
             {
-                //g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
+                g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
 
                 g.DrawImage(backgroundlayer, new Rectangle(new Point(0, 0), this.Size), new Rectangle(new Point(-backgroundCoordX, 0), new Size(backgroundlayer.Width, backgroundlayer.Height)), GraphicsUnit.Pixel);
+                g.DrawImage(backgroundlayer, new Rectangle(new Point(0, 0), this.Size), new Rectangle(new Point(-backgroundCoordX - backgroundlayer.Width + 2, 0), new Size(backgroundlayer.Width, backgroundlayer.Height)), GraphicsUnit.Pixel);
 
                 foreach (Control x in this.Controls)
                 {
@@ -796,8 +797,6 @@ namespace WindowsForms.Gamecode
                         }
                         else if (tag == "rangeEnemy")
                         {
-                            RangeEnemy rangeEnemy = rangeEnemyList.Find(zm => zm.box.Name == (string)x.Name);
-                            // rangeEnemy.box.Left -= rangeEnemy.characterSpeed;  -> moves enemy towards player
                             Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
                             g.DrawImage(((PictureBox)x).Image, destRect, srcRect, GraphicsUnit.Pixel);
@@ -832,7 +831,6 @@ namespace WindowsForms.Gamecode
                             Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
                             g.DrawImage(((PictureBox)x).Image, destRect, srcRect, GraphicsUnit.Pixel);
-                            //g.DrawImage(((PictureBox)x).Image, x.Location);
                         }
                     }
                     if (x is Label)
@@ -849,9 +847,6 @@ namespace WindowsForms.Gamecode
 
         Image backgroundlayer = Properties.Resources.Background;
         int backgroundCoordX = 0, backgroundCoordX2 = 1600;
-
-
-
 
         protected void background_move()
         {
@@ -876,35 +871,25 @@ namespace WindowsForms.Gamecode
         #endregion
 
         #region Moving GameElements
-        protected void MoveGameElements(string direction)
+        protected void MoveGameElements(int moveAmount)
         {
             foreach (Control x in this.Controls)
             {
                 //moving the elements with the wanted Tags with the movement of the player
                 //new object that need to be moved: enter "Tag" in this if statement
-                if (direction == "back" && !player.obstacleRight)
+                if (x is PictureBox)
                 {
-                    if (x is PictureBox)
+                    string tag = (string)x.Tag;
+                    if (tag == "platform" || tag == "obstacleTree" || tag == "coins" || tag == "finish" || tag == "......" || tag == "thorns" || tag == "eagleEnemy" || tag == "rangeEnemy" || tag == "shopHUD" || tag == "merchant" || tag == "destroyedThorns")
                     {
-                        string tag = (string)x.Tag;
-                        if (tag == "platform" || tag == "obstacleTree" || tag == "coins" || tag == "finish" || tag == "......" || tag == "thorns" || tag == "eagleEnemy" || tag == "rangeEnemy" || tag == "shopHUD" || tag == "merchant" || tag == "destroyedThorns")
-                        {
-                            x.Left -= player.characterSpeed;
-                        }
-                    }
-
-                }
-                if (direction == "forward" && !player.obstacleLeft)
-                {
-                    if (x is PictureBox)
-                    {
-                        string tag = (string)x.Tag;
-                        if (tag == "platform" || tag == "obstacleTree" || tag == "coins" || tag == "finish" || tag == "......" || tag == "thorns" || tag == "eagleEnemy" || tag == "rangeEnemy" || tag == "shopHUD" || tag == "merchant" || tag == "destroyedThorns")
-                        {
-                            x.Left += player.characterSpeed;
-                        }
+                        x.Left += moveAmount;
                     }
                 }
+            }
+            //the starting point of the flying enemy has to be scrolled too!
+            foreach (var item in flyEnemyArray)
+            {
+                item.startingPoint.X -= moveAmount;
             }
         }
         #endregion
@@ -918,24 +903,54 @@ namespace WindowsForms.Gamecode
             foreach (var enemy in mushroomArray)
             {
                 if (enemy.box.Name == x.Name)
-                    enemy.Hp -= player.Dmg;
-                if (enemy.Hp <= 0)
                 {
-                    debuff = false;
-                    this.Controls.Remove(x);
+                    enemy.Hp -= player.Dmg;
+                    if (enemy.Hp <= 0)
+                    {
+                        debuff = false;
+                        this.Controls.Remove(x);
+                    }
                 }
             }
-            foreach (var enemy in eagleArray)
+            foreach (var enemy in flyEnemyArray)
             {
                 if (enemy.box.Name == x.Name)
+                {
                     enemy.Hp -= player.Dmg;
-                if (enemy.Hp <= 0)
-                    this.Controls.Remove(x);
+                    if (enemy.Hp <= 0)
+                        this.Controls.Remove(x);
+                }
             }
         }
 
 
 
+        #endregion
+
+        #region FlyEnemy 
+
+        //method to test if the player is in the Fly enemies range
+        void InRangeOfEnemy(EnemyFly[] flyEnemy)
+        {
+            foreach (EnemyFly enemy in flyEnemy)
+            {
+                if (enemy.onStart)
+                {
+                    enemy.startingPoint.X = enemy.box.Location.X;
+                    enemy.startingPoint.Y = enemy.box.Location.Y;
+                }
+
+                //aggro range can be changed here                  vvv                                                   vvv
+                if (enemy.box.Location.X <= playerBox.Location.X + 200 && enemy.box.Location.X >= playerBox.Location.X - 150)
+                {
+                    enemy.chase = true;
+                }
+                else
+                {
+                    enemy.chase = false;
+                }
+            }
+        }
         #endregion
 
         #region Healthbar
@@ -1037,13 +1052,11 @@ namespace WindowsForms.Gamecode
                 ChangeHeartContainer(heart3, "empty");
                 ChangeHeartContainer(heart2, "empty");
                 ChangeHeartContainer(heart1, "empty");
-                MainGameTick.Stop();
-                gameOver = true;
                 GameOver();
             }
         }
 
-
+        //method for changing the Image in the specific PictureBox --> empty,half and full
         protected void ChangeHeartContainer(PictureBox container, string heart = "full")
         {
             if (heart == "empty")

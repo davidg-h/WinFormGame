@@ -118,6 +118,7 @@
     <Compile Include="Gamecode\StoryMode3.Designer.cs">
       <DependentUpon>StoryMode3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gamecode\Sword.cs" />
     <Compile Include="Gamecode\SystemSave.cs" />
     <Compile Include="Gamecode\WinnerScreen.cs">
       <SubType>Form</SubType>
