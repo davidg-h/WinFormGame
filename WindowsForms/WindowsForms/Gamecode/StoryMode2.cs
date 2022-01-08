@@ -25,7 +25,6 @@ namespace WindowsForms.Gamecode
             this.FormClosed += StartScreen.closeGame;
             this.KeyDown += formKeyDown;
             this.Load += startTimer;
-           
         }
 
       
@@ -46,7 +45,7 @@ namespace WindowsForms.Gamecode
 
         private void CountdownTimer_Tick(object sender, EventArgs e)
         {
-            startTimer(sender, e);
+            timerTick(sender, e);
         }
 
         private void StoryMode2_KeyDown(object sender, KeyEventArgs e)

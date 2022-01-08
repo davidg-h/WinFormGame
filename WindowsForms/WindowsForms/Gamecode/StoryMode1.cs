@@ -34,7 +34,7 @@ namespace WindowsForms.Gamecode
 
         private void CountdownTimer_Tick(object sender, EventArgs e)
         {
-            startTimer(sender, e);
+            timerTick(sender, e);
         }
 
         private void StoryMode1_KeyDown(object sender, KeyEventArgs e)
