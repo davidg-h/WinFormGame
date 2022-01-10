@@ -24,15 +24,15 @@ namespace WindowsForms.Gamecode
             {
                 case GameLvl.storyLvl_1:
                     StoryMode1 m1 = window as StoryMode1;
-                    data = new PlayerData(lvl, m1.playerBox.Location, m1.player, m1.timer);
+                    data = new PlayerData(lvl, m1.playerBox.Location, m1.player, m1.timer, m1.relativeXPositionOfPlayer);
                     break;
                 case GameLvl.storyLvl_2:
                     StoryMode2 m2 = window as StoryMode2;
-                    data = new PlayerData(lvl, m2.playerBox.Location, m2.player, m2.timer);
+                    data = new PlayerData(lvl, m2.playerBox.Location, m2.player, m2.timer, m2.relativeXPositionOfPlayer);
                     break;
                 case GameLvl.storyLvl_3:
                     StoryMode3 m3 = window as StoryMode3;
-                    data = new PlayerData(lvl, m3.playerBox.Location, m3.player, m3.timer);
+                    data = new PlayerData(lvl, m3.playerBox.Location, m3.player, m3.timer, m3.relativeXPositionOfPlayer);
                     break;
             }
 

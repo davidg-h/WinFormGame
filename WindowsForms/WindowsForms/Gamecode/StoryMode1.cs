@@ -18,7 +18,7 @@ namespace WindowsForms.Gamecode
         public StoryMode1()
         {
             InitializeComponent();
-            initializeParent(this);
+            initializeLevel(this);
 
             this.lvl = GameLvl.storyLvl_1;
             this.FormClosed += StartScreen.closeGame;
@@ -30,7 +30,6 @@ namespace WindowsForms.Gamecode
         {
             MainGameTick_Tick(sender, e);
         }
-
 
         private void CountdownTimer_Tick(object sender, EventArgs e)
         {
@@ -66,6 +65,5 @@ namespace WindowsForms.Gamecode
         {
             loadGameClick(sender, e);
         }
-
     }
 }

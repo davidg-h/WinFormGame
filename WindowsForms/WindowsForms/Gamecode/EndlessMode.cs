@@ -8,57 +8,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using System.Windows;
 
 namespace WindowsForms.Gamecode
 {
-    public partial class EndlessMode : Form
+    public partial class EndlessMode : Level
     {
         #region Game(EndlessMode) variables
         Random rand = new Random();
-        bool gameOver = false;
-        int obstacleSpeed = 10;
+        int obstacleSpeed = 15;
         int inventoryChestCoins;
-        internal Player player;
-        protected int invulnerableCounter = 0;
         List<List<PictureBox>> chapterList;
         List<PictureBox> pictureBoxList;
 
         PictureBox backgroundBox;
-        SpriteHandler coinHandler;
-        SpriteHandler mushroomHandler;
         #endregion
 
         public EndlessMode()
         {
             InitializeComponent();
+            initializeLevel(this);
             pictureBoxList = getPictureBoxes();
             chapterList = chapters();
-            player = new Player(playerBox, 100);
+
             this.FormClosed += StartScreen.closeGame;
             this.KeyDown += formKeyDown;
             this.Load += loadInventory;
             this.FormClosing += saveInventory;
-            player.gamemodeEndless = true;
-            coinHandler = new SpriteHandler(Properties.Resources.coin);
-            mushroomHandler = new SpriteHandler(Properties.Resources.shroomIdle);
             backgroundBox = (PictureBox)Controls.Find("background1", false)[0];
-            //Creates a Panel where every item is redrawn
-            pf.Location = new Point(0, 0);
-            pf.Size = this.Size;
-            pf.SendToBack();
-            this.BackgroundImage = null;
 
-            //makes 'normal' screen invisible 
-            foreach (Control x in this.Controls)
-            {
-                if (x is PictureBox)
-                {
-                    x.Visible = false;
-                }
-            }
-
-            GameReset();
         }
 
         #region Esc Menu (with safe/load)
@@ -172,6 +149,7 @@ namespace WindowsForms.Gamecode
         #region EndlessMode Gameloop
         private void endlessTickTimer(object sender, EventArgs e)
         {
+            //this.Location = playerBox.Location;    //adds some fun
             coinHandler.updateSpriteEveryTimeCalled();
             mushroomHandler.updateSpriteEvery3thTimeCalled();
 
@@ -183,110 +161,16 @@ namespace WindowsForms.Gamecode
             player.moveEndlessmode(this);
             player.isOnGround = false;
 
+            fallPutOfTheWorld();
+
             // "invinceble frames" as long as invulnerable is on true: no dmg can be taken (as to see in player.Hp property)
-            if (player.invulnerable)
-            {
-                invulnerableCounter++;
-            }
-            if (invulnerableCounter > 20)
-            {
-                invulnerableCounter = 0;
-                player.invulnerable = false;
-            }
+            invulnerableFrames();
+
             //keeps health status up to date 
             Healthbar();
-
-            //if statement for the game to end: hp=0 or falling into pit
-            if (player.Hp < 1 /*|| player.box.Location.Y > 550*/)
-            {
-                MainGameTick.Stop();
-                ScoreTimer.Stop();
-                CoinSpawnTimer.Stop();
-                ChapterSpawnTimer.Stop();
-                gameOver = true;
-
-                DialogResult dialogresult = MessageBox.Show("You Died!!!" + Environment.NewLine + "Press Yes to play again", "", MessageBoxButtons.YesNo);
-
-                if (dialogresult == DialogResult.Yes)
-                {
-                    DeathGameReset(player.coins);
-                }
-                else if (dialogresult == DialogResult.No)
-                {
-                    // player shall enter his name for highscore entry
-                    NameInput nameInput = new NameInput();
-                    dialogresult = nameInput.ShowDialog();
-
-                    if (dialogresult == DialogResult.OK)
-                    {
-                        string name = nameInput.playerName.Text;
-                        // processes the name and score and displays them
-                        HighscoreList highscoreList = new HighscoreList(name, scoreLabel.Text);
-                        highscoreList.Show();
-                        Visible = false;
-                    }
-                    else { Application.Exit(); }
-                }
-            }
-
-            foreach (Control x in this.Controls)
-            {
-                if (x is PictureBox)
-                {
-                    if ((string)x.Tag == "obstacleTree")
-                    {
-                        EnemySmall small = new EnemySmall((PictureBox)x);
-
-                        if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
-                        {
-                            player.Hp -= small.Dmg;
-                        }
-
-                        //TODO spawn other types of enemys (use the enemy classes)
-                        small.characterSpeed = obstacleSpeed;
-                        // moves the enemy to the player
-                        small.box.Left -= small.characterSpeed;
-
-                    }
-                    if ((string)x.Tag == "eagleEnemy")
-                    {
-                        EnemyFly fly = new EnemyFly((PictureBox)x);
-
-                        if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
-                        {
-                            player.Hp -= fly.Dmg;
-                        }
-
-                        //TODO spawn other types of enemys (use the enemy classes)
-                        fly.characterSpeed = obstacleSpeed;
-                        // moves the enemy to the player
-                        fly.box.Left -= fly.characterSpeed;
-
-                    }
-                    if ((string)x.Tag == "platform")
-                    {
-                        x.Left -= obstacleSpeed;
-                        if (((PictureBox)x).Bounds.IntersectsWith(playerBox.Bounds))
-                        {
-                            player.IsOnGround = true;
-                            player.MoveToTopOfPlatform(x.Top);
-                        }
-                    }
-                    if ((string)x.Tag == "coins")
-                    {
-                        x.Left -= obstacleSpeed;
-                        if (playerBox.Bounds.IntersectsWith(x.Bounds))
-                        {
-                            x.Tag = "coins.collected";
-                            player.coins += 1;
-                        }
-                    }
-                    if ((string)x.Tag == "thorns")
-                    {
-                        x.Left -= obstacleSpeed;
-                    }
-                }
-            }
+            ContactWithAnyObject();
+            MoveGameElements(-obstacleSpeed);
+            
 
             if (player.score > 5) obstacleSpeed = 20;
             if (player.score > 15) obstacleSpeed = 30;
@@ -298,6 +182,38 @@ namespace WindowsForms.Gamecode
         }
 
         //resets the game and gives the last coin count to the player bank
+        override internal void GameOver()
+        {
+            MainGameTick.Stop();
+            ScoreTimer.Stop();
+            CoinSpawnTimer.Stop();
+            ChapterSpawnTimer.Stop();
+            gameOver = true;
+
+            DialogResult dialogresult = MessageBox.Show("You Died!!!" + Environment.NewLine + "Press Yes to play again", "", MessageBoxButtons.YesNo);
+
+            if (dialogresult == DialogResult.Yes)
+            {
+                DeathGameReset(player.coins);
+            }
+            else if (dialogresult == DialogResult.No)
+            {
+                // player shall enter his name for highscore entry
+                NameInput nameInput = new NameInput();
+                dialogresult = nameInput.ShowDialog();
+
+                if (dialogresult == DialogResult.OK)
+                {
+                    string name = nameInput.playerName.Text;
+                    // processes the name and score and displays them
+                    HighscoreList highscoreList = new HighscoreList(name, scoreLabel.Text);
+                    highscoreList.Show();
+                    Visible = false;
+                }
+                else { Application.Exit(); }
+            }
+        }
+
         private void DeathGameReset(int coinCount)
         {
             EndlessMode endless = new EndlessMode();
@@ -315,7 +231,6 @@ namespace WindowsForms.Gamecode
             playerBox.Image = Properties.Resources.idle;
             gameOver = false;
             playerBox.Location = player.defaultLocation;
-
 
             foreach (Control x in this.Controls)
             {
@@ -335,7 +250,6 @@ namespace WindowsForms.Gamecode
         #endregion
 
         #region Key Inputs
-        bool holdDirection = true;
         private void keyIsDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -343,35 +257,15 @@ namespace WindowsForms.Gamecode
                 case Keys.W:
                     player.jump();
                     //different sprites for holding a 'move' button
-                    if (holdDirection)
-                    {
-                        holdDirection = false;
-                        playerBox.Image = Properties.Resources.walking;
-                    }
                     break;
                 case Keys.A:
                     player.Left(true);
-                    if (holdDirection)
-                    {
-                        holdDirection = false;
-                        playerBox.Image = Properties.Resources.walkingLeft;
-                    }
                     break;
                 case Keys.S:
                     player.Down();
-                    if (holdDirection)
-                    {
-                        holdDirection = false;
-                        playerBox.Image = Properties.Resources.walking;
-                    }
                     break;
                 case Keys.D:
                     player.Right(true);
-                    if (holdDirection)
-                    {
-                        holdDirection = false;
-                        playerBox.Image = Properties.Resources.walking;
-                    }
                     break;
             }
         }
@@ -386,35 +280,15 @@ namespace WindowsForms.Gamecode
                     break;
                 case Keys.D:
                     player.Right(false);
-
-                    //also switch to another sprite when a key is let go of
-                    if (!holdDirection)
-                    {
-                        holdDirection = true;
-                        playerBox.Image = Properties.Resources.idle;
-                    }
                     break;
                 case Keys.A:
                     player.Left(false);
-                    if (!holdDirection)
-                    {
-                        holdDirection = true;
-                        playerBox.Image = Properties.Resources.idle;
-                    }
+                    break;
+                case Keys.W:
+                    player.jumps = false;
                     break;
                 case Keys.S:
-
-                    if (!holdDirection)
-                    {
-                        holdDirection = true;
-                        playerBox.Image = Properties.Resources.idle;
-                    }
                     break;
-            }
-
-            if (player.jumps == true)
-            {
-                player.jumps = false;
             }
         }
         #endregion
@@ -480,108 +354,6 @@ namespace WindowsForms.Gamecode
                 backGround2KoordX = backgroundBox.Width - 6;
             }
         }
-        #endregion
-
-        #region Healthbar
-        protected void Healthbar()
-        {
-            //if HP fall on a specific count, then change the container to empty or half empty
-            if (player.Hp >= 100)
-            {
-                ChangeHeartContainer(heart5);
-                ChangeHeartContainer(heart4);
-                ChangeHeartContainer(heart3);
-                ChangeHeartContainer(heart2);
-                ChangeHeartContainer(heart1);
-            }
-            if (player.Hp < 100 && player.Hp > 80)
-            {
-                ChangeHeartContainer(heart5, "half");
-                ChangeHeartContainer(heart4);
-                ChangeHeartContainer(heart3);
-                ChangeHeartContainer(heart2);
-                ChangeHeartContainer(heart1);
-            }
-            if (player.Hp <= 80 && player.Hp > 70)
-            {
-                ChangeHeartContainer(heart5, "empty");
-                ChangeHeartContainer(heart4);
-                ChangeHeartContainer(heart3);
-                ChangeHeartContainer(heart2);
-                ChangeHeartContainer(heart1);
-            }
-            if (player.Hp <= 70 && player.Hp > 60)
-            {
-                ChangeHeartContainer(heart5, "empty");
-                ChangeHeartContainer(heart4, "half");
-                ChangeHeartContainer(heart3);
-                ChangeHeartContainer(heart2);
-                ChangeHeartContainer(heart1);
-            }
-            if (player.Hp <= 60 && player.Hp > 50)
-            {
-                ChangeHeartContainer(heart5, "empty");
-                ChangeHeartContainer(heart4, "empty");
-                ChangeHeartContainer(heart3);
-                ChangeHeartContainer(heart2);
-                ChangeHeartContainer(heart1);
-            }
-            if (player.Hp <= 50 && player.Hp > 40)
-            {
-                ChangeHeartContainer(heart5, "empty");
-                ChangeHeartContainer(heart4, "empty");
-                ChangeHeartContainer(heart3, "half");
-                ChangeHeartContainer(heart2);
-                ChangeHeartContainer(heart1);
-            }
-            if (player.Hp <= 40 && player.Hp > 30)
-            {
-                ChangeHeartContainer(heart5, "empty");
-                ChangeHeartContainer(heart4, "empty");
-                ChangeHeartContainer(heart3, "empty");
-                ChangeHeartContainer(heart2);
-                ChangeHeartContainer(heart1);
-
-            }
-            if (player.Hp <= 30 && player.Hp > 20)
-            {
-                ChangeHeartContainer(heart5, "empty");
-                ChangeHeartContainer(heart4, "empty");
-                ChangeHeartContainer(heart3, "empty");
-                ChangeHeartContainer(heart2, "half");
-                ChangeHeartContainer(heart1);
-            }
-            if (player.Hp <= 20 && player.Hp > 10)
-            {
-                ChangeHeartContainer(heart5, "empty");
-                ChangeHeartContainer(heart4, "empty");
-                ChangeHeartContainer(heart3, "empty");
-                ChangeHeartContainer(heart2, "empty");
-                ChangeHeartContainer(heart1);
-            }
-            if (player.Hp <= 10 && player.Hp > 0)
-            {
-                ChangeHeartContainer(heart5, "empty");
-                ChangeHeartContainer(heart4, "empty");
-                ChangeHeartContainer(heart3, "empty");
-                ChangeHeartContainer(heart2, "empty");
-                ChangeHeartContainer(heart1, "half");
-            }
-
-        }
-
-        protected void ChangeHeartContainer(PictureBox container, string heart = "full")
-        {
-            if (heart == "empty")
-            {
-                container.Image = Properties.Resources.HeartEmpty;
-            }
-            if (heart == "half")
-                container.Image = Properties.Resources.HeartHalf;
-            if (heart == "full")
-                container.Image = Properties.Resources.Heart;
-        }
-
         #endregion
 
         #region random Placement of objects
