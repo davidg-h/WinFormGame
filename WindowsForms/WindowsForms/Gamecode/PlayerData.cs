@@ -18,16 +18,18 @@ namespace WindowsForms.Gamecode
         internal int hp;
         internal int coins;
         internal int dmg;
+        internal int relativePlayerCoord;
         internal (int, int) timer;
         internal bool amor1, amor2, potion, invulnerable;
 
         internal Point location;
 
-        internal PlayerData(GameLvl lvl, Point location, Player player, (int, int) timer)
+        internal PlayerData(GameLvl lvl, Point location, Player player, (int, int) timer, int relativePlayerCoord)
         {
             this.lvl = lvl;
             this.timer = timer;
             this.location = location;
+            this.relativePlayerCoord = relativePlayerCoord;
             coins = player.coins;
             hp = player.Hp;
             dmg = player.Dmg;
