@@ -39,8 +39,8 @@ namespace WindowsForms.Gamecode
         public Rectangle swordHitRange;
 
         // move pattern for WASD - controls
-        internal void Left(bool go) { goLeft = go; facingRight = false; }
-        internal void Right(bool go) { goRight = go; facingRight = true; }
+        internal void Left(bool go) { goLeft = go; if(go)facingRight = false; }
+        internal void Right(bool go) { goRight = go; if(go)facingRight = true; }
         internal void jump() { jumps = true; }
         internal void Down() { goDown = true; }
         internal bool IsOnGround { get => isOnGround; set => isOnGround = value; }

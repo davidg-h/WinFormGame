@@ -687,15 +687,12 @@ namespace WindowsForms.Gamecode
         #endregion
 
         #region Key Inputs
-        bool holdDirection = true;
-        string facing = "right";
         internal void KeyIsDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
                 case Keys.W:
                     player.jump();
-                    //different sprites for holding a 'move' button
                     break;
                 case Keys.A:
                     player.Left(true);
@@ -704,7 +701,7 @@ namespace WindowsForms.Gamecode
                     player.Down();
                     break;
                 case Keys.D:
-                    player.Right(true);
+                      player.Right(true);
                     break;
                 case Keys.Space:
                     player.attack();
