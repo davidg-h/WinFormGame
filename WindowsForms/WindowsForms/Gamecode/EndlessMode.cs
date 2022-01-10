@@ -15,8 +15,9 @@ namespace WindowsForms.Gamecode
     {
         #region Game(EndlessMode) variables
         Random rand = new Random();
-        int obstacleSpeed = 15;
+        int obstacleSpeed = 10;
         int inventoryChestCoins;
+        int largestXKoord;
         List<List<PictureBox>> chapterList;
         List<PictureBox> pictureBoxList;
 
@@ -161,7 +162,7 @@ namespace WindowsForms.Gamecode
             player.moveEndlessmode(this);
             player.isOnGround = false;
 
-            fallPutOfTheWorld();
+            //fallPutOfTheWorld();
 
             // "invinceble frames" as long as invulnerable is on true: no dmg can be taken (as to see in player.Hp property)
             invulnerableFrames();
@@ -170,7 +171,7 @@ namespace WindowsForms.Gamecode
             Healthbar();
             ContactWithAnyObject();
             MoveGameElements(-obstacleSpeed);
-            
+
 
             if (player.score > 5) obstacleSpeed = 20;
             if (player.score > 15) obstacleSpeed = 30;
@@ -179,6 +180,9 @@ namespace WindowsForms.Gamecode
             if (player.score > 100) obstacleSpeed = 120;
 
             Draw();
+
+            destroyPB();
+            largestXKoord = getLargestXKoord();
         }
 
         //resets the game and gives the last coin count to the player bank
@@ -359,28 +363,31 @@ namespace WindowsForms.Gamecode
         #region random Placement of objects
         internal void chapterSpawnTick(object sender, EventArgs e)
         {
+            if (player.score > 10) ChapterSpawnTimer.Interval = 1000;
+            if (player.score > 25) ChapterSpawnTimer.Interval = 750;
+            if (player.score > 60) ChapterSpawnTimer.Interval = 500;
             randomPlacement();
         }
 
 
         private void randomPlacement()
         {
-            int x = getLargestXKoord();
+            int x = largestXKoord;
 
             int chapter = rand.Next(1, 5);
             switch (chapter)
             {
                 case 1:
-                    createChapter(chapterList[0], x, 470, rand.Next(10, 60));
+                    createChapter(chapterList[0], x, 470, rand.Next(50, 150));
                     break;
                 case 2:
-                    createChapter(chapterList[1], x, 1185, rand.Next(10, 60));
+                    createChapter(chapterList[1], x, 1185, rand.Next(45, 125));
                     break;
                 case 3:
-                    createChapter(chapterList[2], x, 1639, rand.Next(10, 60));
+                    createChapter(chapterList[2], x, 1639, rand.Next(60, 180));
                     break;
                 case 4:
-                    createChapter(chapterList[3], x, 2131, rand.Next(10, 60));
+                    createChapter(chapterList[3], x, 2131, rand.Next(30, 100));
                     break;
                 default:
                     break;
@@ -395,7 +402,14 @@ namespace WindowsForms.Gamecode
                 PictureBox boxNew = createPB(box);
                 // new Location is after the last object with a random buffer(=randomNumber)
                 // box.Location.X - boxLeft: to keep the ratio of the objects to each other the same and position it to the left edge of the client area
-                boxNew.Location = new Point(x + (box.Location.X - boxLeft) + randomNumber, box.Location.Y);
+                if (x <= ClientSize.Width)
+                {
+                    boxNew.Location = new Point(ClientSize.Width + (box.Location.X - boxLeft) + randomNumber, box.Location.Y);
+                }
+                else
+                {
+                    boxNew.Location = new Point(x + (box.Location.X - boxLeft) + randomNumber, box.Location.Y);
+                }
                 // adds box to the window
                 this.Controls.Add(boxNew);
             }
@@ -437,9 +451,14 @@ namespace WindowsForms.Gamecode
         {
             PictureBox box = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)(box)).BeginInit();
+            box.Name = pictureBox.Name;
+            box.AccessibleName = pictureBox.AccessibleName;
+            box.AccessibleDescription = pictureBox.AccessibleDescription;
+            box.Margin = pictureBox.Margin;
             box.Tag = pictureBox.Tag;
             box.Image = pictureBox.Image;
             box.Visible = true;
+            box.Enabled = true;
             box.Size = pictureBox.Size;
             box.SizeMode = pictureBox.SizeMode;
             box.Location = pictureBox.Location;
@@ -456,7 +475,7 @@ namespace WindowsForms.Gamecode
             {
                 if (x is PictureBox)
                 {
-                    if (largestXKoord < x.Location.X && (string)x.Tag != "coins")
+                    if (largestXKoord < x.Location.X && (string)x.Tag != "coins" && (string)x.Tag != "background")
                     {
                         largestXKoord = x.Location.X + x.Width;
                     }
@@ -479,6 +498,22 @@ namespace WindowsForms.Gamecode
                 }
             }
             return picBoxList;
+        }
+        /// <summary>
+        /// destroys pictureBoxes for performance
+        /// </summary>
+        private void destroyPB()
+        {
+            foreach (Control pb in Controls)
+            {
+                if (pb is PictureBox)
+                {
+                    if (pb.Location.X + pb.Size.Width < 0)
+                    {
+                        this.Controls.Remove(pb);
+                    }
+                }
+            }
         }
         #endregion
 

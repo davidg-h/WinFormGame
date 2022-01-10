@@ -238,7 +238,7 @@
             // 
             this.coinBox1.BackColor = System.Drawing.Color.Transparent;
             this.coinBox1.Image = global::WindowsForms.Properties.Resources.coin;
-            this.coinBox1.Location = new System.Drawing.Point(488, 271);
+            this.coinBox1.Location = new System.Drawing.Point(608, 271);
             this.coinBox1.Margin = new System.Windows.Forms.Padding(2);
             this.coinBox1.Name = "coinBox1";
             this.coinBox1.Size = new System.Drawing.Size(36, 37);
@@ -358,7 +358,7 @@
             // 
             this.coinBox0.BackColor = System.Drawing.Color.Transparent;
             this.coinBox0.Image = global::WindowsForms.Properties.Resources.coin;
-            this.coinBox0.Location = new System.Drawing.Point(427, 271);
+            this.coinBox0.Location = new System.Drawing.Point(547, 271);
             this.coinBox0.Margin = new System.Windows.Forms.Padding(2);
             this.coinBox0.Name = "coinBox0";
             this.coinBox0.Size = new System.Drawing.Size(36, 37);
@@ -383,7 +383,7 @@
             // 
             this.obstacleTree2.BackColor = System.Drawing.Color.Transparent;
             this.obstacleTree2.Image = global::WindowsForms.Properties.Resources.shroomIdle;
-            this.obstacleTree2.Location = new System.Drawing.Point(459, 284);
+            this.obstacleTree2.Location = new System.Drawing.Point(579, 284);
             this.obstacleTree2.Margin = new System.Windows.Forms.Padding(2);
             this.obstacleTree2.Name = "obstacleTree2";
             this.obstacleTree2.Size = new System.Drawing.Size(32, 28);
@@ -1099,7 +1099,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WindowsForms.Properties.Resources.Background;
-            this.ClientSize = new System.Drawing.Size(912, 478);
+            this.ClientSize = new System.Drawing.Size(914, 478);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.shopHUD);
