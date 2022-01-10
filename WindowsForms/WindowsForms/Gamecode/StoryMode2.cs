@@ -33,6 +33,7 @@ namespace WindowsForms.Gamecode
             MainGameTick.Stop();
             MessageBox.Show("Entering final Lvl", "", MessageBoxButtons.OK);
             StoryMode3 lvl3 = new StoryMode3();
+            lvl3.player.coins = this.player.coins;
             lvl3.Show();
             this.Visible = false;
         }

@@ -70,7 +70,6 @@ namespace WindowsForms.Gamecode
 
         protected void initializeLevel(Level levelForm)
         {
-
             if (levelForm is StoryMode1)
             {
                 StoryMode1 form = (StoryMode1)levelForm;
@@ -128,7 +127,7 @@ namespace WindowsForms.Gamecode
                 countdownLabel = form.countdownLabel;
                 coinCounter = form.coinCounter;
             }
-            if(levelForm is EndlessMode)
+            if (levelForm is EndlessMode)
             {
                 EndlessMode form = (EndlessMode)levelForm;
                 MainGameTick = form.MainGameTick;
@@ -147,7 +146,7 @@ namespace WindowsForms.Gamecode
                 countdownLabel = form.countdownLabel;
                 coinCounter = form.coinCounter;
 
-                player = new Player(playerBox, 100);    
+                player = new Player(playerBox, 100);
                 player.gamemodeEndless = true;
             }
             else
@@ -388,8 +387,16 @@ namespace WindowsForms.Gamecode
                 timer.sec -= 1;
                 if (timer.sec == 0 && !gameOver)
                 {
-                    if (timer.min == 0) { gameOver = true; CountdownTimer.Stop(); }
-                    else { timer.min -= 1; timer.sec = 59; }
+                    if (timer.min == 0)
+                    {
+                        CountdownTimer.Stop();
+                        GameOver();
+                    }
+                    else
+                    {
+                        timer.min -= 1;
+                        timer.sec = 59;
+                    }
                 }
             }
 
@@ -426,7 +433,7 @@ namespace WindowsForms.Gamecode
             Healthbar();
             //make the enemies move
             moveEnemys();
-            if(player.goLeft)
+            if (player.goLeft)
                 MoveGameElements(player.characterSpeed);
             if (player.goRight)
                 MoveGameElements(-player.characterSpeed);
@@ -472,7 +479,7 @@ namespace WindowsForms.Gamecode
             }
         }
 
-        private void moveEnemys()
+        internal void moveEnemys()
         {
             InRangeOfEnemy(flyEnemyArray);
             foreach (EnemySmall mushroom in mushroomArray)
@@ -502,7 +509,7 @@ namespace WindowsForms.Gamecode
         protected void ContactWithAnyObject()
         {
             //get updated to correct value below
-            player.IsOnGround = false; 
+            player.IsOnGround = false;
             player.obstacleLeft = false;
             player.obstacleRight = false;
             foreach (Control x in this.Controls)
@@ -527,7 +534,7 @@ namespace WindowsForms.Gamecode
                         }
                         if ((string)x.Tag == "eagleEnemy")
                         {
-                           
+
                             if ((((PictureBox)x).Location.X - player.box.Location.X) > 0)
                             {
                                 player.obstacleRight = true;
@@ -701,7 +708,7 @@ namespace WindowsForms.Gamecode
                     player.Down();
                     break;
                 case Keys.D:
-                      player.Right(true);
+                    player.Right(true);
                     break;
                 case Keys.Space:
                     player.attack();

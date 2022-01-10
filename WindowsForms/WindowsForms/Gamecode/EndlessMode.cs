@@ -36,7 +36,6 @@ namespace WindowsForms.Gamecode
             this.Load += loadInventory;
             this.FormClosing += saveInventory;
             backgroundBox = (PictureBox)Controls.Find("background1", false)[0];
-
         }
 
         #region Esc Menu (with safe/load)
@@ -153,6 +152,7 @@ namespace WindowsForms.Gamecode
             //this.Location = playerBox.Location;    //adds some fun
             coinHandler.updateSpriteEveryTimeCalled();
             mushroomHandler.updateSpriteEvery3thTimeCalled();
+            eagleHandler.updateSpriteEvery3thTimeCalled();
 
             background_move();
             scoreLabel.Text = "Score: " + player.score;
@@ -162,7 +162,7 @@ namespace WindowsForms.Gamecode
             player.moveEndlessmode(this);
             player.isOnGround = false;
 
-            //fallPutOfTheWorld();
+            fallPutOfTheWorld();
 
             // "invinceble frames" as long as invulnerable is on true: no dmg can be taken (as to see in player.Hp property)
             invulnerableFrames();
@@ -171,7 +171,7 @@ namespace WindowsForms.Gamecode
             Healthbar();
             ContactWithAnyObject();
             MoveGameElements(-obstacleSpeed);
-
+            moveEnemys();
 
             if (player.score > 5) obstacleSpeed = 20;
             if (player.score > 15) obstacleSpeed = 30;
@@ -330,12 +330,19 @@ namespace WindowsForms.Gamecode
                             Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
                             g.DrawImage(mushroomHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
                         }
+                        else if (tag == "eagleEnemy")
+                        {
+                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
+                            g.DrawImage(eagleHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
+
+                        }
                         else if (tag != "player" && tag != "coins.collected" && tag != "background")
                         {
                             Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
                             g.DrawImage(((PictureBox)x).Image, destRect, srcRect, GraphicsUnit.Pixel);
                             //g.DrawImage(((PictureBox)x).Image, x.Location);
                         }
+                       
                     }
                 }
                 pf.CreateGraphics().DrawImageUnscaled(bufl, 0, 0);
