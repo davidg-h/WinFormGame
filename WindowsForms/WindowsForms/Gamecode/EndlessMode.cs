@@ -155,7 +155,7 @@ namespace WindowsForms.Gamecode
             eagleHandler.updateSpriteEvery3thTimeCalled();
 
             background_move();
-            scoreLabel.Text = "Score: " + player.score;
+            label1.Text = "Score: " + player.score;
             coinCounter.Text = $": {player.coins}";
             inventoryCoins.Text = $"Tresure Chest: {inventoryChestCoins}";
 
@@ -193,12 +193,7 @@ namespace WindowsForms.Gamecode
             gameOver = false;
             GameOverScreen gameOverScreen = new GameOverScreen();
             gameOverScreen.Show();
-            if(gameOverScreen.playAgainClicked)
-            {
-                EndlessMode endless = new EndlessMode();
-                endless.player.coins += player.coins;
-            }
-            else
+            if(!gameOverScreen.playAgainClicked)
             {
                 // player shall enter his name for highscore entry
                 DialogResult dialogresult;
@@ -209,7 +204,7 @@ namespace WindowsForms.Gamecode
                 {
                     string name = nameInput.playerName.Text;
                     // processes the name and score and displays them
-                    HighscoreList highscoreList = new HighscoreList(name, scoreLabel.Text);
+                    HighscoreList highscoreList = new HighscoreList(name, label1.Text);
                     highscoreList.Show();
                     Visible = false;
                 }
@@ -258,7 +253,7 @@ namespace WindowsForms.Gamecode
             player.Hp += 100;
             player.score = 0;
             player.coins = 0;
-            scoreLabel.Text = "Score: " + player.score;
+            label1.Text = "Score: " + player.score;
             playerBox.Image = Properties.Resources.idle;
             gameOver = false;
             playerBox.Location = player.defaultLocation;
