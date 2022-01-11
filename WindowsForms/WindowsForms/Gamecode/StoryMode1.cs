@@ -25,7 +25,15 @@ namespace WindowsForms.Gamecode
             this.KeyDown += formKeyDown;
             this.Load += startTimer;
         }
-
+        override protected void goToNextLevel()
+        {
+            MainGameTick.Stop();
+            MessageBox.Show("Entering second Lvl", "", MessageBoxButtons.OK);
+            StoryMode2 lvl2 = new StoryMode2();
+            lvl2.player.coins = this.player.coins;
+            lvl2.Show();
+            this.Visible = false;
+        }
         private void MainGameTick_Tick_1(object sender, EventArgs e)
         {
             MainGameTick_Tick(sender, e);
