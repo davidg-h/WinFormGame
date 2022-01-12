@@ -191,53 +191,12 @@ namespace WindowsForms.Gamecode
             MainGameTick.Stop();
             ScoreTimer.Stop();
             gameOver = false;
-            GameOverScreen gameOverScreen = new GameOverScreen();
+            GameOverScreenEndless gameOverScreen = new GameOverScreenEndless();
             gameOverScreen.Show();
-            if(!gameOverScreen.playAgainClicked)
-            {
-                // player shall enter his name for highscore entry
-                DialogResult dialogresult;
-                NameInput nameInput = new NameInput();
-                dialogresult = nameInput.ShowDialog();
-
-                if (dialogresult == DialogResult.OK)
-                {
-                    string name = nameInput.playerName.Text;
-                    // processes the name and score and displays them
-                    HighscoreList highscoreList = new HighscoreList(name, label1.Text);
-                    highscoreList.Show();
-                    Visible = false;
-                }
-                else { Application.Exit(); }
-            }
             this.Hide();
             MainGameTick.Stop();
             CoinSpawnTimer.Stop();
             ChapterSpawnTimer.Stop();
-
-            //DialogResult dialogresult = MessageBox.Show("You Died!!!" + Environment.NewLine + "Press Yes to play again", "", MessageBoxButtons.YesNo);
-
-            //if (dialogresult == DialogResult.Yes)
-            //{
-
-            //    DeathGameReset(player.coins);
-            //}
-            //else if (dialogresult == DialogResult.No)
-            //{
-            //    // player shall enter his name for highscore entry
-            //    NameInput nameInput = new NameInput();
-            //    dialogresult = nameInput.ShowDialog();
-
-            //    if (dialogresult == DialogResult.OK)
-            //    {
-            //        string name = nameInput.playerName.Text;
-            //        // processes the name and score and displays them
-            //        HighscoreList highscoreList = new HighscoreList(name, scoreLabel.Text);
-            //        highscoreList.Show();
-            //        Visible = false;
-            //    }
-            //    else { Application.Exit(); }
-            //}
         }
 
         private void DeathGameReset(int coinCount)
@@ -326,7 +285,7 @@ namespace WindowsForms.Gamecode
         #endregion
 
         #region draw
-        
+
         #endregion
 
         #region endless backgroundScrolling

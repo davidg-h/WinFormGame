@@ -1,6 +1,6 @@
 ﻿namespace WindowsForms.Gamecode
 {
-    partial class GameOverScreen
+    partial class GameOverScreenEndless
     {
         /// <summary>
         /// Required designer variable.

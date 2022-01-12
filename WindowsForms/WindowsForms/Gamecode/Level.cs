@@ -707,7 +707,7 @@ namespace WindowsForms.Gamecode
         {
             MainGameTick.Stop();
             gameOver = false;
-            GameOverScreen gameOverScreen = new GameOverScreen();
+            GameOverScreenStory gameOverScreen = new GameOverScreenStory();
             gameOverScreen.Show();
             this.Hide();
         }

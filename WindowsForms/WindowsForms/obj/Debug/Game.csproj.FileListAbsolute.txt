@@ -41,7 +41,6 @@ C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\Wi
 C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\WindowsForms.pdb
 C:\Users\lizab\source\repos\project\WindowsForms\WindowsForms\obj\Debug\Game.csprojAssemblyReference.cache
 C:\Users\lizab\source\repos\project\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.EndlessMode.resources
-C:\Users\lizab\source\repos\project\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.GameOverScreen.resources
 C:\Users\lizab\source\repos\project\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.HighscoreList.resources
 C:\Users\lizab\source\repos\project\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.NameInput.resources
 C:\Users\lizab\source\repos\project\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.StoryMode1.resources
@@ -121,3 +120,6 @@ C:\Users\lizab\Source\Repos\project2\WindowsForms\WindowsForms\obj\Debug\Game.cs
 C:\Users\lizab\Source\Repos\project2\WindowsForms\WindowsForms\obj\Debug\Game.csproj.CoreCompileInputs.cache
 C:\Users\lizab\Source\Repos\project2\WindowsForms\WindowsForms\obj\Debug\WindowsForms.exe
 C:\Users\lizab\Source\Repos\project2\WindowsForms\WindowsForms\obj\Debug\WindowsForms.pdb
+C:\Users\lizab\Source\Repos\project\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.GameOverScreenStory.resources
+C:\Users\lizab\Source\Repos\project\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.StoryMode2.resources
+C:\Users\lizab\Source\Repos\project\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.StoryMode3.resources
