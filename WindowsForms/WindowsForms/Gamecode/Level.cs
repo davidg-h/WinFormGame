@@ -164,7 +164,6 @@ namespace WindowsForms.Gamecode
             fillEnemyArrays();
 
 
-
             // create green types of the original hearts 2 stands for half heart, 3 for fullHearts 
             for (int y = 0; y < heart1.Height; y++)
             {
@@ -880,6 +879,10 @@ namespace WindowsForms.Gamecode
                             g.DrawImage(((PictureBox)x).Image, destRect, srcRect, GraphicsUnit.Pixel);
                         }
                     }
+                }
+                //all the Laabels and Text is drawn on Top of Game Elements
+                foreach (Control x in this.Controls)
+                { 
                     if (x is Label)
                     {
                         g.DrawString(x.Text, new Font("Unispace", 11), new SolidBrush(Color.Black), x.Location);
