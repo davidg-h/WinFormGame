@@ -191,53 +191,12 @@ namespace WindowsForms.Gamecode
             MainGameTick.Stop();
             ScoreTimer.Stop();
             gameOver = false;
-            GameOverScreen gameOverScreen = new GameOverScreen();
+            GameOverScreenEndless gameOverScreen = new GameOverScreenEndless();
             gameOverScreen.Show();
-            if(!gameOverScreen.playAgainClicked)
-            {
-                // player shall enter his name for highscore entry
-                DialogResult dialogresult;
-                NameInput nameInput = new NameInput();
-                dialogresult = nameInput.ShowDialog();
-
-                if (dialogresult == DialogResult.OK)
-                {
-                    string name = nameInput.playerName.Text;
-                    // processes the name and score and displays them
-                    HighscoreList highscoreList = new HighscoreList(name, label1.Text);
-                    highscoreList.Show();
-                    Visible = false;
-                }
-                else { Application.Exit(); }
-            }
             this.Hide();
             MainGameTick.Stop();
             CoinSpawnTimer.Stop();
             ChapterSpawnTimer.Stop();
-
-            //DialogResult dialogresult = MessageBox.Show("You Died!!!" + Environment.NewLine + "Press Yes to play again", "", MessageBoxButtons.YesNo);
-
-            //if (dialogresult == DialogResult.Yes)
-            //{
-
-            //    DeathGameReset(player.coins);
-            //}
-            //else if (dialogresult == DialogResult.No)
-            //{
-            //    // player shall enter his name for highscore entry
-            //    NameInput nameInput = new NameInput();
-            //    dialogresult = nameInput.ShowDialog();
-
-            //    if (dialogresult == DialogResult.OK)
-            //    {
-            //        string name = nameInput.playerName.Text;
-            //        // processes the name and score and displays them
-            //        HighscoreList highscoreList = new HighscoreList(name, scoreLabel.Text);
-            //        highscoreList.Show();
-            //        Visible = false;
-            //    }
-            //    else { Application.Exit(); }
-            //}
         }
 
         private void DeathGameReset(int coinCount)
@@ -326,98 +285,21 @@ namespace WindowsForms.Gamecode
         #endregion
 
         #region draw
-        int backGround1KoordX = 0;
-        int backGround2KoordX = Properties.Resources.Background.Width - 6;
-        void Draw()
-        {
-            Bitmap bufl = new Bitmap(pf.Width, pf.Height);
-            using (Graphics g = Graphics.FromImage(bufl))
-            {
-                g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
-                g.DrawImage(backgroundBox.Image, new Rectangle(new Point(0, 0), this.Size), new Rectangle(new Point(-backGround1KoordX, 0), new Size(backgroundBox.Width, backgroundBox.Height)), GraphicsUnit.Pixel);
-                g.DrawImage(backgroundBox.Image, new Rectangle(new Point(0, 0), this.Size), new Rectangle(new Point(-backGround2KoordX, 0), new Size(backgroundBox.Width, backgroundBox.Height)), GraphicsUnit.Pixel);
-                foreach (Control x in this.Controls)
-                {
-                    if (x is PictureBox)
-                    {
-                        string tag = (string)x.Tag;
-                        if (((PictureBox)x).Image == null)
-                        {
-                            //do nothing
-                            continue;
-                        }
 
-                        else if (tag == "coins")
-                        {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
-                            Rectangle destRect = new Rectangle(x.Location, x.Size);
-
-                            g.DrawImage(coinHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
-                        }
-                        else if (tag == "obstacleTree")
-                        {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
-                            Rectangle destRect = new Rectangle(x.Location, x.Size);
-
-                            g.DrawImage(mushroomHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
-                        }
-                        else if (tag == "eagleEnemy")
-                        {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
-                            Rectangle destRect = new Rectangle(x.Location, x.Size);
-
-                            g.DrawImage(eagleHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
-
-                        }
-                        else if (tag == "player")
-                        {
-                            if (player.isAttacking)
-                            {
-                                Rectangle srcRect = new Rectangle(new Point(0, 0), player.currentImage.Size);
-                                Rectangle destRect;
-                                if (player.facingRight)
-                                {
-                                    destRect = new Rectangle(x.Location, player.currentImage.Size);
-                                }
-                                else
-                                {
-                                    destRect = new Rectangle(new Point(x.Location.X - 60, x.Location.Y), player.currentImage.Size);
-                                }
-                                g.DrawImage(player.currentImage, destRect, srcRect, GraphicsUnit.Pixel);
-                            }
-                            else
-                                g.DrawImage(player.currentImage, player.box.Location);
-                        }
-                        else if ( tag != "coins.collected" && tag != "background")
-                        {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
-                            Rectangle destRect = new Rectangle(x.Location, x.Size);
-
-                            g.DrawImage(((PictureBox)x).Image, destRect, srcRect, GraphicsUnit.Pixel);
-                            //g.DrawImage(((PictureBox)x).Image, x.Location);
-                        }
-                       
-                    }
-                }
-                pf.CreateGraphics().DrawImageUnscaled(bufl, 0, 0);
-            }
-        }
         #endregion
 
         #region endless backgroundScrolling
         void background_move()
         {
-            backGround1KoordX -= 2;
-            backGround2KoordX -= 2;
-            //resets the background if not in ClientSize
-            if (backGround1KoordX == -backgroundBox.Width)
-            {
-                backGround1KoordX = backgroundBox.Width - 6;
-            }
-            if (backGround2KoordX == -backgroundBox.Width)
-            {
-                backGround2KoordX = backgroundBox.Width - 6;
-            }
+
+            if (backgroundCoordX < -backgroundlayer.Width)
+                backgroundCoordX = backgroundlayer.Width - 20;
+
+            if (backgroundCoordX2 < -backgroundlayer.Width)
+                backgroundCoordX2 = backgroundlayer.Width - 20;
+
+            backgroundCoordX -= 3;
+            backgroundCoordX2 -= 3;
         }
         #endregion
 

@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace WindowsForms.Gamecode
 {
-    public partial class GameOverScreen : Form
+    public partial class GameOverScreenStory : Form
     {
         public bool playAgainClicked = false;
-        public GameOverScreen()
+        public GameOverScreenStory()
         {
             InitializeComponent();
             this.FormClosed += closeGame;
