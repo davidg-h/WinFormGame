@@ -166,7 +166,6 @@ namespace WindowsForms.Gamecode
             fillEnemyArrays();
 
 
-
             // create green types of the original hearts 2 stands for half heart, 3 for fullHearts 
             for (int y = 0; y < heart1.Height; y++)
             {
@@ -856,8 +855,8 @@ namespace WindowsForms.Gamecode
             {
                 g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
 
-                g.DrawImage(backgroundlayer, new Rectangle(new Point(0, 0), this.Size), new Rectangle(new Point(-backgroundCoordX, 0), new Size(backgroundlayer.Width, backgroundlayer.Height)), GraphicsUnit.Pixel);
-                g.DrawImage(backgroundlayer, new Rectangle(new Point(0, 0), this.Size), new Rectangle(new Point(-backgroundCoordX - backgroundlayer.Width + 2, 0), new Size(backgroundlayer.Width, backgroundlayer.Height)), GraphicsUnit.Pixel);
+                g.DrawImage(backgroundlayer, new Rectangle(new Point(backgroundCoordX, 0), new Size(backgroundlayer.Width, backgroundlayer.Height)));
+                g.DrawImage(backgroundlayer, new Rectangle(new Point(backgroundCoordX2, 0), new Size(backgroundlayer.Width, backgroundlayer.Height)));
 
                 foreach (Control x in this.Controls)
                 {
@@ -919,6 +918,10 @@ namespace WindowsForms.Gamecode
                             g.DrawImage(((PictureBox)x).Image, destRect, srcRect, GraphicsUnit.Pixel);
                         }
                     }
+                }
+                //all the Laabels and Text is drawn on Top of Game Elements
+                foreach (Control x in this.Controls)
+                { 
                     if (x is Label)
                     {
                         g.DrawString(x.Text, new Font("Unispace", 11), new SolidBrush(Color.Black), x.Location);
@@ -931,28 +934,32 @@ namespace WindowsForms.Gamecode
 
         #region Background
 
-        Image backgroundlayer = Properties.Resources.Background;
-        int backgroundCoordX = 0, backgroundCoordX2 = 1600;
+        protected Image backgroundlayer = Properties.Resources.Background;
+        protected int backgroundCoordX = 0, backgroundCoordX2 = Properties.Resources.Background.Width;
 
         protected void background_move()
         {
-            //if (backgroundCoordX <= -1600)
-            //    backgroundCoordX = 1600;
+            if (backgroundCoordX < -backgroundlayer.Width)
+                backgroundCoordX = backgroundlayer.Width - 20;
+            if (backgroundCoordX > backgroundlayer.Width)
+                backgroundCoordX = -backgroundlayer.Width + 20;
 
-            //if (backgroundCoordX2 <= -1600)
-            //    backgroundCoordX2 = 1600;
+            if (backgroundCoordX2 < -backgroundlayer.Width)
+                backgroundCoordX2 = backgroundlayer.Width - 20;
+            if (backgroundCoordX2 > backgroundlayer.Width)
+                backgroundCoordX2 = -backgroundlayer.Width + 20;
 
 
             if (player.goRight && !player.obstacleRight)
             {
-                backgroundCoordX -= 2;
+                backgroundCoordX -= 3;
+                backgroundCoordX2 -= 3;
             }
             if (player.goLeft && !player.obstacleLeft)
             {
-                backgroundCoordX += 2;
+                backgroundCoordX += 3;
+                backgroundCoordX2 += 3;
             }
-
-            //Invalidate();
         }
         #endregion
 
