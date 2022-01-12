@@ -65,5 +65,18 @@ namespace WindowsForms.Gamecode
         {
             loadGameClick(sender, e);
         }
+
+        private void StoryMode1_Load(object sender, EventArgs e)
+        {
+            LevelIsLoaded(sender, e);
+            MediaPlayer.URL = @"C:\Users\Spieler\Documents\Audacity\1074444_Superscience.mp3";
+            MediaPlayer.settings.setMode("loop", true);
+            MediaPlayer.settings.volume = 5;
+        }
+
+        private void MediaPlayer_MediaError(object sender, AxWMPLib._WMPOCXEvents_MediaErrorEvent e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

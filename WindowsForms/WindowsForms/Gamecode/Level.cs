@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+using System.Media;
 
 namespace WindowsForms.Gamecode
 {
@@ -59,6 +60,10 @@ namespace WindowsForms.Gamecode
         Bitmap gHalfHeart = new Bitmap(Properties.Resources.HeartHalf);
         Bitmap gFullHeart = new Bitmap(Properties.Resources.Heart);
 
+        SoundPlayer coinSound;
+        SoundPlayer enemyDeathSound;
+        SoundPlayer gameMusic;
+
 
         protected enum Choices { Potion, Armor, Attack, None };
 
@@ -66,6 +71,15 @@ namespace WindowsForms.Gamecode
 
         public Level()
         {
+            coinSound = new SoundPlayer(@"C:\Users\Spieler\Documents\Audacity\coinSound.wav");
+            enemyDeathSound = new SoundPlayer(@"C:\Users\Spieler\Documents\Audacity\enemyDeath.wav");
+            gameMusic = new SoundPlayer(@"C:\Users\Spieler\Documents\Audacity\arcadeGameMusic.wav");
+            
+        }
+
+        protected void LevelIsLoaded(object sender, EventArgs e)
+        {
+            //gameMusic.Play();
         }
 
         protected void initializeLevel(Level levelForm)
@@ -415,7 +429,7 @@ namespace WindowsForms.Gamecode
             ContactWithAnyObject();
 
             //if he falls out of the world
-            //fallPutOfTheWorld();
+            fallPutOfTheWorld();
 
             //debuff check (also possible to change the debuff EFFECT here!)
             playerDebuffs();
@@ -566,6 +580,7 @@ namespace WindowsForms.Gamecode
                         }
                         if ((string)x.Tag == "coins")
                         {
+                            coinSound.Play();
                             x.Tag = "coins.collected"; //coins are not drawn anymore
                             player.coins += 1;
                         }
@@ -579,6 +594,7 @@ namespace WindowsForms.Gamecode
                                 foundRangeEnemy.Hp -= player.Dmg;
                                 if (foundRangeEnemy.Hp < 1)
                                 {
+                                    enemyDeathSound.Play();
                                     this.Controls.Remove(x);
                                     debuff = false;
                                     rangeEnemyList.Remove(foundRangeEnemy);
@@ -815,10 +831,10 @@ namespace WindowsForms.Gamecode
             Bitmap bufl = new Bitmap(pf.Width, pf.Height);
             using (Graphics g = Graphics.FromImage(bufl))
             {
-                g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
+                g.FillRectangle(Brushes.White, new Rectangle(0, 0, pf.Width, pf.Height));
 
-                g.DrawImage(backgroundlayer, new Rectangle(new Point(0, 0), this.Size), new Rectangle(new Point(-backgroundCoordX, 0), new Size(backgroundlayer.Width, backgroundlayer.Height)), GraphicsUnit.Pixel);
-                g.DrawImage(backgroundlayer, new Rectangle(new Point(0, 0), this.Size), new Rectangle(new Point(-backgroundCoordX - backgroundlayer.Width + 2, 0), new Size(backgroundlayer.Width, backgroundlayer.Height)), GraphicsUnit.Pixel);
+                g.DrawImage(backgroundlayer, new Rectangle(new Point(backgroundCoordX, 0), new Size( new Point(backgroundlayer.Width, this.Size.Height))));
+                g.DrawImage(backgroundlayer, new Rectangle(new Point(backgroundCoordX2, 0), new Size(new Point(backgroundlayer.Width, this.Size.Height))));
 
                 foreach (Control x in this.Controls)
                 {
@@ -832,33 +848,28 @@ namespace WindowsForms.Gamecode
                         }
                         else if (tag == "coins")
                         {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
-                            g.DrawImage(coinHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
+                            g.DrawImage(coinHandler.CurrentSprite, destRect);
                         }
                         else if (tag == "obstacleTree")
                         {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
-                            g.DrawImage(mushroomHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
+                            g.DrawImage(mushroomHandler.CurrentSprite, destRect);
                         }
                         else if (tag == "rangeEnemy")
                         {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
-                            g.DrawImage(((PictureBox)x).Image, destRect, srcRect, GraphicsUnit.Pixel);
+                            g.DrawImage(((PictureBox)x).Image, destRect);
                         }
                         else if (tag == "eagleEnemy")
                         {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
-                            g.DrawImage(eagleHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
+                            g.DrawImage(eagleHandler.CurrentSprite, destRect);
                         }
                         else if (tag == "player")
                         {
                             if (player.isAttacking)
                             {
-                                Rectangle srcRect = new Rectangle(new Point(0, 0), player.currentImage.Size);
                                 Rectangle destRect;
                                 if (player.facingRight)
                                 {
@@ -868,16 +879,15 @@ namespace WindowsForms.Gamecode
                                 {
                                     destRect = new Rectangle(new Point(x.Location.X - 60, x.Location.Y), player.currentImage.Size);
                                 }
-                                g.DrawImage(player.currentImage, destRect, srcRect, GraphicsUnit.Pixel);
+                                g.DrawImage(player.currentImage, destRect);
                             }
                             else
                                 g.DrawImage(player.currentImage, player.box.Location);
                         }
                         else if (tag != "coins.collected" && tag != "background")
                         {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
-                            g.DrawImage(((PictureBox)x).Image, destRect, srcRect, GraphicsUnit.Pixel);
+                            g.DrawImage(((PictureBox)x).Image, destRect);
                         }
                     }
                     if (x is Label)
@@ -897,23 +907,29 @@ namespace WindowsForms.Gamecode
 
         protected void background_move()
         {
-            //if (backgroundCoordX <= -1600)
-            //    backgroundCoordX = 1600;
+            if (backgroundCoordX < -backgroundlayer.Width)
+                backgroundCoordX = backgroundlayer.Width - 30;
 
-            //if (backgroundCoordX2 <= -1600)
-            //    backgroundCoordX2 = 1600;
+            if (backgroundCoordX > backgroundlayer.Width)
+                backgroundCoordX = -backgroundlayer.Width + 20;
+
+
+            if (backgroundCoordX2 < -backgroundlayer.Width)
+                backgroundCoordX2 = backgroundlayer.Width - 30;
+            if (backgroundCoordX2 > backgroundlayer.Width)
+                backgroundCoordX2 = -backgroundlayer.Width + 20;
 
 
             if (player.goRight && !player.obstacleRight)
             {
-                backgroundCoordX -= 2;
+                backgroundCoordX -= 3;
+                backgroundCoordX2 -= 3;
             }
             if (player.goLeft && !player.obstacleLeft)
             {
-                backgroundCoordX += 2;
+                backgroundCoordX += 3;
+                backgroundCoordX2 += 3;
             }
-
-            //Invalidate();
         }
         #endregion
 
@@ -930,7 +946,7 @@ namespace WindowsForms.Gamecode
                     string tag = (string)x.Tag;
                     if (tag == "platform" || tag == "obstacleTree" || tag == "coins" || tag == "finish" || tag == "......" || tag == "thorns" || tag == "eagleEnemy" || tag == "rangeEnemy" || tag == "shopHUD" || tag == "merchant" || tag == "destroyedThorns")
                     {
-                        x.Left += moveAmount;
+                        x.Location = new Point(x.Location.X + moveAmount, x.Location.Y);
                     }
                 }
             }
@@ -955,6 +971,7 @@ namespace WindowsForms.Gamecode
                     enemy.Hp -= player.Dmg;
                     if (enemy.Hp <= 0)
                     {
+                        enemyDeathSound.Play();
                         debuff = false;
                         this.Controls.Remove(x);
                     }
@@ -966,12 +983,13 @@ namespace WindowsForms.Gamecode
                 {
                     enemy.Hp -= player.Dmg;
                     if (enemy.Hp <= 0)
+                    {
+                        enemyDeathSound.Play();
                         this.Controls.Remove(x);
+                    }
                 }
             }
         }
-
-
 
         #endregion
 

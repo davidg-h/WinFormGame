@@ -102,3 +102,8 @@ C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\Wi
 C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\Game.csproj.AssemblyReference.cache
 C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.StoryMode2.resources
 C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.StoryMode3.resources
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\bin\Debug\Interop.WMPLib.dll
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\Interop.WMPLib.dll
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\Game.csproj.ResolveComReference.cache
