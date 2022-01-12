@@ -12,6 +12,7 @@ namespace WindowsForms.Gamecode
 {
     public partial class GameOverScreen : Form
     {
+        public bool playAgainClicked = false;
         public GameOverScreen()
         {
             InitializeComponent();
@@ -22,11 +23,12 @@ namespace WindowsForms.Gamecode
         {
             Application.Exit();
         }
-        private void PlayAgain(object sender, EventArgs e)
+        public void PlayAgain(object sender, EventArgs e)
         {
             StartScreen startScreen = new StartScreen();
             startScreen.Show();
             this.Visible = false;
+            playAgainClicked = true;
         }
         private void Quit(object sender, EventArgs e)
         {

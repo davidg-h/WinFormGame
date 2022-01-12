@@ -42,13 +42,16 @@ namespace WindowsForms.Gamecode
         internal Label coinCounter;
         //timer: min and sec
         internal (int min, int sec) timer = (5, 0);
-        internal List<RangeEnemy> rangeEnemyList;
+        //internal List<RangeEnemy> rangeEnemyList;
         internal Player player;
         internal SpriteHandler coinHandler;
         internal SpriteHandler mushroomHandler;
         internal SpriteHandler eagleHandler;
+
         internal EnemySmall[] mushroomArray;
         internal EnemyFly[] flyEnemyArray;
+        internal RangeEnemy[] rangeEnemyArray;
+
         internal int relativeXPositionOfPlayer = 0;
 
         Bitmap emptyHeart = new Bitmap(Properties.Resources.HeartEmpty);
@@ -70,7 +73,6 @@ namespace WindowsForms.Gamecode
 
         protected void initializeLevel(Level levelForm)
         {
-
             if (levelForm is StoryMode1)
             {
                 StoryMode1 form = (StoryMode1)levelForm;
@@ -128,7 +130,7 @@ namespace WindowsForms.Gamecode
                 countdownLabel = form.countdownLabel;
                 coinCounter = form.coinCounter;
             }
-            if(levelForm is EndlessMode)
+            if (levelForm is EndlessMode)
             {
                 EndlessMode form = (EndlessMode)levelForm;
                 MainGameTick = form.MainGameTick;
@@ -147,12 +149,12 @@ namespace WindowsForms.Gamecode
                 countdownLabel = form.countdownLabel;
                 coinCounter = form.coinCounter;
 
-                player = new Player(playerBox, 100);    
+                player = new Player(playerBox, 100);
                 player.gamemodeEndless = true;
             }
             else
             {
-                CreateEnemysLIst(); //needs fix
+                //CreateEnemysLIst(); //needs fix
                 player = new Player(playerBox, 100);
             }
             //creates the handler for animations (coins, enemys...)
@@ -193,6 +195,7 @@ namespace WindowsForms.Gamecode
             coinHandler = new SpriteHandler(Properties.Resources.coin);
             mushroomHandler = new SpriteHandler(Properties.Resources.shroomIdle);
             eagleHandler = new SpriteHandler(Properties.Resources.eagle);
+
         }
         protected void makeDefaultDrawingInvisible()
         {
@@ -222,6 +225,8 @@ namespace WindowsForms.Gamecode
         {
             int mushroomEnemyCounter = 0;
             int eagleEnemyCounter = 0;
+            int rangeEnemyCounter = 0;
+
 
             foreach (Control x in this.Controls)
             {
@@ -234,12 +239,20 @@ namespace WindowsForms.Gamecode
                 {
                     eagleEnemyCounter++;
                 }
+                if ((string)x.Tag == "rangeEnemy")
+                {
+                    rangeEnemyCounter++;
+                }
             }
             //put all enemies in array for later uses
             mushroomArray = new EnemySmall[mushroomEnemyCounter];
             flyEnemyArray = new EnemyFly[eagleEnemyCounter];
+            rangeEnemyArray = new RangeEnemy[rangeEnemyCounter];
+
             mushroomEnemyCounter = 0;
             eagleEnemyCounter = 0;
+            rangeEnemyCounter = 0;
+
             foreach (Control x in this.Controls)
             {
                 if ((string)x.Tag == "obstacleTree")
@@ -251,6 +264,11 @@ namespace WindowsForms.Gamecode
                 {
                     flyEnemyArray[eagleEnemyCounter] = new EnemyFly((PictureBox)x);
                     eagleEnemyCounter++;
+                }
+                if ((string)x.Tag == "rangeEnemy")
+                {
+                    rangeEnemyArray[rangeEnemyCounter] = new RangeEnemy((PictureBox)x);
+                    rangeEnemyCounter++;
                 }
             }
         }
@@ -387,8 +405,16 @@ namespace WindowsForms.Gamecode
                 timer.sec -= 1;
                 if (timer.sec == 0 && !gameOver)
                 {
-                    if (timer.min == 0) { gameOver = true; CountdownTimer.Stop(); }
-                    else { timer.min -= 1; timer.sec = 59; }
+                    if (timer.min == 0)
+                    {
+                        CountdownTimer.Stop();
+                        GameOver();
+                    }
+                    else
+                    {
+                        timer.min -= 1;
+                        timer.sec = 59;
+                    }
                 }
             }
 
@@ -414,7 +440,7 @@ namespace WindowsForms.Gamecode
             ContactWithAnyObject();
 
             //if he falls out of the world
-            //fallPutOfTheWorld();
+            fallPutOfTheWorld();
 
             //debuff check (also possible to change the debuff EFFECT here!)
             playerDebuffs();
@@ -425,7 +451,7 @@ namespace WindowsForms.Gamecode
             Healthbar();
             //make the enemies move
             moveEnemys();
-            if(player.goLeft)
+            if (player.goLeft)
                 MoveGameElements(player.characterSpeed);
             if (player.goRight)
                 MoveGameElements(-player.characterSpeed);
@@ -471,7 +497,7 @@ namespace WindowsForms.Gamecode
             }
         }
 
-        private void moveEnemys()
+        internal void moveEnemys()
         {
             InRangeOfEnemy(flyEnemyArray);
             foreach (EnemySmall mushroom in mushroomArray)
@@ -501,7 +527,7 @@ namespace WindowsForms.Gamecode
         protected void ContactWithAnyObject()
         {
             //get updated to correct value below
-            player.IsOnGround = false; 
+            player.IsOnGround = false;
             player.obstacleLeft = false;
             player.obstacleRight = false;
             foreach (Control x in this.Controls)
@@ -526,7 +552,7 @@ namespace WindowsForms.Gamecode
                         }
                         if ((string)x.Tag == "eagleEnemy")
                         {
-                           
+
                             if ((((PictureBox)x).Location.X - player.box.Location.X) > 0)
                             {
                                 player.obstacleRight = true;
@@ -536,6 +562,19 @@ namespace WindowsForms.Gamecode
                                 player.obstacleLeft = true;
                             }
                             player.Hp -= flyEnemyArray[0].Dmg;
+                        }
+                        if ((string)x.Tag == "rangeEnemy")
+                        {
+
+                            if ((((PictureBox)x).Location.X - player.box.Location.X) > 0)
+                            {
+                                player.obstacleRight = true;
+                            }
+                            else
+                            {
+                                player.obstacleLeft = true;
+                            }
+                            //player.Hp -= rangeEnemyArray[0].Dmg;
                         }
 
                         if ((string)x.Tag == "shot")
@@ -569,23 +608,23 @@ namespace WindowsForms.Gamecode
                             player.coins += 1;
                         }
 
-                        if ((string)x.Tag == "rangeEnemy")
-                        {
-                            RangeEnemy foundRangeEnemy = rangeEnemyList.Find(rangeEnemy => rangeEnemy.box.Name == (string)x.Name);
-                            player.Hp -= foundRangeEnemy.Dmg;
-                            if (player.isAttacking)
-                            {
-                                foundRangeEnemy.Hp -= player.Dmg;
-                                if (foundRangeEnemy.Hp < 1)
-                                {
-                                    this.Controls.Remove(x);
-                                    debuff = false;
-                                    rangeEnemyList.Remove(foundRangeEnemy);
-                                    //AddNextEnemy();
+                        //if ((string)x.Tag == "rangeEnemy")
+                        //{
+                        //    RangeEnemy foundRangeEnemy = rangeEnemyList.Find(rangeEnemy => rangeEnemy.box.Name == (string)x.Name);
+                        //    player.Hp -= foundRangeEnemy.Dmg;
+                        //    if (player.isAttacking)
+                        //    {
+                        //        foundRangeEnemy.Hp -= player.Dmg;
+                        //        if (foundRangeEnemy.Hp < 1)
+                        //        {
+                        //            this.Controls.Remove(x);
+                        //            debuff = false;
+                        //            rangeEnemyList.Remove(foundRangeEnemy);
+                        //            //AddNextEnemy();
 
-                                }
-                            }
-                        }
+                        //        }
+                        //    }
+                        //}
                         if ((string)x.Tag == "thorns")
                         {
                             if (player.isAttacking)
@@ -700,7 +739,7 @@ namespace WindowsForms.Gamecode
                     player.Down();
                     break;
                 case Keys.D:
-                      player.Right(true);
+                    player.Right(true);
                     break;
                 case Keys.Space:
                     player.attack();
@@ -777,23 +816,23 @@ namespace WindowsForms.Gamecode
         #endregion
 
         #region CreateEnemyList RangeEnemy
-        protected void CreateEnemysLIst()
-        {
-            rangeEnemyList = new List<RangeEnemy>();
-            foreach (var item in RangeEnemy.picturesAndLocationArray)
-            {
-                RangeEnemy nextEnemy = new RangeEnemy(10, 1);
-                this.rangeEnemyList.Add(nextEnemy);
-                this.Controls.Add(nextEnemy.box);
-            }
+        //protected void CreateEnemysLIst()
+        //{
+        //    rangeEnemyList = new List<RangeEnemy>();
+        //    foreach (var item in RangeEnemy.picturesAndLocationArray)
+        //    {
+        //        RangeEnemy nextEnemy = new RangeEnemy(10, 1);
+        //        this.rangeEnemyList.Add(nextEnemy);
+        //        this.Controls.Add(nextEnemy.box);
+        //    }
 
-        }
+        //}
         #endregion
 
         #region ShootingOfEnemy RangeEnemy
         protected void ShootWhenPlayerNear()
         {
-            foreach (var rangeEnemy in this.rangeEnemyList)
+            foreach (var rangeEnemy in this.rangeEnemyArray)
             {
                 if (rangeEnemy.box != null && (rangeEnemy.box.Left - player.box.Right < 200 && player.box.Right < rangeEnemy.box.Left))
                 {
@@ -896,7 +935,7 @@ namespace WindowsForms.Gamecode
         #region Background
 
         Image backgroundlayer = Properties.Resources.Background;
-        int backgroundCoordX = 0, backgroundCoordX2 = 1600;
+        int backgroundCoordX = 2, backgroundCoordX2 = 1600;
 
         protected void background_move()
         {
@@ -964,6 +1003,15 @@ namespace WindowsForms.Gamecode
                 }
             }
             foreach (var enemy in flyEnemyArray)
+            {
+                if (enemy.box.Name == x.Name)
+                {
+                    enemy.Hp -= player.Dmg;
+                    if (enemy.Hp <= 0)
+                        this.Controls.Remove(x);
+                }
+            }
+            foreach (var enemy in rangeEnemyArray)
             {
                 if (enemy.box.Name == x.Name)
                 {
