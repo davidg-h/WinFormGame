@@ -27,28 +27,29 @@ namespace WindowsForms.Gamecode
         internal Image currentImage = null;
         int currentImageIndex = 0;
         int animationUpdate = 0;
-        EnumPlayerAnimation currentAnimation = EnumPlayerAnimation.idleRight; 
+        EnumPlayerAnimation currentAnimation = EnumPlayerAnimation.idleRight;
         public bool obstacleRight = false;
         public bool obstacleLeft = false;
         bool attacking = false;
         internal bool facingRight = true;
-        public bool isAttacking { get => attacking; set => attacking =  value; }
+        public bool isAttacking { get => attacking; set => attacking = value; }
         internal override int Dmg { get => dmg; set => dmg = value; }
         public bool armor1, armor2, potion, invulnerable, gamemodeEndless;
         int currentHealth;
         public Rectangle swordHitRange;
 
         // move pattern for WASD - controls
-        internal void Left(bool go) { goLeft = go; if(go)facingRight = false; }
-        internal void Right(bool go) { goRight = go; if(go)facingRight = true; }
+        internal void Left(bool go) { goLeft = go; if (go) facingRight = false; }
+        internal void Right(bool go) { goRight = go; if (go) facingRight = true; }
         internal void jump() { jumps = true; }
         internal void Down() { goDown = true; }
         internal bool IsOnGround { get => isOnGround; set => isOnGround = value; }
 
         #endregion
 
-        public Player(PictureBox playerBox, int hp, int dmg = 1) : base(playerBox, hp, dmg) { 
-            defaultLocation = new Point(34,31);
+        public Player(PictureBox playerBox, int hp, int dmg = 1) : base(playerBox, hp, dmg)
+        {
+            defaultLocation = new Point(34, 31);
             moveVector = new System.Windows.Vector(0, 0);
             isOnGround = false;
             spritesIdleLeft = SpriteHandler.getFrames(Properties.Resources.idle);
@@ -69,7 +70,7 @@ namespace WindowsForms.Gamecode
         {
             get => hp;
             set
-             {
+            {
                 currentHealth = Hp;
                 if (value > 100)
                     hp = 100;
@@ -78,7 +79,7 @@ namespace WindowsForms.Gamecode
                     hp = currentHealth;
                     currentHealth = value;
                 }
-                else if (armor2 && value <= hp )
+                else if (armor2 && value <= hp)
                 {
                     invulnerable = true;
                     armor2 = false;
@@ -124,7 +125,8 @@ namespace WindowsForms.Gamecode
             }
             #endregion
             //finaly the position gets Updated with the created moveVector
-            box.Location = new Point(box.Location.X + (int)moveVector.X, box.Location.Y + (int)moveVector.Y);
+            if (!obstacleRight)
+                box.Location = new Point(box.Location.X + (int)moveVector.X, box.Location.Y + (int)moveVector.Y);
 
         }
         public void moveEndlessmode(Form f) // player is able to move in window
@@ -177,7 +179,7 @@ namespace WindowsForms.Gamecode
                 animationUpdate = 0;
                 currentAnimation = EnumPlayerAnimation.attackLeft;
             }
-            else if(attacking && facingRight)
+            else if (attacking && facingRight)
             {
                 animationUpdate = 0;
                 currentAnimation = EnumPlayerAnimation.attackRight;
@@ -198,7 +200,7 @@ namespace WindowsForms.Gamecode
                     currentAnimation = EnumPlayerAnimation.moveRight;
                 }
             }
-            else if(facingRight)
+            else if (facingRight)
             {
                 if (currentAnimation != EnumPlayerAnimation.idleRight)
                 {
@@ -224,17 +226,17 @@ namespace WindowsForms.Gamecode
             {
                 switch (currentAnimation)
                 {
-                    case EnumPlayerAnimation.idleRight: 
-                        currentImage = spritesIdleLeft[ (currentImageIndex + 1) % spritesIdleLeft.Length]; //swows next frame od animation
+                    case EnumPlayerAnimation.idleRight:
+                        currentImage = spritesIdleLeft[(currentImageIndex + 1) % spritesIdleLeft.Length]; //swows next frame od animation
                         break;
                     case EnumPlayerAnimation.idleLeft:
                         currentImage = spritesIdleRight[(currentImageIndex + 1) % spritesIdleLeft.Length];
                         break;
                     case EnumPlayerAnimation.moveLeft:
-                        currentImage = spritesWalkLeft[ (currentImageIndex + 1) % spritesIdleLeft.Length];
+                        currentImage = spritesWalkLeft[(currentImageIndex + 1) % spritesIdleLeft.Length];
                         break;
                     case EnumPlayerAnimation.moveRight:
-                        currentImage = spritesWalkRight[ (currentImageIndex + 1) % spritesIdleLeft.Length];
+                        currentImage = spritesWalkRight[(currentImageIndex + 1) % spritesIdleLeft.Length];
                         break;
                     case EnumPlayerAnimation.attackLeft:
                         currentImage = spritesAttackLeft;
