@@ -51,6 +51,7 @@ namespace WindowsForms.Gamecode
         internal EnemySmall[] mushroomArray;
         internal EnemyFly[] flyEnemyArray;
         internal RangeEnemy[] rangeEnemyArray;
+        internal PictureBox[] obstacleArray;
 
         internal int relativeXPositionOfPlayer = 0;
 
@@ -78,7 +79,7 @@ namespace WindowsForms.Gamecode
                 StoryMode1 form = (StoryMode1)levelForm;
                 MainGameTick = form.MainGameTick;
                 playerBox = form.playerBox;
-                obstacle = form.obstacle;
+                obstacle = form.obstacle1;
                 heart1 = form.heart1;
                 heart2 = form.heart2;
                 heart3 = form.heart3;
@@ -226,7 +227,7 @@ namespace WindowsForms.Gamecode
             int mushroomEnemyCounter = 0;
             int eagleEnemyCounter = 0;
             int rangeEnemyCounter = 0;
-
+            int obstacleCounter = 0;
 
             foreach (Control x in this.Controls)
             {
@@ -243,15 +244,21 @@ namespace WindowsForms.Gamecode
                 {
                     rangeEnemyCounter++;
                 }
+                if ((string)x.Tag == "thorns")
+                {
+                    obstacleCounter++;
+                }
             }
             //put all enemies in array for later uses
             mushroomArray = new EnemySmall[mushroomEnemyCounter];
             flyEnemyArray = new EnemyFly[eagleEnemyCounter];
             rangeEnemyArray = new RangeEnemy[rangeEnemyCounter];
+            obstacleArray = new PictureBox[obstacleCounter];
 
             mushroomEnemyCounter = 0;
             eagleEnemyCounter = 0;
             rangeEnemyCounter = 0;
+            obstacleCounter = 0;
 
             foreach (Control x in this.Controls)
             {
@@ -269,6 +276,11 @@ namespace WindowsForms.Gamecode
                 {
                     rangeEnemyArray[rangeEnemyCounter] = new RangeEnemy((PictureBox)x);
                     rangeEnemyCounter++;
+                }
+                if ((string)x.Tag == "thorns")
+                {
+                    obstacleArray[obstacleCounter] = (PictureBox)x;
+                    obstacleCounter++;
                 }
             }
         }
@@ -451,9 +463,9 @@ namespace WindowsForms.Gamecode
             Healthbar();
             //make the enemies move
             moveEnemys();
-            if (player.goLeft)
+            if (player.goLeft && !player.obstacleLeft)
                 MoveGameElements(player.characterSpeed);
-            if (player.goRight)
+            if (player.goRight && !player.obstacleRight)
                 MoveGameElements(-player.characterSpeed);
             ShootWhenPlayerNear();
             //Move all GameElements
@@ -528,8 +540,8 @@ namespace WindowsForms.Gamecode
         {
             //get updated to correct value below
             player.IsOnGround = false;
-            player.obstacleLeft = false;
             player.obstacleRight = false;
+            player.obstacleLeft = false;
             foreach (Control x in this.Controls)
             {
                 //TODO spawn of enemys (use the enemy classes)
@@ -629,13 +641,19 @@ namespace WindowsForms.Gamecode
                         {
                             if (player.isAttacking)
                             {
-                                obstacle.Image = Properties.Resources.PoisountPlant_destroyed;
+                                x.BackgroundImage = Properties.Resources.PoisountPlant_destroyed;
                                 x.Tag = "destroyedThorns";
+                                ChangeThorns(x);
+                                player.obstacleRight = true;
                             }
                             else
                             {
                                 debuff = true;
                                 debuffCounter = 0;
+                                if (player.box.Location.X < x.Location.X)
+                                    player.obstacleRight = true;
+                                else
+                                    player.obstacleLeft = true;
                             }
                         }
                         if ((string)x.Tag == "merchant")
@@ -921,13 +939,25 @@ namespace WindowsForms.Gamecode
                 }
                 //all the Laabels and Text is drawn on Top of Game Elements
                 foreach (Control x in this.Controls)
-                { 
+                {
                     if (x is Label)
                     {
                         g.DrawString(x.Text, new Font("Unispace", 11), new SolidBrush(Color.Black), x.Location);
                     }
                 }
                 pf.CreateGraphics().DrawImageUnscaled(bufl, 0, 0);
+            }
+        }
+        #endregion
+
+        #region DestroyableObstacle()
+
+        void ChangeThorns(Control x)
+        {
+            foreach (PictureBox obstacle in obstacleArray)
+            {
+                if ((string)x.Tag == "destroyedThorns" && x.Name == obstacle.Name)
+                    obstacle.Image = Properties.Resources.PoisountPlant_destroyed;
             }
         }
         #endregion
@@ -1012,7 +1042,10 @@ namespace WindowsForms.Gamecode
                 {
                     enemy.Hp -= player.Dmg;
                     if (enemy.Hp <= 0)
+                    {
+                        debuff = false;
                         this.Controls.Remove(x);
+                    }
                 }
             }
             foreach (var enemy in rangeEnemyArray)
@@ -1021,7 +1054,10 @@ namespace WindowsForms.Gamecode
                 {
                     enemy.Hp -= player.Dmg;
                     if (enemy.Hp <= 0)
+                    {
+                        debuff = false;
                         this.Controls.Remove(x);
+                    }
                 }
             }
         }
