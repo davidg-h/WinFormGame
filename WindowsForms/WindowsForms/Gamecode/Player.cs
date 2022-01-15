@@ -117,7 +117,8 @@ namespace WindowsForms.Gamecode
             if (!IsOnGround)
             {
                 //if inAir then add downforce
-                moveVector.Y += force;
+                if (moveVector.Y < 25)
+                    moveVector.Y += force;
             }
             else
             {   //if isOnGround then stay on Ground
@@ -125,8 +126,7 @@ namespace WindowsForms.Gamecode
             }
             #endregion
             //finaly the position gets Updated with the created moveVector
-            if (!obstacleRight)
-                box.Location = new Point(box.Location.X + (int)moveVector.X, box.Location.Y + (int)moveVector.Y);
+            box.Location = new Point(box.Location.X + (int)moveVector.X, box.Location.Y + (int)moveVector.Y);
 
         }
         public void moveEndlessmode(Form f) // player is able to move in window
