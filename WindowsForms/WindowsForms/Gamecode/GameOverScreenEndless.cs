@@ -12,11 +12,12 @@ namespace WindowsForms.Gamecode
 {
     public partial class GameOverScreenEndless : Form
     {
-        public GameOverScreenEndless()
+        internal int score;
+        public GameOverScreenEndless(int score)
         {
             InitializeComponent();
             this.FormClosed += closeGame;
-
+            this.score = score;
         }
         internal static void closeGame(object sender, EventArgs e)
         {
@@ -40,8 +41,7 @@ namespace WindowsForms.Gamecode
             {
                 string name = nameInput.playerName.Text;
                 // processes the name and score and displays them
-                EndlessMode endlessMode = new EndlessMode();
-                HighscoreList highscoreList = new HighscoreList(name, endlessMode.label1.Text);
+                HighscoreList highscoreList = new HighscoreList(name,Convert.ToString(score));
                 highscoreList.Show();
                 Visible = false;
             }

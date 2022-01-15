@@ -15,7 +15,7 @@ namespace WindowsForms.Gamecode
     {
         #region Game(EndlessMode) variables
         Random rand = new Random();
-        int obstacleSpeed = 10;
+        int obstacleSpeed = 8;
         int inventoryChestCoins;
         int largestXKoord;
         List<List<PictureBox>> chapterList;
@@ -104,16 +104,6 @@ namespace WindowsForms.Gamecode
             }
         }
 
-        private void healthBuy(object sender, EventArgs e)
-        {
-            const int cost = 150;
-            if (buySomethingValid(cost))
-            {
-                player.Hp = player.Hp * 2;
-                //healthBar.Maximum = player.Hp;
-            }
-        }
-
         private void dmgBuy(object sender, EventArgs e)
         {
             const int cost = 50;
@@ -162,7 +152,7 @@ namespace WindowsForms.Gamecode
             player.moveEndlessmode(this);
             player.isOnGround = false;
 
-            fallPutOfTheWorld();
+            //fallPutOfTheWorld();
 
             // "invinceble frames" as long as invulnerable is on true: no dmg can be taken (as to see in player.Hp property)
             invulnerableFrames();
@@ -173,11 +163,12 @@ namespace WindowsForms.Gamecode
             MoveGameElements(-obstacleSpeed);
             moveEnemys();
 
-            if (player.score > 5) obstacleSpeed = 20;
-            if (player.score > 15) obstacleSpeed = 30;
-            if (player.score > 30) obstacleSpeed = 50;
-            if (player.score > 60) obstacleSpeed = 80;
-            if (player.score > 100) obstacleSpeed = 120;
+            if (player.score > 5) obstacleSpeed = 10;
+            if (player.score > 10) obstacleSpeed = 15;
+            if (player.score > 20) obstacleSpeed = 20;
+            if (player.score > 30) obstacleSpeed = 25;
+            if (player.score > 60) obstacleSpeed = 35;
+            if (player.score > 100) obstacleSpeed = 50;
 
             Draw();
 
@@ -190,13 +181,12 @@ namespace WindowsForms.Gamecode
         {
             MainGameTick.Stop();
             ScoreTimer.Stop();
-            gameOver = false;
-            GameOverScreenEndless gameOverScreen = new GameOverScreenEndless();
-            gameOverScreen.Show();
-            this.Hide();
-            MainGameTick.Stop();
             CoinSpawnTimer.Stop();
             ChapterSpawnTimer.Stop();
+            gameOver = false;
+            GameOverScreenEndless gameOverScreen = new GameOverScreenEndless(player.score);
+            gameOverScreen.Show();
+            this.Hide();
         }
 
         private void DeathGameReset(int coinCount)
@@ -306,9 +296,10 @@ namespace WindowsForms.Gamecode
         #region random Placement of objects
         internal void chapterSpawnTick(object sender, EventArgs e)
         {
-            if (player.score > 10) ChapterSpawnTimer.Interval = 1000;
-            if (player.score > 25) ChapterSpawnTimer.Interval = 750;
-            if (player.score > 60) ChapterSpawnTimer.Interval = 500;
+            if (player.score > 8) ChapterSpawnTimer.Interval = 1500;
+            if (player.score > 18) ChapterSpawnTimer.Interval = 1000;
+            if (player.score > 28) ChapterSpawnTimer.Interval = 800;
+            if (player.score > 58) ChapterSpawnTimer.Interval = 700;
             randomPlacement();
         }
 
@@ -321,13 +312,13 @@ namespace WindowsForms.Gamecode
             switch (chapter)
             {
                 case 1:
-                    createChapter(chapterList[0], x, 470, rand.Next(50, 150));
+                    createChapter(chapterList[0], x, 470, rand.Next(50, 100));
                     break;
                 case 2:
-                    createChapter(chapterList[1], x, 1185, rand.Next(45, 125));
+                    createChapter(chapterList[1], x, 1185, rand.Next(45, 100));
                     break;
                 case 3:
-                    createChapter(chapterList[2], x, 1639, rand.Next(60, 180));
+                    createChapter(chapterList[2], x, 1639, rand.Next(60, 100));
                     break;
                 case 4:
                     createChapter(chapterList[3], x, 2131, rand.Next(30, 100));
