@@ -683,8 +683,8 @@
             // 
             this.playerBox.BackColor = System.Drawing.Color.Transparent;
             this.playerBox.Image = global::WindowsForms.Properties.Resources.idle;
-            this.playerBox.Location = new System.Drawing.Point(19, 154);
-            this.playerBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.playerBox.Location = new System.Drawing.Point(288, 154);
+            this.playerBox.Margin = new System.Windows.Forms.Padding(2);
             this.playerBox.Name = "playerBox";
             this.playerBox.Size = new System.Drawing.Size(68, 64);
             this.playerBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;

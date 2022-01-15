@@ -127,7 +127,6 @@ namespace WindowsForms.Gamecode
             #endregion
             //finaly the position gets Updated with the created moveVector
             box.Location = new Point(box.Location.X + (int)moveVector.X, box.Location.Y + (int)moveVector.Y);
-
         }
         public void moveEndlessmode(Form f) // player is able to move in window
         {
