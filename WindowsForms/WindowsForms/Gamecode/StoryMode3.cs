@@ -28,7 +28,15 @@ namespace WindowsForms.Gamecode
         }
 
 
-
+        internal void Restart()
+        {
+            MainGameTick.Stop();
+            CountdownTimer.Stop();
+            gameOver = false;
+            StoryMode3 newWindow = new StoryMode3();
+            newWindow.Show();
+            this.Hide();
+        }
         override protected void goToNextLevel()
         {
             MainGameTick.Stop();
@@ -49,6 +57,13 @@ namespace WindowsForms.Gamecode
         private void StoryMode3_KeyDown(object sender, KeyEventArgs e)
         {
             KeyIsDown(sender, e);
+            switch (e.KeyCode)
+            {
+                case Keys.R:
+                    //if (gameOver == true)
+                    Restart();
+                    break;
+            }
         }
 
         private void StoryMode3_KeyUp(object sender, KeyEventArgs e)
