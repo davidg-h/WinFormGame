@@ -71,7 +71,6 @@ C:\Users\David\Desktop\Schule TH\Min Semester 3\Graphic Knight\WindowsForms\Wind
 C:\Users\David\Desktop\Schule TH\Min Semester 3\Graphic Knight\WindowsForms\WindowsForms\obj\Debug\WindowsForms.exe
 C:\Users\David\Desktop\Schule TH\Min Semester 3\Graphic Knight\WindowsForms\WindowsForms\obj\Debug\WindowsForms.pdb
 C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.WinnerScreen.resources
-C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.GameOverScreen.resources
 C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.WinnerScreen.resources
 C:\Users\lizab\source\repos\project\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.Instructions.resources
 C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.Instructions.resources
@@ -123,3 +122,4 @@ C:\Users\lizab\Source\Repos\project\WindowsForms\WindowsForms\obj\Debug\WindowsF
 C:\Users\lizab\Source\Repos\project\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.StoryMode2.resources
 C:\Users\lizab\Source\Repos\project\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.StoryMode3.resources
 C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.GameOverScreenStory.resources
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.GameOverScreenStory.resources
