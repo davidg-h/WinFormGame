@@ -724,6 +724,7 @@ namespace WindowsForms.Gamecode
         internal virtual void GameOver()
         {
             MainGameTick.Stop();
+            CountdownTimer.Stop();
             gameOver = false;
             GameOverScreenStory gameOverScreen = new GameOverScreenStory();
             gameOverScreen.Show();
@@ -942,7 +943,7 @@ namespace WindowsForms.Gamecode
                 {
                     if (x is Label)
                     {
-                        g.DrawString(x.Text, new Font("Unispace", 11), new SolidBrush(Color.Black), x.Location);
+                        g.DrawString(x.Text, new Font("Unispace", 18), new SolidBrush(Color.MintCream), x.Location);
                     }
                 }
                 pf.CreateGraphics().DrawImageUnscaled(bufl, 0, 0);
