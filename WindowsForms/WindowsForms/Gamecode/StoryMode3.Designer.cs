@@ -263,7 +263,7 @@
             // 
             this.playerBox.BackColor = System.Drawing.Color.Transparent;
             this.playerBox.Image = global::WindowsForms.Properties.Resources.idle;
-            this.playerBox.Location = new System.Drawing.Point(87, 418);
+            this.playerBox.Location = new System.Drawing.Point(100, 418);
             this.playerBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.playerBox.Name = "playerBox";
             this.playerBox.Size = new System.Drawing.Size(68, 64);
@@ -1480,7 +1480,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WindowsForms.Properties.Resources.Background;
-            this.ClientSize = new System.Drawing.Size(812, 607);
+            this.ClientSize = new System.Drawing.Size(727, 607);
             this.Controls.Add(this.pictureBox41);
             this.Controls.Add(this.pictureBox40);
             this.Controls.Add(this.pictureBox39);

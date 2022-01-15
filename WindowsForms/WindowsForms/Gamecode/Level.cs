@@ -712,13 +712,13 @@ namespace WindowsForms.Gamecode
             lvl2.Show();
             this.Visible = false;
         }
-        internal void Restart()
-        {
-            gameOver = false;
-            StoryMode1 newWindow = new StoryMode1();
-            newWindow.Show();
-            this.Hide();
-        }
+        //internal void Restart()
+        //{
+        //    gameOver = false;
+        //    StoryMode1 newWindow = new StoryMode1();
+        //    newWindow.Show();
+        //    this.Hide();
+        //}
 
         //is overwritten in Endlessmode
         internal virtual void GameOver()
@@ -789,7 +789,7 @@ namespace WindowsForms.Gamecode
             {
                 case Keys.R:
                     //if (gameOver == true)
-                    Restart();
+                    //Restart();
                     break;
                 case Keys.D:
                     player.Right(false);
@@ -852,7 +852,7 @@ namespace WindowsForms.Gamecode
         {
             foreach (var rangeEnemy in this.rangeEnemyArray)
             {
-                if (rangeEnemy.box != null && (rangeEnemy.box.Left - player.box.Right < 200 && player.box.Right < rangeEnemy.box.Left))
+                if (rangeEnemy.box != null && (rangeEnemy.box.Left - player.box.Right < 200 && player.box.Right < rangeEnemy.box.Left)&&rangeEnemy.Hp>0)
                 {
                     rangeEnemy.ShootShot(this, "left");
                 }

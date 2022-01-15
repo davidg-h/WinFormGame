@@ -226,7 +226,7 @@
             this.pictureBox28.BackColor = System.Drawing.Color.Black;
             this.pictureBox28.Image = global::WindowsForms.Properties.Resources.wall4;
             this.pictureBox28.Location = new System.Drawing.Point(3261, 263);
-            this.pictureBox28.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox28.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox28.Name = "pictureBox28";
             this.pictureBox28.Size = new System.Drawing.Size(32, 128);
             this.pictureBox28.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -239,7 +239,7 @@
             this.pictureBox27.BackColor = System.Drawing.Color.Black;
             this.pictureBox27.Image = global::WindowsForms.Properties.Resources.wall4;
             this.pictureBox27.Location = new System.Drawing.Point(3261, 416);
-            this.pictureBox27.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox27.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox27.Name = "pictureBox27";
             this.pictureBox27.Size = new System.Drawing.Size(32, 128);
             this.pictureBox27.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -252,7 +252,7 @@
             this.pictureBox26.BackColor = System.Drawing.Color.Black;
             this.pictureBox26.Image = global::WindowsForms.Properties.Resources.wallLeft4;
             this.pictureBox26.Location = new System.Drawing.Point(3223, 518);
-            this.pictureBox26.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox26.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox26.Name = "pictureBox26";
             this.pictureBox26.Size = new System.Drawing.Size(32, 128);
             this.pictureBox26.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -278,7 +278,7 @@
             this.pictureBox24.BackColor = System.Drawing.Color.Black;
             this.pictureBox24.Image = global::WindowsForms.Properties.Resources.platform4;
             this.pictureBox24.Location = new System.Drawing.Point(3223, 229);
-            this.pictureBox24.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox24.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox24.Name = "pictureBox24";
             this.pictureBox24.Size = new System.Drawing.Size(128, 32);
             this.pictureBox24.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -291,7 +291,7 @@
             this.pictureBox23.BackColor = System.Drawing.Color.Black;
             this.pictureBox23.Image = global::WindowsForms.Properties.Resources.platform2;
             this.pictureBox23.Location = new System.Drawing.Point(3143, 229);
-            this.pictureBox23.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox23.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox23.Name = "pictureBox23";
             this.pictureBox23.Size = new System.Drawing.Size(64, 32);
             this.pictureBox23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -304,7 +304,7 @@
             this.pictureBox22.BackColor = System.Drawing.Color.Black;
             this.pictureBox22.Image = global::WindowsForms.Properties.Resources.wallLeft4;
             this.pictureBox22.Location = new System.Drawing.Point(3223, 416);
-            this.pictureBox22.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox22.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox22.Name = "pictureBox22";
             this.pictureBox22.Size = new System.Drawing.Size(32, 128);
             this.pictureBox22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -317,7 +317,7 @@
             this.pictureBox21.BackColor = System.Drawing.Color.Black;
             this.pictureBox21.Image = global::WindowsForms.Properties.Resources.platform4;
             this.pictureBox21.Location = new System.Drawing.Point(2897, 177);
-            this.pictureBox21.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox21.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox21.Name = "pictureBox21";
             this.pictureBox21.Size = new System.Drawing.Size(128, 32);
             this.pictureBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -330,7 +330,7 @@
             this.pictureBox20.BackColor = System.Drawing.Color.Black;
             this.pictureBox20.Image = global::WindowsForms.Properties.Resources.platformLinks;
             this.pictureBox20.Location = new System.Drawing.Point(-4, 288);
-            this.pictureBox20.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox20.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox20.Name = "pictureBox20";
             this.pictureBox20.Size = new System.Drawing.Size(32, 32);
             this.pictureBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -343,7 +343,7 @@
             this.pictureBox19.BackColor = System.Drawing.Color.Black;
             this.pictureBox19.Image = global::WindowsForms.Properties.Resources.wall4;
             this.pictureBox19.Location = new System.Drawing.Point(1385, 449);
-            this.pictureBox19.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox19.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox19.Name = "pictureBox19";
             this.pictureBox19.Size = new System.Drawing.Size(32, 128);
             this.pictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -356,7 +356,7 @@
             this.pictureBox18.BackColor = System.Drawing.Color.Black;
             this.pictureBox18.Image = global::WindowsForms.Properties.Resources.wall4;
             this.pictureBox18.Location = new System.Drawing.Point(1387, 359);
-            this.pictureBox18.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox18.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox18.Name = "pictureBox18";
             this.pictureBox18.Size = new System.Drawing.Size(32, 128);
             this.pictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -369,7 +369,7 @@
             this.pictureBox17.BackColor = System.Drawing.Color.Black;
             this.pictureBox17.Image = global::WindowsForms.Properties.Resources.platform2;
             this.pictureBox17.Location = new System.Drawing.Point(3143, 414);
-            this.pictureBox17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox17.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox17.Name = "pictureBox17";
             this.pictureBox17.Size = new System.Drawing.Size(64, 32);
             this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -395,7 +395,7 @@
             this.pictureBox15.BackColor = System.Drawing.Color.Black;
             this.pictureBox15.Image = global::WindowsForms.Properties.Resources.platform8;
             this.pictureBox15.Location = new System.Drawing.Point(2169, 242);
-            this.pictureBox15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox15.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox15.Name = "pictureBox15";
             this.pictureBox15.Size = new System.Drawing.Size(256, 32);
             this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -434,7 +434,7 @@
             this.pictureBox13.BackColor = System.Drawing.Color.Black;
             this.pictureBox13.Image = global::WindowsForms.Properties.Resources.platform2;
             this.pictureBox13.Location = new System.Drawing.Point(2876, 489);
-            this.pictureBox13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox13.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(64, 32);
             this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -447,7 +447,7 @@
             this.pictureBox11.BackColor = System.Drawing.Color.Black;
             this.pictureBox11.Image = global::WindowsForms.Properties.Resources.platform2;
             this.pictureBox11.Location = new System.Drawing.Point(2647, 489);
-            this.pictureBox11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox11.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(64, 32);
             this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -460,7 +460,7 @@
             this.pictureBox10.BackColor = System.Drawing.Color.Black;
             this.pictureBox10.Image = global::WindowsForms.Properties.Resources.platform2;
             this.pictureBox10.Location = new System.Drawing.Point(1940, 359);
-            this.pictureBox10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox10.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(64, 32);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -473,7 +473,7 @@
             this.pictureBox9.BackColor = System.Drawing.Color.Black;
             this.pictureBox9.Image = global::WindowsForms.Properties.Resources.platform2;
             this.pictureBox9.Location = new System.Drawing.Point(2365, 489);
-            this.pictureBox9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(64, 32);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -486,7 +486,7 @@
             this.pictureBox8.BackColor = System.Drawing.Color.Black;
             this.pictureBox8.Image = global::WindowsForms.Properties.Resources.platform2;
             this.pictureBox8.Location = new System.Drawing.Point(2088, 242);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(64, 32);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -550,7 +550,7 @@
             // 
             this.shopHUD.Image = global::WindowsForms.Properties.Resources.ShopHUD;
             this.shopHUD.Location = new System.Drawing.Point(4013, 17);
-            this.shopHUD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.shopHUD.Margin = new System.Windows.Forms.Padding(4);
             this.shopHUD.Name = "shopHUD";
             this.shopHUD.Size = new System.Drawing.Size(220, 134);
             this.shopHUD.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -562,7 +562,7 @@
             // 
             this.merchant1.Image = global::WindowsForms.Properties.Resources.Merchant;
             this.merchant1.Location = new System.Drawing.Point(4121, 190);
-            this.merchant1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.merchant1.Margin = new System.Windows.Forms.Padding(4);
             this.merchant1.Name = "merchant1";
             this.merchant1.Size = new System.Drawing.Size(68, 64);
             this.merchant1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -575,7 +575,7 @@
             this.textHUD.BackColor = System.Drawing.Color.Transparent;
             this.textHUD.Image = global::WindowsForms.Properties.Resources.PressH;
             this.textHUD.Location = new System.Drawing.Point(276, 63);
-            this.textHUD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textHUD.Margin = new System.Windows.Forms.Padding(4);
             this.textHUD.Name = "textHUD";
             this.textHUD.Size = new System.Drawing.Size(50, 20);
             this.textHUD.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -588,7 +588,7 @@
             this.HealthPotionHUD.BackColor = System.Drawing.Color.Transparent;
             this.HealthPotionHUD.Image = global::WindowsForms.Properties.Resources.health_potion_empty;
             this.HealthPotionHUD.Location = new System.Drawing.Point(232, 57);
-            this.HealthPotionHUD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HealthPotionHUD.Margin = new System.Windows.Forms.Padding(4);
             this.HealthPotionHUD.Name = "HealthPotionHUD";
             this.HealthPotionHUD.Size = new System.Drawing.Size(24, 30);
             this.HealthPotionHUD.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -600,7 +600,7 @@
             // 
             this.heart5.Image = global::WindowsForms.Properties.Resources.Heart;
             this.heart5.Location = new System.Drawing.Point(227, 6);
-            this.heart5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.heart5.Margin = new System.Windows.Forms.Padding(4);
             this.heart5.Name = "heart5";
             this.heart5.Size = new System.Drawing.Size(32, 32);
             this.heart5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -612,7 +612,7 @@
             // 
             this.heart2.Image = global::WindowsForms.Properties.Resources.Heart;
             this.heart2.Location = new System.Drawing.Point(67, 6);
-            this.heart2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.heart2.Margin = new System.Windows.Forms.Padding(4);
             this.heart2.Name = "heart2";
             this.heart2.Size = new System.Drawing.Size(32, 32);
             this.heart2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -624,7 +624,7 @@
             // 
             this.heart3.Image = global::WindowsForms.Properties.Resources.Heart;
             this.heart3.Location = new System.Drawing.Point(120, 6);
-            this.heart3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.heart3.Margin = new System.Windows.Forms.Padding(4);
             this.heart3.Name = "heart3";
             this.heart3.Size = new System.Drawing.Size(32, 32);
             this.heart3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -636,7 +636,7 @@
             // 
             this.heart4.Image = global::WindowsForms.Properties.Resources.Heart;
             this.heart4.Location = new System.Drawing.Point(173, 6);
-            this.heart4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.heart4.Margin = new System.Windows.Forms.Padding(4);
             this.heart4.Name = "heart4";
             this.heart4.Size = new System.Drawing.Size(32, 32);
             this.heart4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -648,7 +648,7 @@
             // 
             this.heart1.Image = global::WindowsForms.Properties.Resources.Heart;
             this.heart1.Location = new System.Drawing.Point(13, 6);
-            this.heart1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.heart1.Margin = new System.Windows.Forms.Padding(4);
             this.heart1.Name = "heart1";
             this.heart1.Size = new System.Drawing.Size(32, 32);
             this.heart1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -683,7 +683,7 @@
             // 
             this.playerBox.BackColor = System.Drawing.Color.Transparent;
             this.playerBox.Image = global::WindowsForms.Properties.Resources.idle;
-            this.playerBox.Location = new System.Drawing.Point(19, 154);
+            this.playerBox.Location = new System.Drawing.Point(100, 170);
             this.playerBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.playerBox.Name = "playerBox";
             this.playerBox.Size = new System.Drawing.Size(68, 64);
@@ -697,7 +697,7 @@
             this.platformBox14.BackColor = System.Drawing.Color.Black;
             this.platformBox14.Image = global::WindowsForms.Properties.Resources.wallLeft4;
             this.platformBox14.Location = new System.Drawing.Point(3223, 263);
-            this.platformBox14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.platformBox14.Margin = new System.Windows.Forms.Padding(4);
             this.platformBox14.Name = "platformBox14";
             this.platformBox14.Size = new System.Drawing.Size(32, 128);
             this.platformBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -710,7 +710,7 @@
             this.platformBox4.BackColor = System.Drawing.Color.Black;
             this.platformBox4.Image = global::WindowsForms.Properties.Resources.platformRechts;
             this.platformBox4.Location = new System.Drawing.Point(1385, 288);
-            this.platformBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.platformBox4.Margin = new System.Windows.Forms.Padding(4);
             this.platformBox4.Name = "platformBox4";
             this.platformBox4.Size = new System.Drawing.Size(32, 32);
             this.platformBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -723,7 +723,7 @@
             this.platformBox9.BackColor = System.Drawing.Color.Black;
             this.platformBox9.Image = global::WindowsForms.Properties.Resources.wall4;
             this.platformBox9.Location = new System.Drawing.Point(3261, 518);
-            this.platformBox9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.platformBox9.Margin = new System.Windows.Forms.Padding(4);
             this.platformBox9.Name = "platformBox9";
             this.platformBox9.Size = new System.Drawing.Size(32, 128);
             this.platformBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -736,7 +736,7 @@
             this.platformBox19.BackColor = System.Drawing.Color.Black;
             this.platformBox19.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox19.Location = new System.Drawing.Point(3959, -21);
-            this.platformBox19.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.platformBox19.Margin = new System.Windows.Forms.Padding(4);
             this.platformBox19.Name = "platformBox19";
             this.platformBox19.Size = new System.Drawing.Size(128, 32);
             this.platformBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -749,7 +749,7 @@
             this.platformBox8.BackColor = System.Drawing.Color.Black;
             this.platformBox8.Image = global::WindowsForms.Properties.Resources.platform4;
             this.platformBox8.Location = new System.Drawing.Point(2595, 201);
-            this.platformBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.platformBox8.Margin = new System.Windows.Forms.Padding(4);
             this.platformBox8.Name = "platformBox8";
             this.platformBox8.Size = new System.Drawing.Size(128, 32);
             this.platformBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -762,7 +762,7 @@
             this.platformBox7.BackColor = System.Drawing.Color.Black;
             this.platformBox7.Image = global::WindowsForms.Properties.Resources.platform2;
             this.platformBox7.Location = new System.Drawing.Point(2127, 489);
-            this.platformBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.platformBox7.Margin = new System.Windows.Forms.Padding(4);
             this.platformBox7.Name = "platformBox7";
             this.platformBox7.Size = new System.Drawing.Size(64, 32);
             this.platformBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -775,7 +775,7 @@
             this.platformBox5.BackColor = System.Drawing.Color.Black;
             this.platformBox5.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox5.Location = new System.Drawing.Point(1092, 325);
-            this.platformBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.platformBox5.Margin = new System.Windows.Forms.Padding(4);
             this.platformBox5.Name = "platformBox5";
             this.platformBox5.Size = new System.Drawing.Size(128, 32);
             this.platformBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -788,7 +788,7 @@
             this.platformBox2.BackColor = System.Drawing.Color.Black;
             this.platformBox2.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.platformBox2.Location = new System.Drawing.Point(1259, 325);
-            this.platformBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.platformBox2.Margin = new System.Windows.Forms.Padding(4);
             this.platformBox2.Name = "platformBox2";
             this.platformBox2.Size = new System.Drawing.Size(128, 32);
             this.platformBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -995,7 +995,7 @@
             this.platformBox6.BackColor = System.Drawing.Color.Black;
             this.platformBox6.Image = global::WindowsForms.Properties.Resources.platform8;
             this.platformBox6.Location = new System.Drawing.Point(1500, 405);
-            this.platformBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.platformBox6.Margin = new System.Windows.Forms.Padding(4);
             this.platformBox6.Name = "platformBox6";
             this.platformBox6.Size = new System.Drawing.Size(256, 32);
             this.platformBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1008,7 +1008,7 @@
             this.platformBox18.BackColor = System.Drawing.Color.Black;
             this.platformBox18.Image = global::WindowsForms.Properties.Resources.platform16;
             this.platformBox18.Location = new System.Drawing.Point(3788, 530);
-            this.platformBox18.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.platformBox18.Margin = new System.Windows.Forms.Padding(4);
             this.platformBox18.Name = "platformBox18";
             this.platformBox18.Size = new System.Drawing.Size(512, 32);
             this.platformBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1021,7 +1021,7 @@
             this.platformBox3.BackColor = System.Drawing.Color.Black;
             this.platformBox3.Image = global::WindowsForms.Properties.Resources.platform16;
             this.platformBox3.Location = new System.Drawing.Point(707, 288);
-            this.platformBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.platformBox3.Margin = new System.Windows.Forms.Padding(4);
             this.platformBox3.Name = "platformBox3";
             this.platformBox3.Size = new System.Drawing.Size(512, 32);
             this.platformBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1034,10 +1034,10 @@
             this.platformBox1.BackColor = System.Drawing.Color.Black;
             this.platformBox1.Image = global::WindowsForms.Properties.Resources.platform16;
             this.platformBox1.Location = new System.Drawing.Point(33, 288);
-            this.platformBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.platformBox1.Margin = new System.Windows.Forms.Padding(4);
             this.platformBox1.Name = "platformBox1";
             this.platformBox1.Size = new System.Drawing.Size(512, 32);
-            this.platformBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.platformBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.platformBox1.TabIndex = 7;
             this.platformBox1.TabStop = false;
             this.platformBox1.Tag = "platform";
@@ -1098,7 +1098,7 @@
             this.obstacle.BackColor = System.Drawing.Color.Transparent;
             this.obstacle.Image = global::WindowsForms.Properties.Resources.PoisountPlant;
             this.obstacle.Location = new System.Drawing.Point(2415, 95);
-            this.obstacle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.obstacle.Margin = new System.Windows.Forms.Padding(4);
             this.obstacle.Name = "obstacle";
             this.obstacle.Size = new System.Drawing.Size(64, 120);
             this.obstacle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1111,7 +1111,7 @@
             this.coinsHUD.BackColor = System.Drawing.Color.Transparent;
             this.coinsHUD.Image = global::WindowsForms.Properties.Resources.coin;
             this.coinsHUD.Location = new System.Drawing.Point(415, -17);
-            this.coinsHUD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coinsHUD.Margin = new System.Windows.Forms.Padding(4);
             this.coinsHUD.Name = "coinsHUD";
             this.coinsHUD.Size = new System.Drawing.Size(103, 87);
             this.coinsHUD.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1206,7 +1206,7 @@
             this.pictureBox6.BackColor = System.Drawing.Color.Black;
             this.pictureBox6.Image = global::WindowsForms.Properties.Resources.platform4;
             this.pictureBox6.Location = new System.Drawing.Point(3485, 382);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(128, 32);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1245,7 +1245,7 @@
             this.pictureBox34.BackColor = System.Drawing.Color.Black;
             this.pictureBox34.Image = global::WindowsForms.Properties.Resources.wallLeft4;
             this.pictureBox34.Location = new System.Drawing.Point(3885, -15);
-            this.pictureBox34.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox34.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox34.Name = "pictureBox34";
             this.pictureBox34.Size = new System.Drawing.Size(32, 128);
             this.pictureBox34.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1258,7 +1258,7 @@
             this.pictureBox35.BackColor = System.Drawing.Color.Black;
             this.pictureBox35.Image = global::WindowsForms.Properties.Resources.wall4;
             this.pictureBox35.Location = new System.Drawing.Point(3923, -15);
-            this.pictureBox35.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox35.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox35.Name = "pictureBox35";
             this.pictureBox35.Size = new System.Drawing.Size(32, 128);
             this.pictureBox35.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1271,7 +1271,7 @@
             this.obstacle2.BackColor = System.Drawing.Color.Transparent;
             this.obstacle2.Image = global::WindowsForms.Properties.Resources.PoisountPlant;
             this.obstacle2.Location = new System.Drawing.Point(3887, 123);
-            this.obstacle2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.obstacle2.Margin = new System.Windows.Forms.Padding(4);
             this.obstacle2.Name = "obstacle2";
             this.obstacle2.Size = new System.Drawing.Size(64, 120);
             this.obstacle2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1284,7 +1284,7 @@
             this.pictureBox29.BackColor = System.Drawing.Color.Black;
             this.pictureBox29.Image = global::WindowsForms.Properties.Resources.platform16;
             this.pictureBox29.Location = new System.Drawing.Point(3792, 270);
-            this.pictureBox29.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox29.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox29.Name = "pictureBox29";
             this.pictureBox29.Size = new System.Drawing.Size(512, 32);
             this.pictureBox29.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1297,7 +1297,7 @@
             this.obstacle3.BackColor = System.Drawing.Color.Transparent;
             this.obstacle3.Image = global::WindowsForms.Properties.Resources.PoisountPlant;
             this.obstacle3.Location = new System.Drawing.Point(4328, 122);
-            this.obstacle3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.obstacle3.Margin = new System.Windows.Forms.Padding(4);
             this.obstacle3.Name = "obstacle3";
             this.obstacle3.Size = new System.Drawing.Size(64, 120);
             this.obstacle3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1310,7 +1310,7 @@
             this.pictureBox37.BackColor = System.Drawing.Color.Black;
             this.pictureBox37.Image = global::WindowsForms.Properties.Resources.wallLeft4;
             this.pictureBox37.Location = new System.Drawing.Point(4327, -31);
-            this.pictureBox37.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox37.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox37.Name = "pictureBox37";
             this.pictureBox37.Size = new System.Drawing.Size(32, 128);
             this.pictureBox37.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1323,7 +1323,7 @@
             this.pictureBox38.BackColor = System.Drawing.Color.Black;
             this.pictureBox38.Image = global::WindowsForms.Properties.Resources.wall4;
             this.pictureBox38.Location = new System.Drawing.Point(4367, -31);
-            this.pictureBox38.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox38.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox38.Name = "pictureBox38";
             this.pictureBox38.Size = new System.Drawing.Size(32, 128);
             this.pictureBox38.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1336,7 +1336,7 @@
             this.pictureBox40.BackColor = System.Drawing.Color.Black;
             this.pictureBox40.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.pictureBox40.Location = new System.Drawing.Point(4243, -21);
-            this.pictureBox40.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox40.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox40.Name = "pictureBox40";
             this.pictureBox40.Size = new System.Drawing.Size(128, 32);
             this.pictureBox40.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1349,7 +1349,7 @@
             this.pictureBox41.BackColor = System.Drawing.Color.Black;
             this.pictureBox41.Image = global::WindowsForms.Properties.Resources.wallTop4;
             this.pictureBox41.Location = new System.Drawing.Point(4121, -21);
-            this.pictureBox41.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox41.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox41.Name = "pictureBox41";
             this.pictureBox41.Size = new System.Drawing.Size(128, 32);
             this.pictureBox41.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1362,7 +1362,7 @@
             this.pictureBox39.BackColor = System.Drawing.Color.Black;
             this.pictureBox39.Image = global::WindowsForms.Properties.Resources.platform4;
             this.pictureBox39.Location = new System.Drawing.Point(4555, 431);
-            this.pictureBox39.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox39.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox39.Name = "pictureBox39";
             this.pictureBox39.Size = new System.Drawing.Size(128, 32);
             this.pictureBox39.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1375,7 +1375,7 @@
             this.pictureBox31.BackColor = System.Drawing.Color.Black;
             this.pictureBox31.Image = global::WindowsForms.Properties.Resources.platform4;
             this.pictureBox31.Location = new System.Drawing.Point(4823, 319);
-            this.pictureBox31.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox31.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox31.Name = "pictureBox31";
             this.pictureBox31.Size = new System.Drawing.Size(128, 32);
             this.pictureBox31.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
