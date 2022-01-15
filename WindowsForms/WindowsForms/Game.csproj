@@ -265,6 +265,8 @@
     <None Include="Resources\PoisountPlant_destroyed.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\wallThin.png" />
+    <None Include="Resources\wallThin2.png" />
     <None Include="Resources\blackhole1.gif" />
     <None Include="Resources\Hole.gif" />
     <Content Include="Resources\idleLeft.gif" />

@@ -117,7 +117,8 @@ namespace WindowsForms.Gamecode
             if (!IsOnGround)
             {
                 //if inAir then add downforce
-                moveVector.Y += force;
+                if (moveVector.Y < 25)
+                    moveVector.Y += force;
             }
             else
             {   //if isOnGround then stay on Ground
