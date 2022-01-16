@@ -66,7 +66,7 @@ namespace WindowsForms.Gamecode
 
         SoundPlayer coinSound;
         SoundPlayer enemyDeathSound;
-        SoundPlayer gameMusic;
+        protected AxWMPLib.AxWindowsMediaPlayer gameMusicPlayer;
 
 
         protected enum Choices { Potion, Armor, Attack, None };
@@ -75,15 +75,14 @@ namespace WindowsForms.Gamecode
 
         public Level()
         {
-            coinSound = new SoundPlayer(@"C:\Users\Spieler\Documents\Audacity\coinSound.wav");
-            enemyDeathSound = new SoundPlayer(@"C:\Users\Spieler\Documents\Audacity\enemyDeath.wav");
-            gameMusic = new SoundPlayer(@"C:\Users\Spieler\Documents\Audacity\arcadeGameMusic.wav");
-            
+            coinSound = new SoundPlayer(Properties.Resources.coinSound);
+            enemyDeathSound = new SoundPlayer(Properties.Resources.EnemyDeath);
         }
 
+        #region initializeLevel
         protected void LevelIsLoaded(object sender, EventArgs e)
         {
-            //gameMusic.Play();
+           
         }
 
         protected void initializeLevel(Level levelForm)
@@ -169,7 +168,6 @@ namespace WindowsForms.Gamecode
             }
             else
             {
-                //CreateEnemysLIst(); //needs fix
                 player = new Player(playerBox, 100);
             }
             //creates the handler for animations (coins, enemys...)
@@ -180,6 +178,7 @@ namespace WindowsForms.Gamecode
             makeDefaultDrawingInvisible();
             fillEnemyArrays();
 
+            initializeGameMusicPlayer(levelForm);
 
             // create green types of the original hearts 2 stands for half heart, 3 for fullHearts 
             for (int y = 0; y < heart1.Height; y++)
@@ -203,6 +202,32 @@ namespace WindowsForms.Gamecode
                     gFullHeart.SetPixel(x, y, Color.FromArgb(a3, 0, g3, 0));
                 }
             }
+        }
+
+        private void initializeGameMusicPlayer(Level levelForm)
+        {
+            //free license: newgrounds , author: defensem3ch https://www.newgrounds.com/audio/listen/1074444
+            //System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StoryMode1));
+
+            gameMusicPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            gameMusicPlayer.BeginInit();
+            gameMusicPlayer.Enabled = true;
+            gameMusicPlayer.Location = new System.Drawing.Point(1102, 21);
+            gameMusicPlayer.Name = "gameMusicPlayer";
+            //gameMusicPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("gameMusicPlayer.OcxState")));
+            gameMusicPlayer.Size = new System.Drawing.Size(75, 98);
+            gameMusicPlayer.TabIndex = 71;
+            gameMusicPlayer.Visible = false;
+            string url;
+            if (System.Diagnostics.Debugger.IsAttached)
+                url = Application.StartupPath.Substring(0, Application.StartupPath.Length -10) + @"\resources\1074444_Superscience.mp3";
+            else
+                url = Application.StartupPath + @"\resources\1074444_Superscience.mp3";
+            levelForm.Controls.Add(gameMusicPlayer);
+            gameMusicPlayer.EndInit();
+            gameMusicPlayer.URL = url;
+            gameMusicPlayer.settings.setMode("loop", true);
+            gameMusicPlayer.settings.volume = 4;
         }
 
         protected void createAnimationHandlers()
@@ -298,6 +323,7 @@ namespace WindowsForms.Gamecode
                 }
             }
         }
+        #endregion
 
         #region  fps
 
@@ -654,22 +680,12 @@ namespace WindowsForms.Gamecode
                         //}
                         if ((string)x.Tag == "thorns")
                         {
-                            if (player.isAttacking)
-                            {
-                                x.BackgroundImage = Properties.Resources.PoisountPlant_destroyed;
-                                x.Tag = "destroyedThorns";
-                                ChangeThorns(x);
+                            debuff = true;
+                            debuffCounter = 0;
+                            if (player.box.Location.X < x.Location.X)
                                 player.obstacleRight = true;
-                            }
                             else
-                            {
-                                debuff = true;
-                                debuffCounter = 0;
-                                if (player.box.Location.X < x.Location.X)
-                                    player.obstacleRight = true;
-                                else
-                                    player.obstacleLeft = true;
-                            }
+                                player.obstacleLeft = true;
                         }
                         if ((string)x.Tag == "merchant")
                         {
@@ -722,6 +738,7 @@ namespace WindowsForms.Gamecode
         virtual protected void goToNextLevel()
         {
             MainGameTick.Stop();
+            gameMusicPlayer.Ctlcontrols.stop(); // pauses game Music
             MessageBox.Show("Entering Lvl 2", "", MessageBoxButtons.OK);
             StoryMode2 lvl2 = new StoryMode2();
             lvl2.Show();
@@ -740,6 +757,7 @@ namespace WindowsForms.Gamecode
         {
             MainGameTick.Stop();
             CountdownTimer.Stop();
+            gameMusicPlayer.Ctlcontrols.stop(); // pauses game Music
             gameOver = false;
             GameOverScreenStory gameOverScreen = new GameOverScreenStory();
             gameOverScreen.Show();
@@ -1058,6 +1076,7 @@ namespace WindowsForms.Gamecode
                         this.Controls.Remove(x);
                     }
                 }
+
             }
             foreach (var enemy in rangeEnemyArray)
             {
@@ -1067,9 +1086,17 @@ namespace WindowsForms.Gamecode
                     if (enemy.Hp <= 0)
                     {
                         debuff = false;
+
                         this.Controls.Remove(x);
                     }
                 }
+            }
+            if ((string)x.Tag == "thorns")
+            {
+                x.BackgroundImage = Properties.Resources.PoisountPlant_destroyed;
+                x.Tag = "destroyedThorns";
+                ChangeThorns(x);
+                player.obstacleRight = true;
             }
         }
 

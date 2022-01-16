@@ -106,7 +106,7 @@
             this.pictureBox30 = new System.Windows.Forms.PictureBox();
             this.pictureBox31 = new System.Windows.Forms.PictureBox();
             this.pictureBox32 = new System.Windows.Forms.PictureBox();
-            this.MediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            this.MusicPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             ((System.ComponentModel.ISupportInitialize)(this.armorHeart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.armorHeart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerBox)).BeginInit();
@@ -175,7 +175,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox30)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox31)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox32)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MediaPlayer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MusicPlayer)).BeginInit();
             this.SuspendLayout();
             // 
             // MainGameTick
@@ -1135,15 +1135,15 @@
             this.pictureBox32.TabStop = false;
             this.pictureBox32.Tag = "coins";
             // 
-            // MediaPlayer
+            // MusicPlayer
             // 
-            this.MediaPlayer.Enabled = true;
-            this.MediaPlayer.Location = new System.Drawing.Point(1102, 21);
-            this.MediaPlayer.Name = "MediaPlayer";
-            this.MediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("MediaPlayer.OcxState")));
-            this.MediaPlayer.Size = new System.Drawing.Size(75, 98);
-            this.MediaPlayer.TabIndex = 71;
-            this.MediaPlayer.Visible = false;
+            this.MusicPlayer.Enabled = true;
+            this.MusicPlayer.Location = new System.Drawing.Point(1102, 21);
+            this.MusicPlayer.Name = "MusicPlayer";
+            this.MusicPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("MusicPlayer.OcxState")));
+            this.MusicPlayer.Size = new System.Drawing.Size(75, 98);
+            this.MusicPlayer.TabIndex = 71;
+            this.MusicPlayer.Visible = false;
             // 
             // StoryMode1
             // 
@@ -1151,7 +1151,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WindowsForms.Properties.Resources.Background;
             this.ClientSize = new System.Drawing.Size(1218, 948);
-            this.Controls.Add(this.MediaPlayer);
+            this.Controls.Add(this.MusicPlayer);
             this.Controls.Add(this.pictureBox32);
             this.Controls.Add(this.pictureBox31);
             this.Controls.Add(this.pictureBox30);
@@ -1298,7 +1298,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox30)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox31)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox32)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MediaPlayer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MusicPlayer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1381,7 +1381,7 @@
         internal System.Windows.Forms.PictureBox pictureBox30;
         internal System.Windows.Forms.PictureBox pictureBox31;
         private System.Windows.Forms.PictureBox pictureBox32;
-        private AxWMPLib.AxWindowsMediaPlayer MediaPlayer;
+        internal AxWMPLib.AxWindowsMediaPlayer MusicPlayer;
     }
 }
 

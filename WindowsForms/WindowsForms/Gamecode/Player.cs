@@ -27,12 +27,14 @@ namespace WindowsForms.Gamecode
         internal Image currentImage = null;
         int currentImageIndex = 0;
         int animationUpdate = 0;
+        int attackingSpeed = 5;
+        int attackingCountdown = 0;
         EnumPlayerAnimation currentAnimation = EnumPlayerAnimation.idleRight;
         public bool obstacleRight = false;
         public bool obstacleLeft = false;
         bool attacking = false;
         internal bool facingRight = true;
-        public bool isAttacking { get => attacking; set => attacking = value; }
+        public bool isAttacking { get => attacking; set { attacking = value; attackingCountdown = 0; } }
         internal override int Dmg { get => dmg; set => dmg = value; }
         public bool armor1, armor2, potion, invulnerable, gamemodeEndless;
         int currentHealth;
@@ -100,6 +102,7 @@ namespace WindowsForms.Gamecode
         }
         public override void move(Form f)
         {
+            attackingCooldown();
             animatePlayer();
 
             #region jumping mechanics
@@ -117,7 +120,7 @@ namespace WindowsForms.Gamecode
             if (!IsOnGround)
             {
                 //if inAir then add downforce
-                if (moveVector.Y < 25)
+                if (moveVector.Y < 50)
                     moveVector.Y += force;
             }
             else
@@ -148,8 +151,6 @@ namespace WindowsForms.Gamecode
             //isonGround is handled in StoryMode1
 
             // moves the box up or down depending on the threshold 'force'
-
-
             if (jumps && IsOnGround)
             {
                 jumps = false;
@@ -168,9 +169,21 @@ namespace WindowsForms.Gamecode
             #endregion
             //finaly the position gets Updated with the created moveVector
             box.Location = new Point(box.Location.X + (int)moveVector.X, box.Location.Y + (int)moveVector.Y);
-
+            attackingCooldown();
         }
 
+        private void attackingCooldown()
+        {
+            if (attacking)
+            {
+                if (attackingCountdown > attackingSpeed)
+                {
+                    attacking = false;
+                }
+                else
+                    attackingCountdown++;
+            }
+        }
         private void animatePlayer()
         {
             if (attacking && !facingRight)
@@ -252,12 +265,17 @@ namespace WindowsForms.Gamecode
 
         public override void attack()
         {
-            attacking = true;
-            //creates attackingarea on left or right of the Player with Size of Sword
-            if (facingRight)
-                swordHitRange = new Rectangle(new Point(box.Location.X + box.Width, box.Location.Y + box.Height / 2), new Size(new Point(box.Size.Width, box.Size.Height / 2)));
-            else
-                swordHitRange = new Rectangle(new Point(box.Location.X - box.Width, box.Location.Y + box.Height / 2), new Size(new Point(box.Size.Width, box.Size.Height / 2)));
+            if(attackingCountdown < attackingSpeed)
+            {
+                //creates attackingarea on left or right of the Player with Size of Sword
+                attacking = true;
+                if (facingRight)
+                    swordHitRange = new Rectangle(new Point(box.Location.X + box.Width, box.Location.Y + box.Height / 2), new Size(new Point(box.Size.Width, box.Size.Height / 2)));
+                else
+                    swordHitRange = new Rectangle(new Point(box.Location.X - box.Width, box.Location.Y + box.Height / 2), new Size(new Point(box.Size.Width, box.Size.Height / 2)));
+
+            }
+            
         }
 
         internal void MoveToTopOfPlatform(int topOfPlatform)

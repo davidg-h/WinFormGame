@@ -28,6 +28,7 @@ namespace WindowsForms.Gamecode
         override protected void goToNextLevel()
         {
             MainGameTick.Stop();
+            gameMusicPlayer.Ctlcontrols.stop(); // pauses game Music
             MessageBox.Show("Entering second Lvl", "", MessageBoxButtons.OK);
             StoryMode2 lvl2 = new StoryMode2();
             lvl2.player.coins = this.player.coins;
@@ -38,6 +39,7 @@ namespace WindowsForms.Gamecode
         {
             MainGameTick.Stop();
             CountdownTimer.Stop();
+            gameMusicPlayer.Ctlcontrols.stop(); // pauses game Music
             gameOver = false;
             StoryMode1 newWindow = new StoryMode1();
             newWindow.Show();
@@ -93,9 +95,7 @@ namespace WindowsForms.Gamecode
         private void StoryMode1_Load(object sender, EventArgs e)
         {
             LevelIsLoaded(sender, e);
-            MediaPlayer.URL = @"C:\Users\Spieler\Documents\Audacity\1074444_Superscience.mp3";
-            MediaPlayer.settings.setMode("loop", true);
-            MediaPlayer.settings.volume = 5;
+            
         }
 
         private void MediaPlayer_MediaError(object sender, AxWMPLib._WMPOCXEvents_MediaErrorEvent e)
