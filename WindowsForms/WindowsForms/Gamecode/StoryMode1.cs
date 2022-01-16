@@ -34,6 +34,16 @@ namespace WindowsForms.Gamecode
             lvl2.Show();
             this.Visible = false;
         }
+        internal void Restart()
+        {
+            MainGameTick.Stop();
+            CountdownTimer.Stop();
+            gameOver = false;
+            StoryMode1 newWindow = new StoryMode1();
+            newWindow.Show();
+            this.Hide();
+        }
+
         private void MainGameTick_Tick_1(object sender, EventArgs e)
         {
             MainGameTick_Tick(sender, e);
@@ -47,7 +57,13 @@ namespace WindowsForms.Gamecode
         private void StoryMode1_KeyDown(object sender, KeyEventArgs e)
         {
             KeyIsDown(sender, e);
-        }
+            switch (e.KeyCode)
+            {
+                case Keys.R:
+                    Restart();
+                    break;
+            }
+            }
 
         private void StoryMode1_KeyUp(object sender, KeyEventArgs e)
         {

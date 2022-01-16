@@ -523,6 +523,26 @@ namespace WindowsForms.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap wallThin {
+            get {
+                object obj = ResourceManager.GetObject("wallThin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wallThin2 {
+            get {
+                object obj = ResourceManager.GetObject("wallThin2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap wallTop2 {
             get {
                 object obj = ResourceManager.GetObject("wallTop2", resourceCulture);
