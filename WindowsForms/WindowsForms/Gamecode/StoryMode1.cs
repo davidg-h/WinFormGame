@@ -25,6 +25,24 @@ namespace WindowsForms.Gamecode
             this.KeyDown += formKeyDown;
             this.Load += startTimer;
         }
+        override protected void goToNextLevel()
+        {
+            MainGameTick.Stop();
+            MessageBox.Show("Entering second Lvl", "", MessageBoxButtons.OK);
+            StoryMode2 lvl2 = new StoryMode2();
+            lvl2.player.coins = this.player.coins;
+            lvl2.Show();
+            this.Visible = false;
+        }
+        internal void Restart()
+        {
+            MainGameTick.Stop();
+            CountdownTimer.Stop();
+            gameOver = false;
+            StoryMode1 newWindow = new StoryMode1();
+            newWindow.Show();
+            this.Hide();
+        }
 
         private void MainGameTick_Tick_1(object sender, EventArgs e)
         {
@@ -39,7 +57,13 @@ namespace WindowsForms.Gamecode
         private void StoryMode1_KeyDown(object sender, KeyEventArgs e)
         {
             KeyIsDown(sender, e);
-        }
+            switch (e.KeyCode)
+            {
+                case Keys.R:
+                    Restart();
+                    break;
+            }
+            }
 
         private void StoryMode1_KeyUp(object sender, KeyEventArgs e)
         {

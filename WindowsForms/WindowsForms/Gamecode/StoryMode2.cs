@@ -33,10 +33,19 @@ namespace WindowsForms.Gamecode
             MainGameTick.Stop();
             MessageBox.Show("Entering final Lvl", "", MessageBoxButtons.OK);
             StoryMode3 lvl3 = new StoryMode3();
+            lvl3.player.coins = this.player.coins;
             lvl3.Show();
             this.Visible = false;
         }
-
+        internal void Restart()
+        {
+            MainGameTick.Stop();
+            CountdownTimer.Stop();
+            gameOver = false;
+            StoryMode2 newWindow = new StoryMode2();
+            newWindow.Show();
+            this.Hide();
+        }
         private void MainGameTick_Tick_1(object sender, EventArgs e)
         {
             MainGameTick_Tick(sender, e);
@@ -51,6 +60,13 @@ namespace WindowsForms.Gamecode
         private void StoryMode2_KeyDown(object sender, KeyEventArgs e)
         {
             KeyIsDown(sender, e);
+            switch (e.KeyCode)
+            {
+                case Keys.R:
+                    //if (gameOver == true)
+                    Restart();
+                    break;
+            }
         }
 
         private void StoryMode2_KeyUp(object sender, KeyEventArgs e)

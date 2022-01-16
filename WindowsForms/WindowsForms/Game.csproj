@@ -59,11 +59,17 @@
     <Compile Include="Gamecode\Entity.cs" />
     <Compile Include="Gamecode\EnumGameLvl.cs" />
     <Compile Include="Gamecode\EnumPlayerAnimation.cs" />
-    <Compile Include="Gamecode\GameOverScreen.cs">
+    <Compile Include="Gamecode\GameOverScreenEndless.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Gamecode\GameOverScreen.Designer.cs">
-      <DependentUpon>GameOverScreen.cs</DependentUpon>
+    <Compile Include="Gamecode\GameOverScreenEndless.Designer.cs">
+      <DependentUpon>GameOverScreenEndless.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gamecode\GameOverScreenStory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gamecode\GameOverScreenStory.Designer.cs">
+      <DependentUpon>GameOverScreenStory.cs</DependentUpon>
     </Compile>
     <Compile Include="Gamecode\HighscoreList.cs">
       <SubType>Form</SubType>
@@ -130,8 +136,8 @@
     <EmbeddedResource Include="Gamecode\EndlessMode.resx">
       <DependentUpon>EndlessMode.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gamecode\GameOverScreen.resx">
-      <DependentUpon>GameOverScreen.cs</DependentUpon>
+    <EmbeddedResource Include="Gamecode\GameOverScreenStory.resx">
+      <DependentUpon>GameOverScreenStory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gamecode\HighscoreList.resx">
       <DependentUpon>HighscoreList.cs</DependentUpon>
@@ -259,7 +265,18 @@
     <None Include="Resources\PoisountPlant_destroyed.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\wallThin.png" />
+    <None Include="Resources\wallThin2.png" />
+    <None Include="Resources\blackhole1.gif" />
+    <None Include="Resources\Hole.gif" />
     <Content Include="Resources\idleLeft.gif" />
+    <None Include="Resources\wallLeft4.png" />
+    <None Include="Resources\wall4.png" />
+    <None Include="Resources\platform21.png" />
+    <None Include="Resources\platform4.png" />
+    <None Include="Resources\platform8.png" />
+    <None Include="Resources\platformLinks.png" />
+    <None Include="Resources\platformRechts.png" />
     <Content Include="Resources\walkingLeft.gif" />
   </ItemGroup>
   <ItemGroup>

@@ -10,9 +10,10 @@ using System.Windows.Forms;
 
 namespace WindowsForms.Gamecode
 {
-    public partial class GameOverScreen : Form
+    public partial class GameOverScreenStory : Form
     {
-        public GameOverScreen()
+        public bool playAgainClicked = false;
+        public GameOverScreenStory()
         {
             InitializeComponent();
             this.FormClosed += closeGame;
@@ -22,11 +23,12 @@ namespace WindowsForms.Gamecode
         {
             Application.Exit();
         }
-        private void PlayAgain(object sender, EventArgs e)
+        public void PlayAgain(object sender, EventArgs e)
         {
             StartScreen startScreen = new StartScreen();
             startScreen.Show();
             this.Visible = false;
+            playAgainClicked = true;
         }
         private void Quit(object sender, EventArgs e)
         {

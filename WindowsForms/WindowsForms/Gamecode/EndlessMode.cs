@@ -15,8 +15,9 @@ namespace WindowsForms.Gamecode
     {
         #region Game(EndlessMode) variables
         Random rand = new Random();
-        int obstacleSpeed = 15;
+        int obstacleSpeed = 8;
         int inventoryChestCoins;
+        int largestXKoord;
         List<List<PictureBox>> chapterList;
         List<PictureBox> pictureBoxList;
 
@@ -35,7 +36,6 @@ namespace WindowsForms.Gamecode
             this.Load += loadInventory;
             this.FormClosing += saveInventory;
             backgroundBox = (PictureBox)Controls.Find("background1", false)[0];
-
         }
 
         #region Esc Menu (with safe/load)
@@ -104,16 +104,6 @@ namespace WindowsForms.Gamecode
             }
         }
 
-        private void healthBuy(object sender, EventArgs e)
-        {
-            const int cost = 150;
-            if (buySomethingValid(cost))
-            {
-                player.Hp = player.Hp * 2;
-                //healthBar.Maximum = player.Hp;
-            }
-        }
-
         private void dmgBuy(object sender, EventArgs e)
         {
             const int cost = 50;
@@ -152,16 +142,17 @@ namespace WindowsForms.Gamecode
             //this.Location = playerBox.Location;    //adds some fun
             coinHandler.updateSpriteEveryTimeCalled();
             mushroomHandler.updateSpriteEvery3thTimeCalled();
+            eagleHandler.updateSpriteEvery3thTimeCalled();
 
             background_move();
-            scoreLabel.Text = "Score: " + player.score;
+            label1.Text = "Score: " + player.score;
             coinCounter.Text = $": {player.coins}";
             inventoryCoins.Text = $"Tresure Chest: {inventoryChestCoins}";
 
             player.moveEndlessmode(this);
             player.isOnGround = false;
 
-            fallPutOfTheWorld();
+            //fallPutOfTheWorld();
 
             // "invinceble frames" as long as invulnerable is on true: no dmg can be taken (as to see in player.Hp property)
             invulnerableFrames();
@@ -170,15 +161,19 @@ namespace WindowsForms.Gamecode
             Healthbar();
             ContactWithAnyObject();
             MoveGameElements(-obstacleSpeed);
-            
+            moveEnemys();
 
-            if (player.score > 5) obstacleSpeed = 20;
-            if (player.score > 15) obstacleSpeed = 30;
-            if (player.score > 30) obstacleSpeed = 50;
-            if (player.score > 60) obstacleSpeed = 80;
-            if (player.score > 100) obstacleSpeed = 120;
+            if (player.score > 5) obstacleSpeed = 10;
+            if (player.score > 10) obstacleSpeed = 15;
+            if (player.score > 20) obstacleSpeed = 20;
+            if (player.score > 30) obstacleSpeed = 25;
+            if (player.score > 60) obstacleSpeed = 35;
+            if (player.score > 100) obstacleSpeed = 50;
 
             Draw();
+
+            destroyPB();
+            largestXKoord = getLargestXKoord();
         }
 
         //resets the game and gives the last coin count to the player bank
@@ -188,30 +183,10 @@ namespace WindowsForms.Gamecode
             ScoreTimer.Stop();
             CoinSpawnTimer.Stop();
             ChapterSpawnTimer.Stop();
-            gameOver = true;
-
-            DialogResult dialogresult = MessageBox.Show("You Died!!!" + Environment.NewLine + "Press Yes to play again", "", MessageBoxButtons.YesNo);
-
-            if (dialogresult == DialogResult.Yes)
-            {
-                DeathGameReset(player.coins);
-            }
-            else if (dialogresult == DialogResult.No)
-            {
-                // player shall enter his name for highscore entry
-                NameInput nameInput = new NameInput();
-                dialogresult = nameInput.ShowDialog();
-
-                if (dialogresult == DialogResult.OK)
-                {
-                    string name = nameInput.playerName.Text;
-                    // processes the name and score and displays them
-                    HighscoreList highscoreList = new HighscoreList(name, scoreLabel.Text);
-                    highscoreList.Show();
-                    Visible = false;
-                }
-                else { Application.Exit(); }
-            }
+            gameOver = false;
+            GameOverScreenEndless gameOverScreen = new GameOverScreenEndless(player.score);
+            gameOverScreen.Show();
+            this.Hide();
         }
 
         private void DeathGameReset(int coinCount)
@@ -227,7 +202,7 @@ namespace WindowsForms.Gamecode
             player.Hp += 100;
             player.score = 0;
             player.coins = 0;
-            scoreLabel.Text = "Score: " + player.score;
+            label1.Text = "Score: " + player.score;
             playerBox.Image = Properties.Resources.idle;
             gameOver = false;
             playerBox.Location = player.defaultLocation;
@@ -267,6 +242,9 @@ namespace WindowsForms.Gamecode
                 case Keys.D:
                     player.Right(true);
                     break;
+                case Keys.Space:
+                    player.attack();
+                    break;
             }
         }
 
@@ -289,98 +267,61 @@ namespace WindowsForms.Gamecode
                     break;
                 case Keys.S:
                     break;
+                case Keys.Space:
+                    player.isAttacking = false;
+                    break;
             }
         }
         #endregion
 
         #region draw
-        int backGround1KoordX = 0;
-        int backGround2KoordX = Properties.Resources.Background.Width - 6;
-        void Draw()
-        {
-            Bitmap bufl = new Bitmap(pf.Width, pf.Height);
-            using (Graphics g = Graphics.FromImage(bufl))
-            {
-                g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
-                g.DrawImage(backgroundBox.Image, new Rectangle(new Point(0, 0), this.Size), new Rectangle(new Point(-backGround1KoordX, 0), new Size(backgroundBox.Width, backgroundBox.Height)), GraphicsUnit.Pixel);
-                g.DrawImage(backgroundBox.Image, new Rectangle(new Point(0, 0), this.Size), new Rectangle(new Point(-backGround2KoordX, 0), new Size(backgroundBox.Width, backgroundBox.Height)), GraphicsUnit.Pixel);
-                g.DrawImage(player.currentImage, playerBox.Location);
-                foreach (Control x in this.Controls)
-                {
-                    if (x is PictureBox)
-                    {
-                        string tag = (string)x.Tag;
-                        Rectangle destRect = new Rectangle(x.Location, x.Size);
 
-                        if (((PictureBox)x).Image == null)
-                        {
-                            g.FillRectangle(new SolidBrush(x.BackColor), destRect);
-                        }
-                        else if (tag == "coins")
-                        {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
-                            g.DrawImage(coinHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
-                        }
-                        else if (tag == "obstacleTree")
-                        {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
-                            g.DrawImage(mushroomHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
-                        }
-                        else if (tag != "player" && tag != "coins.collected" && tag != "background")
-                        {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
-                            g.DrawImage(((PictureBox)x).Image, destRect, srcRect, GraphicsUnit.Pixel);
-                            //g.DrawImage(((PictureBox)x).Image, x.Location);
-                        }
-                    }
-                }
-                pf.CreateGraphics().DrawImageUnscaled(bufl, 0, 0);
-            }
-        }
         #endregion
 
         #region endless backgroundScrolling
         void background_move()
         {
-            backGround1KoordX -= 2;
-            backGround2KoordX -= 2;
-            //resets the background if not in ClientSize
-            if (backGround1KoordX == -backgroundBox.Width)
-            {
-                backGround1KoordX = backgroundBox.Width - 6;
-            }
-            if (backGround2KoordX == -backgroundBox.Width)
-            {
-                backGround2KoordX = backgroundBox.Width - 6;
-            }
+
+            if (backgroundCoordX < -backgroundlayer.Width)
+                backgroundCoordX = backgroundlayer.Width - 20;
+
+            if (backgroundCoordX2 < -backgroundlayer.Width)
+                backgroundCoordX2 = backgroundlayer.Width - 20;
+
+            backgroundCoordX -= 3;
+            backgroundCoordX2 -= 3;
         }
         #endregion
 
         #region random Placement of objects
         internal void chapterSpawnTick(object sender, EventArgs e)
         {
+            if (player.score > 8) ChapterSpawnTimer.Interval = 1500;
+            if (player.score > 18) ChapterSpawnTimer.Interval = 1000;
+            if (player.score > 28) ChapterSpawnTimer.Interval = 800;
+            if (player.score > 58) ChapterSpawnTimer.Interval = 700;
             randomPlacement();
         }
 
 
         private void randomPlacement()
         {
-            int x = getLargestXKoord();
+            int x = largestXKoord;
 
             int chapter = rand.Next(1, 5);
             switch (chapter)
             {
                 case 1:
-                    createChapter(chapterList[0], x, 470, rand.Next(10, 60));
+                    createChapter(chapterList[0], x, 470, rand.Next(50, 100));
                     break;
                 case 2:
-                    createChapter(chapterList[1], x, 1185, rand.Next(10, 60));
+                    createChapter(chapterList[1], x, 1185, rand.Next(45, 100));
                     break;
                 case 3:
-                    createChapter(chapterList[2], x, 1639, rand.Next(10, 60));
+                    createChapter(chapterList[2], x, 1639, rand.Next(60, 100));
                     break;
                 case 4:
-                    createChapter(chapterList[3], x, 2131, rand.Next(10, 60));
+                    createChapter(chapterList[3], x, 2131, rand.Next(30, 100));
                     break;
                 default:
                     break;
@@ -395,7 +336,14 @@ namespace WindowsForms.Gamecode
                 PictureBox boxNew = createPB(box);
                 // new Location is after the last object with a random buffer(=randomNumber)
                 // box.Location.X - boxLeft: to keep the ratio of the objects to each other the same and position it to the left edge of the client area
-                boxNew.Location = new Point(x + (box.Location.X - boxLeft) + randomNumber, box.Location.Y);
+                if (x <= ClientSize.Width)
+                {
+                    boxNew.Location = new Point(ClientSize.Width + (box.Location.X - boxLeft) + randomNumber, box.Location.Y);
+                }
+                else
+                {
+                    boxNew.Location = new Point(x + (box.Location.X - boxLeft) + randomNumber, box.Location.Y);
+                }
                 // adds box to the window
                 this.Controls.Add(boxNew);
             }
@@ -437,9 +385,14 @@ namespace WindowsForms.Gamecode
         {
             PictureBox box = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)(box)).BeginInit();
+            box.Name = pictureBox.Name;
+            box.AccessibleName = pictureBox.AccessibleName;
+            box.AccessibleDescription = pictureBox.AccessibleDescription;
+            box.Margin = pictureBox.Margin;
             box.Tag = pictureBox.Tag;
             box.Image = pictureBox.Image;
             box.Visible = true;
+            box.Enabled = true;
             box.Size = pictureBox.Size;
             box.SizeMode = pictureBox.SizeMode;
             box.Location = pictureBox.Location;
@@ -456,7 +409,7 @@ namespace WindowsForms.Gamecode
             {
                 if (x is PictureBox)
                 {
-                    if (largestXKoord < x.Location.X && (string)x.Tag != "coins")
+                    if (largestXKoord < x.Location.X && (string)x.Tag != "coins" && (string)x.Tag != "background")
                     {
                         largestXKoord = x.Location.X + x.Width;
                     }
@@ -479,6 +432,22 @@ namespace WindowsForms.Gamecode
                 }
             }
             return picBoxList;
+        }
+        /// <summary>
+        /// destroys pictureBoxes for performance
+        /// </summary>
+        private void destroyPB()
+        {
+            foreach (Control pb in Controls)
+            {
+                if (pb is PictureBox)
+                {
+                    if (pb.Location.X + pb.Size.Width < 0)
+                    {
+                        this.Controls.Remove(pb);
+                    }
+                }
+            }
         }
         #endregion
 
