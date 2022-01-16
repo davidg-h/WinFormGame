@@ -51,6 +51,7 @@ namespace WindowsForms.Gamecode
                 ScoreTimer.Stop();
                 CoinSpawnTimer.Stop();
                 ChapterSpawnTimer.Stop();
+                gameMusicPlayer.Ctlcontrols.pause();
                 escMenu.BringToFront();
                 escMenu.Visible = true;
             }
@@ -63,6 +64,7 @@ namespace WindowsForms.Gamecode
             ScoreTimer.Start();
             CoinSpawnTimer.Start();
             ChapterSpawnTimer.Start();
+            gameMusicPlayer.Ctlcontrols.play();
         }
 
         private void startScreenClick(object sender, EventArgs e)
@@ -169,10 +171,11 @@ namespace WindowsForms.Gamecode
             if (player.score > 60) obstacleSpeed = 35;
             if (player.score > 100) obstacleSpeed = 50;
 
-            Draw();
 
             destroyPB();
             largestXKoord = getLargestXKoord();
+
+            Draw();
         }
 
         //resets the game and gives the last coin count to the player bank
@@ -182,6 +185,7 @@ namespace WindowsForms.Gamecode
             ScoreTimer.Stop();
             CoinSpawnTimer.Stop();
             ChapterSpawnTimer.Stop();
+            gameMusicPlayer.Ctlcontrols.stop();
             gameOver = false;
             GameOverScreenEndless gameOverScreen = new GameOverScreenEndless(player.score);
             gameOverScreen.Show();
@@ -205,6 +209,8 @@ namespace WindowsForms.Gamecode
             playerBox.Image = Properties.Resources.idle;
             gameOver = false;
             playerBox.Location = player.defaultLocation;
+            gameMusicPlayer.Ctlcontrols.stop();
+
 
             foreach (Control x in this.Controls)
             {
@@ -216,6 +222,7 @@ namespace WindowsForms.Gamecode
                     }
                 }
             }
+
             MainGameTick.Start();
             ScoreTimer.Start();
             CoinSpawnTimer.Start();
@@ -299,7 +306,8 @@ namespace WindowsForms.Gamecode
             if (player.score > 18) ChapterSpawnTimer.Interval = 1000;
             if (player.score > 28) ChapterSpawnTimer.Interval = 800;
             if (player.score > 58) ChapterSpawnTimer.Interval = 700;
-            randomPlacement();
+            if(largestXKoord < 2500) //only spawn chapter, if nessesarry
+                randomPlacement();
         }
 
 
@@ -336,12 +344,28 @@ namespace WindowsForms.Gamecode
                 // new Location is after the last object with a random buffer(=randomNumber)
                 // box.Location.X - boxLeft: to keep the ratio of the objects to each other the same and position it to the left edge of the client area
                 if (x <= ClientSize.Width)
-                {
+                {   //this code is never executed
                     boxNew.Location = new Point(ClientSize.Width + (box.Location.X - boxLeft) + randomNumber, box.Location.Y);
                 }
                 else
                 {
                     boxNew.Location = new Point(x + (box.Location.X - boxLeft) + randomNumber, box.Location.Y);
+                }
+                if ((string)box.Tag == "obstacleTree")
+                {
+                    mushroomList.Add(new EnemySmall(box));
+                }
+                if ((string)box.Tag == "eagleEnemy")
+                {
+                    flyEnemyList.Add(new EnemyFly(box));
+                }
+                if ((string)box.Tag == "rangeEnemy")
+                {
+                    rangeEnemyList.Add(new RangeEnemy(box));
+                }
+                if ((string)box.Tag == "thorns")
+                {
+                    obstacleList.Add(box);
                 }
                 // adds box to the window
                 this.Controls.Add(boxNew);
@@ -443,6 +467,21 @@ namespace WindowsForms.Gamecode
                 {
                     if (pb.Location.X + pb.Size.Width < 0)
                     {
+                        if((string)pb.Tag == "rangeEnemy")
+                        {
+                            RangeEnemy enemy = rangeEnemyList.Find(e => e.box.Name == pb.Name);
+                            rangeEnemyList.Remove(enemy);
+                        }
+                        if ((string)pb.Tag == "obstacleTree")
+                        {
+                            EnemySmall enemy = mushroomList.Find(e => e.box.Name == pb.Name);
+                            mushroomList.Remove(enemy);
+                        }
+                        if ((string)pb.Tag == "eagleEnemy")
+                        {
+                            EnemyFly enemy = flyEnemyList.Find(e => e.box.Name == pb.Name);
+                            flyEnemyList.Remove(enemy);
+                        }
                         this.Controls.Remove(pb);
                     }
                 }
