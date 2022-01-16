@@ -32,6 +32,7 @@ namespace WindowsForms.Gamecode
         {
             MainGameTick.Stop();
             CountdownTimer.Stop();
+            gameMusicPlayer.Ctlcontrols.stop(); // pauses game Music
             gameOver = false;
             StoryMode3 newWindow = new StoryMode3();
             newWindow.Show();
@@ -40,6 +41,7 @@ namespace WindowsForms.Gamecode
         override protected void goToNextLevel()
         {
             MainGameTick.Stop();
+            gameMusicPlayer.Ctlcontrols.stop(); // pauses game Music
             YouWon();
         }
 

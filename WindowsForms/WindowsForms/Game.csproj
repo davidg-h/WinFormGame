@@ -124,7 +124,6 @@
     <Compile Include="Gamecode\StoryMode3.Designer.cs">
       <DependentUpon>StoryMode3.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gamecode\Sword.cs" />
     <Compile Include="Gamecode\SystemSave.cs" />
     <Compile Include="Gamecode\WinnerScreen.cs">
       <SubType>Form</SubType>
@@ -269,6 +268,9 @@
     <None Include="Resources\wallThin2.png" />
     <None Include="Resources\blackhole1.gif" />
     <None Include="Resources\Hole.gif" />
+    <None Include="Resources\EnemyDeath.wav" />
+    <None Include="Resources\coinSound.wav" />
+    <None Include="Resources\1074444_Superscience.mp3" />
     <Content Include="Resources\idleLeft.gif" />
     <None Include="Resources\wallLeft4.png" />
     <None Include="Resources\wall4.png" />
@@ -278,6 +280,25 @@
     <None Include="Resources\platformLinks.png" />
     <None Include="Resources\platformRechts.png" />
     <Content Include="Resources\walkingLeft.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

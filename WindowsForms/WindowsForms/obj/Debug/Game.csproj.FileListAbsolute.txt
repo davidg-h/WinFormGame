@@ -123,3 +123,8 @@ C:\Users\lizab\Source\Repos\project\WindowsForms\WindowsForms\obj\Debug\WindowsF
 C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.GameOverScreenStory.resources
 C:\Users\David\Desktop\SE\Graphic Knight\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.GameOverScreenStory.resources
 C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.GameOverScreenStory.resources
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\bin\Debug\Interop.WMPLib.dll
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\Interop.WMPLib.dll
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\Game.csproj.ResolveComReference.cache

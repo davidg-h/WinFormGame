@@ -31,6 +31,7 @@ namespace WindowsForms.Gamecode
         override protected void goToNextLevel()
         {
             MainGameTick.Stop();
+            gameMusicPlayer.Ctlcontrols.stop(); // pauses game Music
             MessageBox.Show("Entering final Lvl", "", MessageBoxButtons.OK);
             StoryMode3 lvl3 = new StoryMode3();
             lvl3.player.coins = this.player.coins;
@@ -41,6 +42,7 @@ namespace WindowsForms.Gamecode
         {
             MainGameTick.Stop();
             CountdownTimer.Stop();
+            gameMusicPlayer.Ctlcontrols.stop(); // pauses game Music
             gameOver = false;
             StoryMode2 newWindow = new StoryMode2();
             newWindow.Show();

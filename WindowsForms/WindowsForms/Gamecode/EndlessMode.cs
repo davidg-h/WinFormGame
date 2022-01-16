@@ -150,9 +150,8 @@ namespace WindowsForms.Gamecode
             inventoryCoins.Text = $"Tresure Chest: {inventoryChestCoins}";
 
             player.moveEndlessmode(this);
-            player.isOnGround = false;
 
-            //fallPutOfTheWorld();
+            fallPutOfTheWorld();
 
             // "invinceble frames" as long as invulnerable is on true: no dmg can be taken (as to see in player.Hp property)
             invulnerableFrames();

@@ -120,7 +120,7 @@ namespace WindowsForms.Gamecode
             if (!IsOnGround)
             {
                 //if inAir then add downforce
-                if (moveVector.Y < 25)
+                if (moveVector.Y < 50)
                     moveVector.Y += force;
             }
             else

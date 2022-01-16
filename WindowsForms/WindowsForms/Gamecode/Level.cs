@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+using System.Media;
 
 namespace WindowsForms.Gamecode
 {
@@ -63,6 +64,10 @@ namespace WindowsForms.Gamecode
         Bitmap gHalfHeart = new Bitmap(Properties.Resources.HeartHalf);
         Bitmap gFullHeart = new Bitmap(Properties.Resources.Heart);
 
+        SoundPlayer coinSound;
+        SoundPlayer enemyDeathSound;
+        protected AxWMPLib.AxWindowsMediaPlayer gameMusicPlayer;
+
 
         protected enum Choices { Potion, Armor, Attack, None };
 
@@ -70,6 +75,14 @@ namespace WindowsForms.Gamecode
 
         public Level()
         {
+            coinSound = new SoundPlayer(Properties.Resources.coinSound);
+            enemyDeathSound = new SoundPlayer(Properties.Resources.EnemyDeath);
+        }
+
+        #region initializeLevel
+        protected void LevelIsLoaded(object sender, EventArgs e)
+        {
+           
         }
 
         protected void initializeLevel(Level levelForm)
@@ -155,7 +168,6 @@ namespace WindowsForms.Gamecode
             }
             else
             {
-                //CreateEnemysLIst(); //needs fix
                 player = new Player(playerBox, 100);
             }
             //creates the handler for animations (coins, enemys...)
@@ -166,6 +178,7 @@ namespace WindowsForms.Gamecode
             makeDefaultDrawingInvisible();
             fillEnemyArrays();
 
+            initializeGameMusicPlayer(levelForm);
 
             // create green types of the original hearts 2 stands for half heart, 3 for fullHearts 
             for (int y = 0; y < heart1.Height; y++)
@@ -189,6 +202,32 @@ namespace WindowsForms.Gamecode
                     gFullHeart.SetPixel(x, y, Color.FromArgb(a3, 0, g3, 0));
                 }
             }
+        }
+
+        private void initializeGameMusicPlayer(Level levelForm)
+        {
+            //free license: newgrounds , author: defensem3ch https://www.newgrounds.com/audio/listen/1074444
+            //System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StoryMode1));
+
+            gameMusicPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            gameMusicPlayer.BeginInit();
+            gameMusicPlayer.Enabled = true;
+            gameMusicPlayer.Location = new System.Drawing.Point(1102, 21);
+            gameMusicPlayer.Name = "gameMusicPlayer";
+            //gameMusicPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("gameMusicPlayer.OcxState")));
+            gameMusicPlayer.Size = new System.Drawing.Size(75, 98);
+            gameMusicPlayer.TabIndex = 71;
+            gameMusicPlayer.Visible = false;
+            string url;
+            if (System.Diagnostics.Debugger.IsAttached)
+                url = Application.StartupPath.Substring(0, Application.StartupPath.Length -10) + @"\resources\1074444_Superscience.mp3";
+            else
+                url = Application.StartupPath + @"\resources\1074444_Superscience.mp3";
+            levelForm.Controls.Add(gameMusicPlayer);
+            gameMusicPlayer.EndInit();
+            gameMusicPlayer.URL = url;
+            gameMusicPlayer.settings.setMode("loop", true);
+            gameMusicPlayer.settings.volume = 4;
         }
 
         protected void createAnimationHandlers()
@@ -284,6 +323,7 @@ namespace WindowsForms.Gamecode
                 }
             }
         }
+        #endregion
 
         #region  fps
 
@@ -616,6 +656,7 @@ namespace WindowsForms.Gamecode
                         }
                         if ((string)x.Tag == "coins")
                         {
+                            coinSound.Play();
                             x.Tag = "coins.collected"; //coins are not drawn anymore
                             player.coins += 1;
                         }
@@ -697,6 +738,7 @@ namespace WindowsForms.Gamecode
         virtual protected void goToNextLevel()
         {
             MainGameTick.Stop();
+            gameMusicPlayer.Ctlcontrols.stop(); // pauses game Music
             MessageBox.Show("Entering Lvl 2", "", MessageBoxButtons.OK);
             StoryMode2 lvl2 = new StoryMode2();
             lvl2.Show();
@@ -715,6 +757,7 @@ namespace WindowsForms.Gamecode
         {
             MainGameTick.Stop();
             CountdownTimer.Stop();
+            gameMusicPlayer.Ctlcontrols.stop(); // pauses game Music
             gameOver = false;
             GameOverScreenStory gameOverScreen = new GameOverScreenStory();
             gameOverScreen.Show();
@@ -864,8 +907,8 @@ namespace WindowsForms.Gamecode
             {
                 g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
 
-                g.DrawImage(backgroundlayer, new Rectangle(new Point(backgroundCoordX, 0), new Size(backgroundlayer.Width, backgroundlayer.Height)));
-                g.DrawImage(backgroundlayer, new Rectangle(new Point(backgroundCoordX2, 0), new Size(backgroundlayer.Width, backgroundlayer.Height)));
+                g.DrawImage(backgroundlayer, new Rectangle(new Point(backgroundCoordX, 0), new Size( new Point(backgroundlayer.Width, this.Size.Height))));
+                g.DrawImage(backgroundlayer, new Rectangle(new Point(backgroundCoordX2, 0), new Size(new Point(backgroundlayer.Width, this.Size.Height))));
 
                 foreach (Control x in this.Controls)
                 {
@@ -879,33 +922,28 @@ namespace WindowsForms.Gamecode
                         }
                         else if (tag == "coins")
                         {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
-                            g.DrawImage(coinHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
+                            g.DrawImage(coinHandler.CurrentSprite, destRect);
                         }
                         else if (tag == "obstacleTree")
                         {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
-                            g.DrawImage(mushroomHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
+                            g.DrawImage(mushroomHandler.CurrentSprite, destRect);
                         }
                         else if (tag == "rangeEnemy")
                         {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
-                            g.DrawImage(((PictureBox)x).Image, destRect, srcRect, GraphicsUnit.Pixel);
+                            g.DrawImage(((PictureBox)x).Image, destRect);
                         }
                         else if (tag == "eagleEnemy")
                         {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
-                            g.DrawImage(eagleHandler.CurrentSprite, destRect, srcRect, GraphicsUnit.Pixel);
+                            g.DrawImage(eagleHandler.CurrentSprite, destRect);
                         }
                         else if (tag == "player")
                         {
                             if (player.isAttacking)
                             {
-                                Rectangle srcRect = new Rectangle(new Point(0, 0), player.currentImage.Size);
                                 Rectangle destRect;
                                 if (player.facingRight)
                                 {
@@ -915,16 +953,15 @@ namespace WindowsForms.Gamecode
                                 {
                                     destRect = new Rectangle(new Point(x.Location.X - 60, x.Location.Y), player.currentImage.Size);
                                 }
-                                g.DrawImage(player.currentImage, destRect, srcRect, GraphicsUnit.Pixel);
+                                g.DrawImage(player.currentImage, destRect);
                             }
                             else
                                 g.DrawImage(player.currentImage, player.box.Location);
                         }
                         else if (tag != "coins.collected" && tag != "background")
                         {
-                            Rectangle srcRect = new Rectangle(new Point(0, 0), ((PictureBox)x).Image.Size);
                             Rectangle destRect = new Rectangle(x.Location, x.Size);
-                            g.DrawImage(((PictureBox)x).Image, destRect, srcRect, GraphicsUnit.Pixel);
+                            g.DrawImage(((PictureBox)x).Image, destRect);
                         }
                     }
                 }
@@ -997,7 +1034,7 @@ namespace WindowsForms.Gamecode
                     string tag = (string)x.Tag;
                     if (tag == "platform" || tag == "obstacleTree" || tag == "coins" || tag == "finish" || tag == "......" || tag == "thorns" || tag == "eagleEnemy" || tag == "rangeEnemy" || tag == "shopHUD" || tag == "merchant" || tag == "destroyedThorns")
                     {
-                        x.Left += moveAmount;
+                        x.Location = new Point(x.Location.X + moveAmount, x.Location.Y);
                     }
                 }
             }
@@ -1022,6 +1059,7 @@ namespace WindowsForms.Gamecode
                     enemy.Hp -= player.Dmg;
                     if (enemy.Hp <= 0)
                     {
+                        enemyDeathSound.Play();
                         debuff = false;
                         this.Controls.Remove(x);
                     }
@@ -1061,8 +1099,6 @@ namespace WindowsForms.Gamecode
                 player.obstacleRight = true;
             }
         }
-
-
 
         #endregion
 
