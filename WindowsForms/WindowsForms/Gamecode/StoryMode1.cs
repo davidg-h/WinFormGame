@@ -32,6 +32,10 @@ namespace WindowsForms.Gamecode
             MessageBox.Show("Entering second Lvl", "", MessageBoxButtons.OK);
             StoryMode2 lvl2 = new StoryMode2();
             lvl2.player.coins = this.player.coins;
+            lvl2.player.potion = this.player.potion;
+            lvl2.player.armor1 = this.player.armor1;
+            lvl2.player.armor2 = this.player.armor2;
+            lvl2.player.Dmg = this.player.Dmg;
             lvl2.Show();
             this.Visible = false;
         }

@@ -60,11 +60,7 @@ namespace WindowsForms.Gamecode
             spritesWalkRight = SpriteHandler.getFrames(Properties.Resources.walking);
             spritesAttackLeft = Properties.Resources.attackingLeft; //spritesAttackLeft = SpriteHandler.getFrames(Properties.Resources.attackingLeft); 
             spritesAttackRight = Properties.Resources.attackingRight; //spritesAttackRight = SpriteHandler.getFrames(Properties.Resources.attackingRight); 
-
             currentImage = spritesIdleLeft[0];
-            armor1 = false;
-            armor2 = false;
-            potion = false;
             invulnerable = false;
         }
 

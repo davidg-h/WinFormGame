@@ -19,8 +19,6 @@ namespace WindowsForms.Gamecode
         {
             InitializeComponent();
             initializeLevel(this);
-
-
             this.lvl = GameLvl.storyLvl_3;
             this.FormClosed += StartScreen.closeGame;
             this.KeyDown += formKeyDown;

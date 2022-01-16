@@ -56,7 +56,6 @@
             this.platformBox15 = new System.Windows.Forms.PictureBox();
             this.platformBox13 = new System.Windows.Forms.PictureBox();
             this.platformBox18 = new System.Windows.Forms.PictureBox();
-            this.platformBox19 = new System.Windows.Forms.PictureBox();
             this.coinBox2 = new System.Windows.Forms.PictureBox();
             this.coinBox3 = new System.Windows.Forms.PictureBox();
             this.coinBox12 = new System.Windows.Forms.PictureBox();
@@ -102,7 +101,6 @@
             this.pictureBox26 = new System.Windows.Forms.PictureBox();
             this.pictureBox27 = new System.Windows.Forms.PictureBox();
             this.pictureBox28 = new System.Windows.Forms.PictureBox();
-            this.pictureBox29 = new System.Windows.Forms.PictureBox();
             this.pictureBox30 = new System.Windows.Forms.PictureBox();
             this.pictureBox31 = new System.Windows.Forms.PictureBox();
             this.pictureBox32 = new System.Windows.Forms.PictureBox();
@@ -126,7 +124,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.platformBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.platformBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.platformBox18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.platformBox19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coinBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coinBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coinBox12)).BeginInit();
@@ -171,7 +168,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox28)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox29)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox30)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox31)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox32)).BeginInit();
@@ -194,10 +190,9 @@
             this.countdownLabel.AutoSize = true;
             this.countdownLabel.BackColor = System.Drawing.Color.White;
             this.countdownLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.countdownLabel.Location = new System.Drawing.Point(72, 847);
-            this.countdownLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.countdownLabel.Location = new System.Drawing.Point(36, 440);
             this.countdownLabel.Name = "countdownLabel";
-            this.countdownLabel.Size = new System.Drawing.Size(102, 55);
+            this.countdownLabel.Size = new System.Drawing.Size(53, 29);
             this.countdownLabel.TabIndex = 12;
             this.countdownLabel.Text = "N.I.";
             this.countdownLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -208,10 +203,9 @@
             this.coinCounter.BackColor = System.Drawing.Color.Transparent;
             this.coinCounter.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.coinCounter.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.coinCounter.Location = new System.Drawing.Point(788, 9);
-            this.coinCounter.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.coinCounter.Location = new System.Drawing.Point(394, 5);
             this.coinCounter.Name = "coinCounter";
-            this.coinCounter.Size = new System.Drawing.Size(69, 73);
+            this.coinCounter.Size = new System.Drawing.Size(36, 37);
             this.coinCounter.TabIndex = 17;
             this.coinCounter.Text = "0";
             // 
@@ -219,8 +213,8 @@
             // 
             this.playerBox.BackColor = System.Drawing.Color.Transparent;
             this.playerBox.Image = global::WindowsForms.Properties.Resources.idle;
-            this.playerBox.Location = new System.Drawing.Point(150, 586);
-            this.playerBox.Margin = new System.Windows.Forms.Padding(2);
+            this.playerBox.Location = new System.Drawing.Point(75, 305);
+            this.playerBox.Margin = new System.Windows.Forms.Padding(1);
             this.playerBox.Name = "playerBox";
             this.playerBox.Size = new System.Drawing.Size(68, 64);
             this.playerBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -232,8 +226,7 @@
             // 
             this.platformBox2.BackColor = System.Drawing.Color.Black;
             this.platformBox2.Image = global::WindowsForms.Properties.Resources.platform8;
-            this.platformBox2.Location = new System.Drawing.Point(772, 631);
-            this.platformBox2.Margin = new System.Windows.Forms.Padding(6);
+            this.platformBox2.Location = new System.Drawing.Point(384, 299);
             this.platformBox2.Name = "platformBox2";
             this.platformBox2.Size = new System.Drawing.Size(256, 32);
             this.platformBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -247,7 +240,6 @@
             this.escMenu.BackgroundImage = global::WindowsForms.Properties.Resources.TitleScreen1;
             this.escMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.escMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.escMenu.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.escMenu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.escMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.escMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -258,11 +250,11 @@
             this.loadGameToolStripMenuItem});
             this.escMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.escMenu.Location = new System.Drawing.Point(0, 0);
-            this.escMenu.Margin = new System.Windows.Forms.Padding(0, 0, 0, 67);
+            this.escMenu.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.escMenu.Name = "escMenu";
-            this.escMenu.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.escMenu.Padding = new System.Windows.Forms.Padding(2, 1, 0, 1);
             this.escMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.escMenu.Size = new System.Drawing.Size(1824, 897);
+            this.escMenu.Size = new System.Drawing.Size(912, 466);
             this.escMenu.TabIndex = 8;
             this.escMenu.Text = "Menu";
             this.escMenu.Visible = false;
@@ -273,7 +265,7 @@
             this.escMenuM.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.escMenuM.Margin = new System.Windows.Forms.Padding(0, 20, 0, 60);
             this.escMenuM.Name = "escMenuM";
-            this.escMenuM.Size = new System.Drawing.Size(1819, 124);
+            this.escMenuM.Size = new System.Drawing.Size(909, 65);
             this.escMenuM.Text = "Menu";
             // 
             // resumeToolStripMenuItem
@@ -281,7 +273,7 @@
             this.resumeToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resumeToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.resumeToolStripMenuItem.Name = "resumeToolStripMenuItem";
-            this.resumeToolStripMenuItem.Size = new System.Drawing.Size(1819, 67);
+            this.resumeToolStripMenuItem.Size = new System.Drawing.Size(909, 35);
             this.resumeToolStripMenuItem.Text = "Resume";
             this.resumeToolStripMenuItem.Click += new System.EventHandler(this.resumeToolStripMenuItem_Click);
             // 
@@ -290,7 +282,7 @@
             this.startScreenToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startScreenToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.startScreenToolStripMenuItem.Name = "startScreenToolStripMenuItem";
-            this.startScreenToolStripMenuItem.Size = new System.Drawing.Size(1819, 67);
+            this.startScreenToolStripMenuItem.Size = new System.Drawing.Size(909, 35);
             this.startScreenToolStripMenuItem.Text = "Start-Screen";
             this.startScreenToolStripMenuItem.Click += new System.EventHandler(this.startScreenToolStripMenuItem_Click);
             // 
@@ -299,7 +291,7 @@
             this.saveGameToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveGameToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.saveGameToolStripMenuItem.Name = "saveGameToolStripMenuItem";
-            this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(1819, 67);
+            this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(909, 35);
             this.saveGameToolStripMenuItem.Text = "Save Game";
             this.saveGameToolStripMenuItem.Click += new System.EventHandler(this.saveGameToolStripMenuItem_Click);
             // 
@@ -308,7 +300,7 @@
             this.loadGameToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loadGameToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.loadGameToolStripMenuItem.Name = "loadGameToolStripMenuItem";
-            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(1819, 67);
+            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(909, 35);
             this.loadGameToolStripMenuItem.Text = "Load Game";
             this.loadGameToolStripMenuItem.Click += new System.EventHandler(this.loadGameToolStripMenuItem_Click);
             // 
@@ -316,8 +308,8 @@
             // 
             this.obstacleTree.BackColor = System.Drawing.Color.Transparent;
             this.obstacleTree.Image = global::WindowsForms.Properties.Resources.shroomIdle;
-            this.obstacleTree.Location = new System.Drawing.Point(1866, 747);
-            this.obstacleTree.Margin = new System.Windows.Forms.Padding(2);
+            this.obstacleTree.Location = new System.Drawing.Point(868, 388);
+            this.obstacleTree.Margin = new System.Windows.Forms.Padding(1);
             this.obstacleTree.Name = "obstacleTree";
             this.obstacleTree.Size = new System.Drawing.Size(32, 28);
             this.obstacleTree.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -328,8 +320,8 @@
             // destinyBox
             // 
             this.destinyBox.Image = global::WindowsForms.Properties.Resources.Hole;
-            this.destinyBox.Location = new System.Drawing.Point(7420, 378);
-            this.destinyBox.Margin = new System.Windows.Forms.Padding(2);
+            this.destinyBox.Location = new System.Drawing.Point(3710, 197);
+            this.destinyBox.Margin = new System.Windows.Forms.Padding(1);
             this.destinyBox.Name = "destinyBox";
             this.destinyBox.Size = new System.Drawing.Size(41, 41);
             this.destinyBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -341,8 +333,7 @@
             // 
             this.platformBox3.BackColor = System.Drawing.Color.Black;
             this.platformBox3.Image = global::WindowsForms.Properties.Resources.platform16;
-            this.platformBox3.Location = new System.Drawing.Point(0, 800);
-            this.platformBox3.Margin = new System.Windows.Forms.Padding(6);
+            this.platformBox3.Location = new System.Drawing.Point(0, 416);
             this.platformBox3.Name = "platformBox3";
             this.platformBox3.Size = new System.Drawing.Size(512, 32);
             this.platformBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -354,8 +345,8 @@
             // 
             this.obstacleTree2.BackColor = System.Drawing.Color.Transparent;
             this.obstacleTree2.Image = global::WindowsForms.Properties.Resources.shroomIdle;
-            this.obstacleTree2.Location = new System.Drawing.Point(2914, 334);
-            this.obstacleTree2.Margin = new System.Windows.Forms.Padding(2);
+            this.obstacleTree2.Location = new System.Drawing.Point(1476, 173);
+            this.obstacleTree2.Margin = new System.Windows.Forms.Padding(1);
             this.obstacleTree2.Name = "obstacleTree2";
             this.obstacleTree2.Size = new System.Drawing.Size(32, 28);
             this.obstacleTree2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -367,8 +358,7 @@
             // 
             this.platformBox4.BackColor = System.Drawing.Color.Black;
             this.platformBox4.Image = global::WindowsForms.Properties.Resources.wallTop4;
-            this.platformBox4.Location = new System.Drawing.Point(1792, 856);
-            this.platformBox4.Margin = new System.Windows.Forms.Padding(6);
+            this.platformBox4.Location = new System.Drawing.Point(837, 445);
             this.platformBox4.Name = "platformBox4";
             this.platformBox4.Size = new System.Drawing.Size(128, 32);
             this.platformBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -380,8 +370,7 @@
             // 
             this.platformBox5.BackColor = System.Drawing.Color.Black;
             this.platformBox5.Image = global::WindowsForms.Properties.Resources.wallTop4;
-            this.platformBox5.Location = new System.Drawing.Point(1544, 856);
-            this.platformBox5.Margin = new System.Windows.Forms.Padding(6);
+            this.platformBox5.Location = new System.Drawing.Point(711, 445);
             this.platformBox5.Name = "platformBox5";
             this.platformBox5.Size = new System.Drawing.Size(128, 32);
             this.platformBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -393,8 +382,7 @@
             // 
             this.platformBox6.BackColor = System.Drawing.Color.Black;
             this.platformBox6.Image = global::WindowsForms.Properties.Resources.platform4;
-            this.platformBox6.Location = new System.Drawing.Point(2118, 648);
-            this.platformBox6.Margin = new System.Windows.Forms.Padding(6);
+            this.platformBox6.Location = new System.Drawing.Point(1031, 329);
             this.platformBox6.Name = "platformBox6";
             this.platformBox6.Size = new System.Drawing.Size(128, 32);
             this.platformBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -406,8 +394,7 @@
             // 
             this.platformBox7.BackColor = System.Drawing.Color.Black;
             this.platformBox7.Image = global::WindowsForms.Properties.Resources.wallThin2;
-            this.platformBox7.Location = new System.Drawing.Point(1618, 258);
-            this.platformBox7.Margin = new System.Windows.Forms.Padding(6);
+            this.platformBox7.Location = new System.Drawing.Point(771, 134);
             this.platformBox7.Name = "platformBox7";
             this.platformBox7.Size = new System.Drawing.Size(32, 160);
             this.platformBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -419,8 +406,7 @@
             // 
             this.platformBox8.BackColor = System.Drawing.Color.Black;
             this.platformBox8.Image = global::WindowsForms.Properties.Resources.wallThin;
-            this.platformBox8.Location = new System.Drawing.Point(4404, 833);
-            this.platformBox8.Margin = new System.Windows.Forms.Padding(6);
+            this.platformBox8.Location = new System.Drawing.Point(2202, 433);
             this.platformBox8.Name = "platformBox8";
             this.platformBox8.Size = new System.Drawing.Size(32, 32);
             this.platformBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -431,11 +417,10 @@
             // platformBox10
             // 
             this.platformBox10.BackColor = System.Drawing.Color.Black;
-            this.platformBox10.Image = global::WindowsForms.Properties.Resources.wallTop4;
-            this.platformBox10.Location = new System.Drawing.Point(2468, 586);
-            this.platformBox10.Margin = new System.Windows.Forms.Padding(6);
+            this.platformBox10.Image = global::WindowsForms.Properties.Resources.wallTop2;
+            this.platformBox10.Location = new System.Drawing.Point(1264, 299);
             this.platformBox10.Name = "platformBox10";
-            this.platformBox10.Size = new System.Drawing.Size(128, 32);
+            this.platformBox10.Size = new System.Drawing.Size(64, 32);
             this.platformBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.platformBox10.TabIndex = 20;
             this.platformBox10.TabStop = false;
@@ -445,8 +430,7 @@
             // 
             this.platformBox17.BackColor = System.Drawing.Color.Black;
             this.platformBox17.Image = global::WindowsForms.Properties.Resources.platformLinks;
-            this.platformBox17.Location = new System.Drawing.Point(3710, 892);
-            this.platformBox17.Margin = new System.Windows.Forms.Padding(6);
+            this.platformBox17.Location = new System.Drawing.Point(1855, 464);
             this.platformBox17.Name = "platformBox17";
             this.platformBox17.Size = new System.Drawing.Size(32, 32);
             this.platformBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -458,8 +442,7 @@
             // 
             this.platformBox15.BackColor = System.Drawing.Color.Black;
             this.platformBox15.Image = global::WindowsForms.Properties.Resources.platform2;
-            this.platformBox15.Location = new System.Drawing.Point(4276, 833);
-            this.platformBox15.Margin = new System.Windows.Forms.Padding(6);
+            this.platformBox15.Location = new System.Drawing.Point(2138, 433);
             this.platformBox15.Name = "platformBox15";
             this.platformBox15.Size = new System.Drawing.Size(64, 32);
             this.platformBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -471,8 +454,7 @@
             // 
             this.platformBox13.BackColor = System.Drawing.Color.Black;
             this.platformBox13.Image = global::WindowsForms.Properties.Resources.platform4;
-            this.platformBox13.Location = new System.Drawing.Point(3154, 258);
-            this.platformBox13.Margin = new System.Windows.Forms.Padding(6);
+            this.platformBox13.Location = new System.Drawing.Point(1630, 126);
             this.platformBox13.Name = "platformBox13";
             this.platformBox13.Size = new System.Drawing.Size(128, 32);
             this.platformBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -484,8 +466,7 @@
             // 
             this.platformBox18.BackColor = System.Drawing.Color.Black;
             this.platformBox18.Image = global::WindowsForms.Properties.Resources.platform16;
-            this.platformBox18.Location = new System.Drawing.Point(3772, 892);
-            this.platformBox18.Margin = new System.Windows.Forms.Padding(6);
+            this.platformBox18.Location = new System.Drawing.Point(1886, 464);
             this.platformBox18.Name = "platformBox18";
             this.platformBox18.Size = new System.Drawing.Size(512, 32);
             this.platformBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -493,27 +474,14 @@
             this.platformBox18.TabStop = false;
             this.platformBox18.Tag = "platform";
             // 
-            // platformBox19
-            // 
-            this.platformBox19.BackColor = System.Drawing.Color.Black;
-            this.platformBox19.Image = global::WindowsForms.Properties.Resources.wallTop4;
-            this.platformBox19.Location = new System.Drawing.Point(5742, -3);
-            this.platformBox19.Margin = new System.Windows.Forms.Padding(6);
-            this.platformBox19.Name = "platformBox19";
-            this.platformBox19.Size = new System.Drawing.Size(128, 32);
-            this.platformBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.platformBox19.TabIndex = 20;
-            this.platformBox19.TabStop = false;
-            this.platformBox19.Tag = "platform";
-            // 
             // coinBox2
             // 
             this.coinBox2.BackColor = System.Drawing.Color.Transparent;
             this.coinBox2.Image = global::WindowsForms.Properties.Resources.coin;
-            this.coinBox2.Location = new System.Drawing.Point(872, 533);
-            this.coinBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.coinBox2.Location = new System.Drawing.Point(419, 258);
+            this.coinBox2.Margin = new System.Windows.Forms.Padding(1);
             this.coinBox2.Name = "coinBox2";
-            this.coinBox2.Size = new System.Drawing.Size(72, 72);
+            this.coinBox2.Size = new System.Drawing.Size(36, 37);
             this.coinBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.coinBox2.TabIndex = 19;
             this.coinBox2.TabStop = false;
@@ -523,10 +491,10 @@
             // 
             this.coinBox3.BackColor = System.Drawing.Color.Transparent;
             this.coinBox3.Image = global::WindowsForms.Properties.Resources.coin;
-            this.coinBox3.Location = new System.Drawing.Point(1160, 533);
-            this.coinBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.coinBox3.Location = new System.Drawing.Point(582, 258);
+            this.coinBox3.Margin = new System.Windows.Forms.Padding(1);
             this.coinBox3.Name = "coinBox3";
-            this.coinBox3.Size = new System.Drawing.Size(72, 72);
+            this.coinBox3.Size = new System.Drawing.Size(36, 37);
             this.coinBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.coinBox3.TabIndex = 19;
             this.coinBox3.TabStop = false;
@@ -536,10 +504,10 @@
             // 
             this.coinBox12.BackColor = System.Drawing.Color.Transparent;
             this.coinBox12.Image = global::WindowsForms.Properties.Resources.coin;
-            this.coinBox12.Location = new System.Drawing.Point(2214, 566);
-            this.coinBox12.Margin = new System.Windows.Forms.Padding(2);
+            this.coinBox12.Location = new System.Drawing.Point(1087, 291);
+            this.coinBox12.Margin = new System.Windows.Forms.Padding(1);
             this.coinBox12.Name = "coinBox12";
-            this.coinBox12.Size = new System.Drawing.Size(72, 72);
+            this.coinBox12.Size = new System.Drawing.Size(36, 37);
             this.coinBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.coinBox12.TabIndex = 19;
             this.coinBox12.TabStop = false;
@@ -549,10 +517,10 @@
             // 
             this.coinBox13.BackColor = System.Drawing.Color.Transparent;
             this.coinBox13.Image = global::WindowsForms.Properties.Resources.coin;
-            this.coinBox13.Location = new System.Drawing.Point(2556, 466);
-            this.coinBox13.Margin = new System.Windows.Forms.Padding(2);
+            this.coinBox13.Location = new System.Drawing.Point(1278, 242);
+            this.coinBox13.Margin = new System.Windows.Forms.Padding(1);
             this.coinBox13.Name = "coinBox13";
-            this.coinBox13.Size = new System.Drawing.Size(72, 72);
+            this.coinBox13.Size = new System.Drawing.Size(36, 37);
             this.coinBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.coinBox13.TabIndex = 19;
             this.coinBox13.TabStop = false;
@@ -562,10 +530,10 @@
             // 
             this.coinBox21.BackColor = System.Drawing.Color.Transparent;
             this.coinBox21.Image = global::WindowsForms.Properties.Resources.coin;
-            this.coinBox21.Location = new System.Drawing.Point(2906, 317);
-            this.coinBox21.Margin = new System.Windows.Forms.Padding(2);
+            this.coinBox21.Location = new System.Drawing.Point(1453, 165);
+            this.coinBox21.Margin = new System.Windows.Forms.Padding(1);
             this.coinBox21.Name = "coinBox21";
-            this.coinBox21.Size = new System.Drawing.Size(72, 72);
+            this.coinBox21.Size = new System.Drawing.Size(36, 37);
             this.coinBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.coinBox21.TabIndex = 19;
             this.coinBox21.TabStop = false;
@@ -575,10 +543,10 @@
             // 
             this.coinBox22.BackColor = System.Drawing.Color.Transparent;
             this.coinBox22.Image = global::WindowsForms.Properties.Resources.coin;
-            this.coinBox22.Location = new System.Drawing.Point(3246, 186);
-            this.coinBox22.Margin = new System.Windows.Forms.Padding(2);
+            this.coinBox22.Location = new System.Drawing.Point(1642, 82);
+            this.coinBox22.Margin = new System.Windows.Forms.Padding(1);
             this.coinBox22.Name = "coinBox22";
-            this.coinBox22.Size = new System.Drawing.Size(72, 72);
+            this.coinBox22.Size = new System.Drawing.Size(36, 37);
             this.coinBox22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.coinBox22.TabIndex = 19;
             this.coinBox22.TabStop = false;
@@ -588,10 +556,10 @@
             // 
             this.coinBox23.BackColor = System.Drawing.Color.Transparent;
             this.coinBox23.Image = global::WindowsForms.Properties.Resources.coin;
-            this.coinBox23.Location = new System.Drawing.Point(3588, 189);
-            this.coinBox23.Margin = new System.Windows.Forms.Padding(2);
+            this.coinBox23.Location = new System.Drawing.Point(1794, 98);
+            this.coinBox23.Margin = new System.Windows.Forms.Padding(1);
             this.coinBox23.Name = "coinBox23";
-            this.coinBox23.Size = new System.Drawing.Size(72, 72);
+            this.coinBox23.Size = new System.Drawing.Size(36, 37);
             this.coinBox23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.coinBox23.TabIndex = 19;
             this.coinBox23.TabStop = false;
@@ -601,18 +569,17 @@
             // 
             this.fpsLabel.AutoSize = true;
             this.fpsLabel.BackColor = System.Drawing.Color.Transparent;
-            this.fpsLabel.Location = new System.Drawing.Point(44, 108);
-            this.fpsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.fpsLabel.Location = new System.Drawing.Point(22, 56);
+            this.fpsLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.fpsLabel.Name = "fpsLabel";
-            this.fpsLabel.Size = new System.Drawing.Size(41, 25);
+            this.fpsLabel.Size = new System.Drawing.Size(21, 13);
             this.fpsLabel.TabIndex = 22;
             this.fpsLabel.Text = "fps";
             // 
             // heart1
             // 
             this.heart1.Image = global::WindowsForms.Properties.Resources.Heart;
-            this.heart1.Location = new System.Drawing.Point(20, 9);
-            this.heart1.Margin = new System.Windows.Forms.Padding(6);
+            this.heart1.Location = new System.Drawing.Point(10, 5);
             this.heart1.Name = "heart1";
             this.heart1.Size = new System.Drawing.Size(32, 32);
             this.heart1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -623,8 +590,7 @@
             // heart4
             // 
             this.heart4.Image = global::WindowsForms.Properties.Resources.Heart;
-            this.heart4.Location = new System.Drawing.Point(260, 9);
-            this.heart4.Margin = new System.Windows.Forms.Padding(6);
+            this.heart4.Location = new System.Drawing.Point(130, 5);
             this.heart4.Name = "heart4";
             this.heart4.Size = new System.Drawing.Size(32, 32);
             this.heart4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -635,8 +601,7 @@
             // heart3
             // 
             this.heart3.Image = global::WindowsForms.Properties.Resources.Heart;
-            this.heart3.Location = new System.Drawing.Point(180, 9);
-            this.heart3.Margin = new System.Windows.Forms.Padding(6);
+            this.heart3.Location = new System.Drawing.Point(90, 5);
             this.heart3.Name = "heart3";
             this.heart3.Size = new System.Drawing.Size(32, 32);
             this.heart3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -647,8 +612,7 @@
             // heart2
             // 
             this.heart2.Image = global::WindowsForms.Properties.Resources.Heart;
-            this.heart2.Location = new System.Drawing.Point(100, 9);
-            this.heart2.Margin = new System.Windows.Forms.Padding(6);
+            this.heart2.Location = new System.Drawing.Point(50, 5);
             this.heart2.Name = "heart2";
             this.heart2.Size = new System.Drawing.Size(32, 32);
             this.heart2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -659,8 +623,7 @@
             // heart5
             // 
             this.heart5.Image = global::WindowsForms.Properties.Resources.Heart;
-            this.heart5.Location = new System.Drawing.Point(340, 9);
-            this.heart5.Margin = new System.Windows.Forms.Padding(6);
+            this.heart5.Location = new System.Drawing.Point(170, 5);
             this.heart5.Name = "heart5";
             this.heart5.Size = new System.Drawing.Size(32, 32);
             this.heart5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -672,8 +635,7 @@
             // 
             this.obstacle1.BackColor = System.Drawing.Color.Transparent;
             this.obstacle1.Image = global::WindowsForms.Properties.Resources.PoisountPlant;
-            this.obstacle1.Location = new System.Drawing.Point(1584, 566);
-            this.obstacle1.Margin = new System.Windows.Forms.Padding(6);
+            this.obstacle1.Location = new System.Drawing.Point(755, 296);
             this.obstacle1.Name = "obstacle1";
             this.obstacle1.Size = new System.Drawing.Size(64, 120);
             this.obstacle1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -686,8 +648,7 @@
             this.HealthPotionHUD.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.HealthPotionHUD.BackColor = System.Drawing.Color.Transparent;
             this.HealthPotionHUD.Image = global::WindowsForms.Properties.Resources.health_potion_empty;
-            this.HealthPotionHUD.Location = new System.Drawing.Point(348, 89);
-            this.HealthPotionHUD.Margin = new System.Windows.Forms.Padding(6);
+            this.HealthPotionHUD.Location = new System.Drawing.Point(174, 46);
             this.HealthPotionHUD.Name = "HealthPotionHUD";
             this.HealthPotionHUD.Size = new System.Drawing.Size(24, 30);
             this.HealthPotionHUD.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -699,8 +660,7 @@
             // 
             this.textHUD.BackColor = System.Drawing.Color.Transparent;
             this.textHUD.Image = global::WindowsForms.Properties.Resources.PressH;
-            this.textHUD.Location = new System.Drawing.Point(414, 98);
-            this.textHUD.Margin = new System.Windows.Forms.Padding(6);
+            this.textHUD.Location = new System.Drawing.Point(207, 51);
             this.textHUD.Name = "textHUD";
             this.textHUD.Size = new System.Drawing.Size(50, 20);
             this.textHUD.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -711,10 +671,9 @@
             // 
             this.coinsHUD.BackColor = System.Drawing.Color.Transparent;
             this.coinsHUD.Image = global::WindowsForms.Properties.Resources.coin;
-            this.coinsHUD.Location = new System.Drawing.Point(622, -27);
-            this.coinsHUD.Margin = new System.Windows.Forms.Padding(6);
+            this.coinsHUD.Location = new System.Drawing.Point(311, -14);
             this.coinsHUD.Name = "coinsHUD";
-            this.coinsHUD.Size = new System.Drawing.Size(154, 136);
+            this.coinsHUD.Size = new System.Drawing.Size(77, 71);
             this.coinsHUD.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.coinsHUD.TabIndex = 33;
             this.coinsHUD.TabStop = false;
@@ -723,8 +682,7 @@
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Black;
             this.pictureBox6.Image = global::WindowsForms.Properties.Resources.platform16;
-            this.pictureBox6.Location = new System.Drawing.Point(1022, 800);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox6.Location = new System.Drawing.Point(453, 416);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(512, 32);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -736,8 +694,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Black;
             this.pictureBox1.Image = global::WindowsForms.Properties.Resources.wallThin2;
-            this.pictureBox1.Location = new System.Drawing.Point(1618, -50);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox1.Location = new System.Drawing.Point(772, -25);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(32, 160);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -749,8 +706,7 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Black;
             this.pictureBox2.Image = global::WindowsForms.Properties.Resources.wallTop4;
-            this.pictureBox2.Location = new System.Drawing.Point(1544, 903);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox2.Location = new System.Drawing.Point(772, 470);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(128, 32);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -762,8 +718,7 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Black;
             this.pictureBox3.Image = global::WindowsForms.Properties.Resources.wallTop4;
-            this.pictureBox3.Location = new System.Drawing.Point(260, 856);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox3.Location = new System.Drawing.Point(129, 445);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(128, 32);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -775,8 +730,7 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Black;
             this.pictureBox4.Image = global::WindowsForms.Properties.Resources.wallTop4;
-            this.pictureBox4.Location = new System.Drawing.Point(258, 903);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox4.Location = new System.Drawing.Point(129, 470);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(128, 32);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -788,8 +742,7 @@
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.Black;
             this.pictureBox5.Image = global::WindowsForms.Properties.Resources.wallTop4;
-            this.pictureBox5.Location = new System.Drawing.Point(4, 856);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox5.Location = new System.Drawing.Point(2, 445);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(128, 32);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -800,11 +753,10 @@
             // pictureBox7
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.Black;
-            this.pictureBox7.Image = global::WindowsForms.Properties.Resources.platform4;
-            this.pictureBox7.Location = new System.Drawing.Point(2468, 533);
-            this.pictureBox7.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox7.Image = global::WindowsForms.Properties.Resources.platform2;
+            this.pictureBox7.Location = new System.Drawing.Point(1264, 272);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(128, 32);
+            this.pictureBox7.Size = new System.Drawing.Size(64, 32);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox7.TabIndex = 45;
             this.pictureBox7.TabStop = false;
@@ -814,8 +766,7 @@
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.Black;
             this.pictureBox8.Image = global::WindowsForms.Properties.Resources.platform4;
-            this.pictureBox8.Location = new System.Drawing.Point(2824, 386);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox8.Location = new System.Drawing.Point(1423, 201);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(128, 32);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -827,8 +778,7 @@
             // 
             this.pictureBox9.BackColor = System.Drawing.Color.Black;
             this.pictureBox9.Image = global::WindowsForms.Properties.Resources.platform4;
-            this.pictureBox9.Location = new System.Drawing.Point(3516, 119);
-            this.pictureBox9.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox9.Location = new System.Drawing.Point(1758, 62);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(128, 32);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -840,8 +790,7 @@
             // 
             this.pictureBox11.BackColor = System.Drawing.Color.Black;
             this.pictureBox11.Image = global::WindowsForms.Properties.Resources.platform4;
-            this.pictureBox11.Location = new System.Drawing.Point(3518, 416);
-            this.pictureBox11.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox11.Location = new System.Drawing.Point(1759, 216);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(128, 32);
             this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -853,8 +802,7 @@
             // 
             this.pictureBox12.BackColor = System.Drawing.Color.Black;
             this.pictureBox12.Image = global::WindowsForms.Properties.Resources.wallThin2;
-            this.pictureBox12.Location = new System.Drawing.Point(3516, 169);
-            this.pictureBox12.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox12.Location = new System.Drawing.Point(1758, 88);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(32, 160);
             this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -866,8 +814,7 @@
             // 
             this.pictureBox10.BackColor = System.Drawing.Color.Black;
             this.pictureBox10.Image = global::WindowsForms.Properties.Resources.wallThin2;
-            this.pictureBox10.Location = new System.Drawing.Point(3710, 594);
-            this.pictureBox10.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox10.Location = new System.Drawing.Point(1855, 309);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(32, 160);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -879,10 +826,10 @@
             // 
             this.pictureBox13.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox13.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox13.Location = new System.Drawing.Point(3588, 333);
-            this.pictureBox13.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox13.Location = new System.Drawing.Point(1794, 173);
+            this.pictureBox13.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(72, 72);
+            this.pictureBox13.Size = new System.Drawing.Size(36, 37);
             this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox13.TabIndex = 52;
             this.pictureBox13.TabStop = false;
@@ -892,10 +839,10 @@
             // 
             this.pictureBox14.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox14.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox14.Location = new System.Drawing.Point(3664, 189);
-            this.pictureBox14.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox14.Location = new System.Drawing.Point(1832, 98);
+            this.pictureBox14.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox14.Name = "pictureBox14";
-            this.pictureBox14.Size = new System.Drawing.Size(72, 72);
+            this.pictureBox14.Size = new System.Drawing.Size(36, 37);
             this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox14.TabIndex = 53;
             this.pictureBox14.TabStop = false;
@@ -905,10 +852,10 @@
             // 
             this.pictureBox15.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox15.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox15.Location = new System.Drawing.Point(3664, 272);
-            this.pictureBox15.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox15.Location = new System.Drawing.Point(1832, 141);
+            this.pictureBox15.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(72, 72);
+            this.pictureBox15.Size = new System.Drawing.Size(36, 37);
             this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox15.TabIndex = 54;
             this.pictureBox15.TabStop = false;
@@ -918,10 +865,10 @@
             // 
             this.pictureBox16.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox16.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox16.Location = new System.Drawing.Point(3588, 258);
-            this.pictureBox16.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox16.Location = new System.Drawing.Point(1794, 134);
+            this.pictureBox16.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox16.Name = "pictureBox16";
-            this.pictureBox16.Size = new System.Drawing.Size(72, 72);
+            this.pictureBox16.Size = new System.Drawing.Size(36, 37);
             this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox16.TabIndex = 55;
             this.pictureBox16.TabStop = false;
@@ -931,10 +878,10 @@
             // 
             this.pictureBox17.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox17.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox17.Location = new System.Drawing.Point(3664, 336);
-            this.pictureBox17.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox17.Location = new System.Drawing.Point(1832, 175);
+            this.pictureBox17.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox17.Name = "pictureBox17";
-            this.pictureBox17.Size = new System.Drawing.Size(72, 72);
+            this.pictureBox17.Size = new System.Drawing.Size(36, 37);
             this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox17.TabIndex = 56;
             this.pictureBox17.TabStop = false;
@@ -944,10 +891,10 @@
             // 
             this.pictureBox18.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox18.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox18.Location = new System.Drawing.Point(3610, 41);
-            this.pictureBox18.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox18.Location = new System.Drawing.Point(1805, 21);
+            this.pictureBox18.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox18.Name = "pictureBox18";
-            this.pictureBox18.Size = new System.Drawing.Size(72, 72);
+            this.pictureBox18.Size = new System.Drawing.Size(36, 37);
             this.pictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox18.TabIndex = 56;
             this.pictureBox18.TabStop = false;
@@ -957,8 +904,7 @@
             // 
             this.pictureBox19.BackColor = System.Drawing.Color.Black;
             this.pictureBox19.Image = global::WindowsForms.Properties.Resources.wallThin2;
-            this.pictureBox19.Location = new System.Drawing.Point(3710, 456);
-            this.pictureBox19.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox19.Location = new System.Drawing.Point(1855, 237);
             this.pictureBox19.Name = "pictureBox19";
             this.pictureBox19.Size = new System.Drawing.Size(32, 160);
             this.pictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -970,8 +916,7 @@
             // 
             this.pictureBox20.BackColor = System.Drawing.Color.Black;
             this.pictureBox20.Image = global::WindowsForms.Properties.Resources.platform16;
-            this.pictureBox20.Location = new System.Drawing.Point(6528, 475);
-            this.pictureBox20.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox20.Location = new System.Drawing.Point(3264, 247);
             this.pictureBox20.Name = "pictureBox20";
             this.pictureBox20.Size = new System.Drawing.Size(512, 32);
             this.pictureBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -983,10 +928,10 @@
             // 
             this.pictureBox21.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox21.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox21.Location = new System.Drawing.Point(6934, 306);
-            this.pictureBox21.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox21.Location = new System.Drawing.Point(3467, 159);
+            this.pictureBox21.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox21.Name = "pictureBox21";
-            this.pictureBox21.Size = new System.Drawing.Size(72, 72);
+            this.pictureBox21.Size = new System.Drawing.Size(36, 37);
             this.pictureBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox21.TabIndex = 59;
             this.pictureBox21.TabStop = false;
@@ -996,10 +941,10 @@
             // 
             this.pictureBox22.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox22.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox22.Location = new System.Drawing.Point(6970, 231);
-            this.pictureBox22.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox22.Location = new System.Drawing.Point(3485, 120);
+            this.pictureBox22.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox22.Name = "pictureBox22";
-            this.pictureBox22.Size = new System.Drawing.Size(72, 72);
+            this.pictureBox22.Size = new System.Drawing.Size(36, 37);
             this.pictureBox22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox22.TabIndex = 60;
             this.pictureBox22.TabStop = false;
@@ -1009,8 +954,7 @@
             // 
             this.pictureBox23.BackColor = System.Drawing.Color.Black;
             this.pictureBox23.Image = global::WindowsForms.Properties.Resources.platform2;
-            this.pictureBox23.Location = new System.Drawing.Point(4932, 734);
-            this.pictureBox23.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox23.Location = new System.Drawing.Point(2466, 382);
             this.pictureBox23.Name = "pictureBox23";
             this.pictureBox23.Size = new System.Drawing.Size(64, 32);
             this.pictureBox23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1022,8 +966,7 @@
             // 
             this.pictureBox24.BackColor = System.Drawing.Color.Black;
             this.pictureBox24.Image = global::WindowsForms.Properties.Resources.platform4;
-            this.pictureBox24.Location = new System.Drawing.Point(4588, 542);
-            this.pictureBox24.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox24.Location = new System.Drawing.Point(2294, 282);
             this.pictureBox24.Name = "pictureBox24";
             this.pictureBox24.Size = new System.Drawing.Size(128, 32);
             this.pictureBox24.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1035,8 +978,8 @@
             // 
             this.pictureBox25.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox25.Image = global::WindowsForms.Properties.Resources.shroomIdle;
-            this.pictureBox25.Location = new System.Drawing.Point(3982, 841);
-            this.pictureBox25.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox25.Location = new System.Drawing.Point(1991, 437);
+            this.pictureBox25.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox25.Name = "pictureBox25";
             this.pictureBox25.Size = new System.Drawing.Size(32, 28);
             this.pictureBox25.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1048,8 +991,8 @@
             // 
             this.pictureBox26.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox26.Image = global::WindowsForms.Properties.Resources.shroomIdle;
-            this.pictureBox26.Location = new System.Drawing.Point(4682, 489);
-            this.pictureBox26.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox26.Location = new System.Drawing.Point(2341, 254);
+            this.pictureBox26.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox26.Name = "pictureBox26";
             this.pictureBox26.Size = new System.Drawing.Size(32, 28);
             this.pictureBox26.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1061,8 +1004,8 @@
             // 
             this.pictureBox27.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox27.Image = global::WindowsForms.Properties.Resources.shroomIdle;
-            this.pictureBox27.Location = new System.Drawing.Point(5334, 294);
-            this.pictureBox27.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox27.Location = new System.Drawing.Point(2667, 153);
+            this.pictureBox27.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox27.Name = "pictureBox27";
             this.pictureBox27.Size = new System.Drawing.Size(32, 28);
             this.pictureBox27.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1074,8 +1017,7 @@
             // 
             this.pictureBox28.BackColor = System.Drawing.Color.Black;
             this.pictureBox28.Image = global::WindowsForms.Properties.Resources.platform8;
-            this.pictureBox28.Location = new System.Drawing.Point(5036, 347);
-            this.pictureBox28.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox28.Location = new System.Drawing.Point(2518, 180);
             this.pictureBox28.Name = "pictureBox28";
             this.pictureBox28.Size = new System.Drawing.Size(256, 32);
             this.pictureBox28.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1083,25 +1025,11 @@
             this.pictureBox28.TabStop = false;
             this.pictureBox28.Tag = "platform";
             // 
-            // pictureBox29
-            // 
-            this.pictureBox29.BackColor = System.Drawing.Color.Black;
-            this.pictureBox29.Image = global::WindowsForms.Properties.Resources.wallTop4;
-            this.pictureBox29.Location = new System.Drawing.Point(5998, -3);
-            this.pictureBox29.Margin = new System.Windows.Forms.Padding(6);
-            this.pictureBox29.Name = "pictureBox29";
-            this.pictureBox29.Size = new System.Drawing.Size(128, 32);
-            this.pictureBox29.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox29.TabIndex = 67;
-            this.pictureBox29.TabStop = false;
-            this.pictureBox29.Tag = "platform";
-            // 
             // pictureBox30
             // 
             this.pictureBox30.BackColor = System.Drawing.Color.Black;
             this.pictureBox30.Image = global::WindowsForms.Properties.Resources.platform8;
-            this.pictureBox30.Location = new System.Drawing.Point(5742, 347);
-            this.pictureBox30.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox30.Location = new System.Drawing.Point(2871, 180);
             this.pictureBox30.Name = "pictureBox30";
             this.pictureBox30.Size = new System.Drawing.Size(256, 32);
             this.pictureBox30.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1113,8 +1041,8 @@
             // 
             this.pictureBox31.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox31.Image = global::WindowsForms.Properties.Resources.shroomIdle;
-            this.pictureBox31.Location = new System.Drawing.Point(5964, 294);
-            this.pictureBox31.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox31.Location = new System.Drawing.Point(2982, 153);
+            this.pictureBox31.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox31.Name = "pictureBox31";
             this.pictureBox31.Size = new System.Drawing.Size(32, 28);
             this.pictureBox31.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1126,10 +1054,10 @@
             // 
             this.pictureBox32.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox32.Image = global::WindowsForms.Properties.Resources.coin;
-            this.pictureBox32.Location = new System.Drawing.Point(6894, 231);
-            this.pictureBox32.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox32.Location = new System.Drawing.Point(3447, 120);
+            this.pictureBox32.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox32.Name = "pictureBox32";
-            this.pictureBox32.Size = new System.Drawing.Size(72, 72);
+            this.pictureBox32.Size = new System.Drawing.Size(36, 37);
             this.pictureBox32.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox32.TabIndex = 70;
             this.pictureBox32.TabStop = false;
@@ -1139,6 +1067,7 @@
             // 
             this.MusicPlayer.Enabled = true;
             this.MusicPlayer.Location = new System.Drawing.Point(1102, 21);
+            this.MusicPlayer.Margin = new System.Windows.Forms.Padding(2);
             this.MusicPlayer.Name = "MusicPlayer";
             this.MusicPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("MusicPlayer.OcxState")));
             this.MusicPlayer.Size = new System.Drawing.Size(75, 98);
@@ -1147,15 +1076,14 @@
             // 
             // StoryMode1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WindowsForms.Properties.Resources.Background;
-            this.ClientSize = new System.Drawing.Size(1218, 948);
+            this.ClientSize = new System.Drawing.Size(654, 493);
             this.Controls.Add(this.MusicPlayer);
             this.Controls.Add(this.pictureBox32);
             this.Controls.Add(this.pictureBox31);
             this.Controls.Add(this.pictureBox30);
-            this.Controls.Add(this.pictureBox29);
             this.Controls.Add(this.pictureBox28);
             this.Controls.Add(this.pictureBox27);
             this.Controls.Add(this.pictureBox26);
@@ -1176,10 +1104,8 @@
             this.Controls.Add(this.pictureBox11);
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.pictureBox7);
-            this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.countdownLabel);
             this.Controls.Add(this.textHUD);
@@ -1195,10 +1121,8 @@
             this.Controls.Add(this.platformBox15);
             this.Controls.Add(this.platformBox4);
             this.Controls.Add(this.platformBox10);
-            this.Controls.Add(this.platformBox19);
             this.Controls.Add(this.platformBox17);
             this.Controls.Add(this.platformBox8);
-            this.Controls.Add(this.platformBox7);
             this.Controls.Add(this.platformBox5);
             this.Controls.Add(this.platformBox2);
             this.Controls.Add(this.coinBox22);
@@ -1221,9 +1145,12 @@
             this.Controls.Add(this.escMenu);
             this.Controls.Add(this.pictureBox12);
             this.Controls.Add(this.pictureBox19);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.platformBox7);
+            this.Controls.Add(this.pictureBox4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.escMenu;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "StoryMode1";
             this.Text = "Story-Mode LVL 1";
             this.Load += new System.EventHandler(this.StoryMode1_Load);
@@ -1249,7 +1176,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.platformBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.platformBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.platformBox18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.platformBox19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coinBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coinBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coinBox12)).EndInit();
@@ -1294,7 +1220,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox28)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox29)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox30)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox31)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox32)).EndInit();
@@ -1329,7 +1254,6 @@
         internal System.Windows.Forms.PictureBox platformBox15;
         internal System.Windows.Forms.PictureBox platformBox13;
         internal System.Windows.Forms.PictureBox platformBox18;
-        internal System.Windows.Forms.PictureBox platformBox19;
         private System.Windows.Forms.PictureBox coinBox2;
         private System.Windows.Forms.PictureBox coinBox3;
         private System.Windows.Forms.PictureBox coinBox12;
@@ -1377,7 +1301,6 @@
         internal System.Windows.Forms.PictureBox pictureBox26;
         internal System.Windows.Forms.PictureBox pictureBox27;
         internal System.Windows.Forms.PictureBox pictureBox28;
-        internal System.Windows.Forms.PictureBox pictureBox29;
         internal System.Windows.Forms.PictureBox pictureBox30;
         internal System.Windows.Forms.PictureBox pictureBox31;
         private System.Windows.Forms.PictureBox pictureBox32;
