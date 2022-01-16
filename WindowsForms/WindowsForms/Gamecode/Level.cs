@@ -639,22 +639,12 @@ namespace WindowsForms.Gamecode
                         //}
                         if ((string)x.Tag == "thorns")
                         {
-                            if (player.isAttacking)
-                            {
-                                x.BackgroundImage = Properties.Resources.PoisountPlant_destroyed;
-                                x.Tag = "destroyedThorns";
-                                ChangeThorns(x);
+                            debuff = true;
+                            debuffCounter = 0;
+                            if (player.box.Location.X < x.Location.X)
                                 player.obstacleRight = true;
-                            }
                             else
-                            {
-                                debuff = true;
-                                debuffCounter = 0;
-                                if (player.box.Location.X < x.Location.X)
-                                    player.obstacleRight = true;
-                                else
-                                    player.obstacleLeft = true;
-                            }
+                                player.obstacleLeft = true;
                         }
                         if ((string)x.Tag == "merchant")
                         {
@@ -1048,6 +1038,7 @@ namespace WindowsForms.Gamecode
                         this.Controls.Remove(x);
                     }
                 }
+
             }
             foreach (var enemy in rangeEnemyArray)
             {
@@ -1057,9 +1048,17 @@ namespace WindowsForms.Gamecode
                     if (enemy.Hp <= 0)
                     {
                         debuff = false;
+
                         this.Controls.Remove(x);
                     }
                 }
+            }
+            if ((string)x.Tag == "thorns")
+            {
+                x.BackgroundImage = Properties.Resources.PoisountPlant_destroyed;
+                x.Tag = "destroyedThorns";
+                ChangeThorns(x);
+                player.obstacleRight = true;
             }
         }
 

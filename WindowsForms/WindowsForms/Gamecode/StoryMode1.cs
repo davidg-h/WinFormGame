@@ -89,5 +89,11 @@ namespace WindowsForms.Gamecode
         {
             loadGameClick(sender, e);
         }
+
+        private void StoryMode1_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
