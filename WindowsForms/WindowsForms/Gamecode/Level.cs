@@ -18,6 +18,7 @@ namespace WindowsForms.Gamecode
 
         protected bool gameOver;
         protected bool debuff;
+        protected bool newLevelOldPowerUps;
         protected int debuffCounter = 0;
         protected int invulnerableCounter = 0;
         protected DateTime lastFrameTime = DateTime.Now; // for fps calculation
@@ -181,6 +182,8 @@ namespace WindowsForms.Gamecode
             //makes 'normal' screen invisible 
             makeDefaultDrawingInvisible();
             fillEnemyArrays();
+            
+
 
 
             initializeGameMusicPlayer(levelForm);
@@ -505,7 +508,6 @@ namespace WindowsForms.Gamecode
 
             invulnerableFrames();
 
-
             //HP HUD
             Healthbar(this);
             //make the enemies move
@@ -700,26 +702,16 @@ namespace WindowsForms.Gamecode
                             if (buyChoice == Choices.Potion && player.coins >= 10)
                             {
                                 player.coins -= 10;
-                                HealthPotionHUD.Image = Properties.Resources.health_potion;
                                 buyChoice = Choices.None;
                                 player.potion = true;
+                                PowerUps();
                             }
                             if (buyChoice == Choices.Armor && player.coins >= 20)
                             {
                                 player.coins -= 20;
                                 player.armor1 = true;
                                 player.armor2 = true;
-
-                                armorHeart1.SizeMode = PictureBoxSizeMode.AutoSize;
-                                armorHeart1.Location = new Point(210, 5);
-                                armorHeart1.Image = Properties.Resources.Heart_Armor;
-
-                                armorHeart2.SizeMode = PictureBoxSizeMode.AutoSize;
-                                armorHeart2.Location = new Point(250, 5);
-                                armorHeart2.Image = Properties.Resources.Heart_Armor;
-
-                                this.Controls.Add(armorHeart1);
-                                this.Controls.Add(armorHeart2);
+                                PowerUps();
                                 buyChoice = Choices.None;
                             }
                             if (buyChoice == Choices.Attack && player.coins >= 20)
@@ -848,7 +840,15 @@ namespace WindowsForms.Gamecode
                 case Keys.Space:
                     player.isAttacking = false;
                     break;
-
+                case Keys.Z:
+                    buyChoice = Choices.None;
+                    break;
+                case Keys.U:
+                    buyChoice = Choices.None;
+                    break;
+                case Keys.I:
+                    buyChoice = Choices.None;
+                    break;
             }
 
         }
@@ -909,7 +909,7 @@ namespace WindowsForms.Gamecode
         #region draw
         protected void Draw()
         {
-
+            PowerUps();
             Bitmap bufl = new Bitmap(pf.Width, pf.Height);
             using (Graphics g = Graphics.FromImage(bufl))
             {
@@ -1136,12 +1136,35 @@ namespace WindowsForms.Gamecode
         #endregion
 
         #region Healthbar
+
+        protected void PowerUps()
+        {
+            if (player.armor2)
+            {
+                armorHeart2.SizeMode = PictureBoxSizeMode.AutoSize;
+                armorHeart2.Location = new Point(250, 5);
+                armorHeart2.Image = Properties.Resources.Heart_Armor;
+                this.Controls.Add(armorHeart2);
+            }
+            if (player.armor1)
+            {
+                armorHeart1.SizeMode = PictureBoxSizeMode.AutoSize;
+                armorHeart1.Location = new Point(210, 5);
+                armorHeart1.Image = Properties.Resources.Heart_Armor;
+                this.Controls.Add(armorHeart1);
+            }
+            if (player.potion)
+                HealthPotionHUD.Image = Properties.Resources.health_potion;
+        }
         protected void Healthbar(Level lvl)
         {
-            if (!player.armor2)
-                lvl.Controls.Remove(armorHeart2);
+
             if (!player.armor1)
                 lvl.Controls.Remove(armorHeart1);
+
+            if (!player.armor2)
+                lvl.Controls.Remove(armorHeart2);
+
 
             //if HP fall on a specific count, then change the container to empty or half empty
             if (player.Hp >= 100)
