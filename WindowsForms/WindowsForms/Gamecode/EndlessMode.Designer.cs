@@ -65,7 +65,6 @@ namespace WindowsForms.Gamecode
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.platformBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
-            this.obstacle = new System.Windows.Forms.PictureBox();
             this.platformBox4 = new System.Windows.Forms.PictureBox();
             this.coinBox4 = new System.Windows.Forms.PictureBox();
             this.platformBox5 = new System.Windows.Forms.PictureBox();
@@ -121,7 +120,6 @@ namespace WindowsForms.Gamecode
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.platformBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.obstacle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.platformBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coinBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.platformBox5)).BeginInit();
@@ -583,19 +581,6 @@ namespace WindowsForms.Gamecode
             this.pictureBox14.TabStop = false;
             this.pictureBox14.Tag = "eagleEnemy";
             // 
-            // obstacle
-            // 
-            this.obstacle.AccessibleName = "chapter2";
-            this.obstacle.BackColor = System.Drawing.Color.Transparent;
-            this.obstacle.Image = global::WindowsForms.Properties.Resources.PoisountPlant;
-            this.obstacle.Location = new System.Drawing.Point(1233, 257);
-            this.obstacle.Name = "obstacle";
-            this.obstacle.Size = new System.Drawing.Size(64, 120);
-            this.obstacle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.obstacle.TabIndex = 38;
-            this.obstacle.TabStop = false;
-            this.obstacle.Tag = "thorns";
-            // 
             // platformBox4
             // 
             this.platformBox4.AccessibleName = "chapter3";
@@ -966,7 +951,7 @@ namespace WindowsForms.Gamecode
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(935, 466);
+            this.ClientSize = new System.Drawing.Size(788, 466);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.inventoryCoins);
             this.Controls.Add(this.pictureBox30);
@@ -990,7 +975,6 @@ namespace WindowsForms.Gamecode
             this.Controls.Add(this.pictureBox17);
             this.Controls.Add(this.coinBox4);
             this.Controls.Add(this.platformBox4);
-            this.Controls.Add(this.obstacle);
             this.Controls.Add(this.pictureBox14);
             this.Controls.Add(this.pictureBox28);
             this.Controls.Add(this.pictureBox13);
@@ -1054,7 +1038,6 @@ namespace WindowsForms.Gamecode
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.platformBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.obstacle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.platformBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coinBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.platformBox5)).EndInit();
@@ -1121,7 +1104,6 @@ namespace WindowsForms.Gamecode
         internal System.Windows.Forms.PictureBox pictureBox13;
         internal System.Windows.Forms.PictureBox platformBox1;
         internal System.Windows.Forms.PictureBox pictureBox14;
-        internal System.Windows.Forms.PictureBox obstacle;
         internal System.Windows.Forms.PictureBox platformBox4;
         internal System.Windows.Forms.PictureBox coinBox4;
         internal System.Windows.Forms.PictureBox platformBox5;

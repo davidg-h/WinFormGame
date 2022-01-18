@@ -27,7 +27,7 @@ namespace WindowsForms.Gamecode
             this.Load += startTimer;
         }
 
-      
+
         override protected void goToNextLevel()
         {
             MainGameTick.Stop();
@@ -35,6 +35,10 @@ namespace WindowsForms.Gamecode
             MessageBox.Show("Entering final Lvl", "", MessageBoxButtons.OK);
             StoryMode3 lvl3 = new StoryMode3();
             lvl3.player.coins = this.player.coins;
+            lvl3.player.potion = this.player.potion;
+            lvl3.player.armor1 = this.player.armor1;
+            lvl3.player.armor2 = this.player.armor2;
+            lvl3.player.Dmg = this.player.Dmg;
             lvl3.Show();
             this.Visible = false;
         }

@@ -18,6 +18,7 @@ namespace WindowsForms.Gamecode
 
         protected bool gameOver;
         protected bool debuff;
+        protected bool newLevelOldPowerUps;
         protected int debuffCounter = 0;
         protected int invulnerableCounter = 0;
         protected DateTime lastFrameTime = DateTime.Now; // for fps calculation
@@ -64,6 +65,8 @@ namespace WindowsForms.Gamecode
         Bitmap gHalfHeart = new Bitmap(Properties.Resources.HeartHalf);
         Bitmap gFullHeart = new Bitmap(Properties.Resources.Heart);
 
+
+
         SoundPlayer coinSound;
         SoundPlayer enemyDeathSound;
         protected AxWMPLib.AxWindowsMediaPlayer gameMusicPlayer;
@@ -82,7 +85,7 @@ namespace WindowsForms.Gamecode
         #region initializeLevel
         protected void LevelIsLoaded(object sender, EventArgs e)
         {
-           
+
         }
 
         protected void initializeLevel(Level levelForm)
@@ -169,6 +172,8 @@ namespace WindowsForms.Gamecode
             else
             {
                 player = new Player(playerBox, 100);
+
+
             }
             //creates the handler for animations (coins, enemys...)
             createAnimationHandlers();
@@ -177,10 +182,14 @@ namespace WindowsForms.Gamecode
             //makes 'normal' screen invisible 
             makeDefaultDrawingInvisible();
             fillEnemyArrays();
+            
+
+
 
             initializeGameMusicPlayer(levelForm);
 
-            // create green types of the original hearts 2 stands for half heart, 3 for fullHearts 
+
+            // create green types of the original hearts "2" stands for half heart, "3" for fullHearts 
             for (int y = 0; y < heart1.Height; y++)
             {
                 for (int x = 0; x < heart1.Width; x++)
@@ -220,7 +229,7 @@ namespace WindowsForms.Gamecode
             gameMusicPlayer.Visible = false;
             string url;
             if (System.Diagnostics.Debugger.IsAttached)
-                url = Application.StartupPath.Substring(0, Application.StartupPath.Length -10) + @"\resources\1074444_Superscience.mp3";
+                url = Application.StartupPath.Substring(0, Application.StartupPath.Length - 10) + @"\resources\1074444_Superscience.mp3";
             else
                 url = Application.StartupPath + @"\resources\1074444_Superscience.mp3";
             levelForm.Controls.Add(gameMusicPlayer);
@@ -500,7 +509,7 @@ namespace WindowsForms.Gamecode
             invulnerableFrames();
 
             //HP HUD
-            Healthbar();
+            Healthbar(this);
             //make the enemies move
             moveEnemys();
             if (player.goLeft && !player.obstacleLeft)
@@ -693,26 +702,17 @@ namespace WindowsForms.Gamecode
                             if (buyChoice == Choices.Potion && player.coins >= 10)
                             {
                                 player.coins -= 10;
-                                HealthPotionHUD.Image = Properties.Resources.health_potion;
                                 buyChoice = Choices.None;
                                 player.potion = true;
+                                PowerUps();
                             }
                             if (buyChoice == Choices.Armor && player.coins >= 20)
                             {
                                 player.coins -= 20;
                                 player.armor1 = true;
                                 player.armor2 = true;
-                                // add the picture of armor hearts onto screen
-                                armorHeart1.SizeMode = PictureBoxSizeMode.AutoSize;
-                                armorHeart2.SizeMode = PictureBoxSizeMode.AutoSize;
-                                armorHeart1.Location = new Point(210, 5);
-                                armorHeart2.Location = new Point(250, 5);
-                                armorHeart1.Image = Properties.Resources.Heart_Armor;
-                                armorHeart2.Image = Properties.Resources.Heart_Armor;
+                                PowerUps();
                                 buyChoice = Choices.None;
-                                this.Controls.Add(armorHeart1);
-                                this.Controls.Add(armorHeart2);
-
                             }
                             if (buyChoice == Choices.Attack && player.coins >= 20)
                             {
@@ -840,7 +840,15 @@ namespace WindowsForms.Gamecode
                 case Keys.Space:
                     player.isAttacking = false;
                     break;
-
+                case Keys.Z:
+                    buyChoice = Choices.None;
+                    break;
+                case Keys.U:
+                    buyChoice = Choices.None;
+                    break;
+                case Keys.I:
+                    buyChoice = Choices.None;
+                    break;
             }
 
         }
@@ -886,7 +894,7 @@ namespace WindowsForms.Gamecode
         {
             foreach (var rangeEnemy in this.rangeEnemyArray)
             {
-                if (rangeEnemy.box != null && (rangeEnemy.box.Left - player.box.Right < 200 && player.box.Right < rangeEnemy.box.Left)&&rangeEnemy.Hp>0)
+                if (rangeEnemy.box != null && (rangeEnemy.box.Left - player.box.Right < 200 && player.box.Right < rangeEnemy.box.Left) && rangeEnemy.Hp > 0)
                 {
                     rangeEnemy.ShootShot(this, "left");
                 }
@@ -901,13 +909,13 @@ namespace WindowsForms.Gamecode
         #region draw
         protected void Draw()
         {
-
+            PowerUps();
             Bitmap bufl = new Bitmap(pf.Width, pf.Height);
             using (Graphics g = Graphics.FromImage(bufl))
             {
                 g.FillRectangle(Brushes.Black, new Rectangle(0, 0, pf.Width, pf.Height));
 
-                g.DrawImage(backgroundlayer, new Rectangle(new Point(backgroundCoordX, 0), new Size( new Point(backgroundlayer.Width, this.Size.Height))));
+                g.DrawImage(backgroundlayer, new Rectangle(new Point(backgroundCoordX, 0), new Size(new Point(backgroundlayer.Width, this.Size.Height))));
                 g.DrawImage(backgroundlayer, new Rectangle(new Point(backgroundCoordX2, 0), new Size(new Point(backgroundlayer.Width, this.Size.Height))));
 
                 foreach (Control x in this.Controls)
@@ -1086,7 +1094,6 @@ namespace WindowsForms.Gamecode
                     if (enemy.Hp <= 0)
                     {
                         debuff = false;
-
                         this.Controls.Remove(x);
                     }
                 }
@@ -1129,12 +1136,35 @@ namespace WindowsForms.Gamecode
         #endregion
 
         #region Healthbar
-        protected void Healthbar()
+
+        protected void PowerUps()
         {
-            if (!player.armor2)
-                this.Controls.Remove(armorHeart2);
+            if (player.armor2)
+            {
+                armorHeart2.SizeMode = PictureBoxSizeMode.AutoSize;
+                armorHeart2.Location = new Point(250, 5);
+                armorHeart2.Image = Properties.Resources.Heart_Armor;
+                this.Controls.Add(armorHeart2);
+            }
+            if (player.armor1)
+            {
+                armorHeart1.SizeMode = PictureBoxSizeMode.AutoSize;
+                armorHeart1.Location = new Point(210, 5);
+                armorHeart1.Image = Properties.Resources.Heart_Armor;
+                this.Controls.Add(armorHeart1);
+            }
+            if (player.potion)
+                HealthPotionHUD.Image = Properties.Resources.health_potion;
+        }
+        protected void Healthbar(Level lvl)
+        {
+
             if (!player.armor1)
-                this.Controls.Remove(armorHeart1);
+                lvl.Controls.Remove(armorHeart1);
+
+            if (!player.armor2)
+                lvl.Controls.Remove(armorHeart2);
+
 
             //if HP fall on a specific count, then change the container to empty or half empty
             if (player.Hp >= 100)
@@ -1252,9 +1282,6 @@ namespace WindowsForms.Gamecode
                 else
                     container.Image = Properties.Resources.Heart;
         }
-
-
-
 
         #endregion
     }
