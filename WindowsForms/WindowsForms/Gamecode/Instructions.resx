@@ -134,17 +134,18 @@ Press W to jump
 Press A to move left
 Press D to move right
 Press Space to attack the enemys with the sword.
+Press R to Reload the game
 
 On the top left you can see your health status. 
-Try to kill all enemys and avoid the obstacles,
- falling in a hole means you are instantly dead.
+Try to kill all enemys and avoid the obstacles, falling in a hole means you are instantly dead.
 
 Notice:
 
 During the game you can collect the coins and buy different upgrades.
 
 Aim of the Game: 
-Save the System from the dangerous graphic bugs!!</value>
+Soldiers! Listen up! Your mission is to to exterminate the mining bugs in the system. 
+The time has come to defend the (suuuper expensive) GPU. Prepare for battle!</value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>29</value>
