@@ -69,7 +69,7 @@ namespace WindowsForms.Gamecode
                     Restart();
                     break;
             }
-            }
+        }
 
         private void StoryMode1_KeyUp(object sender, KeyEventArgs e)
         {
@@ -99,7 +99,7 @@ namespace WindowsForms.Gamecode
         private void StoryMode1_Load(object sender, EventArgs e)
         {
             LevelIsLoaded(sender, e);
-            
+
         }
 
         private void MediaPlayer_MediaError(object sender, AxWMPLib._WMPOCXEvents_MediaErrorEvent e)

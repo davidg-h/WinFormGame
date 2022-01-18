@@ -133,3 +133,8 @@ C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\bin\Debug\Ax
 C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\Interop.WMPLib.dll
 C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\AxInterop.WMPLib.dll
 C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\Game.csproj.ResolveComReference.cache
+C:\Users\David\Desktop\SE\Graphic Knight\WindowsForms\WindowsForms\bin\Debug\Interop.WMPLib.dll
+C:\Users\David\Desktop\SE\Graphic Knight\WindowsForms\WindowsForms\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\David\Desktop\SE\Graphic Knight\WindowsForms\WindowsForms\obj\Debug\Interop.WMPLib.dll
+C:\Users\David\Desktop\SE\Graphic Knight\WindowsForms\WindowsForms\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\David\Desktop\SE\Graphic Knight\WindowsForms\WindowsForms\obj\Debug\Game.csproj.ResolveComReference.cache
