@@ -306,7 +306,7 @@ namespace WindowsForms.Gamecode
             if (player.score > 18) ChapterSpawnTimer.Interval = 1000;
             if (player.score > 28) ChapterSpawnTimer.Interval = 800;
             if (player.score > 58) ChapterSpawnTimer.Interval = 700;
-            if(largestXKoord < 2500) //only spawn chapter, if nessesarry
+            if(largestXKoord < this.Width + 200) //only spawn chapter, if nessesarry
                 randomPlacement();
         }
 
@@ -353,19 +353,19 @@ namespace WindowsForms.Gamecode
                 }
                 if ((string)box.Tag == "obstacleTree")
                 {
-                    mushroomList.Add(new EnemySmall(box));
+                    mushroomList.Add(new EnemySmall(boxNew));
                 }
                 if ((string)box.Tag == "eagleEnemy")
                 {
-                    flyEnemyList.Add(new EnemyFly(box));
+                    flyEnemyList.Add(new EnemyFly(boxNew));
                 }
                 if ((string)box.Tag == "rangeEnemy")
                 {
-                    rangeEnemyList.Add(new RangeEnemy(box));
+                    rangeEnemyList.Add(new RangeEnemy(boxNew));
                 }
                 if ((string)box.Tag == "thorns")
                 {
-                    obstacleList.Add(box);
+                    obstacleList.Add(boxNew);
                 }
                 // adds box to the window
                 this.Controls.Add(boxNew);

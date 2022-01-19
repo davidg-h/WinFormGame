@@ -162,3 +162,7 @@ C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\Game.csproj.Genera
 C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\Game.csproj.CoreCompileInputs.cache
 C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.exe
 C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.pdb
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\bin\Debug\WindowsForms.exe.manifest
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\bin\Debug\WindowsForms.application
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.exe.manifest
+C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.application
