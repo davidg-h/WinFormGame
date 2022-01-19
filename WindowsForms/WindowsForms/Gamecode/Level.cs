@@ -412,6 +412,7 @@ namespace WindowsForms.Gamecode
                     break;
             }
             this.Visible = false;
+            this.Dispose(); // clears some space in memory
         }
         #endregion
 
@@ -950,6 +951,7 @@ namespace WindowsForms.Gamecode
 
         protected void background_move()
         {
+            //if one of the backgrounds is out of view one oe site it is teleported to other site 
             if (backgroundCoordX < -backgroundlayer.Width)
                 backgroundCoordX = backgroundlayer.Width - 20;
             if (backgroundCoordX > backgroundlayer.Width)
@@ -959,7 +961,6 @@ namespace WindowsForms.Gamecode
                 backgroundCoordX2 = backgroundlayer.Width - 20;
             if (backgroundCoordX2 > backgroundlayer.Width)
                 backgroundCoordX2 = -backgroundlayer.Width + 20;
-
 
             if (player.goRight && !player.obstacleRight)
             {
