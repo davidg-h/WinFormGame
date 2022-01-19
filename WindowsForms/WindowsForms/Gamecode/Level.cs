@@ -65,8 +65,8 @@ namespace WindowsForms.Gamecode
         Bitmap gHalfHeart = new Bitmap(Properties.Resources.HeartHalf);
         Bitmap gFullHeart = new Bitmap(Properties.Resources.Heart);
 
-
-
+        SoundPlayer rangeEnemyDeathSound;
+        SoundPlayer flyEnemyDeathSound;
         SoundPlayer coinSound;
         SoundPlayer enemyDeathSound;
         protected AxWMPLib.AxWindowsMediaPlayer gameMusicPlayer;
@@ -80,6 +80,8 @@ namespace WindowsForms.Gamecode
         {
             coinSound = new SoundPlayer(Properties.Resources.coinSound);
             enemyDeathSound = new SoundPlayer(Properties.Resources.EnemyDeath);
+            flyEnemyDeathSound = new SoundPlayer(Properties.Resources.FlyEnemySound);
+            rangeEnemyDeathSound = new SoundPlayer(Properties.Resources.PiranhaPlantSound);
         }
 
         #region initializeLevel
@@ -1025,7 +1027,7 @@ namespace WindowsForms.Gamecode
                     enemy.Hp -= player.Dmg;
                     if (enemy.Hp <= 0)
                     {
-                        enemyDeathSound.Play();
+                        flyEnemyDeathSound.Play();
                         debuff = false;
                         this.Controls.Remove(x);
                     }
@@ -1039,7 +1041,7 @@ namespace WindowsForms.Gamecode
                     enemy.Hp -= player.Dmg;
                     if (enemy.Hp <= 0)
                     {
-                        enemyDeathSound.Play();
+                        rangeEnemyDeathSound.Play();
                         debuff = false;
                         this.Controls.Remove(x);
                     }
