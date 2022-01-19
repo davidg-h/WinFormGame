@@ -50,10 +50,10 @@ namespace WindowsForms.Gamecode
         internal SpriteHandler mushroomHandler;
         internal SpriteHandler eagleHandler;
 
-        internal EnemySmall[] mushroomArray;
-        internal EnemyFly[] flyEnemyArray;
-        internal RangeEnemy[] rangeEnemyArray;
-        internal PictureBox[] obstacleArray;
+        internal List<EnemySmall> mushroomList;
+        internal List<EnemyFly> flyEnemyList;
+        internal List<RangeEnemy> rangeEnemyList;
+        internal List<PictureBox> obstacleList;
 
         internal int relativeXPositionOfPlayer = 0;
 
@@ -236,7 +236,7 @@ namespace WindowsForms.Gamecode
             gameMusicPlayer.EndInit();
             gameMusicPlayer.URL = url;
             gameMusicPlayer.settings.setMode("loop", true);
-            gameMusicPlayer.settings.volume = 4;
+            gameMusicPlayer.settings.volume = 4;    //changes Volume 
         }
 
         protected void createAnimationHandlers()
@@ -272,63 +272,31 @@ namespace WindowsForms.Gamecode
         }
         protected void fillEnemyArrays()
         {
-            int mushroomEnemyCounter = 0;
-            int eagleEnemyCounter = 0;
-            int rangeEnemyCounter = 0;
-            int obstacleCounter = 0;
-
-            foreach (Control x in this.Controls)
-            {
-                //counter: how many mushroom enemies
-                if ((string)x.Tag == "obstacleTree")
-                {
-                    mushroomEnemyCounter++;
-                }
-                if ((string)x.Tag == "eagleEnemy")
-                {
-                    eagleEnemyCounter++;
-                }
-                if ((string)x.Tag == "rangeEnemy")
-                {
-                    rangeEnemyCounter++;
-                }
-                if ((string)x.Tag == "thorns")
-                {
-                    obstacleCounter++;
-                }
-            }
+           
             //put all enemies in array for later uses
-            mushroomArray = new EnemySmall[mushroomEnemyCounter];
-            flyEnemyArray = new EnemyFly[eagleEnemyCounter];
-            rangeEnemyArray = new RangeEnemy[rangeEnemyCounter];
-            obstacleArray = new PictureBox[obstacleCounter];
+            mushroomList = new List<EnemySmall>();
+            flyEnemyList = new List<EnemyFly>();
+            rangeEnemyList = new List<RangeEnemy>();
+            obstacleList = new List<PictureBox>();
 
-            mushroomEnemyCounter = 0;
-            eagleEnemyCounter = 0;
-            rangeEnemyCounter = 0;
-            obstacleCounter = 0;
 
             foreach (Control x in this.Controls)
             {
                 if ((string)x.Tag == "obstacleTree")
                 {
-                    mushroomArray[mushroomEnemyCounter] = new EnemySmall((PictureBox)x);
-                    mushroomEnemyCounter++;
+                    mushroomList.Add(new EnemySmall((PictureBox)x));
                 }
                 if ((string)x.Tag == "eagleEnemy")
                 {
-                    flyEnemyArray[eagleEnemyCounter] = new EnemyFly((PictureBox)x);
-                    eagleEnemyCounter++;
+                    flyEnemyList.Add(new EnemyFly((PictureBox)x));
                 }
                 if ((string)x.Tag == "rangeEnemy")
                 {
-                    rangeEnemyArray[rangeEnemyCounter] = new RangeEnemy((PictureBox)x);
-                    rangeEnemyCounter++;
+                    rangeEnemyList.Add(new RangeEnemy((PictureBox)x));
                 }
                 if ((string)x.Tag == "thorns")
                 {
-                    obstacleArray[obstacleCounter] = (PictureBox)x;
-                    obstacleCounter++;
+                    obstacleList.Add((PictureBox)x);
                 }
             }
         }
@@ -357,6 +325,7 @@ namespace WindowsForms.Gamecode
             {
                 MainGameTick.Stop();
                 CountdownTimer.Stop();
+                gameMusicPlayer.Ctlcontrols.pause(); // pauses game Music
                 escMenu.BringToFront();
                 escMenu.Visible = true;
             }
@@ -366,6 +335,7 @@ namespace WindowsForms.Gamecode
         {
             MainGameTick.Start();
             CountdownTimer.Start();
+            gameMusicPlayer.Ctlcontrols.play(); // pauses game Music
             escMenu.Visible = false;
         }
 
@@ -560,12 +530,12 @@ namespace WindowsForms.Gamecode
 
         internal void moveEnemys()
         {
-            InRangeOfEnemy(flyEnemyArray);
-            foreach (EnemySmall mushroom in mushroomArray)
+            InRangeOfEnemy(flyEnemyList);
+            foreach (EnemySmall mushroom in mushroomList)
             {
                 mushroom.move(this);
             }
-            foreach (EnemyFly eagle in flyEnemyArray)
+            foreach (EnemyFly eagle in flyEnemyList)
             {
                 //chasing the player around as long as he is in range (see InRangeOfEnemy(flyEnemyArray);)
                 if (eagle.chase)
@@ -600,7 +570,7 @@ namespace WindowsForms.Gamecode
                     {
                         if ((string)x.Tag == "obstacleTree")
                         {
-                            player.Hp -= mushroomArray[0].Dmg;
+                            player.Hp -= mushroomList[0].Dmg;
                             if ((((PictureBox)x).Location.X - player.box.Location.X) > 0)
                             {
                                 player.obstacleRight = true;
@@ -622,7 +592,7 @@ namespace WindowsForms.Gamecode
                             {
                                 player.obstacleLeft = true;
                             }
-                            player.Hp -= flyEnemyArray[0].Dmg;
+                            player.Hp -= flyEnemyList[0].Dmg;
                         }
                         if ((string)x.Tag == "rangeEnemy")
                         {
@@ -635,7 +605,6 @@ namespace WindowsForms.Gamecode
                             {
                                 player.obstacleLeft = true;
                             }
-                            //player.Hp -= rangeEnemyArray[0].Dmg;
                         }
 
                         if ((string)x.Tag == "shot")
@@ -670,23 +639,6 @@ namespace WindowsForms.Gamecode
                             player.coins += 1;
                         }
 
-                        //if ((string)x.Tag == "rangeEnemy")
-                        //{
-                        //    RangeEnemy foundRangeEnemy = rangeEnemyList.Find(rangeEnemy => rangeEnemy.box.Name == (string)x.Name);
-                        //    player.Hp -= foundRangeEnemy.Dmg;
-                        //    if (player.isAttacking)
-                        //    {
-                        //        foundRangeEnemy.Hp -= player.Dmg;
-                        //        if (foundRangeEnemy.Hp < 1)
-                        //        {
-                        //            this.Controls.Remove(x);
-                        //            debuff = false;
-                        //            rangeEnemyList.Remove(foundRangeEnemy);
-                        //            //AddNextEnemy();
-
-                        //        }
-                        //    }
-                        //}
                         if ((string)x.Tag == "thorns")
                         {
                             debuff = true;
@@ -744,13 +696,6 @@ namespace WindowsForms.Gamecode
             lvl2.Show();
             this.Visible = false;
         }
-        //internal void Restart()
-        //{
-        //    gameOver = false;
-        //    StoryMode1 newWindow = new StoryMode1();
-        //    newWindow.Show();
-        //    this.Hide();
-        //}
 
         //is overwritten in Endlessmode
         internal virtual void GameOver()
@@ -892,7 +837,7 @@ namespace WindowsForms.Gamecode
         #region ShootingOfEnemy RangeEnemy
         protected void ShootWhenPlayerNear()
         {
-            foreach (var rangeEnemy in this.rangeEnemyArray)
+            foreach (var rangeEnemy in this.rangeEnemyList)
             {
                 if (rangeEnemy.box != null && (rangeEnemy.box.Left - player.box.Right < 200 && player.box.Right < rangeEnemy.box.Left) && rangeEnemy.Hp > 0)
                 {
@@ -990,7 +935,7 @@ namespace WindowsForms.Gamecode
 
         void ChangeThorns(Control x)
         {
-            foreach (PictureBox obstacle in obstacleArray)
+            foreach (PictureBox obstacle in obstacleList)
             {
                 if ((string)x.Tag == "destroyedThorns" && x.Name == obstacle.Name)
                     obstacle.Image = Properties.Resources.PoisountPlant_destroyed;
@@ -1047,11 +992,10 @@ namespace WindowsForms.Gamecode
                 }
             }
             //the starting point of the flying enemy has to be scrolled too!
-            foreach (var item in flyEnemyArray)
+            foreach (var item in flyEnemyList)
             {
                 item.startingPoint.X -= moveAmount;
             }
-
         }
         #endregion
 
@@ -1060,7 +1004,7 @@ namespace WindowsForms.Gamecode
         {
             //find the same Enemy in array that is interacted with, then dmg phase and remove if HP of enemy is 0
             //TODO if more enemies added: write another foreach with the enemyType array
-            foreach (var enemy in mushroomArray)
+            foreach (var enemy in mushroomList)
             {
                 if (enemy.box.Name == x.Name)
                 {
@@ -1073,26 +1017,28 @@ namespace WindowsForms.Gamecode
                     }
                 }
             }
-            foreach (var enemy in flyEnemyArray)
+            foreach (var enemy in flyEnemyList)
             {
                 if (enemy.box.Name == x.Name)
                 {
                     enemy.Hp -= player.Dmg;
                     if (enemy.Hp <= 0)
                     {
+                        enemyDeathSound.Play();
                         debuff = false;
                         this.Controls.Remove(x);
                     }
                 }
 
             }
-            foreach (var enemy in rangeEnemyArray)
+            foreach (var enemy in rangeEnemyList)
             {
                 if (enemy.box.Name == x.Name)
                 {
                     enemy.Hp -= player.Dmg;
                     if (enemy.Hp <= 0)
                     {
+                        enemyDeathSound.Play();
                         debuff = false;
                         this.Controls.Remove(x);
                     }
@@ -1112,7 +1058,7 @@ namespace WindowsForms.Gamecode
         #region FlyEnemy 
 
         //method to test if the player is in the Fly enemies range
-        void InRangeOfEnemy(EnemyFly[] flyEnemy)
+        void InRangeOfEnemy(List<EnemyFly> flyEnemy)
         {
             foreach (EnemyFly enemy in flyEnemy)
             {
