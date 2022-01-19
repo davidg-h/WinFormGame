@@ -159,7 +159,7 @@ namespace WindowsForms.Gamecode
             invulnerableFrames();
 
             //keeps health status up to date 
-            Healthbar();
+            Healthbar(this);
             ContactWithAnyObject();
             MoveGameElements(-obstacleSpeed);
             moveEnemys();
