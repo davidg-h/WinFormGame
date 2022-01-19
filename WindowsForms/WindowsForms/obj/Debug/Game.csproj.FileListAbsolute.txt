@@ -138,3 +138,27 @@ C:\Users\David\Desktop\SE\Graphic Knight\WindowsForms\WindowsForms\bin\Debug\AxI
 C:\Users\David\Desktop\SE\Graphic Knight\WindowsForms\WindowsForms\obj\Debug\Interop.WMPLib.dll
 C:\Users\David\Desktop\SE\Graphic Knight\WindowsForms\WindowsForms\obj\Debug\AxInterop.WMPLib.dll
 C:\Users\David\Desktop\SE\Graphic Knight\WindowsForms\WindowsForms\obj\Debug\Game.csproj.ResolveComReference.cache
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\bin\Debug\WindowsForms.exe.config
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\bin\Debug\WindowsForms.exe
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\bin\Debug\WindowsForms.pdb
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\bin\Debug\Interop.WMPLib.dll
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\Game.csproj.AssemblyReference.cache
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\Interop.WMPLib.dll
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\Game.csproj.ResolveComReference.cache
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.EndlessMode.resources
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.GameOverScreenStory.resources
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.HighscoreList.resources
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.Instructions.resources
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.NameInput.resources
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.StoryMode1.resources
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.StartScreen.resources
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.StoryMode2.resources
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.StoryMode3.resources
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Gamecode.WinnerScreen.resources
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Properties.Resources.resources
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\Game.csproj.GenerateResource.cache
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\Game.csproj.CoreCompileInputs.cache
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.exe
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.pdb
