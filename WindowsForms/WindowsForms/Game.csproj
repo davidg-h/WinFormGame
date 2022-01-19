@@ -300,6 +300,7 @@
     <None Include="Resources\EnemyDeath.wav" />
     <None Include="Resources\coinSound.wav" />
     <None Include="Resources\1074444_Superscience.mp3" />
+    <None Include="Resources\FlyEnemySound.wav" />
     <Content Include="Resources\idleLeft.gif" />
     <None Include="Resources\wallLeft4.png" />
     <None Include="Resources\wall4.png" />
@@ -308,6 +309,7 @@
     <None Include="Resources\platform8.png" />
     <None Include="Resources\platformLinks.png" />
     <None Include="Resources\platformRechts.png" />
+    <None Include="Resources\PiranhaPlantSound.wav" />
     <Content Include="Resources\walkingLeft.gif" />
   </ItemGroup>
   <ItemGroup>

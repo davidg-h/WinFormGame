@@ -166,3 +166,7 @@ C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\Wi
 C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\bin\Debug\WindowsForms.application
 C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.exe.manifest
 C:\Users\Spieler\Documents\Hochschule\SoftwareEngineering\OhneSSH\mainproject\WindowsForms\WindowsForms\obj\Debug\WindowsForms.application
+C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\bin\Debug\WindowsForms.exe.manifest
+C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\bin\Debug\WindowsForms.application
+C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\WindowsForms.exe.manifest
+C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\WindowsForms.application
