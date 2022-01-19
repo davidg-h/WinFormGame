@@ -65,8 +65,8 @@ namespace WindowsForms.Gamecode
         Bitmap gHalfHeart = new Bitmap(Properties.Resources.HeartHalf);
         Bitmap gFullHeart = new Bitmap(Properties.Resources.Heart);
 
-
-
+        SoundPlayer rangeEnemyDeathSound;
+        SoundPlayer flyEnemyDeathSound;
         SoundPlayer coinSound;
         SoundPlayer enemyDeathSound;
         protected AxWMPLib.AxWindowsMediaPlayer gameMusicPlayer;
@@ -80,6 +80,8 @@ namespace WindowsForms.Gamecode
         {
             coinSound = new SoundPlayer(Properties.Resources.coinSound);
             enemyDeathSound = new SoundPlayer(Properties.Resources.EnemyDeath);
+            flyEnemyDeathSound = new SoundPlayer(Properties.Resources.FlyEnemySound);
+            rangeEnemyDeathSound = new SoundPlayer(Properties.Resources.PiranhaPlantSound);
         }
 
         #region initializeLevel
@@ -412,6 +414,7 @@ namespace WindowsForms.Gamecode
                     break;
             }
             this.Visible = false;
+            this.Dispose(); // clears some space in memory
         }
         #endregion
 
@@ -950,6 +953,7 @@ namespace WindowsForms.Gamecode
 
         protected void background_move()
         {
+            //if one of the backgrounds is out of view one oe site it is teleported to other site 
             if (backgroundCoordX < -backgroundlayer.Width)
                 backgroundCoordX = backgroundlayer.Width - 20;
             if (backgroundCoordX > backgroundlayer.Width)
@@ -959,7 +963,6 @@ namespace WindowsForms.Gamecode
                 backgroundCoordX2 = backgroundlayer.Width - 20;
             if (backgroundCoordX2 > backgroundlayer.Width)
                 backgroundCoordX2 = -backgroundlayer.Width + 20;
-
 
             if (player.goRight && !player.obstacleRight)
             {
@@ -1024,7 +1027,7 @@ namespace WindowsForms.Gamecode
                     enemy.Hp -= player.Dmg;
                     if (enemy.Hp <= 0)
                     {
-                        enemyDeathSound.Play();
+                        flyEnemyDeathSound.Play();
                         debuff = false;
                         this.Controls.Remove(x);
                     }
@@ -1038,7 +1041,7 @@ namespace WindowsForms.Gamecode
                     enemy.Hp -= player.Dmg;
                     if (enemy.Hp <= 0)
                     {
-                        enemyDeathSound.Play();
+                        rangeEnemyDeathSound.Play();
                         debuff = false;
                         this.Controls.Remove(x);
                     }
