@@ -316,6 +316,7 @@ namespace WindowsForms.Gamecode
             {
                 MainGameTick.Stop();
                 CountdownTimer.Stop();
+                gameMusicPlayer.Ctlcontrols.pause(); // pauses game Music
                 escMenu.BringToFront();
                 escMenu.Visible = true;
             }
@@ -325,6 +326,7 @@ namespace WindowsForms.Gamecode
         {
             MainGameTick.Start();
             CountdownTimer.Start();
+            gameMusicPlayer.Ctlcontrols.play(); // pauses game Music
             escMenu.Visible = false;
         }
 
