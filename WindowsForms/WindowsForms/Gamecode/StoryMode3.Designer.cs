@@ -285,6 +285,7 @@
             // escMenu
             // 
             this.escMenu.BackColor = System.Drawing.Color.Transparent;
+            this.escMenu.BackgroundImage = global::WindowsForms.Properties.Resources.TitleScreen1;
             this.escMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.escMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.escMenu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
@@ -301,7 +302,7 @@
             this.escMenu.Name = "escMenu";
             this.escMenu.Padding = new System.Windows.Forms.Padding(2, 1, 0, 1);
             this.escMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.escMenu.Size = new System.Drawing.Size(909, 488);
+            this.escMenu.Size = new System.Drawing.Size(569, 493);
             this.escMenu.TabIndex = 8;
             this.escMenu.Text = "Menu";
             this.escMenu.Visible = false;
@@ -312,7 +313,7 @@
             this.escMenuM.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.escMenuM.Margin = new System.Windows.Forms.Padding(0, 20, 0, 60);
             this.escMenuM.Name = "escMenuM";
-            this.escMenuM.Size = new System.Drawing.Size(906, 65);
+            this.escMenuM.Size = new System.Drawing.Size(566, 65);
             this.escMenuM.Text = "Menu";
             // 
             // resumeToolStripMenuItem
@@ -320,7 +321,7 @@
             this.resumeToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resumeToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.resumeToolStripMenuItem.Name = "resumeToolStripMenuItem";
-            this.resumeToolStripMenuItem.Size = new System.Drawing.Size(906, 35);
+            this.resumeToolStripMenuItem.Size = new System.Drawing.Size(566, 35);
             this.resumeToolStripMenuItem.Text = "Resume";
             this.resumeToolStripMenuItem.Click += new System.EventHandler(this.resumeToolStripMenuItem_Click);
             // 
@@ -329,7 +330,7 @@
             this.startScreenToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startScreenToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.startScreenToolStripMenuItem.Name = "startScreenToolStripMenuItem";
-            this.startScreenToolStripMenuItem.Size = new System.Drawing.Size(906, 35);
+            this.startScreenToolStripMenuItem.Size = new System.Drawing.Size(566, 35);
             this.startScreenToolStripMenuItem.Text = "Start-Screen";
             this.startScreenToolStripMenuItem.Click += new System.EventHandler(this.startScreenToolStripMenuItem_Click);
             // 
@@ -338,7 +339,7 @@
             this.saveGameToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveGameToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.saveGameToolStripMenuItem.Name = "saveGameToolStripMenuItem";
-            this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(906, 35);
+            this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(566, 35);
             this.saveGameToolStripMenuItem.Text = "Save Game";
             this.saveGameToolStripMenuItem.Click += new System.EventHandler(this.saveGameToolStripMenuItem_Click);
             // 
@@ -347,7 +348,7 @@
             this.loadGameToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loadGameToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 35);
             this.loadGameToolStripMenuItem.Name = "loadGameToolStripMenuItem";
-            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(906, 35);
+            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(566, 35);
             this.loadGameToolStripMenuItem.Text = "Load Game";
             this.loadGameToolStripMenuItem.Click += new System.EventHandler(this.loadGameToolStripMenuItem_Click);
             // 

@@ -170,3 +170,7 @@ C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\bin\Debug\Wi
 C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\bin\Debug\WindowsForms.application
 C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\WindowsForms.exe.manifest
 C:\Users\Patri\Desktop\GraphicKnight\Code\WindowsForms\WindowsForms\obj\Debug\WindowsForms.application
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\bin\Debug\WindowsForms.exe.manifest
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\bin\Debug\WindowsForms.application
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.exe.manifest
+C:\Users\David\Desktop\SE\WindowsForms\WindowsForms\obj\Debug\WindowsForms.application
