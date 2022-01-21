@@ -19,7 +19,7 @@ namespace WindowsForms.Gamecode
         {
             InitializeComponent();
             initializeLevel(this);
-
+            backgroundlayer = Properties.Resources.BackgroundLevel2;
 
             this.lvl = GameLvl.storyLvl_2;
             this.FormClosed += StartScreen.closeGame;
