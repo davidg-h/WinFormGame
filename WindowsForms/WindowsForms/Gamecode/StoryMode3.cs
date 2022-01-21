@@ -23,6 +23,7 @@ namespace WindowsForms.Gamecode
             this.FormClosed += StartScreen.closeGame;
             this.KeyDown += formKeyDown;
             this.Load += startTimer;
+            backgroundlayer = Properties.Resources.BackgroundLevel3;
         }
 
 
