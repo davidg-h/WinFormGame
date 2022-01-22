@@ -43,10 +43,11 @@ namespace WindowsForms.Gamecode
         /// funcionality explained in StoryMode1
         /// </summary>
 
-        private void formKeyDown(object sender, KeyEventArgs e)
+        private new void formKeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
             {
+                clickSound.Play();
                 MainGameTick.Stop();
                 ScoreTimer.Stop();
                 CoinSpawnTimer.Stop();
@@ -57,8 +58,9 @@ namespace WindowsForms.Gamecode
             }
         }
 
-        private void resumeClick(object sender, EventArgs e)
+        private new void resumeClick(object sender, EventArgs e)
         {
+            clickSound.Play();
             escMenu.Visible = false;
             MainGameTick.Start();
             ScoreTimer.Start();
@@ -67,8 +69,9 @@ namespace WindowsForms.Gamecode
             gameMusicPlayer.Ctlcontrols.play();
         }
 
-        private void startScreenClick(object sender, EventArgs e)
+        private new void startScreenClick(object sender, EventArgs e)
         {
+            clickSound.Play();
             DialogResult result = MessageBox.Show("Gameplay will not be saved. Would you like to continue?", "", MessageBoxButtons.YesNo);
             saveInventory(this, new EventArgs());
             if (result == DialogResult.Yes)
@@ -82,6 +85,7 @@ namespace WindowsForms.Gamecode
         // Opens Coin Shop
         private void shopClick(object sender, EventArgs e)
         {
+            clickSound.Play();
             shopMenu.BringToFront();
             shopMenu.Visible = true;
         }
@@ -99,6 +103,7 @@ namespace WindowsForms.Gamecode
         #region Shop Menu
         private void superJumpBuy(object sender, EventArgs e)
         {
+            clickSound.Play();
             const int cost = 100;
             if (buySomethingValid(cost))
             {
@@ -108,6 +113,7 @@ namespace WindowsForms.Gamecode
 
         private void dmgBuy(object sender, EventArgs e)
         {
+            clickSound.Play();
             const int cost = 50;
             if (buySomethingValid(cost))
             {
@@ -117,6 +123,7 @@ namespace WindowsForms.Gamecode
 
         private void doneClick(object sender, EventArgs e)
         {
+            clickSound.Play();
             MessageBox.Show("Power-Ups only active on current live! Your Death resets your Abilities!!!!");
             shopMenu.SendToBack();
             shopMenu.Visible = false;

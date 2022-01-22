@@ -34,6 +34,9 @@ namespace WindowsForms.Gamecode
             this.endlessModeButton = new System.Windows.Forms.Button();
             this.quitBotton = new System.Windows.Forms.Button();
             this.InstructionsButton = new System.Windows.Forms.Button();
+            this.CreditsBox = new System.Windows.Forms.PictureBox();
+            this.CreditsLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.CreditsBox)).BeginInit();
             this.SuspendLayout();
             // 
             // gameTitel
@@ -41,10 +44,10 @@ namespace WindowsForms.Gamecode
             this.gameTitel.BackColor = System.Drawing.Color.Transparent;
             this.gameTitel.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gameTitel.ForeColor = System.Drawing.Color.Black;
-            this.gameTitel.Location = new System.Drawing.Point(259, 43);
-            this.gameTitel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.gameTitel.Location = new System.Drawing.Point(388, 67);
+            this.gameTitel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.gameTitel.Name = "gameTitel";
-            this.gameTitel.Size = new System.Drawing.Size(516, 59);
+            this.gameTitel.Size = new System.Drawing.Size(774, 92);
             this.gameTitel.TabIndex = 0;
             this.gameTitel.Text = "Graphic-Knight\r\n";
             this.gameTitel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -53,10 +56,10 @@ namespace WindowsForms.Gamecode
             // 
             this.storyModeButton.BackColor = System.Drawing.SystemColors.Control;
             this.storyModeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.storyModeButton.Location = new System.Drawing.Point(363, 170);
-            this.storyModeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.storyModeButton.Location = new System.Drawing.Point(544, 266);
+            this.storyModeButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.storyModeButton.Name = "storyModeButton";
-            this.storyModeButton.Size = new System.Drawing.Size(309, 55);
+            this.storyModeButton.Size = new System.Drawing.Size(464, 86);
             this.storyModeButton.TabIndex = 1;
             this.storyModeButton.Text = "Story-Mode";
             this.storyModeButton.UseVisualStyleBackColor = false;
@@ -65,10 +68,10 @@ namespace WindowsForms.Gamecode
             // endlessModeButton
             // 
             this.endlessModeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.endlessModeButton.Location = new System.Drawing.Point(363, 280);
-            this.endlessModeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.endlessModeButton.Location = new System.Drawing.Point(544, 438);
+            this.endlessModeButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.endlessModeButton.Name = "endlessModeButton";
-            this.endlessModeButton.Size = new System.Drawing.Size(309, 55);
+            this.endlessModeButton.Size = new System.Drawing.Size(464, 86);
             this.endlessModeButton.TabIndex = 2;
             this.endlessModeButton.Text = "Endless-Mode";
             this.endlessModeButton.UseVisualStyleBackColor = true;
@@ -77,10 +80,10 @@ namespace WindowsForms.Gamecode
             // quitBotton
             // 
             this.quitBotton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quitBotton.Location = new System.Drawing.Point(363, 485);
-            this.quitBotton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.quitBotton.Location = new System.Drawing.Point(544, 758);
+            this.quitBotton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.quitBotton.Name = "quitBotton";
-            this.quitBotton.Size = new System.Drawing.Size(309, 55);
+            this.quitBotton.Size = new System.Drawing.Size(464, 86);
             this.quitBotton.TabIndex = 3;
             this.quitBotton.Text = "Quit";
             this.quitBotton.UseVisualStyleBackColor = true;
@@ -89,31 +92,57 @@ namespace WindowsForms.Gamecode
             // InstructionsButton
             // 
             this.InstructionsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InstructionsButton.Location = new System.Drawing.Point(363, 388);
-            this.InstructionsButton.Margin = new System.Windows.Forms.Padding(4);
+            this.InstructionsButton.Location = new System.Drawing.Point(544, 606);
+            this.InstructionsButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.InstructionsButton.Name = "InstructionsButton";
-            this.InstructionsButton.Size = new System.Drawing.Size(309, 55);
+            this.InstructionsButton.Size = new System.Drawing.Size(464, 86);
             this.InstructionsButton.TabIndex = 4;
             this.InstructionsButton.Text = "Instructions";
             this.InstructionsButton.UseVisualStyleBackColor = true;
             this.InstructionsButton.Click += new System.EventHandler(this.Instructions);
             // 
+            // CreditsBox
+            // 
+            this.CreditsBox.Location = new System.Drawing.Point(1183, 570);
+            this.CreditsBox.Name = "CreditsBox";
+            this.CreditsBox.Size = new System.Drawing.Size(15, 15);
+            this.CreditsBox.TabIndex = 5;
+            this.CreditsBox.TabStop = false;
+            this.CreditsBox.Click += new System.EventHandler(this.CreditsBox_Click);
+            // 
+            // CreditsLabel
+            // 
+            this.CreditsLabel.AutoSize = true;
+            this.CreditsLabel.BackColor = System.Drawing.Color.Transparent;
+            this.CreditsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
+            this.CreditsLabel.Location = new System.Drawing.Point(83, 277);
+            this.CreditsLabel.Name = "CreditsLabel";
+            this.CreditsLabel.Size = new System.Drawing.Size(0, 44);
+            this.CreditsLabel.TabIndex = 6;
+            // 
             // StartScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WindowsForms.Properties.Resources.TitleScreen1;
-            this.ClientSize = new System.Drawing.Size(1053, 678);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1578, 1059);
+            this.Controls.Add(this.CreditsLabel);
+            this.Controls.Add(this.CreditsBox);
             this.Controls.Add(this.InstructionsButton);
             this.Controls.Add(this.quitBotton);
             this.Controls.Add(this.endlessModeButton);
             this.Controls.Add(this.storyModeButton);
             this.Controls.Add(this.gameTitel);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "StartScreen";
             this.Text = "StartScreen";
+            this.Load += new System.EventHandler(this.StartScreen_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.CreditsBox)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -124,5 +153,7 @@ namespace WindowsForms.Gamecode
         private System.Windows.Forms.Button endlessModeButton;
         private System.Windows.Forms.Button quitBotton;
         private System.Windows.Forms.Button InstructionsButton;
+        private System.Windows.Forms.PictureBox CreditsBox;
+        private System.Windows.Forms.Label CreditsLabel;
     }
 }

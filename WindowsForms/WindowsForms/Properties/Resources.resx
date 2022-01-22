@@ -286,4 +286,13 @@
   <data name="PiranhaPlantSound" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PiranhaPlantSound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="MenueKlick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MenueKlick.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PortalSound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PortalSound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_987597_woodland_sprites" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\987597_woodland-sprites.mp3;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

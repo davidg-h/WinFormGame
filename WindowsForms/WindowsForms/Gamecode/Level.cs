@@ -69,6 +69,8 @@ namespace WindowsForms.Gamecode
         SoundPlayer flyEnemyDeathSound;
         SoundPlayer coinSound;
         SoundPlayer enemyDeathSound;
+        SoundPlayer portalSound;
+        protected SoundPlayer clickSound;
         protected AxWMPLib.AxWindowsMediaPlayer gameMusicPlayer;
 
 
@@ -82,6 +84,8 @@ namespace WindowsForms.Gamecode
             enemyDeathSound = new SoundPlayer(Properties.Resources.EnemyDeath);
             flyEnemyDeathSound = new SoundPlayer(Properties.Resources.FlyEnemySound);
             rangeEnemyDeathSound = new SoundPlayer(Properties.Resources.PiranhaPlantSound);
+            clickSound = new SoundPlayer(Properties.Resources.MenueKlick);
+            portalSound = new SoundPlayer(Properties.Resources.PortalSound);
         }
 
         #region initializeLevel
@@ -238,7 +242,7 @@ namespace WindowsForms.Gamecode
             gameMusicPlayer.EndInit();
             gameMusicPlayer.URL = url;
             gameMusicPlayer.settings.setMode("loop", true);
-            gameMusicPlayer.settings.volume = 4;    //changes Volume 
+            gameMusicPlayer.settings.volume = 7;    //changes Volume 
         }
 
         protected void createAnimationHandlers()
@@ -325,6 +329,7 @@ namespace WindowsForms.Gamecode
         {
             if (e.KeyCode == Keys.Escape)
             {
+                clickSound.Play();
                 MainGameTick.Stop();
                 CountdownTimer.Stop();
                 gameMusicPlayer.Ctlcontrols.pause(); // pauses game Music
@@ -335,6 +340,7 @@ namespace WindowsForms.Gamecode
 
         internal void resumeClick(object sender, EventArgs e)
         {
+            clickSound.Play();
             MainGameTick.Start();
             CountdownTimer.Start();
             gameMusicPlayer.Ctlcontrols.play(); // pauses game Music
@@ -348,6 +354,7 @@ namespace WindowsForms.Gamecode
         /// <param name="e"></param>
         internal void startScreenClick(object sender, EventArgs e)
         {
+            clickSound.Play();
             DialogResult result = MessageBox.Show("Gameplay will not be saved. Would you like to continue?", "", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
@@ -359,11 +366,13 @@ namespace WindowsForms.Gamecode
 
         internal void saveGameClick(object sender, EventArgs e)
         {
+            clickSound.Play();
             SystemSave.saveGame(lvl, this);
         }
 
         internal void loadGameClick(object sender, EventArgs e)
         {
+            clickSound.Play();
             PlayerData gameData = SystemSave.loadGame();
             MessageBox.Show("Your last game is loaded!", "Load game", MessageBoxButtons.OK);
             // passing the data back to the window and ts elements
@@ -679,6 +688,7 @@ namespace WindowsForms.Gamecode
 
                         if ((string)x.Tag == "finish")
                         {
+                            //portalSound.Play();
                             goToNextLevel();
                         }
                     }
