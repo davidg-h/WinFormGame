@@ -1,15 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Threading;
-using System.Drawing.Drawing2D;
 
 namespace WindowsForms.Gamecode
 {
@@ -26,7 +16,6 @@ namespace WindowsForms.Gamecode
             backgroundlayer = Properties.Resources.BackgroundLevel3;
         }
 
-
         internal void Restart()
         {
             MainGameTick.Stop();
@@ -37,6 +26,7 @@ namespace WindowsForms.Gamecode
             newWindow.Show();
             this.Hide();
         }
+
         override protected void goToNextLevel()
         {
             MainGameTick.Stop();
@@ -49,7 +39,6 @@ namespace WindowsForms.Gamecode
             MainGameTick_Tick(sender, e);
         }
 
-
         private void CountdownTimer_Tick(object sender, EventArgs e)
         {
             timerTick(sender, e);
@@ -61,7 +50,6 @@ namespace WindowsForms.Gamecode
             switch (e.KeyCode)
             {
                 case Keys.R:
-                    //if (gameOver == true)
                     Restart();
                     break;
             }

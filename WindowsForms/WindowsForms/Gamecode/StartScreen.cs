@@ -1,22 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Media;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsForms.Gamecode
 {
     public partial class StartScreen : Form
     {
+        private AxWMPLib.AxWindowsMediaPlayer gameMusicPlayer;
+        private Random r = new Random();
+        private SoundPlayer clickSound;
 
-        AxWMPLib.AxWindowsMediaPlayer gameMusicPlayer;
-        Random r = new Random();
-        SoundPlayer clickSound;
         public StartScreen()
         {
             InitializeComponent();
@@ -28,7 +22,6 @@ namespace WindowsForms.Gamecode
         private void StartScreen_Load(object sender, EventArgs e)
         {
             gameMusicPlayer.Ctlcontrols.play();
-
         }
 
         /// <summary>
@@ -43,7 +36,7 @@ namespace WindowsForms.Gamecode
 
         private void openEndless(object sender, EventArgs e)
         {
-            // opens the Endless-Mode and shows the screen
+            //opens the Endless-Mode and shows the screen
             clickSound.Play();
             gameMusicPlayer.Ctlcontrols.stop();
             EndlessMode endless = new EndlessMode();
@@ -89,7 +82,7 @@ namespace WindowsForms.Gamecode
             if (System.Diagnostics.Debugger.IsAttached)
                 url = Application.StartupPath.Substring(0, Application.StartupPath.Length - 10) + @"\resources\";
             else
-                url = Application.StartupPath + @"\resources\";
+                url = Application.StartupPath + @"\GameMusic\";
             url += "987597_woodland-sprites.mp3";
             this.Controls.Add(gameMusicPlayer);
             gameMusicPlayer.EndInit();

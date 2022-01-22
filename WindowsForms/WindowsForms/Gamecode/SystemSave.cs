@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+﻿using System.IO;
 using System.Windows.Forms;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Diagnostics;
@@ -151,13 +146,11 @@ namespace WindowsForms.Gamecode
                 }
                 else
                 {
-                    Debug.Fail("file has no data. please check the file or make a new one" + path);
                     return 0;
                 }
             }
             else
             {
-                Debug.Fail("file not found in " + path);
                 return 0;
             }
         }

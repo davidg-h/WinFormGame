@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsForms.Gamecode
@@ -21,15 +14,15 @@ namespace WindowsForms.Gamecode
         {
             InitializeComponent();
             this.FormClosed += StartScreen.closeGame;
-            // automatic save when closing the window
+            //automatic save when closing the window
             this.FormClosing += saveHighscoreList;
 
-            // filtering only the int for sorting the array
+            //filtering only the int for sorting the array
             score = score.Replace("Score: ", "");
 
             entry = (Int32.Parse(score), name);
 
-            // only for the first save to create the file
+            //only for the first save to create the file
             if (!File.Exists(Application.StartupPath + "\\highscoreList.save"))
             {
                 fillList(entry.score, entry.name);
@@ -37,10 +30,10 @@ namespace WindowsForms.Gamecode
             }
             else
             {
-                // load the highscoreList to operate on list
+                //load the highscoreList to operate on list
                 highscoreListLoad();
 
-                // fill the list (array) or insert a higher score
+                //fill the list (array) or insert a higher score
                 if (!listIsFull) fillList(entry.score, entry.name);
                 else highscoreEntries = insert(entry.score, entry.name);
             }
@@ -70,7 +63,7 @@ namespace WindowsForms.Gamecode
         {
             if (highscoreEntries[1] != default)
             {
-                // last time filling the list 
+                //last time filling the list 
                 listIsFull = true;
             }
             highscoreEntries[0] = (score, name);
@@ -84,25 +77,25 @@ namespace WindowsForms.Gamecode
             bool sucessfullEntry = false;
             var temp = new (int, string)[5];
 
-            // you can only get on the list, if you have the same/higher score than the last place
+            //you can only get on the list, if you have the same/higher score than the last place
             if (score >= highscoreEntries[0].score)
             {
                 for (int i = highscoreEntries.Length - 1; i - 1 >= 0; i--)
                 {
                     if (score >= highscoreEntries[i].score && !sucessfullEntry)
                     {
-                        // insert the score in the list
+                        //insert the score in the list
                         temp[i] = (score, name);
                         sucessfullEntry = true;
                     }
 
-                    // _= is discard notation, push the last score out of the list
+                    //_= is discard notation, push the last score out of the list
                     _ = sucessfullEntry ? (temp[i - 1] = highscoreEntries[i]) : (temp[i] = highscoreEntries[i]);
                 }
 
                 if (!sucessfullEntry)
                 {
-                    // replacing last place
+                    //replacing last place
                     temp[0] = (score, name);
                 }
                 return temp;

@@ -1,15 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Threading;
-using System.Drawing.Drawing2D;
 
 namespace WindowsForms.Gamecode
 {
@@ -25,6 +15,7 @@ namespace WindowsForms.Gamecode
             this.KeyDown += formKeyDown;
             this.Load += startTimer;
         }
+
         override protected void goToNextLevel()
         {
             MainGameTick.Stop();
@@ -39,6 +30,7 @@ namespace WindowsForms.Gamecode
             lvl2.Show();
             this.Visible = false;
         }
+
         internal void Restart()
         {
             MainGameTick.Stop();
@@ -94,12 +86,6 @@ namespace WindowsForms.Gamecode
         private void loadGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             loadGameClick(sender, e);
-        }
-
-        private void StoryMode1_Load(object sender, EventArgs e)
-        {
-            LevelIsLoaded(sender, e);
-
         }
 
         private void MediaPlayer_MediaError(object sender, AxWMPLib._WMPOCXEvents_MediaErrorEvent e)

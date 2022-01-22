@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsForms.Gamecode
@@ -13,16 +6,18 @@ namespace WindowsForms.Gamecode
     public partial class GameOverScreenStory : Form
     {
         public bool playAgainClicked = false;
+
         public GameOverScreenStory()
         {
             InitializeComponent();
             this.FormClosed += closeGame;
-
         }
+
         internal static void closeGame(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
         public void PlayAgain(object sender, EventArgs e)
         {
             StartScreen startScreen = new StartScreen();
@@ -30,6 +25,7 @@ namespace WindowsForms.Gamecode
             this.Visible = false;
             playAgainClicked = true;
         }
+
         private void Quit(object sender, EventArgs e)
         {
             closeGame(sender, e);

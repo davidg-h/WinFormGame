@@ -1,26 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 
 
 namespace WindowsForms.Gamecode
 {
+    /// <summary>
+    /// handles the shot of RangeEnemy
+    /// </summary>
     class RangeEnemyShot
     {
-        public string direction;
-        public int shotLeft;
-        public int shotTop;
-
         private int speed = 30;
         private PictureBox shot = new PictureBox();
         private Timer shotTimer = new Timer();
-        public static int ShotDmg = 10;
+
+        internal string direction;
+        internal int shotLeft;
+        internal int shotTop;
+
+        internal static int ShotDmg = 10;
        
-        public void CreateShot(Form form)
+        internal void CreateShot(Form form)
         {
             shot.Image = Properties.Resources.Piranha_ball;
             shot.Size = new Size(26, 16);
@@ -35,9 +35,9 @@ namespace WindowsForms.Gamecode
             shotTimer.Tick += new EventHandler(ShotTimerEvent);
             shotTimer.Start();
         }
+
         private void ShotTimerEvent(object sender, EventArgs e)
         {
-
             if (direction == "left")
             {
                 shot.Left -= speed;
@@ -57,7 +57,8 @@ namespace WindowsForms.Gamecode
                 shot = null;
             }
         }
-        public void DeleteShot()
+
+        internal void DeleteShot()
         {
             if(shotTimer!= null)
             {

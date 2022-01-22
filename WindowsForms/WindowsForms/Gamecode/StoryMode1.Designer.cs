@@ -1180,7 +1180,6 @@
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "StoryMode1";
             this.Text = "Story-Mode LVL 1";
-            this.Load += new System.EventHandler(this.StoryMode1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.StoryMode1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.StoryMode1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.armorHeart1)).EndInit();
