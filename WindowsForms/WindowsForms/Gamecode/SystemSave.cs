@@ -151,13 +151,13 @@ namespace WindowsForms.Gamecode
                 }
                 else
                 {
-                    Debug.Fail("file has no data. please check the file or make a new one" + path);
+                    //Debug.Fail("file has no data. please check the file or make a new one" + path);
                     return 0;
                 }
             }
             else
             {
-                Debug.Fail("file not found in " + path);
+                //Debug.Fail("file not found in " + path);
                 return 0;
             }
         }
