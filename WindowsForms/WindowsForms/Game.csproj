@@ -301,6 +301,8 @@
     <None Include="Resources\coinSound.wav" />
     <None Include="Resources\1074444_Superscience.mp3" />
     <None Include="Resources\FlyEnemySound.wav" />
+    <None Include="Resources\BackgroundLevel2.png" />
+    <None Include="Resources\BackgroundLevel3.png" />
     <None Include="Resources\987597_woodland-sprites.mp3" />
     <Content Include="Resources\idleLeft.gif" />
     <None Include="Resources\wallLeft4.png" />
