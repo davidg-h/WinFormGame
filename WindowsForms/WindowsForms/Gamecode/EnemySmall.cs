@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace WindowsForms.Gamecode
 {
     internal class EnemySmall : Enemy
     {
-        //String name = "Blutsauger";
-
         bool movingLeft;
         int movementCounterLeft, movementCounterRight;
+
         public EnemySmall(PictureBox eBox, int hp = 10, int dmg = 10) : base(eBox, hp, dmg)
         {
             movementCounterLeft = 0;
@@ -24,8 +18,11 @@ namespace WindowsForms.Gamecode
         internal override int Dmg { get => dmg; set => dmg = value; }
 
 
-        //normal move pattern
-        public override void move(Form f)
+        /// <summary>
+        /// Movement pattern of EnemySmall
+        /// </summary>
+        /// <param name="f"></param>
+        internal override void move(Form f)
         {
             if (movingLeft)
             {

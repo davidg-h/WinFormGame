@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace WindowsForms.Gamecode
 {
@@ -33,8 +28,6 @@ namespace WindowsForms.Gamecode
         }
 
         // move pattern 
-        public virtual void move(Form f) { }
-        // attack pattern
-        public virtual void attack() { }
+        internal virtual void move(Form f) { }
     }
 }

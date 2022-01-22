@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WindowsForms.Gamecode
+﻿namespace WindowsForms.Gamecode
 {
+    /// <summary>
+    /// animation state of player
+    /// </summary>
     enum EnumPlayerAnimation
     {
         idleRight,

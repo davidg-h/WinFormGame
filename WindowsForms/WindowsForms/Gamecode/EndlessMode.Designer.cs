@@ -150,7 +150,7 @@ namespace WindowsForms.Gamecode
             // MainGameTick
             // 
             this.MainGameTick.Enabled = true;
-            this.MainGameTick.Interval = 20;
+            this.MainGameTick.Interval = 30;
             this.MainGameTick.Tick += new System.EventHandler(this.endlessTickTimer);
             // 
             // escMenu
@@ -951,7 +951,7 @@ namespace WindowsForms.Gamecode
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(788, 466);
+            this.ClientSize = new System.Drawing.Size(799, 466);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.inventoryCoins);
             this.Controls.Add(this.pictureBox30);

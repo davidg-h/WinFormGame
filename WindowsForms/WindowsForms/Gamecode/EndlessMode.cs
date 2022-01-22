@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsForms.Gamecode
@@ -14,14 +8,12 @@ namespace WindowsForms.Gamecode
     public partial class EndlessMode : Level
     {
         #region Game(EndlessMode) variables
-        Random rand = new Random();
         int obstacleSpeed = 8;
         int inventoryChestCoins;
         int largestXKoord;
         List<List<PictureBox>> chapterList;
         List<PictureBox> pictureBoxList;
-
-        PictureBox backgroundBox;
+        Random rand = new Random();
         #endregion
 
         public EndlessMode()
@@ -35,12 +27,11 @@ namespace WindowsForms.Gamecode
             this.KeyDown += formKeyDown;
             this.Load += loadInventory;
             this.FormClosing += saveInventory;
-            backgroundBox = (PictureBox)Controls.Find("background1", false)[0];
         }
 
         #region Esc Menu (with safe/load)
         /// <summary>
-        /// funcionality explained in StoryMode1
+        /// funcionality explained in Level
         /// </summary>
 
         private new void formKeyDown(object sender, KeyEventArgs e)
@@ -82,23 +73,13 @@ namespace WindowsForms.Gamecode
             }
         }
 
-        // Opens Coin Shop
+        //Opens Coin Shop
         private void shopClick(object sender, EventArgs e)
         {
             clickSound.Play();
             shopMenu.BringToFront();
             shopMenu.Visible = true;
         }
-
-        private void saveInventory(object sender, EventArgs e)
-        {
-            SystemSave.saveCoins(player.coins + inventoryChestCoins);
-        }
-        private void loadInventory(object sender, EventArgs e)
-        {
-            inventoryChestCoins = SystemSave.loadCoins();
-        }
-        #endregion
 
         #region Shop Menu
         private void superJumpBuy(object sender, EventArgs e)
@@ -139,9 +120,19 @@ namespace WindowsForms.Gamecode
             }
             else
             {
-                MessageBox.Show("You dont have enough MONEY! Get more Money!", "MONEY!!!!!", MessageBoxButtons.OK);
+                MessageBox.Show("You dont have enough MONEY in your Chest! Get more Money!", "MONEY!!!!!", MessageBoxButtons.OK);
                 return false;
             }
+        }
+        #endregion
+
+        private void saveInventory(object sender, EventArgs e)
+        {
+            SystemSave.saveCoins(player.coins + inventoryChestCoins);
+        }
+        private void loadInventory(object sender, EventArgs e)
+        {
+            inventoryChestCoins = SystemSave.loadCoins();
         }
         #endregion
 
@@ -160,9 +151,10 @@ namespace WindowsForms.Gamecode
 
             player.moveEndlessmode(this);
 
-            fallPutOfTheWorld();
+            //when falling from map player dies
+            fallOutOfTheWorld();
 
-            // "invinceble frames" as long as invulnerable is on true: no dmg can be taken (as to see in player.Hp property)
+            //"invinceble frames" as long as invulnerable is on true: no dmg can be taken (as to see in player.Hp property)
             invulnerableFrames();
 
             //keeps health status up to date 
@@ -178,14 +170,13 @@ namespace WindowsForms.Gamecode
             if (player.score > 60) obstacleSpeed = 35;
             if (player.score > 100) obstacleSpeed = 50;
 
-
             destroyPB();
             largestXKoord = getLargestXKoord();
 
             Draw();
         }
 
-        //resets the game and gives the last coin count to the player bank
+        //gives the last coin count to the player chest
         override internal void GameOver()
         {
             MainGameTick.Stop();
@@ -199,14 +190,9 @@ namespace WindowsForms.Gamecode
             this.Hide();
         }
 
-        private void DeathGameReset(int coinCount)
-        {
-            EndlessMode endless = new EndlessMode();
-            endless.Show();
-            endless.player.coins += coinCount;
-            this.Visible = false;
-        }
-
+        /// <summary>
+        /// resets the endless mode
+        /// </summary>
         private void GameReset()
         {
             player.Hp += 100;
@@ -287,14 +273,9 @@ namespace WindowsForms.Gamecode
         }
         #endregion
 
-        #region draw
-
-        #endregion
-
         #region endless backgroundScrolling
-        void background_move()
+        new void background_move()
         {
-
             if (backgroundCoordX < -backgroundlayer.Width)
                 backgroundCoordX = backgroundlayer.Width - 20;
 
@@ -313,10 +294,9 @@ namespace WindowsForms.Gamecode
             if (player.score > 18) ChapterSpawnTimer.Interval = 1000;
             if (player.score > 28) ChapterSpawnTimer.Interval = 800;
             if (player.score > 58) ChapterSpawnTimer.Interval = 700;
-            if(largestXKoord < this.Width + 200) //only spawn chapter, if nessesarry
+            if (largestXKoord <= this.Width + 500) //only spawn chapter, if nessesarry
                 randomPlacement();
         }
-
 
         private void randomPlacement()
         {
@@ -346,10 +326,10 @@ namespace WindowsForms.Gamecode
         {
             foreach (PictureBox box in chapter)
             {
-                // create box
+                //create box
                 PictureBox boxNew = createPB(box);
-                // new Location is after the last object with a random buffer(=randomNumber)
-                // box.Location.X - boxLeft: to keep the ratio of the objects to each other the same and position it to the left edge of the client area
+                //new Location is after the last object with a random buffer(=randomNumber)
+                //box.Location.X - boxLeft: to keep the ratio of the objects to each other the same and position it to the left edge of the client area
                 if (x <= ClientSize.Width)
                 {   //this code is never executed
                     boxNew.Location = new Point(ClientSize.Width + (box.Location.X - boxLeft) + randomNumber, box.Location.Y);
@@ -474,7 +454,7 @@ namespace WindowsForms.Gamecode
                 {
                     if (pb.Location.X + pb.Size.Width < 0)
                     {
-                        if((string)pb.Tag == "rangeEnemy")
+                        if ((string)pb.Tag == "rangeEnemy")
                         {
                             RangeEnemy enemy = rangeEnemyList.Find(e => e.box.Name == pb.Name);
                             rangeEnemyList.Remove(enemy);
@@ -504,7 +484,7 @@ namespace WindowsForms.Gamecode
 
         private void spawnCoins()
         {
-            // create coin
+            //create coin
             PictureBox coinSpawn = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)(coinSpawn)).BeginInit();
 
@@ -514,7 +494,7 @@ namespace WindowsForms.Gamecode
             coinSpawn.Size = new Size(38, 39);
             coinSpawn.SizeMode = PictureBoxSizeMode.StretchImage;
             coinSpawn.Location = new Point(ClientSize.Width + rand.Next(0, 50), rand.Next(ClientSize.Height));
-            // adds coin to the window
+            //adds coin to the window
             this.Controls.Add(coinSpawn);
         }
         #endregion

@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace WindowsForms.Gamecode
 {
     class EnemyFly : Enemy
     {
-        bool movingLeft;
-        int movementCounterLeft, movementCounterRight;
         internal System.Windows.Vector startingPoint;
+        int movementCounterLeft, movementCounterRight;
         public bool chase, onStart;
-
+        bool movingLeft;
 
         internal override int Hp { get => hp; set => hp = value; }
         internal override int Dmg { get => dmg; set => dmg = value; }
@@ -25,9 +19,12 @@ namespace WindowsForms.Gamecode
             onStart = true;
         }
 
-        public override void move(Form f)
+        /// <summary>
+        /// Movement pattern of EnemyFly
+        /// </summary>
+        /// <param name="f"></param>
+        internal override void move(Form f)
         {
-
             if (onStart && !chase)
             {
                 //"normal" move pattern
@@ -65,11 +62,10 @@ namespace WindowsForms.Gamecode
                 {
                     ReturnStartPoint();
                 }
-
             }
         }
 
-        //method to let the enemy return to his spawn point (not exactly correct because of the scrolling
+        //method to let the enemy return to his spawn point (not exactly correct because of the scrolling)
         private void ReturnStartPoint()
         {
             if (box.Location.X >= startingPoint.X - 20 && box.Location.X <= startingPoint.X + 20 && box.Location.Y <= startingPoint.Y + 20 && box.Location.Y >= startingPoint.Y - 20)
@@ -82,7 +78,6 @@ namespace WindowsForms.Gamecode
                 box.Top -= 2;
             if (box.Location.Y < startingPoint.Y && !onStart)
                 box.Top += 2;
-
         }
     }
 }

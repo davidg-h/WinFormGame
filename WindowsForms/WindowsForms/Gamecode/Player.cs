@@ -1,23 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using System.Drawing;
-using System.Windows.Media.Media3D;
-using System.Drawing.Imaging;
-//using System.Windows;
 
 namespace WindowsForms.Gamecode
 {
     internal class Player : Entity
     {
         #region class variables
-        internal Point defaultLocation;
+        private int currentHealth;
+        private int currentImageIndex = 0;
+        private int animationUpdate = 0;
+        private int attackingSpeed = 5;
+        private int attackingCountdown = 0;
+        private bool attacking = false;
+        private EnumPlayerAnimation currentAnimation = EnumPlayerAnimation.idleRight;
+
         internal int score = 0;
         internal int coins = 0;
-        internal System.Windows.Vector moveVector;
+        internal override int Dmg { get => dmg; set => dmg = value; }
+        internal bool obstacleRight = false;
+        internal bool obstacleLeft = false;
+        internal bool facingRight = true;
+        internal bool isAttacking { get => attacking; set { attacking = value; attackingCountdown = 0; } }
+        internal bool armor1, armor2, potion, invulnerable, gamemodeEndless;
+        internal bool IsOnGround { get => isOnGround; set => isOnGround = value; }
         internal Image[] spritesIdleLeft;
         internal Image[] spritesIdleRight;
         internal Image[] spritesWalkLeft;
@@ -25,28 +30,15 @@ namespace WindowsForms.Gamecode
         internal Image spritesAttackLeft;
         internal Image spritesAttackRight;
         internal Image currentImage = null;
-        int currentImageIndex = 0;
-        int animationUpdate = 0;
-        int attackingSpeed = 5;
-        int attackingCountdown = 0;
-        EnumPlayerAnimation currentAnimation = EnumPlayerAnimation.idleRight;
-        public bool obstacleRight = false;
-        public bool obstacleLeft = false;
-        bool attacking = false;
-        internal bool facingRight = true;
-        public bool isAttacking { get => attacking; set { attacking = value; attackingCountdown = 0; } }
-        internal override int Dmg { get => dmg; set => dmg = value; }
-        public bool armor1, armor2, potion, invulnerable, gamemodeEndless;
-        int currentHealth;
-        public Rectangle swordHitRange;
+        internal Point defaultLocation;
+        internal System.Windows.Vector moveVector;
+        internal Rectangle swordHitRange;
 
-        // move pattern for WASD - controls
+        //move pattern for WASD - controls
         internal void Left(bool go) { goLeft = go; if (go) facingRight = false; }
         internal void Right(bool go) { goRight = go; if (go) facingRight = true; }
         internal void jump() { jumps = true; }
         internal void Down() { goDown = true; }
-        internal bool IsOnGround { get => isOnGround; set => isOnGround = value; }
-
         #endregion
 
         public Player(PictureBox playerBox, int hp, int dmg = 1) : base(playerBox, hp, dmg)
@@ -58,8 +50,8 @@ namespace WindowsForms.Gamecode
             spritesIdleRight = SpriteHandler.getFrames(Properties.Resources.idleLeft);
             spritesWalkLeft = SpriteHandler.getFrames(Properties.Resources.walkingLeft);
             spritesWalkRight = SpriteHandler.getFrames(Properties.Resources.walking);
-            spritesAttackLeft = Properties.Resources.attackingLeft; //spritesAttackLeft = SpriteHandler.getFrames(Properties.Resources.attackingLeft); 
-            spritesAttackRight = Properties.Resources.attackingRight; //spritesAttackRight = SpriteHandler.getFrames(Properties.Resources.attackingRight); 
+            spritesAttackLeft = Properties.Resources.attackingLeft;
+            spritesAttackRight = Properties.Resources.attackingRight;
             currentImage = spritesIdleLeft[0];
             invulnerable = false;
         }
@@ -96,22 +88,23 @@ namespace WindowsForms.Gamecode
                 }
             }
         }
-        public override void move(Form f)
+
+        #region player movement logic
+        internal override void move(Form f)
         {
             attackingCooldown();
             animatePlayer();
 
             #region jumping mechanics
-            //isonGround is handled in StoryMode1
+            //isonGround is handled in Level.cs
 
-            // moves the box up or down depending on the threshold 'force'
-
-
+            //moves the box up or down depending on the threshold 'force'
             if (jumps && IsOnGround)
             {
                 jumps = false;
                 isOnGround = false;
-                moveVector.Y = -jumpSpeed; //add initial jumpforce
+                //add initial jumpforce
+                moveVector.Y = -jumpSpeed;
             }
             if (!IsOnGround)
             {
@@ -124,10 +117,13 @@ namespace WindowsForms.Gamecode
                 moveVector.Y = 0;
             }
             #endregion
+
             //finaly the position gets Updated with the created moveVector
             box.Location = new Point(box.Location.X + (int)moveVector.X, box.Location.Y + (int)moveVector.Y);
         }
-        public void moveEndlessmode(Form f) // player is able to move in window
+
+        //player itself is able to move in endless-window
+        public void moveEndlessmode(Form f)
         {
             animatePlayer();
             if (goLeft && box.Left > 30 && !obstacleLeft)
@@ -144,14 +140,15 @@ namespace WindowsForms.Gamecode
             }
 
             #region jumping mechanics
-            //isonGround is handled in StoryMode1
+            //isonGround is handled in Level.cs
 
             // moves the box up or down depending on the threshold 'force'
             if (jumps && IsOnGround)
             {
                 jumps = false;
                 isOnGround = false;
-                moveVector.Y = -jumpSpeed; //add initial jumpforce
+                //add initial jumpforce
+                moveVector.Y = -jumpSpeed;
             }
             if (!IsOnGround)
             {
@@ -163,11 +160,17 @@ namespace WindowsForms.Gamecode
                 moveVector.Y = 0;
             }
             #endregion
+
             //finaly the position gets Updated with the created moveVector
             box.Location = new Point(box.Location.X + (int)moveVector.X, box.Location.Y + (int)moveVector.Y);
             attackingCooldown();
         }
+        #endregion
 
+        #region player attack
+        /// <summary>
+        /// disables holding of attack button
+        /// </summary>
         private void attackingCooldown()
         {
             if (attacking)
@@ -177,9 +180,32 @@ namespace WindowsForms.Gamecode
                     attacking = false;
                 }
                 else
+                {
                     attackingCountdown++;
+                }
             }
         }
+
+        internal void attack()
+        {
+            if (attackingCountdown < attackingSpeed)
+            {
+                //creates attacking area on left or right of the Player with Size of Sword
+                attacking = true;
+                if (facingRight)
+                    swordHitRange = new Rectangle(new Point(box.Location.X + box.Width, box.Location.Y + box.Height / 2), new Size(new Point(box.Size.Width, box.Size.Height / 2)));
+                else
+                    swordHitRange = new Rectangle(new Point(box.Location.X - box.Width, box.Location.Y + box.Height / 2), new Size(new Point(box.Size.Width, box.Size.Height / 2)));
+
+            }
+
+        }
+        #endregion
+
+        #region logic: sprite handeling
+        /// <summary>
+        /// selecting of sprites for player depending on player state
+        /// </summary>
         private void animatePlayer()
         {
             if (attacking && !facingRight)
@@ -230,12 +256,14 @@ namespace WindowsForms.Gamecode
 
         private void updateAnimation()
         {
-            if (animationUpdate % 3 == 0) //slows down animations speed
+            //slows down animations speed
+            if (animationUpdate % 3 == 0) 
             {
                 switch (currentAnimation)
                 {
                     case EnumPlayerAnimation.idleRight:
-                        currentImage = spritesIdleLeft[(currentImageIndex + 1) % spritesIdleLeft.Length]; //swows next frame od animation
+                        //shows next frame of animation
+                        currentImage = spritesIdleLeft[(currentImageIndex + 1) % spritesIdleLeft.Length]; 
                         break;
                     case EnumPlayerAnimation.idleLeft:
                         currentImage = spritesIdleRight[(currentImageIndex + 1) % spritesIdleLeft.Length];
@@ -258,22 +286,12 @@ namespace WindowsForms.Gamecode
             }
             animationUpdate++;
         }
+        #endregion
 
-        public override void attack()
-        {
-            if(attackingCountdown < attackingSpeed)
-            {
-                //creates attackingarea on left or right of the Player with Size of Sword
-                attacking = true;
-                if (facingRight)
-                    swordHitRange = new Rectangle(new Point(box.Location.X + box.Width, box.Location.Y + box.Height / 2), new Size(new Point(box.Size.Width, box.Size.Height / 2)));
-                else
-                    swordHitRange = new Rectangle(new Point(box.Location.X - box.Width, box.Location.Y + box.Height / 2), new Size(new Point(box.Size.Width, box.Size.Height / 2)));
-
-            }
-            
-        }
-
+        /// <summary>
+        /// prevents player from getting stuck in a wall
+        /// </summary>
+        /// <param name="topOfPlatform"></param>
         internal void MoveToTopOfPlatform(int topOfPlatform)
         {
             box.Location = new Point(box.Location.X, topOfPlatform - box.Height + 1);

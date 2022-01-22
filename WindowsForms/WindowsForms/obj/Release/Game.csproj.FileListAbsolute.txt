@@ -1,8 +1,3 @@
-C:\Users\David\Desktop\SE\Game\WindowsForms\WindowsForms\bin\Release\WindowsForms.exe.config
-C:\Users\David\Desktop\SE\Game\WindowsForms\WindowsForms\bin\Release\WindowsForms.exe.manifest
-C:\Users\David\Desktop\SE\Game\WindowsForms\WindowsForms\bin\Release\WindowsForms.application
-C:\Users\David\Desktop\SE\Game\WindowsForms\WindowsForms\bin\Release\WindowsForms.exe
-C:\Users\David\Desktop\SE\Game\WindowsForms\WindowsForms\bin\Release\WindowsForms.pdb
 C:\Users\David\Desktop\SE\Game\WindowsForms\WindowsForms\bin\Release\Interop.WMPLib.dll
 C:\Users\David\Desktop\SE\Game\WindowsForms\WindowsForms\bin\Release\AxInterop.WMPLib.dll
 C:\Users\David\Desktop\SE\Game\WindowsForms\WindowsForms\obj\Release\Game.csproj.AssemblyReference.cache
@@ -22,6 +17,11 @@ C:\Users\David\Desktop\SE\Game\WindowsForms\WindowsForms\obj\Release\WindowsForm
 C:\Users\David\Desktop\SE\Game\WindowsForms\WindowsForms\obj\Release\WindowsForms.Properties.Resources.resources
 C:\Users\David\Desktop\SE\Game\WindowsForms\WindowsForms\obj\Release\Game.csproj.GenerateResource.cache
 C:\Users\David\Desktop\SE\Game\WindowsForms\WindowsForms\obj\Release\Game.csproj.CoreCompileInputs.cache
+C:\Users\David\Desktop\SE\Game\WindowsForms\WindowsForms\bin\Release\WindowsForms.exe.config
+C:\Users\David\Desktop\SE\Game\WindowsForms\WindowsForms\bin\Release\WindowsForms.exe.manifest
+C:\Users\David\Desktop\SE\Game\WindowsForms\WindowsForms\bin\Release\WindowsForms.application
+C:\Users\David\Desktop\SE\Game\WindowsForms\WindowsForms\bin\Release\WindowsForms.exe
+C:\Users\David\Desktop\SE\Game\WindowsForms\WindowsForms\bin\Release\WindowsForms.pdb
 C:\Users\David\Desktop\SE\Game\WindowsForms\WindowsForms\obj\Release\WindowsForms.exe.manifest
 C:\Users\David\Desktop\SE\Game\WindowsForms\WindowsForms\obj\Release\WindowsForms.application
 C:\Users\David\Desktop\SE\Game\WindowsForms\WindowsForms\obj\Release\WindowsForms.exe
