@@ -1,4 +1,4 @@
-﻿using System.Windows.Forms;
+using System.Windows.Forms;
 using System.Drawing;
 
 namespace WindowsForms.Gamecode
@@ -62,13 +62,16 @@ namespace WindowsForms.Gamecode
             set
             {
                 currentHealth = Hp;
+                //set hp to the maximum of 100 so the hearts dont bug
                 if (value > 100)
                     hp = 100;
+                //invulnerable, othwerise the player looses too much hp with one touch
                 else if (invulnerable)
                 {
                     hp = currentHealth;
                     currentHealth = value;
                 }
+                //armor hearts only gets removed for dmg not for healing!! 1 armor heart counts as negate for one dmg input
                 else if (armor2 && value <= hp)
                 {
                     invulnerable = true;
